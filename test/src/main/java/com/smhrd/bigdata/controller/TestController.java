@@ -13,4 +13,17 @@ public class TestController {
 	public String boardList(Model model) {
 		return "account-billing";
 	}
+	@GetMapping("/login")
+	public String loginform() {
+		return "login";
+	}
+	@GetMapping("/join")
+	public String joinform() {
+		return "join";
+	}
+	@GetMapping("/main")
+	public String main() {
+		return "main";
+	}
+	
 }
