@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TestController {
 	@GetMapping("/")
 	public String boardList(Model model) {
-		return "account-billing";
+		return "account-profile";
 	}
 	
 	@GetMapping("/profile")

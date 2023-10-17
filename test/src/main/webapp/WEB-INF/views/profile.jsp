@@ -15,11 +15,9 @@
     </head>
     <body class="nav-fixed">
         <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
-            <!-- Navbar Brand-->
-            <!-- * * Tip * * You can use text or an image for your navbar brand.-->
-            <!-- * * * * * * When using an image, we recommend the SVG format.-->
-            <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px-->
-            <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">아오팜</a>
+            <a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/profile">
+				<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
+			</a>
             <!-- Navbar Search Input-->
             <!-- * * Note: * * Visible only on and above the lg breakpoint-->
             <!-- Navbar Items-->

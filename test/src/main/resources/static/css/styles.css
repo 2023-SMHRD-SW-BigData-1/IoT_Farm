@@ -19893,22 +19893,21 @@ body {
 
 .topnav {
   padding-left: 0;
-  height: 3.625rem;
+  height: 7rem;
   z-index: 1039;
   font-size: 0.9rem;
 }
 .topnav .navbar-brand {
-  width: 15rem;
   margin: 0;
   font-size: 1rem;
   font-weight: bold;
 }
 .topnav .navbar-brand img {
-  height: 0.8rem;
+  height: 3.5rem;
 }
 @media (min-width: 992px) {
   .topnav .navbar-brand {
-    width: 12rem;
+    width: 17rem;
   }
 }
 .topnav.navbar-dark #sidebarToggle {
