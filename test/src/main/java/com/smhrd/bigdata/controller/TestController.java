@@ -13,4 +13,10 @@ public class TestController {
 	public String boardList(Model model) {
 		return "account-billing";
 	}
+	
+	@GetMapping("/profile")
+	public String profile(Model model) {
+		return "profile";
+	}
 }
+
