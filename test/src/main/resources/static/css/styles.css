@@ -21122,9 +21122,9 @@ pre[class*=language-] {
 
 /* 메인 텍스트 */
 .main_left {width:41%;}
-.main_text1{line-height:83px;color:#1c1d1e; font-size : 58px;padding-top:107.2px;}
+.main_text1{line-height:83px;color:#1c1d1e; font-size : 50px;padding-top:107.2px;}
 .main_text2{line-height:45px;color:#0054a6;font-size : 34px;padding-top:240px;}
-.main_text3{line-height:20px;color:#000000; font-size : 18px; padding-top:48px;padding-left:95px;}
+.main_text3{line-height:20px;color:#000000; font-size : 18px; padding-top:60px;padding-left:95px;}
 .main_text4{line-height:22.5px;color:#000000; font-size : 14px;padding-top:17.6px;padding-left:95px;font-weight: normal;display:block;}
 .main_left_IoT_img {display : inline-block; float:left; padding-top:48px;}
 
