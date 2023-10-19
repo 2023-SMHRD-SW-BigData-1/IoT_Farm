@@ -19515,6 +19515,7 @@ body {
 .sidenav-toggled #layoutSidenav #layoutSidenav_nav {
   transform: translateX(0);
 }
+
 .sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
   content: "";
   display: block;
@@ -19893,10 +19894,22 @@ body {
 
 .topnav {
   padding-left: 0;
-  height: 7rem;
+  height: 3rem;
   z-index: 1039;
   font-size: 0.9rem;
 }
+
+.topnav00 {
+  padding-left: 0;
+  height: 7rem;
+  z-index: 1039;
+  font-size: 1.2rem;
+}
+
+.topnav00 .navbar-brand img {
+  height: 3.5rem;
+}
+
 .topnav .navbar-brand {
   margin: 0;
   font-size: 1rem;
@@ -19905,6 +19918,7 @@ body {
 .topnav .navbar-brand img {
   height: 3.5rem;
 }
+
 @media (min-width: 992px) {
   .topnav .navbar-brand {
     width: 17rem;

@@ -8,12 +8,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TestController {
 	@GetMapping("/")
 	public String boardList(Model model) {
-		return "account-profile";
+		return "temp/account-profile";
 	}
 	
 	@GetMapping("/profile")
 	public String profile(Model model) {
 		return "profile";
+	}
+	
+	@GetMapping("/billing")
+	public String billing(Model model) {
+		return "billing";
+	}
+	
+	@GetMapping("/security")
+	public String security(Model model) {
+		return "security";
+	}
+	
+	@GetMapping("/notifications")
+	public String notifications(Model model) {
+		return "notifications";
 	}
 
 	@GetMapping("/login")
