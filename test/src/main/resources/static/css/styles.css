@@ -21058,7 +21058,16 @@ pre[class*=language-] {
   color: #ff6666;
 }
 
+.round-button {
+  display: inline-flex;
+  border-radius: 50%;
+}
 
+.round-button img {
+  display: block;
+  width: 100%;
+  border-radius: 50%;
+}
 
 /*===========================================================*/
 
