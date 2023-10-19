@@ -30,5 +30,4 @@ public class TestController {
 	public String main() {
 		return "main";
 	}
-	
 }
