@@ -169,16 +169,17 @@
 								<div class="card-header">Profile</div>
 								<div class="card-body text-center row">
 									<div class="col-xl-4">
-									<h5>이름</h5>
-									<h5>이름</h5>
+										<h5>Nickname</h5>
+										<h5 class="text-monospace">Version</h5>
+										<h5>Email</h5>
 									</div>
 									<div class="col-xl-8">
-									<h5>김다은</h5>
+										<h5>김다은</h5>
+										<h5>Paid</h5>
+										<h5>daeun1505@naver.com</h5>
 									</div>
 								</div>
 							</div>
-
-
 
 
 
