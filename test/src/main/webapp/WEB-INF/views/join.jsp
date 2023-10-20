@@ -26,7 +26,7 @@
                                     <div class="card-header justify-content-center"><h1 class="fw-light my-4">회원가입</h1></div>
                                     <div class="card-body">
                                         <!-- Join form-->
-                                        <form>
+                                        <form action="/join" method="get">
                                             <!-- Form Group (아이디)-->
                                             <div class="mb-3">
                                                 <label class="small mb-1" for="inputId">아이디</label>
@@ -58,7 +58,7 @@
                                             </div>
                                             <!-- Form Group (join box)-->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="btn btn-primary" href="dashboard-1.html">확인</a>
+                                                <a class="btn btn-primary" href="/bigdata/">확인</a>
                                             </div>
                                         </form>
                                     </div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.bigdata.mapper.TestMapper">
+	<insert id="join" parameterType="com.smhrd.bigdata.model.TestMember">
+		insert into user_info (id, pw, name, email) values (#{id},#{pw},#{name},#{email})
+	</insert>
+	<select id="login" parameterType="com.smhrd.bigdata.model.TestMember" resultType="com.smhrd.bigdata.model.TestMember">
+		select * from user_info where id=#{id} and pw=#{pw}
+	</select>
+	<select id="select" resultType="com.smhrd.bigdata.model.TestMember">
+		select * from user_info
+	</select>
+</mapper>
