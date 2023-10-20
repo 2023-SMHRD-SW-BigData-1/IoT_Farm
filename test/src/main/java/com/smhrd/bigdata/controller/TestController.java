@@ -53,4 +53,8 @@ public class TestController {
 	public String faq() {
 		return "faq";
 	}
+	@GetMapping("/qna")
+	public String qna() {
+		return "qna";
+	}
 }
