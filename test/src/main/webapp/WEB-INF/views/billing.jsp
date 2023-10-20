@@ -227,37 +227,37 @@
                                                 <th class="border-gray-200" scope="col">Date</th>
                                                 <th class="border-gray-200" scope="col">Product</th>
                                                 <th class="border-gray-200" scope="col">Amount</th>
-                                                <th class="border-gray-200" scope="col">Status</th>
+                                                <th class="border-gray-200" scope="col">end date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>#39201</td>
                                                 <td>06/15/2021</td>
-                                                <td>Paid</td>
+                                                <td><span class="badge bg-success">Paid</span></td>
                                                 <td>$29.99</td>
-                                                <td><span class="badge bg-light text-dark">Pending</span></td>
+                                                <td>06/15/2021</td>
                                             </tr>
                                             <tr>
                                                 <td>#38594</td>
                                                 <td>05/15/2021</td>
-                                                <td>Paid</td>
+                                                <td><span class="badge bg-yellow">Premium</span></td>
                                                 <td>$29.99</td>
-                                                <td><span class="badge bg-success">Paid</span></td>
+                                                <td>06/15/2021</td>
                                             </tr>
                                             <tr>
                                                 <td>#38223</td>
                                                 <td>04/15/2021</td>
-                                                <td>Paid</td>
-                                                <td>$29.99</td>
                                                 <td><span class="badge bg-success">Paid</span></td>
+                                                <td>$29.99</td>
+                                                <td>06/15/2021</td>
                                             </tr>
                                             <tr>
                                                 <td>#38125</td>
                                                 <td>03/15/2021</td>
-                                                <td>Paid</td>
-                                                <td>$29.99</td>
                                                 <td><span class="badge bg-success">Paid</span></td>
+                                                <td>$29.99</td>
+                                                <td>06/15/2021</td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -167,20 +167,22 @@
 						<div class="col-xl-4">
 							<div class="card mb-4 mb-xl-0">
 								<div class="card-header">Profile</div>
-								<div class="card-body text-center row">
-									<div class="col-xl-4">
-										<div class="text-lg fw-600" style="padding: 2rem 0">
-											Username<br> <br>Version<br> <br>Email
-										</div>
+								<div class="card-body text-center">
+									<div class="row my-3">
+										<div class="col-xl-4 mt-2">Username</div>
+										<div class="col-xl-8"><input class="form-control form-control-solid bg-gray-100 text-lg" value="Valerie Luna" disabled/></div>
 									</div>
-									<div class="col-xl-8">
-										<div class="text-lg bg-gray-100 text-monospace"
-											style="padding: 2rem 0">
-											Valerie Luna<br> <br>Paid<br> <br>vluna@aol.com
-										</div>
+									<div class="row my-3">
+										<div class="col-xl-4 mt-2">Version</div>
+										<div class="col-xl-8"><input class="form-control form-control-solid bg-gray-100 text-lg" value="Paid" disabled/></div>
+									</div>
+									<div class="row my-3">
+										<div class="col-xl-4 mt-2">E-mail</div>
+										<div class="col-xl-8"><input class="form-control form-control-solid bg-gray-100 text-lg" value="vluna@aol.com" disabled/></div>	
 									</div>
 								</div>
 							</div>
+
 
 							<!-- Profile picture card-->
 							<div class="card mt-4 mb-xl-0">
