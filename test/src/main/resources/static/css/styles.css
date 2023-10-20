@@ -21181,5 +21181,13 @@ pre[class*=language-] {
 
 .question_item {margin: 0 200px 0 200px; cursor:pointer}
 
+/* faq */
+.panel-group {margin: 0 30% 0 30%;}
+
+.collapse_text{display: flex; justify-content: center; align-items: center; font-size: 3rem; border: 3px; margin-top: 50px;}
+
+.card-collapsable{margin: 20px 0 20px 0; box-shadow: 1px 1px 1px 1px #bfbfbf; border-radius: 10px 10px 10px 10px;}
+
+.first{margin-top: 100px;}
 
 

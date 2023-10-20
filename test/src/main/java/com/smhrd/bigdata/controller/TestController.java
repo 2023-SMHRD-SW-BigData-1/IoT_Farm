@@ -49,4 +49,8 @@ public class TestController {
 	public String question() {
 		return "question";
 	}
+	@GetMapping("/faq")
+	public String faq() {
+		return "faq";
+	}
 }
