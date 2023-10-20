@@ -28,7 +28,6 @@
 		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/profile">
 			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
-
 		<ul class="navbar-nav align-items-center ms-auto">
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link dropdown-toggle" id="navbarDropdownDocs"
@@ -164,25 +163,24 @@
 					</nav>
 					<hr class="mt-0 mb-4" />
 					<div class="row">
+						<!-- 왼쪽부분 -->
 						<div class="col-xl-4">
 							<div class="card mb-4 mb-xl-0">
 								<div class="card-header">Profile</div>
 								<div class="card-body text-center row">
 									<div class="col-xl-4">
-										<h5>Nickname</h5>
-										<h5 class="text-monospace">Version</h5>
-										<h5>Email</h5>
+										<div class="text-lg fw-600" style="padding: 2rem 0">
+											Username<br> <br>Version<br> <br>Email
+										</div>
 									</div>
 									<div class="col-xl-8">
-										<h5>김다은</h5>
-										<h5>Paid</h5>
-										<h5>daeun1505@naver.com</h5>
+										<div class="text-lg bg-gray-100 text-monospace"
+											style="padding: 2rem 0">
+											Valerie Luna<br> <br>Paid<br> <br>vluna@aol.com
+										</div>
 									</div>
 								</div>
 							</div>
-
-
-
 
 							<!-- Profile picture card-->
 							<div class="card mt-4 mb-xl-0">
@@ -226,116 +224,54 @@
 									</button>
 									<div class="mb-lg-4"></div>
 									<!-- Profile picture upload button-->
-									<button class="btn btn-primary" type="button">Change
+									<button class="btn btn-primary" style="font-size: 1rem" type="button">Change
 										profile image</button>
 								</div>
 							</div>
 						</div>
 
-
-
-
-
-
-
-
-
-
-
-
+						<!-- 오른쪽부분 -->
 						<div class="col-xl-8">
+							<div class="card mb-4 mb-xl-0">
+								<div class="card-header">Usage Status</div>
+								<div class="card-body row">
+									<div class="col-xl-4 pt-lg-2 ps-lg-5">
+										<div class="text-gray-500 text-lg">현재 이용 버전</div>
+										<div class="text-xl fw-700" style="margin-top: -0.7rem">Paid</div>
+									</div>
+									<div class="col-xl-8  pt-lg-2 text-lg">
+										<div >Total number of IoT (최대 X개)</div>
+										<div style="display:flex;margin-top: -0.7rem"><div class="mx-xl-1 fw-600" style="font-size: 2rem">X</div><div style="padding-top: 0.75rem">개 이용 중</div></div>
+										<div class="mt-2">Total number of sensors (최대 Y개)</div>
+										<div class="pb-lg-4" style="display:flex;margin-top: -0.7rem"><div class="mx-xl-1 fw-600" style="font-size: 2rem">6</div><div style="padding-top: 0.75rem">개 이용 중</div></div>
+										<button class="btn btn-outline-blue" style="font-size: 1rem" type="button">더 많은 장치 이용하기<i data-feather="arrow-right"></i></button>
+									</div>
+								</div>
+							</div>
+
 							<!-- Account details card-->
-							<div class="card mb-4">
-								<div class="card-header">Account Details</div>
+							<div class="card mb-4 mt-4">
+								<div class="card-header">Change Username</div>
 								<div class="card-body">
 									<form>
 										<!-- Form Group (username)-->
 										<div class="mb-3">
-											<label class="small mb-1" for="inputUsername">Username
-												(how your name will appear to other users on the site)</label> <input
-												class="form-control" id="inputUsername" type="text"
-												placeholder="Enter your username" value="username" />
+											<label class="mb-1" for="inputUsername">Username (
+												사이트에서 표시되는 방식 )</label> <input class="form-control"
+												id="inputUsername" type="text"
+												placeholder="Enter your username" value="username" style="font-size: 1rem"/>
 										</div>
-										<!-- Form Row-->
-										<div class="row gx-3 mb-3">
-											<!-- Form Group (first name)-->
-											<div class="col-md-6">
-												<label class="small mb-1" for="inputFirstName">First
-													name</label> <input class="form-control" id="inputFirstName"
-													type="text" placeholder="Enter your first name"
-													value="Valerie" />
-											</div>
-											<!-- Form Group (last name)-->
-											<div class="col-md-6">
-												<label class="small mb-1" for="inputLastName">Last
-													name</label> <input class="form-control" id="inputLastName"
-													type="text" placeholder="Enter your last name" value="Luna" />
-											</div>
-										</div>
-										<!-- Form Row        -->
-										<div class="row gx-3 mb-3">
-											<!-- Form Group (organization name)-->
-											<div class="col-md-6">
-												<label class="small mb-1" for="inputOrgName">Organization
-													name</label> <input class="form-control" id="inputOrgName"
-													type="text" placeholder="Enter your organization name"
-													value="Start Bootstrap" />
-											</div>
-											<!-- Form Group (location)-->
-											<div class="col-md-6">
-												<label class="small mb-1" for="inputLocation">Location</label>
-												<input class="form-control" id="inputLocation" type="text"
-													placeholder="Enter your location" value="San Francisco, CA" />
-											</div>
-										</div>
-										<!-- Form Group (email address)-->
-										<div class="mb-3">
-											<label class="small mb-1" for="inputEmailAddress">Email
-												address</label> <input class="form-control" id="inputEmailAddress"
-												type="email" placeholder="Enter your email address"
-												value="name@example.com" />
-										</div>
-										<!-- Form Row-->
-										<div class="row gx-3 mb-3">
-											<!-- Form Group (phone number)-->
-											<div class="col-md-6">
-												<label class="small mb-1" for="inputPhone">Phone
-													number</label> <input class="form-control" id="inputPhone"
-													type="tel" placeholder="Enter your phone number"
-													value="555-123-4567" />
-											</div>
-											<!-- Form Group (birthday)-->
-											<div class="col-md-6">
-												<label class="small mb-1" for="inputBirthday">Birthday</label>
-												<input class="form-control" id="inputBirthday" type="text"
-													name="birthday" placeholder="Enter your birthday"
-													value="06/10/1988" />
-											</div>
-										</div>
+
 										<!-- Save changes button-->
-										<button class="btn btn-primary" type="button">Save
-											changes</button>
+										<button class="btn btn-primary" style="font-size: 1rem" type="button">Save
+											change</button>
 									</form>
 								</div>
 							</div>
 						</div>
-
-
 					</div>
 				</div>
 			</main>
-			<footer class="footer-admin mt-auto footer-light">
-				<div class="container-xl px-4">
-					<div class="row">
-						<div class="col-md-6 small">Copyright &copy; Your Website
-							2021</div>
-						<div class="col-md-6 text-md-end small">
-							<a href="#!">Privacy Policy</a> &middot; <a href="#!">Terms
-								&amp; Conditions</a>
-						</div>
-					</div>
-				</div>
-			</footer>
 		</div>
 	</div>
 	<script
