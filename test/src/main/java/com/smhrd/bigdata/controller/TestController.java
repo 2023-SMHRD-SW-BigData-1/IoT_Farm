@@ -22,10 +22,12 @@ import com.smhrd.bigdata.service.TestService;
 @Controller
 public class TestController {
 	
+	@Autowired
+	private TestService service;
 	
 	@GetMapping("/")
 	public String boardList(Model model) {
-		return "temp/account-billing";
+		return "daeun/layout-boxed";
 	}
 	
 	@GetMapping("/profile")
@@ -47,14 +49,38 @@ public class TestController {
 	public String notifications(Model model) {
 		return "notifications";
 	}
+	
+	@GetMapping("/pricing")
+	public String pricing(Model model) {
+		return "pricing";
+	}
+	
+	@GetMapping("/pay_success")
+	public String pay_success(Model model) {
+		return "pay_success";
+	}
+	
+	@GetMapping("/pay_fail")
+	public String pay_fail(Model model) {
+		return "pay_fail";
+	}
 
+	
+	
+	
+	
+	
 	@GetMapping("/login")
 	public String loginform() {
 		return "login";
 	}
 	
+<<<<<<< HEAD
 	@Autowired
 	TestService service;
+=======
+
+>>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
 		
 	@GetMapping("/join")
 	public String joinForm() {
@@ -85,4 +111,12 @@ public class TestController {
 	public String qna() {
 		return "qna";
 	}
+	@GetMapping("/pwfind")
+		public String pwfind() {
+		return "pwfind";
+	}
+	@GetMapping("/pwfind2")
+	public String pwfind2() {
+	return "pwfind2";
+}
 }

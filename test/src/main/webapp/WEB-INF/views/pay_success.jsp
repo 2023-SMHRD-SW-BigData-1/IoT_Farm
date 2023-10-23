@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Account Settings - Profile - SB Admin Pro</title>
+<title>Pricing - SB Admin Pro</title>
 <link href="css/styles.css" rel="stylesheet" />
 <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
 <script data-search-pseudo-elements defer
@@ -23,8 +23,8 @@
 	<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
-		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/profile">
-			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
+		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/main"> <img
+			class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
 
 		<ul class="navbar-nav align-items-center ms-auto">
@@ -146,111 +146,48 @@
 		</ul>
 	</nav>
 	<div id="layoutSidenav">
+
 		<div id="layoutSidenav_content"
 			style="margin-left: -15rem; margin-top: -3.5rem">
 			<main>
 
 
-				<!-- faq 1번 -->
-				<div class="panel-group" id="accordion" role="tablist"
-					aria-multiselectable="true">
-					<div>
-						<h1 class="collapse_text">자주 묻는 질문</h1>
-					</div>
-					<div class="card card-collapsable first">
-						
-						<a class="card-header" href="#collapseCardExample1"
-							data-bs-toggle="collapse" role="button"
-							data-bs-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">비밀번호를 잊어버렸는데 어떻게 하나요?
-							<div class="card-collapsable-arrow">
-							<i class="fas fa-chevron-right dropdown-arrow"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapseCardExample1">
-							<div class="card-body">...</div>
-						</div>
-					</div>
-					<!-- faq 2번 -->
-					<div class="card card-collapsable">
-						<a class="card-header" href="#collapseCardExample2"
-							data-bs-toggle="collapse" role="button" aria-expanded="false"
-							aria-controls="collapseCardExample">가이드라인을 봐도 잘 모르겠는데 어떻게
-							적용하나요?
-							<div class="card-collapsable-arrow">
-								<i class="fas fa-chevron-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapseCardExample2">
-							<div class="card-body">...</div>
-						</div>
-					</div>
-					<!-- faq 3번 -->
-					<div class="card card-collapsable">
-						<a class="card-header" href="#collapseCardExample3"
-							data-bs-toggle="collapse" role="button" aria-expanded="false"
-							aria-controls="collapseCardExample">정기 유료결제 해지를 하고싶어요
-							<div class="card-collapsable-arrow">
-								<i class="fas fa-chevron-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapseCardExample3">
-							<div class="card-body">...</div>
-						</div>
-					</div>
-					<!-- faq 4번 -->
-					<div class="card card-collapsable">
-						<a class="card-header" href="#collapseCardExample4"
-							data-bs-toggle="collapse" role="button" aria-expanded="false"
-							aria-controls="collapseCardExample">이메일 인증이 되지 않아요
-							<div class="card-collapsable-arrow">
-								<i class="fas fa-chevron-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapseCardExample4">
-							<div class="card-body">...</div>
-						</div>
-					</div>
-					<!-- faq 5번 -->
-					<div class="card card-collapsable">
-						<a class="card-header" href="#collapseCardExample5"
-							data-bs-toggle="collapse" role="button" aria-expanded="false"
-							aria-controls="collapseCardExample">...
-							<div class="card-collapsable-arrow">
-								<i class="fas fa-chevron-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapseCardExample5">
-							<div class="card-body">...</div>
-						</div>
-					</div>
-					<!-- faq 6번 -->
-					<div class="card card-collapsable">
-						<a class="card-header" href="#collapseCardExample6"
-							data-bs-toggle="collapse" role="button" aria-expanded="false"
-							aria-controls="collapseCardExample">...
-							<div class="card-collapsable-arrow">
-								<i class="fas fa-chevron-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapseCardExample6">
-							<div class="card-body">...</div>
-						</div>
-					</div>
 
+
+
+
+
+				<!-- Main page content-->
+				<div class="container-xl px-4 text-center">
+					<div class="text-center text-xl text-gray-700" style="margin-top: 6rem">
+						<div class="m-5 fw-900">
+							결제 완료
+						</div>
+						<div class="fw-500 m-5" style="font-size:1.6rem">
+							결제가 성공적으로 완료되었습니다.<br>
+							기타 궁금하신 사항은 고객센터로 문의해주시면 성심껏 답변하겠습니다.<br><br>
+							결제내역은 '마이페이지-청구'에서 확인하실 수 있습니다.
+						</div>
+						<div class="align-items-center">
+							<a class="btn btn-block btn-primary" href="/bigdata/pricing" style="font-size: 1rem">내역확인</a>
+							<a class="btn btn-block btn-primary" href="/bigdata/pricing" style="font-size: 1rem">메인으로</a>
+						</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					
 				</div>
-
-
-
-
 			</main>
+
 		</div>
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
-
-
 </body>
 </html>
