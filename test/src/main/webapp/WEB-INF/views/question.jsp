@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link href="css/styles.css" rel="stylesheet" />
 <html>
@@ -134,16 +134,20 @@
 			</li>
 		</ul>
 	</nav>
-<div class="question">
-	<div class="question_item" >
-		<img src="./img/faq.png" class="faq_img"><br>
-		<h1 class="question_text">자주묻는질문</h1>
+	<div class="question">
+		<div class="question_item">
+			<a class="question_a" href="/bigdata/faq"> <img
+				src="./img/faq.png" class="faq_img"><br>
+			</a>
+			<h1 class="question_text">자주묻는질문</h1>
+		</div>
+		<div class="line"></div>
+		<div class="question_item">
+			<a class="question_a" href="/bigdata/qna"> <img
+				src="./img/qna.png" class="qna_img">
+			</a>
+			<h1 class="question_text">문의하기</h1>
+		</div>
 	</div>
-	<div class="line"></div>
-	<div class="question_item">
-		<img src="./img/qna.png" class="qna_img">
-		<h1 class="question_text">문의하기</h1>
-	</div>
-</div>
 </body>
 </html>
