@@ -71,12 +71,8 @@
 										<!-- Form Group (join box)-->
 										<div
 											class="d-flex align-items-center justify-content-right mt-4 mb-0">
-<<<<<<< HEAD
 											<a class="btn btn-primary" href="/bigdata/main">확인</a>
-=======
-											<a class="btn btn-primary mr-10" href="/bigdata/">취소</a> <a
-												class="btn btn-primary" href="/bigdata/">확인</a>
->>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
+
 										</div>
 									</form>
 								</div>

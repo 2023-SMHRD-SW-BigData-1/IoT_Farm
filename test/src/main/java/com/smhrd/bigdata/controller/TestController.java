@@ -25,6 +25,19 @@ public class TestController {
 	@Autowired
 	private TestService service;
 	
+	@GetMapping("/join")
+	public String joinForm() {
+		return "join";
+	}
+	
+	
+	@PostMapping("/join")
+	public String join(@ModelAttribute TestMember m) {
+		service.join(m);
+		System.out.println("member : "  + m);
+		return "redirect:/main";
+	}
+	
 	@GetMapping("/")
 	public String boardList(Model model) {
 		return "daeun/layout-boxed";
@@ -75,25 +88,7 @@ public class TestController {
 		return "login";
 	}
 	
-<<<<<<< HEAD
-	@Autowired
-	TestService service;
-=======
-
->>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
 		
-	@GetMapping("/join")
-	public String joinForm() {
-		return "join";
-	}
-	
-	
-	@PostMapping("/join")
-	public String join(@ModelAttribute TestMember m) {
-		service.join(m);
-		System.out.println("member : "  + m);
-		return "redirect:/main";
-	}	
 	
 	@GetMapping("/main")
 	public String main() {
