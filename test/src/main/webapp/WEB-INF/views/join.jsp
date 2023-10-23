@@ -30,31 +30,25 @@
                                             <!-- Form Group (아이디)-->
                                             <div class="mb-3">
                                                 <label class="small mb-1" for="inputId">아이디</label>
-                                                <input class="form-control" id="inputId" type="text"/>
+                                                <input class="form-control" id="inputId" type="text" name="id"/>
+                                                <span class="joincheck"></span><button class="joincheckbtn">중복확인</button>
                                             </div>
                                             <!-- Form Group (비밀번호)-->
                                             <div class="mb-3">
                                                 <label class="small mb-1" for="inputPassword">비밀번호</label>
-                                                <input class="form-control" id="inputPassword" type="password"/>
-                                            </div>
-                                             <!-- Form Group (비밀번호 확인)-->
-                                            <div class="mb-3">
-                                                <label class="small mb-1" for="Passwordcheck">비밀번호 확인</label>
-                                                <input class="form-control" id="inputPassword" type="password"/><br>
-                                                <span class="joincheck">출력란</span><button class="joincheckbtn">중복확인</button>
-                               
+                                                <input class="form-control" id="inputPassword" type="password" name="pw"/>
                                             </div>
                                              <!-- From Grooup (닉네임) -->
                                              <div class="mb-3">
                                                 <label class="small mb-1" for="nickname">닉네임</label>
-                                                <input class="form-control" id="nickname" type="text"/>
+                                                <input class="form-control" id="nickname" type="text" name="name"/>
                                             </div>
                                              <!-- From Grooup (Email) -->
                                              <div class="mb-3">
                                                 <label class="small mb-1" for="Email">이메일</label>
                                                 <input class="form-control" id="Email" type="text"/>
                                                 <button class="sendbtn">인증번호 전송</button><br><br>
-                                                <input class="emailcheck" id="" type="text"></input><button class="numbercheckbtn">인증번호 확인</button>
+                                                <input class="emailcheck" id="" type="text" name="email"></input><button class="numbercheckbtn">인증번호 확인</button>
                                             </div>
                                             <!-- Form Group (join box)-->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">

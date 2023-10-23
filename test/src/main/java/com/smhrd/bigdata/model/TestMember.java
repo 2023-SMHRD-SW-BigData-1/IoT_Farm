@@ -13,7 +13,6 @@ public class TestMember {
 	
 	private String id;
 	private String pw;
-	private String tel;
 	private String name;
 	private String email;
 	

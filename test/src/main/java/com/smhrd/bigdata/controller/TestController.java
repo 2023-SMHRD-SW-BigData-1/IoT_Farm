@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.service.TestService;
@@ -17,7 +18,7 @@ import com.smhrd.bigdata.service.TestService;
 public class TestController {
 	
 	@Autowired
-	TestService service;
+	private TestService service;
 	
 	@GetMapping("/")
 	public String boardList(Model model) {
@@ -54,17 +55,21 @@ public class TestController {
 		return "login";
 	}
 	
-	@PostMapping("/join")
-	public String join(@ModelAttribute TestMember member) {
+
 		
-		service.join(member);
-		return "redirect:/login";
+	@GetMapping("/join")
+	public String joinForm(Model model) {
+		model.addAttribute("member", new TestMember());
+		return "join"; // 회원가입 폼 페이지로 이동
 	}
 	
-	@GetMapping("/join")
-	public String joinForm() {
-	    return "join"; // 회원가입 폼 페이지로 이동
-	}
+	@PostMapping("/join")
+	public String join(@ModelAttribute TestMember m) {
+		System.out.println(m);
+		System.out.println(1);
+		service.join(m);
+		return "redirect:/login";
+	}	
 	
 	@GetMapping("/main")
 	public String main() {
