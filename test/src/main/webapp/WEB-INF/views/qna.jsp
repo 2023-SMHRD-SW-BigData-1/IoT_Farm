@@ -170,6 +170,9 @@
 								<div class="card-body">
 									<textarea class="lh-base form-control" type="text"
 										placeholder="내용을 입력하세요" rows="20"></textarea>
+									<div class="qna_btn_div">
+										<button class="btn btn-primary">의견제출</button>
+									</div>
 								</div>
 							</div>
 

@@ -727,6 +727,7 @@ progress {
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-0.5 * var(--bs-gutter-x));
   margin-left: calc(-0.5 * var(--bs-gutter-x));
+  justify-content: center;
 }
 .row > * {
   flex-shrink: 0;
@@ -9791,6 +9792,10 @@ textarea.form-control-lg {
 
 .justify-content-between {
   justify-content: space-between !important;
+}
+
+.justify-content-right {
+  justify-content: right !important;
 }
 
 .justify-content-around {
@@ -21070,7 +21075,16 @@ pre[class*=language-] {
   border-radius: 50%;
 }
 .bd{border: 1px solid #000;}
-
+.bdr{border: 1px solid red;}
+.bdb{border: 1px solid blue;}
+.bdy{border: 1px solid yellow;}
+.mt{margin-top: 50px;}
+.d-ff{ display: flex; align-items: center; justify-content: center; width: 100%;}
+.w-1600 {width: 1600px;}
+.h-10 {height: 10px;}
+.mt-10px{margin-top: 10px;}
+.mt-100p{margin-top:100px;}
+.wd-30{width: 30%;}
 /*===========================================================*/
 
 /*레이아웃*/
@@ -21172,6 +21186,9 @@ pre[class*=language-] {
 .sub_img_rect {width:100%;height:240px;}
 .sub_img_rect img {width:100%;height:100%;object-fit: cover;}
 
+/* 회원가입 */
+.joinbtn{border: none;}
+
 /* 고객센터 */
 .question {display: flex; justify-content: center; align-items: center; height: 100vh;}
 
@@ -21190,8 +21207,11 @@ pre[class*=language-] {
 
 .first{margin-top: 100px;}
 
+.question_a{text-decoration: none;}
+
 /* qna */
 .gx-4{display: flex; justify-content: center; align-items: center;}
 
 .qna_title{width: 200px;}
 
+.qna_btn_div{display: flex; justify-content: right; align-items: center; margin-top: 10px;}

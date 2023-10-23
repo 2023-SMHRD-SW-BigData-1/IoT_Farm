@@ -52,7 +52,7 @@ public class TestController {
 	private TestService service;
 		
 	@GetMapping("/join")
-	public String joinForm(Model model) {
+	public String joinForm(@ModelAttribute TestMember m, Model model) {
 		model.addAttribute("member", new TestMember());
 		return "join"; // 회원가입 폼 페이지로 이동
 	}
@@ -62,7 +62,7 @@ public class TestController {
 		System.out.println(m);
 		System.out.println(1);
 		service.join(m);
-		return "redirect:/login";
+		return "redirect:/main";
 	}	
 	
 	@GetMapping("/main")
