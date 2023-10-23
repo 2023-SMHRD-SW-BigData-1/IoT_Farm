@@ -1,5 +1,6 @@
 package com.smhrd.bigdata.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -9,7 +10,7 @@ import com.smhrd.bigdata.model.TestMember;
 public interface TestMapper {
 
 	//회원가입
-	public int join(TestMember m);
+    public void join(TestMember m);
 	
 	//로그인
 	public TestMember login(TestMember m);
