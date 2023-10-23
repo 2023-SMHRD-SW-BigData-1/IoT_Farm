@@ -52,7 +52,7 @@
                                             </div>
                                             <!-- Form Group (join box)-->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="btn btn-primary" href="/bigdata/">확인</a>
+                                                <a class="btn btn-primary" href="/bigdata/main">확인</a>
                                             </div>
                                         </form>
                                     </div>
