@@ -21,7 +21,7 @@
 </head>
 <body class="nav-fixed nav_login">
 	<div id="layoutAuthentication">
-		<div id="layoutAuthentication_content" class="d-ff">
+		<div id="layoutAuthentication_content" class="mt-100p">
 			<main>
 					<div class="container-xl px-4 w-1600">
 						<div class="row">
