@@ -21,12 +21,17 @@ public class TestController {
 	
 	@GetMapping("/")
 	public String boardList(Model model) {
-		return "temp/account-billing";
+		return "temp/pricing";
 	}
 	
 	@GetMapping("/profile")
 	public String profile(Model model) {
 		return "profile";
+	}
+	
+	@GetMapping("/pricing")
+	public String pricing(Model model) {
+		return "pricing";
 	}
 	
 	@GetMapping("/billing")
@@ -51,6 +56,7 @@ public class TestController {
 	
 	@PostMapping("/join")
 	public String join(@ModelAttribute TestMember member) {
+		
 		service.join(member);
 		return "redirect:/login";
 	}

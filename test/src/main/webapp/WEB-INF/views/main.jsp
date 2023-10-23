@@ -11,7 +11,7 @@
 	<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
-		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/profile">
+		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/main">
 			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
 

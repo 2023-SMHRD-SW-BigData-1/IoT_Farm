@@ -25,7 +25,7 @@
 	<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
-		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/profile">
+		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/main">
 			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
 		<ul class="navbar-nav align-items-center ms-auto">
@@ -246,7 +246,8 @@
 										<div style="display:flex;margin-top: -0.7rem"><div class="mx-xl-1 fw-600" style="font-size: 2rem">X</div><div style="padding-top: 0.75rem">개 이용 중</div></div>
 										<div class="mt-2">Total number of sensors (최대 Y개)</div>
 										<div class="pb-lg-4" style="display:flex;margin-top: -0.7rem"><div class="mx-xl-1 fw-600" style="font-size: 2rem">6</div><div style="padding-top: 0.75rem">개 이용 중</div></div>
-										<button class="btn btn-outline-blue" style="font-size: 1rem" type="button">더 많은 장치 이용하기<i data-feather="arrow-right"></i></button>
+										<div class="text-center"><a class="btn btn-block btn-outline-blue" href="/bigdata/pricing" style="font-size: 1rem">더 많은 장치 이용하기<i data-feather="arrow-right"></i></a></div>
+									
 									</div>
 								</div>
 							</div>

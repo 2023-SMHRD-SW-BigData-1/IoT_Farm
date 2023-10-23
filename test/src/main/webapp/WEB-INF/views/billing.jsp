@@ -20,7 +20,7 @@
 	<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
-		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/profile">
+		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/main">
 			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
 
@@ -177,7 +177,7 @@
                                     <div class="card-body">
                                         <div class="small text-muted">현재 버전</div>
                                         <div class="h3">Paid</div>
-                                        <a class="text-arrow-icon small text-secondary" href="#!">
+                                        <a class="text-arrow-icon small text-secondary" href="/bigdata/pricing">
                                             업그레이드 하러가기
                                             <i data-feather="arrow-right"></i>
                                         </a>
@@ -190,7 +190,7 @@
                                     <div class="card-body">
                                         <div class="small text-muted">다음 결제일</div>
                                         <div class="h3 d-flex align-items-center">2023-11-11</div>
-                                        <a class="text-arrow-icon small text-success" href="#!">
+                                        <a class="text-arrow-icon small text-success" href="/bigdata/pricing">
                                             사전결제 하러가기
                                             <i data-feather="arrow-right"></i>
                                         </a>
