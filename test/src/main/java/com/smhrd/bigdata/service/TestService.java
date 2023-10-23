@@ -11,7 +11,7 @@ import com.smhrd.bigdata.model.TestMember;
 public class TestService {
 	
 	@Autowired
-	TestMapper mapper;
+	private TestMapper mapper;
 	
 	@Transactional
 	public void join(TestMember m) {
