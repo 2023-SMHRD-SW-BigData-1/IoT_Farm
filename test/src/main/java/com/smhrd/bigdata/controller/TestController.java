@@ -22,17 +22,12 @@ public class TestController {
 	
 	@GetMapping("/")
 	public String boardList(Model model) {
-		return "temp/pricing";
+		return "daeun/layout-boxed";
 	}
 	
 	@GetMapping("/profile")
 	public String profile(Model model) {
 		return "profile";
-	}
-	
-	@GetMapping("/pricing")
-	public String pricing(Model model) {
-		return "pricing";
 	}
 	
 	@GetMapping("/billing")
@@ -49,7 +44,27 @@ public class TestController {
 	public String notifications(Model model) {
 		return "notifications";
 	}
+	
+	@GetMapping("/pricing")
+	public String pricing(Model model) {
+		return "pricing";
+	}
+	
+	@GetMapping("/pay_success")
+	public String pay_success(Model model) {
+		return "pay_success";
+	}
+	
+	@GetMapping("/pay_fail")
+	public String pay_fail(Model model) {
+		return "pay_fail";
+	}
 
+	
+	
+	
+	
+	
 	@GetMapping("/login")
 	public String loginform() {
 		return "login";

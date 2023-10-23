@@ -152,108 +152,24 @@
 			<main>
 
 
-
-
-
-
-
 				<!-- Main page content-->
 				<div class="container-xl px-4 text-center">
-					<div class="text-center text-xl" style="margin-top: 6rem">
-						<div>
-							<span class="fw-700" style="color: rgb(159, 218, 37)">아오팜</span><span
-								style="font-size: 2.2rem">의 더 많은 서비스를 이용하세요</span>
+					<div class="text-center text-xl text-gray-700" style="margin-top: 6rem">
+						<div class="m-5 fw-900">
+							결제 실패
+						</div>
+						<div class="fw-500 m-5" style="font-size:1.6rem">
+							결제가 실패했습니다.<br>
+							재시도 후에도 실패가 반복된다면 고객센터로 문의해주시길 바랍니다.
+						</div>
+						<div class="align-items-center">
+							<a class="btn btn-block btn-primary" href="/bigdata/pricing" style="font-size: 1rem;width:6.8rem">재시도</a>
+							<a class="btn btn-block btn-primary" href="/bigdata/pricing" style="font-size: 1rem;width:6.8rem">메인으로</a>
 						</div>
 					</div>
-					<!-- Detailed pricing example-->
-					<div class="pricing-detailed" style="margin-top: 3rem">
-						<div class="row align-items-center g-0">
-
-
-
-
-							<!-- Detailed pricing column 1-->
-							<div class="col-lg-6 z-1 mb-4 mb-lg-0">
-								<div class="card text-center border-0 m-4 rounded-xl"
-									style="background-color: #B8E6E1;height:33rem">
-
-									<div class="card-body p-5">
-										<h5
-											class="text-dark mb-5 bg-white px-sm-2 pt-sm-3 py-sm-2 fw-900 rounded-xl"
-											style="font-size: 3rem">Paid</h5>
-										<p class="lead mb-4">신규 사용자 및 개인을 위한 버전</p>
-										<div class="mb-4">
-											<span class="display-4 fw-bold text-dark">$9</span> <span>/mo</span>
-										</div>
-										<ul class="list-unstyled">
-											<li
-												class="d-flex align-items-center justify-content-center mb-3">
-												<i class="text-primary me-2" data-feather="check-circle"></i>
-												더 많은 연결
-											</li>
-											<li
-												class="d-flex align-items-center justify-content-center mb-3">
-												<i class="text-primary me-2" data-feather="check-circle"></i>
-												이메일 알림기능 이용가능
-											</li>
-										</ul>
-									</div>
-									<a
-										class="card-footer d-flex align-items-center justify-content-center"
-										href="/bigdata/pay_success"> Start now <i class="ms-2"
-										data-feather="arrow-right"></i>
-									</a>
-								</div>
-							</div>
-
-
-
-
-
-							<!-- Detailed pricing column 2-->
-							<div class="col-lg-6 z-1 mb-4 mb-lg-0">
-								<div class="card text-center border-0 m-4 rounded-xl"
-									style="background-color: #FFCD4A;height:33rem">
-
-									<div class="card-body p-5">
-										<h5
-											class="text-dark mb-5 bg-white px-sm-2 pt-sm-3 py-sm-2 fw-900 rounded-xl"
-											style="font-size: 3rem">Premium</h5>
-										<p class="lead mb-4">더 많은 연결과 기능을 위한 버전</p>
-										<div class="mb-4">
-											<span class="display-4 fw-bold text-dark">$39</span> <span>/mo</span>
-										</div>
-										<ul class="list-unstyled">
-											<li
-												class="d-flex align-items-center justify-content-center mb-3">
-												<i class="text-primary me-2" data-feather="check-circle"></i>
-												더 더 많은 연결
-											</li>
-											<li
-												class="d-flex align-items-center justify-content-center mb-3">
-												<i class="text-primary me-2" data-feather="check-circle"></i>
-												이메일 알림기능 이용가능
-											</li>
-											<li class="d-flex align-items-center justify-content-center">
-												<i class="text-primary me-2" data-feather="check-circle"></i>
-												데이터베이스 접근 가능
-											</li>
-										</ul>
-									</div>
-									<a
-										class="card-footer d-flex align-items-center justify-content-center"
-										href="/bigdata/pay_fail "> Start now <i class="ms-2"
-										data-feather="arrow-right"></i>
-									</a>
-								</div>
-							</div>
-							
-							
-							
-							
-
-						</div>
-					</div>
+					
+					
+					
 				</div>
 			</main>
 
