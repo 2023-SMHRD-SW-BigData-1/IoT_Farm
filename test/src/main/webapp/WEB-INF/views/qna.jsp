@@ -156,11 +156,11 @@
 						<h1 class="collapse_text">문의사항</h1>
 					</div>
 					<div class="row gx-4">
-						<div class="col-lg-8">
+						<div class="col-lg-8 qna_box">
 
 							<div class="card card-header-actions mb-4">
 								<div class="card-header">
-									<div class="qna_title">문의사항 제목 :</div>
+									<div class="qna_title">문의사항:</div>
 									<i class="text-muted" data-feather="info"
 										data-bs-toggle="tooltip" data-bs-placement="left"
 										title="The post preview text shows below the post title, and is the post summary on blog pages."></i>
@@ -168,7 +168,7 @@
 										placeholder="제목을 입력하세요">
 								</div>
 								<div class="card-body">
-									<textarea class="lh-base form-control" type="text"
+									<textarea class="lh-base form-control qna_ta" type="text"
 										placeholder="내용을 입력하세요" rows="20"></textarea>
 									<div class="qna_btn_div">
 										<button class="btn btn-primary">의견제출</button>

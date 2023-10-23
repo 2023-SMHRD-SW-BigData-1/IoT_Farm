@@ -102,4 +102,12 @@ public class TestController {
 	public String qna() {
 		return "qna";
 	}
+	@GetMapping("/pwfind")
+		public String pwfind() {
+		return "pwfind";
+	}
+	@GetMapping("/pwfind2")
+	public String pwfind2() {
+	return "pwfind2";
+}
 }

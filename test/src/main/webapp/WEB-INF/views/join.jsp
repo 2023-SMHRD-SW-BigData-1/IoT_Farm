@@ -61,14 +61,18 @@
 												class="d-flex align-items-center justify-content-right mt-10px">
 												<button class="btn btn-primary h-10">인증번호 전송</button>
 											</div>
-											<input class="form-control wd-30" id="inputEmail"
-												type="text"></input>
-											<button class="btn btn-primary h-10 mt-10px">인증번호 확인</button>
+											<div class="join_email">
+												<input class="form-control wd-30 h-10" id="inputEmail"
+													type="text"></input>
+												<button class="btn btn-primary h-10 ml-10">인증번호
+													확인</button>
+											</div>
 										</div>
 										<!-- Form Group (join box)-->
 										<div
 											class="d-flex align-items-center justify-content-right mt-4 mb-0">
-											<a class="btn btn-primary" href="/bigdata/">확인</a>
+											<a class="btn btn-primary mr-10" href="/bigdata/">취소</a> <a
+												class="btn btn-primary" href="/bigdata/">확인</a>
 										</div>
 									</form>
 								</div>

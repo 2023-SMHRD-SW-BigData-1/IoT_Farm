@@ -158,11 +158,13 @@
 						<h1 class="collapse_text">자주 묻는 질문</h1>
 					</div>
 					<div class="card card-collapsable first">
+						
 						<a class="card-header" href="#collapseCardExample1"
-							data-bs-toggle="collapse" role="button" aria-expanded="false"
-							aria-controls="collapseCardExample">비밀번호를 잊어버렸는데 어떻게 하나요?
+							data-bs-toggle="collapse" role="button"
+							data-bs-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">비밀번호를 잊어버렸는데 어떻게 하나요?
 							<div class="card-collapsable-arrow">
-								<i class="fas fa-chevron-down"></i>
+							<i class="fas fa-chevron-right dropdown-arrow"></i>
 							</div>
 						</a>
 						<div class="collapse" id="collapseCardExample1">
