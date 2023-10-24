@@ -21089,6 +21089,12 @@ pre[class*=language-] {
 .mr-10{margin-right: 10px;}
 .join_email{display: flex; align-items: center}
 .ml-10{margin-left: 10px;}
+.nav-menu{display: flex; position: relative;}
+.nav-plus{position: absolute; right: 0; top: 0; margin-right: 5%; margin-top: 7%;  font-size: x-large; color: #000; background:none; border: none;}
+.modal-flex{display: flex; align-items: center;}
+.modal-iot{width: 100px;}
+
+
 /*===========================================================*/
 
 /*레이아웃*/

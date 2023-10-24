@@ -24,27 +24,23 @@
 	<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
-		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/main">
+		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/">
 			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
-
 		<ul class="navbar-nav align-items-center ms-auto">
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
-				class="nav-link dropdown-toggle" id="navbarDropdownDocs"
-				style="margin-top: 1.8rem" href="javascript:void(0);" role="button"
-				data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				class="nav-link"
+				style="margin-top: 1.8rem" href="/bigdata/mydata" role="button">
 					<div class="fw-900 text-lg">마이데이터</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
-				class="nav-link dropdown-toggle" id="navbarDropdownDocs"
-				style="margin-top: 1.8rem" href="javascript:void(0);" role="button"
-				data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<div class="fw-900 text-lg">가이드라인</div>
+				class="nav-link"
+				style="margin-top: 1.8rem" href="/bigdata/guide" role="button">
+					<div class="/bigdata/guide">가이드라인</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
-				class="nav-link dropdown-toggle" id="navbarDropdownDocs"
-				style="margin-top: 1.8rem" href="/bigdata/question" role="button"
-				data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				class="nav-link"
+				style="margin-top: 1.8rem" href="/bigdata/question" role="button">
 					<div class="fw-900 text-lg">고객센터</div>
 			</a></li>
 			<!-- Alerts Dropdown-->
@@ -120,7 +116,7 @@
 				href="javascript:void(0);" role="button" data-bs-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"><img
 					class="img-fluid"
-					src="assets/img/illustrations/profiles/profile-1.png" /></a>
+					src="assets/img/illustrations/profiles/profile-1.png" /> </a>
 				<div
 					class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
 					aria-labelledby="navbarDropdownUserImage">

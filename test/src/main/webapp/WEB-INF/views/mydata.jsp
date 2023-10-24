@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Account Settings - Profile - SB Admin Pro</title>
+<title>Boxed Layout - SB Admin Pro</title>
 <link href="css/styles.css" rel="stylesheet" />
 <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
 <script data-search-pseudo-elements defer
@@ -20,7 +20,8 @@
 	crossorigin="anonymous"></script>
 </head>
 <body class="nav-fixed">
-		<nav
+
+	<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
 		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/">
@@ -141,43 +142,164 @@
 			</li>
 		</ul>
 	</nav>
+
 	<div id="layoutSidenav">
-		<div id="layoutSidenav_content"
-			style="margin-left: -15rem; margin-top: -3.5rem">
-			<main>
 
-
-				<div class="container-fluid px-4">
-					<div>
-						<h1 class="collapse_text">문의사항</h1>
-					</div>
-					<div class="row gx-4">
-						<div class="col-lg-8 qna_box">
-
-							<div class="card card-header-actions mb-4">
-								<div class="card-header">
-									<div class="qna_title">문의사항:</div>
-									
-									<input class="edit_title form-control" type="text"
-										placeholder="제목을 입력하세요">
-								</div>
-								<div class="card-body">
-									<textarea class="lh-base form-control qna_ta" type="text"
-										placeholder="내용을 입력하세요" rows="20"></textarea>
-									<div class="qna_btn_div">
-										<button class="btn btn-primary">의견제출</button>
-									</div>
-								</div>
-							</div>
-
+		<!-- 내비게이션 -->
+		<div id="layoutSidenav_nav">
+			<nav class="sidenav shadow-right sidenav-light">
+				<a href="/bigdata/" class="mx-4 mt-n4 mb-sm-5"> <img
+					class="img-fluid" src="assets/img/ioflogo.png" alt="" />
+				</a>
+				<div class="sidenav-menu">
+					<div class="nav accordion" id="accordionSidenav">
+						<!-- Sidenav Menu Heading (Core)-->
+						<div class="sidenav-menu-heading nav-menu">
+							<div>iot register</div>
+							<button class="nav-plus" href="#" data-bs-toggle="modal"
+								data-bs-target="#exampleModalCenter">+</button>
 						</div>
+
+
+
+						<!-- Sidenav Accordion (Utilities)-->
+						<a class="nav-link collapsed mt-10px" href="javascript:void(0);"
+							data-bs-toggle="collapse" data-bs-target="#collapseUtilities"
+							aria-expanded="false" aria-controls="collapseUtilities">
+							<div class="nav-link-icon">
+								<i data-feather="tool"></i>
+							</div> Divice1
+							<div class="sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapseUtilities"
+							data-bs-parent="#accordionSidenav">
+							<nav class="sidenav-menu-nested nav">
+								<a class="nav-link" href="animations.html">센서 등록</a>
+							</nav>
+						</div>
+						<!-- Sidenav Heading (Custom)-->
+						<div class="sidenav-menu-heading nav-menu">
+							<div>dash boards</div>
+							<button class="nav-plus" href="#">+</button>
+						</div>
+
+						<div class="collapse" id="collapsePages"
+							data-bs-parent="#accordionSidenav">
+							<nav class="sidenav-menu-nested nav accordion"
+								id="accordionSidenavPagesMenu"></nav>
+						</div>
+
+						<!-- Sidenav Accordion (Dashboard)-->
+
+
+						<a class="nav-link collapsed mt-10px" href="dashboard-1.html">
+							<div class="nav-link-icon">
+								<i data-feather="activity"></i>
+							</div>Dashboard1
+						</a>
+
 
 					</div>
 				</div>
+				<!-- Sidenav Footer-->
+				<div class="sidenav-footer">
+					<div class="sidenav-footer-content">
+						<div class="sidenav-footer-subtitle">Logged in as:</div>
+						<div class="sidenav-footer-title">Valerie Luna</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+
+		<!-- 본문 -->
+		<div id="layoutSidenav_content" style="margin-top: -3.5rem">
+			<main>
+				<header
+					class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+					<div class="container-xl px-4">
+						<div class="page-header-content pt-4">
+							<div class="row align-items-center justify-content-between">
+								<div class="col-auto mt-4">
+									<h1 class="page-header-title">
+										<div class="page-header-icon">
+											<i data-feather="layout"></i>
+										</div>
+										Boxed Layout
+									</h1>
+									<div class="page-header-subtitle">On larger screens, this
+										layout will keep the page content from expanding beyond a max
+										width.</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</header>
+				<!-- Main page content-->
+				<div class="container-xl px-4">
+					<div class="card mt-n10">
+						<div class="card-header">Boxed Layout Example</div>
+						<div class="card-body">
+							This is an example of a page with the default boxed layout. We've
+							expanded Bootstrap by adding a ne w xxl breakpoint. As the screen
+							width gets larger, the container element will set a max width to
+							the content. The boxed layout uses th e max width container
+							element on the page header and in the main page content in this
+							example.
+							<div style="height: 3000rem">네비게이션 확인</div>
+						</div>
+					</div>
+				</div>
 			</main>
+			<footer class="footer-admin mt-auto footer-light">
+				<div class="container-xl px-4">
+					<div class="row">
+						<div class="col-md-6 small">Copyright &copy; Your Website
+							2021</div>
+						<div class="col-md-6 text-md-end small">
+							<a href="#!">Privacy Policy</a> &middot; <a href="#!">Terms
+								&amp; Conditions</a>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">IoT 등록</h5>
+						<button class="btn-close" type="button" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="mb-3 modal-flex">
+							<div class="modal-iot">IoT 이름:</div>
+							<input class="form-control" id="inputIot" type="text" />
+						</div>
+						<div class="mb-3 modal-flex">
+							<div class="modal-iot">고유코드:</div>
+							<input class="form-control" id="inputCode" type="text" />
+						</div>
+						<div class="mb-3 modal-flex">
+							<div class="modal-iot">사용IP:</div>
+							<input class="form-control" id="inputIp" type="text" />
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button"
+							data-bs-dismiss="modal">취소</button>
+						<button class="btn btn-primary" type="button">확인</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-		<script
+	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>

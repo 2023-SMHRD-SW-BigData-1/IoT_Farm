@@ -37,7 +37,7 @@ public class TestController {
 
 	@GetMapping("/")
 	public String boardList(Model model) {
-		return "daeun/layout-boxed";
+		return "main";
 	}
 
 	@GetMapping("/profile")
@@ -79,10 +79,6 @@ public class TestController {
 	public String loginform() {
 		return "login";
 	}
-	@GetMapping("/main")
-	public String main() {
-		return "main";
-	}
 
 	@GetMapping("/question")
 	public String question() {
@@ -112,5 +108,9 @@ public class TestController {
 	@GetMapping("/pwfind3")
 	public String pwfind3() {
 		return "pwfind3";
+	}
+	@GetMapping("/mydata")
+	public String mydata() {
+		return "mydata";
 	}
 }
