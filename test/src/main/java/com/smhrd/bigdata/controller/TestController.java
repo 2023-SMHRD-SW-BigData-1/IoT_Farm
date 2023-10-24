@@ -87,10 +87,15 @@ public class TestController {
 	}
 	
 	@PostMapping("/login_action")
-	public String login_action(@ModelAttribute TestMember m) {
+	public String login_action(@ModelAttribute TestMember m, Model model) {
 		TestMember user=service.login(m);
-		System.out.println(user.getId());
-		return "login";
+		
+		if(user != null) {
+			return "redirect:/";
+		} else {
+			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
+	        return "login";
+		}
 	}
 
 	@GetMapping("/question")

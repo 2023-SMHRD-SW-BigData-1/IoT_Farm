@@ -33,7 +33,7 @@
                         </div>
                         <div class="card-body">
                            <!-- Join form-->
-                           <form action="/join" method="post">
+                           <form action="join" method="post">
                               <!-- Form Group (아이디)-->
                               <div class="mb-3">
                                  <label class="small mb-1" for="inputId">아이디</label> <input
@@ -41,7 +41,7 @@
                               </div>
                               <div class="d-flex align-items-center justify-content-right">
                                  <span class="joincheck">(출력란)</span>
-                                 <button class="btn btn-primary h-10">중복확인</button>
+                                 <button type="submit" class="btn btn-primary h-10">중복확인</button>
                               </div>
                               <!-- Form Group (비밀번호)-->
                               <div class="mb-3">
@@ -71,7 +71,8 @@
                               <!-- Form Group (join box)-->
                               <div
                                  class="d-flex align-items-center justify-content-right mt-4 mb-0">
-                                 <a class="btn btn-primary" href="/bigdata/login">확인</a>
+                                 <button type="submit" class="btn btn-primary btn-default">확인</button>
+
                               </div>
                            </form>
                         </div>

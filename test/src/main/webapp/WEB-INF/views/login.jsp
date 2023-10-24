@@ -18,6 +18,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
+
+
 </head>
 <body class="nav-fixed nav_login">
 	<div id="layoutAuthentication">
@@ -32,13 +34,14 @@
 									<h1 class="fw-light my-4">로그인</h1>
 								</div>
 								<div class="card-body">
+
 									<!-- Login form-->
 									<form action="login_action" method="post">
 										<!-- Form Group (아이디)-->
 										<div class="mb-3">
 											<label class="small mb-1" for="id">아이디</label> <input
 												class="form-control" id="id" type="text"
-												placeholder="아이디를 입력하세요" name="id"/>
+												placeholder="아이디를 입력하세요" name="id" />
 										</div>
 										<!-- Form Group (비밀번호)-->
 										<div class="mb-3">
@@ -46,11 +49,17 @@
 												class="form-control" id="pw" type="password" name="pw"
 												placeholder="비밀번호를 입력하세요" />
 										</div>
+										<!-- Display error message only when it's present -->
+										<c:if test="${not empty errorMessage}">
+											<div class="text-danger mt-3" role="alert">
+												${errorMessage}</div>
+										</c:if>
 										<!-- Form Group (login box)-->
 										<div
 											class="d-flex align-items-center justify-content-between mt-4 mb-0">
 											<a class="small" href="/bigdata/pwfind">비밀번호를 잊어버리셨나요?</a>
-											<button type="submit" class="btn btn-primary qna_btn btn-default">로그인</button>
+											<button type="submit"
+												class="btn btn-primary qna_btn btn-default">로그인</button>
 										</div>
 									</form>
 								</div>
