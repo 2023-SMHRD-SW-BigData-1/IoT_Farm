@@ -19,5 +19,9 @@ public class TestService {
 	public void join(TestMember m) {
 		mapper.join(m);
 	}
+
+	public TestMember login(TestMember m) {
+		return mapper.login(m);		
+	}
 }
 	
