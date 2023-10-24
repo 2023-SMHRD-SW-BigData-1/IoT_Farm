@@ -114,4 +114,8 @@ public class TestController {
 	public String pwfind3() {
 		return "pwfind3";
 	}
+	@GetMapping("/mydata")
+	public String mydata() {
+		return "mydata";
+	}
 }

@@ -20,26 +20,26 @@
 	crossorigin="anonymous"></script>
 </head>
 <body class="nav-fixed">
-		<nav
+	<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
-		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/main">
-			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
+		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/main"> <img
+			class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
 		<ul class="navbar-nav align-items-center ms-auto">
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
-				class="nav-link"
-				style="margin-top: 1.8rem" href=""javascript:void(0);" role="button">
+				class="nav-link" style="margin-top: 1.8rem" href=""
+				javascript:void(0);" role="button">
 					<div class="fw-900 text-lg">마이데이터</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
-				class="nav-link"
-				style="margin-top: 1.8rem" href=""javascript:void(0);" role="button">
+				class="nav-link" style="margin-top: 1.8rem" href=""
+				javascript:void(0);" role="button">
 					<div class="fw-900 text-lg">가이드라인</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
-				class="nav-link"
-				style="margin-top: 1.8rem" href="/bigdata/question" role="button">
+				class="nav-link" style="margin-top: 1.8rem" href="/bigdata/question"
+				role="button">
 					<div class="fw-900 text-lg">고객센터</div>
 			</a></li>
 			<!-- Alerts Dropdown-->
@@ -141,43 +141,8 @@
 			</li>
 		</ul>
 	</nav>
-	<div id="layoutSidenav">
-		<div id="layoutSidenav_content"
-			style="margin-left: -15rem; margin-top: -3.5rem">
-			<main>
 
-
-				<div class="container-fluid px-4">
-					<div>
-						<h1 class="collapse_text">문의사항</h1>
-					</div>
-					<div class="row gx-4">
-						<div class="col-lg-8 qna_box">
-
-							<div class="card card-header-actions mb-4">
-								<div class="card-header">
-									<div class="qna_title">문의사항:</div>
-									
-									<input class="edit_title form-control" type="text"
-										placeholder="제목을 입력하세요">
-								</div>
-								<div class="card-body">
-									<textarea class="lh-base form-control qna_ta" type="text"
-										placeholder="내용을 입력하세요" rows="20"></textarea>
-									<div class="qna_btn_div">
-										<button class="btn btn-primary">의견제출</button>
-									</div>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-			</main>
-		</div>
-	</div>
-		<script
+	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
