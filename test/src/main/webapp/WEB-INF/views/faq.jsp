@@ -148,11 +148,6 @@
 			style="margin-left: -15rem; margin-top: -3.5rem">
 			<main>
 
-				<div id="layoutSidenav">
-					<div id="layoutSidenav_content"
-						style="margin-left: -15rem; margin-top: -3.5rem">
-						<main>
-
 
 							<!-- faq 1번 -->
 							<div class="panel-group" id="accordion" role="tablist"
@@ -242,27 +237,6 @@
 								</div>
 
 							</div>
-
-
-							<!-- 
-					<div class="card card-collapsable">
-    				<a id="collapseButton" class="card-header" href="#collapseCardExample" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
-    					카드제목<div class="card-collapsable-arrow"><i class="fas fa-chevron-right"></i></div>
-					</a>
-						    <div class="collapse" id="collapseCardExample">
-						        <div class="card-body">
-						            카드내용
-						        </div>
-						    </div>
-					</div>
-
-
-
- -->
-
-
-
-
 						</main>
 					</div>
 				</div>

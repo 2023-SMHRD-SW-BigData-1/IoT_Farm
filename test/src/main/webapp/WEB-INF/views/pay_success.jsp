@@ -165,8 +165,8 @@
 							결제내역은 '마이페이지-청구'에서 확인하실 수 있습니다.
 						</div>
 						<div class="align-items-center">
-							<a class="btn btn-block btn-primary" href="/bigdata/pricing" style="font-size: 1rem">내역확인</a>
-							<a class="btn btn-block btn-primary" href="/bigdata/pricing" style="font-size: 1rem">메인으로</a>
+							<a class="btn btn-block btn-primary" href="/bigdata/billing" style="font-size: 1rem">내역확인</a>
+							<a class="btn btn-block btn-primary" href="/bigdata/" style="font-size: 1rem">메인으로</a>
 						</div>
 					</div>
 					

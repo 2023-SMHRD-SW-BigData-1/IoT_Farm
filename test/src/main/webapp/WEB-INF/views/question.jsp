@@ -148,7 +148,7 @@
 			</a>
 			<h1 class="question_text">자주묻는질문</h1>
 		</div>
-		<div class="line"></div>
+		<div class="line" style="margin-top:1.2rem"></div>
 		<div class="question_item">
 			<a class="question_a" href="/bigdata/qna"> <img
 				src="./img/qna.png" class="qna_img">

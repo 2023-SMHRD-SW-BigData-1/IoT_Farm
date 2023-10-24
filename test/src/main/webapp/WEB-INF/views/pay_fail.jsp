@@ -160,7 +160,7 @@
 						</div>
 						<div class="align-items-center">
 							<a class="btn btn-block btn-primary" href="/bigdata/pricing" style="font-size: 1rem;width:6.8rem">재시도</a>
-							<a class="btn btn-block btn-primary" href="/bigdata/pricing" style="font-size: 1rem;width:6.8rem">메인으로</a>
+							<a class="btn btn-block btn-primary" href="/bigdata/" style="font-size: 1rem;width:6.8rem">메인으로</a>
 						</div>
 					</div>
 					
