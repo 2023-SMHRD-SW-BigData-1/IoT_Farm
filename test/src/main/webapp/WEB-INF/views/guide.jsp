@@ -31,7 +31,7 @@
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
 				style="margin-top: 1.8rem" href="/bigdata/guide" role="button">
-					<div class="/bigdata/guide">가이드라인</div>
+					<div class="fw-900 text-lg">가이드라인</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
@@ -248,10 +248,12 @@
                              w xxl breakpoint. As the screen width gets larger, the container 
                              element will set a max width to the content. The boxed layout uses th
                              e max width container element on the page header and in the main page content in this example.
-                             <div style=" height:3000rem">네비게이션 확인</div>
                              </div>
                         </div>
                     </div>
+                    
+                    
+					
                 </main>
                 <footer class="footer-admin mt-auto footer-light">
                     <div class="container-xl px-4">

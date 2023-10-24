@@ -35,7 +35,7 @@
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
 				style="margin-top: 1.8rem" href="/bigdata/guide" role="button">
-					<div class="/bigdata/guide">가이드라인</div>
+					<div class="fw-900 text-lg">가이드라인</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
@@ -160,7 +160,7 @@
 						</div>
 						<div class="align-items-center">
 							<a class="btn btn-block btn-primary" href="/bigdata/pricing" style="font-size: 1rem;width:6.8rem">재시도</a>
-							<a class="btn btn-block btn-primary" href="/bigdata/pricing" style="font-size: 1rem;width:6.8rem">메인으로</a>
+							<a class="btn btn-block btn-primary" href="/bigdata/" style="font-size: 1rem;width:6.8rem">메인으로</a>
 						</div>
 					</div>
 					

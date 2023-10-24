@@ -18573,14 +18573,15 @@ body {
 .card-collapsable .card-header[data-toggle=collapse].collapsed {
   border-radius: 0.35rem;
 }
-.card-collapsable .card-header[data-toggle=collapse].collapsed .card-collapsable-arrow ,
-.card-collapsable .card-header[data-bs-toggle=collapse].collapsed .card-collapsable-arrow{
-	transform: rotate(90deg);
+
+.card-collapsable .card-header .card-collapsable-arrow {
+  transform: rotate(0deg);
 }
 
-.dropdown .dropdown-toggle .dropdown-arrow {
+.card-collapsable .card-header .card-collapsable-arrow.rotated {
   transform: rotate(90deg);
 }
+
 
 .card-icon {
   overflow: hidden;

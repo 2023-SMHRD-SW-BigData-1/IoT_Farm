@@ -35,7 +35,7 @@
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
 				style="margin-top: 1.8rem" href="/bigdata/guide" role="button">
-					<div class="/bigdata/guide">가이드라인</div>
+					<div class="fw-900 text-lg">가이드라인</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
@@ -148,7 +148,7 @@
 			</a>
 			<h1 class="question_text">자주묻는질문</h1>
 		</div>
-		<div class="line"></div>
+		<div class="line" style="margin-top:1.2rem"></div>
 		<div class="question_item">
 			<a class="question_a" href="/bigdata/qna"> <img
 				src="./img/qna.png" class="qna_img">
