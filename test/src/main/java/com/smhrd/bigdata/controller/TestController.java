@@ -32,9 +32,8 @@ public class TestController {
 	
 	
 	@PostMapping("/join")
-	public String join(@ModelAttribute TestMember m) {
+	public String join(@ModelAttribute TestMember m, Model model) {
 		service.join(m);
-		System.out.println("member : "  + m);
 		return "redirect:/main";
 	}
 	
