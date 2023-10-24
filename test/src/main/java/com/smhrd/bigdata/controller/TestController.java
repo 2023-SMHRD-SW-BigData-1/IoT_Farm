@@ -61,8 +61,7 @@ public class TestController {
 	}
 
 	
-	
-	
+
 	
 	
 	@GetMapping("/login")
@@ -71,7 +70,6 @@ public class TestController {
 	}
 	
 
-		
 	@GetMapping("/join")
 	public String joinForm(Model model) {
 		model.addAttribute("member", new TestMember());

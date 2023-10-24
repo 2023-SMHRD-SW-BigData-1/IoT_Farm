@@ -225,7 +225,7 @@
 					<!-- faq 6번 -->
 					<div class="card card-collapsable">
 						<a class="card-header" href="#collapseCardExample6"
-							data-bs-toggle="collapse" role="button" aria-expanded="false"
+							data-bs-toggle="collapse" role="button" aria-expanded="true"
 							aria-controls="collapseCardExample">...
 							<div class="card-collapsable-arrow">
 								<i class="fas fa-chevron-down"></i>
@@ -245,6 +245,7 @@
 		</div>
 	</div>
 	<script
+		
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
