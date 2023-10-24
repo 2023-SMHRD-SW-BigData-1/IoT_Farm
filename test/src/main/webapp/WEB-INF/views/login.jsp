@@ -33,7 +33,7 @@
 									</div>
 									<div class="card-body">
 										<!-- Login form-->
-										<form>
+										<form action="/login" method="post">
 											<!-- Form Group (아이디)-->
 											<div class="mb-3">
 												<label class="small mb-1" for="inputId">아이디</label> <input

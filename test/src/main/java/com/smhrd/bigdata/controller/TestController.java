@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,17 +23,17 @@ import com.smhrd.bigdata.service.TestService;
 public class TestController {
 
 	@Autowired
-	private TestService service;
+	TestService service;
 
 	@GetMapping("/join")
-	public String joinForm() {
+	public String joinForm(@ModelAttribute TestMember m) {
 		return "join";
 	}
 
 	@PostMapping("/join")
 	public String join(@ModelAttribute TestMember m, Model model) {
 		service.join(m);
-		return "redirect:/main";
+		return "redirect:/";
 	}
 
 	@GetMapping("/")
