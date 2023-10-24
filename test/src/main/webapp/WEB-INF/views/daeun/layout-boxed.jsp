@@ -145,7 +145,10 @@
         
         <!-- 내비게이션 -->
             <div id="layoutSidenav_nav">
-                <nav class="sidenav shadow-right sidenav-light">
+            	<nav class="sidenav shadow-right sidenav-light">
+            		<a href="/bigdata/main" class="mx-4 mt-n4 mb-sm-5">
+						<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
+					</a>
                     <div class="sidenav-menu">
                         <div class="nav accordion" id="accordionSidenav">
                             <!-- Sidenav Menu Heading (Account)-->
@@ -474,7 +477,13 @@
                     <div class="container-xl px-4">
                         <div class="card mt-n10">
                             <div class="card-header">Boxed Layout Example</div>
-                            <div class="card-body">This is an example of a page with the default boxed layout. We've expanded Bootstrap by adding a new xxl breakpoint. As the screen width gets larger, the container element will set a max width to the content. The boxed layout uses the max width container element on the page header and in the main page content in this example.</div>
+                            <div class="card-body">This is an example of a page with
+                             the default boxed layout. We've expanded Bootstrap by adding a ne
+                             w xxl breakpoint. As the screen width gets larger, the container 
+                             element will set a max width to the content. The boxed layout uses th
+                             e max width container element on the page header and in the main page content in this example.
+                             <div style=" height:3000rem">네비게이션 확인</div>
+                             </div>
                         </div>
                     </div>
                 </main>
