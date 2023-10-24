@@ -1,15 +1,20 @@
 package com.smhrd.bigdata.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.service.TestService;
@@ -19,6 +24,19 @@ public class TestController {
 	
 	@Autowired
 	private TestService service;
+	
+	@GetMapping("/join")
+	public String joinForm() {
+		return "join";
+	}
+	
+	
+	@PostMapping("/join")
+	public String join(@ModelAttribute TestMember m) {
+		service.join(m);
+		System.out.println("member : "  + m);
+		return "redirect:/main";
+	}
 	
 	@GetMapping("/")
 	public String boardList(Model model) {
@@ -69,20 +87,6 @@ public class TestController {
 		return "login";
 	}
 	
-
-	@GetMapping("/join")
-	public String joinForm(Model model) {
-		model.addAttribute("member", new TestMember());
-		return "join"; // 회원가입 폼 페이지로 이동
-	}
-	
-	@PostMapping("/join")
-	public String join(@ModelAttribute TestMember m) {
-		System.out.println(m);
-		System.out.println(1);
-		service.join(m);
-		return "redirect:/login";
-	}	
 	
 	@GetMapping("/main")
 	public String main() {
@@ -100,4 +104,12 @@ public class TestController {
 	public String qna() {
 		return "qna";
 	}
+	@GetMapping("/pwfind")
+		public String pwfind() {
+		return "pwfind";
+	}
+	@GetMapping("/pwfind2")
+	public String pwfind2() {
+	return "pwfind2";
+}
 }

@@ -29,36 +29,23 @@
 								<!-- Basic login form-->
 								<div class="card shadow-lg border-0 rounded-lg mt-5">
 									<div class="card-header justify-content-center">
-										<h1 class="fw-light my-4">로그인</h1>
+										<h1 class="fw-light my-4">비밀번호 찾기</h1>
 									</div>
 									<div class="card-body">
-										<!-- Login form-->
 										<form>
-											<!-- Form Group (아이디)-->
+											<!-- Form Group-->
 											<div class="mb-3">
 												<label class="small mb-1" for="inputId">아이디</label> <input
 													class="form-control" id="inputId" type="text"
 													placeholder="아이디를 입력하세요" />
 											</div>
 											<!-- Form Group (비밀번호)-->
-											<div class="mb-3">
-												<label class="small mb-1" for="inputPassword">비밀번호</label> <input
-													class="form-control" id="inputPassword" type="password"
-													placeholder="비밀번호를 입력하세요" />
-											</div>
 											<!-- Form Group (login box)-->
 											<div
-												class="d-flex align-items-center justify-content-between mt-4 mb-0">
-												<a class="small" href="auth-password-basic.html">비밀번호를
-													잊어버리셨나요?</a> 
-													<a class="btn btn-primary qna_btn" href="dashboard-1.html">로그인</a>
+												class="d-flex align-items-center justify-content-right	 mt-4 mb-0">
+													<a class="btn btn-primary qna_btn" href="dashboard-1.html">다음</a>
 											</div>
 										</form>
-									</div>
-									<div class="card-footer text-center">
-										<div class="small">
-											<a href="/bigdata/join">ID가 없으시다면 ? 회원가입하세요 !</a>
-										</div>
 									</div>
 								</div>
 							</div>

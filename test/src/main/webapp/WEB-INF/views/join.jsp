@@ -33,11 +33,11 @@
 								</div>
 								<div class="card-body">
 									<!-- Join form-->
-									<form action="/join" method="get">
+									<form action="/join" method="post">
 										<!-- Form Group (아이디)-->
 										<div class="mb-3">
 											<label class="small mb-1" for="inputId">아이디</label> <input
-												class="form-control" id="inputId" type="text" />
+												class="form-control" id="inputId" type="text" name="id" />
 										</div>
 										<div class="d-flex align-items-center justify-content-right">
 											<span class="joincheck">(출력란)</span>
@@ -46,29 +46,33 @@
 										<!-- Form Group (비밀번호)-->
 										<div class="mb-3">
 											<label class="small mb-1" for="inputPassword">비밀번호</label> <input
-												class="form-control" id="inputPassword" type="password" />
+												class="form-control" id="inputPassword" type="password" name="pw"/>
 										</div>
 										<!-- From Grooup (닉네임) -->
 										<div class="mb-3">
 											<label class="small mb-1" for="nickname">닉네임</label> <input
-												class="form-control" id="nickname" type="text" />
+												class="form-control" id="nickname" type="text" name="name" />
 										</div>
 										<!-- From Grooup (Email) -->
 										<div class="mb-3">
 											<label class="small mb-1" for="Email">이메일</label> <input
-												class="form-control" id="Email" type="text" />
+												class="form-control" id="Email" type="text" name="email"/>
 											<div
 												class="d-flex align-items-center justify-content-right mt-10px">
 												<button class="btn btn-primary h-10">인증번호 전송</button>
 											</div>
-											<input class="form-control wd-30" id="inputEmail"
-												type="text"></input>
-											<button class="btn btn-primary h-10 mt-10px">인증번호 확인</button>
+											<div class="join_email">
+												<input class="form-control wd-30 h-10" id="inputEmail"
+													type="text"></input>
+												<button class="btn btn-primary h-10 ml-10">인증번호
+													확인</button>
+											</div>
 										</div>
 										<!-- Form Group (join box)-->
 										<div
 											class="d-flex align-items-center justify-content-right mt-4 mb-0">
-											<a class="btn btn-primary" href="/bigdata/">확인</a>
+											<a class="btn btn-primary" href="/bigdata/main">확인</a>
+
 										</div>
 									</form>
 								</div>

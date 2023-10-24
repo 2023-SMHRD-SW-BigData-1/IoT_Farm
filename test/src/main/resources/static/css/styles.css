@@ -21086,6 +21086,9 @@ pre[class*=language-] {
 .mt-10px{margin-top: 10px;}
 .mt-100p{margin-top:100px;}
 .wd-30{width: 30%;}
+.mr-10{margin-right: 10px;}
+.join_email{display: flex; align-items: center}
+.ml-10{margin-left: 10px;}
 /*===========================================================*/
 
 /*레이아웃*/
@@ -21191,7 +21194,7 @@ pre[class*=language-] {
 .joinbtn{border: none;}
 
 /* 고객센터 */
-.question {display: flex; justify-content: center; align-items: center; height: 100vh;}
+.question {display: flex; justify-content: center; align-items: center; position: absolute;}
 
 .question_text {display: flex; justify-content: center; font-size: 50px; margin-top: 30px;}
 
@@ -21213,6 +21216,10 @@ pre[class*=language-] {
 /* qna */
 .gx-4{display: flex; justify-content: center; align-items: center;}
 
-.qna_title{width: 200px;}
+.qna_title{width: 12%;}
+
+.qna_box{width: 45%;}
+
+.qna_ta{resize: none;}
 
 .qna_btn_div{display: flex; justify-content: right; align-items: center; margin-top: 10px;}
