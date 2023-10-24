@@ -31,12 +31,12 @@
 		<ul class="navbar-nav align-items-center ms-auto">
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
-				style="margin-top: 1.8rem" href="/bigdata/question" role="button">
+				style="margin-top: 1.8rem" href=""javascript:void(0);" role="button">
 					<div class="fw-900 text-lg">마이데이터</div>
-			</a>></li>
+			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
-				style="margin-top: 1.8rem" href="/bigdata/question" role="button">
+				style="margin-top: 1.8rem" href=""javascript:void(0);" role="button">
 					<div class="fw-900 text-lg">가이드라인</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
