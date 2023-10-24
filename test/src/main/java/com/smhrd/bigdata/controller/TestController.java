@@ -75,6 +75,11 @@ public class TestController {
 	public String pay_fail(Model model) {
 		return "pay_fail";
 	}
+	
+	@GetMapping("/guide")
+	public String guide(Model model) {
+		return "guide";
+	}
 
 	@GetMapping("/login")
 	public String loginform() {
