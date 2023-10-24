@@ -28,7 +28,7 @@
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
 				style="margin-top: 1.8rem" href="/bigdata/guide" role="button">
-					<div class="/bigdata/guide">가이드라인</div>
+					<div class="fw-900 text-lg">가이드라인</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
