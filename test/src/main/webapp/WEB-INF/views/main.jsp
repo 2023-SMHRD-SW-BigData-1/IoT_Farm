@@ -137,26 +137,11 @@
 			
 			
 			<!-- 로그인 -->
-			<li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
-				<a class="btn btn-icon btn-transparent-dark dropdown-toggle btn-lg bg-light"
-				style="margin-top: 1.3rem" id="loginuser"
-				href="javascript:void(0);" role="button" data-bs-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false"> <i data-feather="user" style="height: 2.5rem;
-  width: 2.5rem"></i></a>
-				<div
-					class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
-					aria-labelledby="loginuser">
-					<a class="dropdown-item" href="/bigdata/login">
-						<div class="dropdown-item-icon">
-							<i class="mb-2" style="margin-left: -0.1rem;margin-right:0.1rem" data-feather="user"></i>
-						</div> 로그인
-					</a> <a class="dropdown-item" href="/bigdata/join">
-						<div class="dropdown-item-icon">
-							<i class="mb-1" data-feather="user-plus"></i>
-						</div> 회원가입
-					</a>
-				</div>
-			</li>
+			<li class="nav-item no-caret d-none d-md-block me-3"><a
+				class="nav-link  btn btn-outline-success p-3"
+				style="margin-top: 1.8rem;border-radius:3rem;width:7rem" href="/bigdata/login" role="button">
+					<div class="fw-900 text-lg">로그인</div>
+			</a></li>
 			
 		</ul>
 	</nav>

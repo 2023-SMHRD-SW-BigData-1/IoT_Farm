@@ -26,5 +26,9 @@ public class TestService {
 	        logger.error("회원가입 중 오류 발생: " + e.getMessage(), e);
 	    }
 	}
+
+	public TestMember login(TestMember m) {
+		return mapper.login(m);		
+	}
 }
 	

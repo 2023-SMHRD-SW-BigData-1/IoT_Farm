@@ -85,6 +85,13 @@ public class TestController {
 	public String loginform() {
 		return "login";
 	}
+	
+	@PostMapping("/login_action")
+	public String login_action(@ModelAttribute TestMember m) {
+		TestMember user=service.login(m);
+		System.out.println(user.getId());
+		return "login";
+	}
 
 	@GetMapping("/question")
 	public String question() {
