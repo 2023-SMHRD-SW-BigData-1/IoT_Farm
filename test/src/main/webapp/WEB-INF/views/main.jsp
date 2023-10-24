@@ -16,7 +16,7 @@
 		<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
-		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/main">
+		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/">
 			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
 		<ul class="navbar-nav align-items-center ms-auto">
@@ -27,8 +27,8 @@
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
-				style="margin-top: 1.8rem" href=""javascript:void(0);" role="button">
-					<div class="fw-900 text-lg">가이드라인</div>
+				style="margin-top: 1.8rem" href="/bigdata/guide" role="button">
+					<div class="/bigdata/guide">가이드라인</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"

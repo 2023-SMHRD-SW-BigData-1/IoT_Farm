@@ -80,10 +80,6 @@ public class TestController {
 	public String loginform() {
 		return "login";
 	}
-	@GetMapping("/main")
-	public String main() {
-		return "main";
-	}
 
 	@GetMapping("/question")
 	public String question() {
