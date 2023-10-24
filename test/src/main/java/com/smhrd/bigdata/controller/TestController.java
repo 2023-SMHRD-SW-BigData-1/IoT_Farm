@@ -38,7 +38,7 @@ public class TestController {
 
 	@GetMapping("/")
 	public String boardList(Model model) {
-		return "daeun/layout-boxed";
+		return "main";
 	}
 
 	@GetMapping("/profile")
