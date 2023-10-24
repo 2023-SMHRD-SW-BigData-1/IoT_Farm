@@ -39,7 +39,7 @@
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link dropdown-toggle" id="navbarDropdownDocs"
-				style="margin-top: 1.8rem" href="javascript:void(0);" role="button"
+				style="margin-top: 1.8rem" href="/bigdata/question" role="button"
 				data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<div class="fw-900 text-lg">고객센터</div>
 			</a></li>

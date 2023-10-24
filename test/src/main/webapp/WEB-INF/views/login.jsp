@@ -49,7 +49,7 @@
 											<!-- Form Group (login box)-->
 											<div
 												class="d-flex align-items-center justify-content-between mt-4 mb-0">
-												<a class="small" href="auth-password-basic.html">비밀번호를
+												<a class="small" href="/bigdata/pwfind">비밀번호를
 													잊어버리셨나요?</a> 
 													<a class="btn btn-primary qna_btn" href="dashboard-1.html">로그인</a>
 											</div>

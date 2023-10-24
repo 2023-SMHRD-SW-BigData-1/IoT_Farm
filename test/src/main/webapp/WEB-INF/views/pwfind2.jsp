@@ -44,7 +44,7 @@
 											<!-- Form Group (login box)-->
 											<div
 												class="d-flex align-items-center justify-content-right mt-4 mb-0">
-													<a class="btn btn-primary qna_btn" href="dashboard-1.html">다음</a>
+													<a class="btn btn-primary qna_btn" href="/bigdata/pwfind3">다음</a>
 											</div>
 										</form>
 									</div>

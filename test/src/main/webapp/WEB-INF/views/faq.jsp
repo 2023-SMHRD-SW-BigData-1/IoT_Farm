@@ -23,10 +23,9 @@
 	<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
-		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/profile">
+		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/main">
 			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
-
 		<ul class="navbar-nav align-items-center ms-auto">
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link dropdown-toggle" id="navbarDropdownDocs"
@@ -42,7 +41,7 @@
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link dropdown-toggle" id="navbarDropdownDocs"
-				style="margin-top: 1.8rem" href="javascript:void(0);" role="button"
+				style="margin-top: 1.8rem" href="/bigdata/question" role="button"
 				data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<div class="fw-900 text-lg">고객센터</div>
 			</a></li>
@@ -119,7 +118,7 @@
 				href="javascript:void(0);" role="button" data-bs-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"><img
 					class="img-fluid"
-					src="assets/img/illustrations/profiles/profile-1.png" /></a>
+					src="assets/img/illustrations/profiles/profile-1.png" /> </a>
 				<div
 					class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
 					aria-labelledby="navbarDropdownUserImage">
@@ -145,6 +144,13 @@
 			</li>
 		</ul>
 	</nav>
+
+	<!-- 네비게이션 삭제 style="margin-left: -15rem; margin-top:-3.5rem"-->
+	<div id="layoutSidenav">
+		<div id="layoutSidenav_content"
+			style="margin-left: -15rem; margin-top: -3.5rem">
+			<main>
+				
 	<div id="layoutSidenav">
 		<div id="layoutSidenav_content"
 			style="margin-left: -15rem; margin-top: -3.5rem">
@@ -227,7 +233,7 @@
 					<!-- faq 6번 -->
 					<div class="card card-collapsable">
 						<a class="card-header" href="#collapseCardExample6"
-							data-bs-toggle="collapse" role="button" aria-expanded="false"
+							data-bs-toggle="collapse" role="button" aria-expanded="true"
 							aria-controls="collapseCardExample">...
 							<div class="card-collapsable-arrow">
 								<i class="fas fa-chevron-down"></i>
@@ -247,10 +253,9 @@
 		</div>
 	</div>
 	<script
+		
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
-
-
 </body>
 </html>
