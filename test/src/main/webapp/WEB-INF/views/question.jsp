@@ -1,21 +1,31 @@
+<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<link href="css/styles.css" rel="stylesheet" />
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Account Settings - Profile - SB Admin Pro</title>
+<link href="css/styles.css" rel="stylesheet" />
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+<script data-search-pseudo-elements defer
+	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
+	crossorigin="anonymous"></script>
 </head>
 <body class="nav-fixed">
 	<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
-		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/profile">
-			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
+		<a class="navbar-brand m-xl-4 pe-2 ps-2" href="/bigdata/main"> <img
+			class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
-
 		<ul class="navbar-nav align-items-center ms-auto">
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link dropdown-toggle" id="navbarDropdownDocs"
@@ -31,7 +41,7 @@
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link dropdown-toggle" id="navbarDropdownDocs"
-				style="margin-top: 1.8rem" href="javascript:void(0);" role="button"
+				style="margin-top: 1.8rem" href="/bigdata/question" role="button"
 				data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<div class="fw-900 text-lg">고객센터</div>
 			</a></li>
@@ -108,7 +118,7 @@
 				href="javascript:void(0);" role="button" data-bs-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"><img
 					class="img-fluid"
-					src="assets/img/illustrations/profiles/profile-1.png" /></a>
+					src="assets/img/illustrations/profiles/profile-1.png" /> </a>
 				<div
 					class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
 					aria-labelledby="navbarDropdownUserImage">
@@ -149,5 +159,9 @@
 			<h1 class="question_text">문의하기</h1>
 		</div>
 	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
 </body>
 </html>

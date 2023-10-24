@@ -42,7 +42,7 @@
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link dropdown-toggle" id="navbarDropdownDocs"
-				style="margin-top: 1.8rem" href="javascript:void(0);" role="button"
+				style="margin-top: 1.8rem" href="/bigdata/question" role="button"
 				data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<div class="fw-900 text-lg">고객센터</div>
 			</a></li>
@@ -161,9 +161,7 @@
 							<div class="card card-header-actions mb-4">
 								<div class="card-header">
 									<div class="qna_title">문의사항:</div>
-									<i class="text-muted" data-feather="info"
-										data-bs-toggle="tooltip" data-bs-placement="left"
-										title="The post preview text shows below the post title, and is the post summary on blog pages."></i>
+									
 									<input class="edit_title form-control" type="text"
 										placeholder="제목을 입력하세요">
 								</div>
@@ -183,5 +181,9 @@
 			</main>
 		</div>
 	</div>
+		<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
 </body>
 </html>

@@ -32,18 +32,19 @@
 										<h1 class="fw-light my-4">비밀번호 찾기</h1>
 									</div>
 									<div class="card-body">
+									<div class="text-center small text-muted mb-4">인증이 완료되었습니다. <br>새 비밀번호를 입력하세요.</div>
 										<form>
 											<!-- Form Group-->
 											<div class="mb-3">
-												<label class="small mb-1" for="inputId">아이디</label> <input
+												<label class="small mb-1" for="inputId">새 비밀번호 입력</label> <input
 													class="form-control" id="inputId" type="text"
-													placeholder="아이디를 입력하세요" />
+													placeholder="비밀번호를 입력하세요" />
 											</div>
 											<!-- Form Group (비밀번호)-->
 											<!-- Form Group (login box)-->
 											<div
-												class="d-flex align-items-center justify-content-right	 mt-4 mb-0">
-													<a class="btn btn-primary qna_btn" href="/bigdata/pwfind2">다음</a>
+												class="d-flex align-items-center justify-content-right mt-4 mb-0">
+													<a class="btn btn-primary qna_btn" href="/bigdata/login">확인</a>
 											</div>
 										</form>
 									</div>

@@ -71,7 +71,7 @@
 										<!-- Form Group (join box)-->
 										<div
 											class="d-flex align-items-center justify-content-right mt-4 mb-0">
-											<a class="btn btn-primary" href="/bigdata/main">확인</a>
+											<a class="btn btn-primary" href="/bigdata/login">확인</a>
 
 										</div>
 									</form>
