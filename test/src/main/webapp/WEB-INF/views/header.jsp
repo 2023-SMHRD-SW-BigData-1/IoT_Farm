@@ -1,25 +1,24 @@
 <!DOCTYPE html>
+<%@page import="com.smhrd.bigdata.model.TestMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Account Settings - Profile - SB Admin Pro</title>
-<link href="css/styles.css" rel="stylesheet" />
-<link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
-<script data-search-pseudo-elements defer
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
-	crossorigin="anonymous"></script>
-</head>
-<body class="nav-fixed">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Account Settings - Billing - SB Admin Pro</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="nav-fixed">
+    
+        <!-- 헤더부분 -->
+        <% TestMember user=(TestMember)session.getAttribute("user");%>
 		<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
@@ -27,9 +26,10 @@
 			<img class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 		</a>
 		<ul class="navbar-nav align-items-center ms-auto">
+			<% if(user!=null){ %>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
-				style="margin-top: 1.8rem" href="/bigdata/mydata" role="button">
+				style="margin-top: 1.8rem" href="/bigdata/login" role="button">
 					<div class="fw-900 text-lg">마이데이터</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
@@ -130,41 +130,44 @@
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/bigdata/profile">
 						<div class="dropdown-item-icon">
-							<i data-feather="settings"></i>
+							<i class="mb-2" data-feather="settings"></i>
 						</div> 마이페이지
-					</a> <a class="dropdown-item" href="#!">
+					</a> <a class="dropdown-item" href="/bigdata/logout_action">
 						<div class="dropdown-item-icon">
-							<i data-feather="log-out"></i>
+							<i class="mb-1" data-feather="log-out"></i>
 						</div> 로그아웃
 					</a>
 				</div>
 			</li>
+			
+			<% }else{%>
+			
+			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
+				class="nav-link"
+				style="margin-top: 1.8rem" href="/bigdata/mydata" role="button">
+					<div class="fw-900 text-lg">마이데이터</div>
+			</a></li>
+			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
+				class="nav-link"
+				style="margin-top: 1.8rem" href="/bigdata/guide" role="button">
+					<div class="fw-900 text-lg">가이드라인</div>
+			</a></li>
+			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
+				class="nav-link"
+				style="margin-top: 1.8rem" href="/bigdata/question" role="button">
+					<div class="fw-900 text-lg">고객센터</div>
+			</a></li>
+			<!-- 로그인 -->
+			<li class="nav-item no-caret d-none d-md-block me-3"><a
+				class="nav-link  btn btn-outline-success p-3"
+				style="margin-top: 1.8rem;border-radius:3rem;width:7rem" href="/bigdata/login" role="button">
+					<div class="fw-900 text-lg">로그인</div>
+			</a></li>
+			<%} %>
 		</ul>
 	</nav>
-	<div class="question justify-content-center align-items-center">
-		<div class="question_item">
-			<a class="question_a" href="/bigdata/faq"> <img
-				src="./img/faq.png" class="faq_img"><br>
-			</a>
-			<h1 class="question_text">자주묻는질문</h1>
-		</div>
-		<div class="line" style="margin-top:1.2rem"></div>
-		<div class="question_item">
-			<% if(session.getAttribute("user")!=null){ %>
-			<a class="question_a" href="/bigdata/qna"> <img
-				src="./img/qna.png" class="qna_img">
-			</a>
-			<%}else{ %>
-			<a class="question_a" href="/bigdata/login"> <img
-				src="./img/qna.png" class="qna_img">
-			</a>
-			<%} %>
-			<h1 class="question_text">문의하기</h1>
-		</div>
-	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-	<script src="js/scripts.js"></script>
-</body>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
 </html>

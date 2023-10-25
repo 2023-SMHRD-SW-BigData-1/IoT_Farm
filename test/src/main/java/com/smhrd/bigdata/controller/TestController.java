@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -87,15 +89,21 @@ public class TestController {
 	}
 	
 	@PostMapping("/login_action")
-	public String login_action(@ModelAttribute TestMember m, Model model) {
+	public String login_action(@ModelAttribute TestMember m, Model model, HttpSession session) {
 		TestMember user=service.login(m);
-		
 		if(user != null) {
+			session.setAttribute("user", user);
 			return "redirect:/";
 		} else {
 			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
 	        return "login";
 		}
+	}
+	
+	@GetMapping("/logout_action")
+	public String logout_action(HttpSession session) {
+		session.invalidate();
+		return "main";
 	}
 
 	@GetMapping("/question")

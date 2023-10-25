@@ -21201,7 +21201,7 @@ pre[class*=language-] {
 .joinbtn{border: none;}
 
 /* 고객센터 */
-.question {display: flex; justify-content: center; align-items: center; position: absolute;}
+.question {display: flex; justify-content: center; align-items: center}
 
 .question_text {display: flex; justify-content: center; font-size: 50px; margin-top: 30px;}
 
