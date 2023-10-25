@@ -1,5 +1,6 @@
 package com.smhrd.bigdata.service;
 
+import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,17 @@ public class TestService {
 	@Autowired
 	private TestMapper mapper;
 	
+	@Autowired
+	private EmailService emails;
+
 	@Transactional
 	public void join(TestMember m) {
 		mapper.join(m);
+		String email = m.getEmail();
+		String subject = "회원 가입 완료";
+		String text = "회원 가입 완료";
+		System.out.println(1);
+		emails.sendSimpleMessage(email, subject, text);
 	}
 
 	public TestMember login(TestMember m) {
@@ -27,5 +36,7 @@ public class TestService {
 	public int idCheck(String id) {
 	    return mapper.idCheck(id);
 	}
+	
+	
 }
 	

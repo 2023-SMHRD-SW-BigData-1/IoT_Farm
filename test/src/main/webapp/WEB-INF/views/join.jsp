@@ -83,7 +83,7 @@
 												class="form-control" id="Email" type="text" name="email" />
 											<div
 												class="d-flex align-items-center justify-content-right mt-10px">
-												<button class="btn btn-primary h-10">인증번호 전송</button>
+												<button class="btn btn-primary h-10" onclick="">인증번호 전송</button>
 											</div>
 											<div class="join_email">
 												<input class="form-control wd-30 h-10" id="inputEmail"

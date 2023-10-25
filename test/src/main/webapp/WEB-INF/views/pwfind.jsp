@@ -32,11 +32,11 @@
 										<h1 class="fw-light my-4">비밀번호 찾기</h1>
 									</div>
 									<div class="card-body">
-										<form>
+										<form action="/bigdata/pwfind2" method="get">
 											<!-- Form Group-->
 											<div class="mb-3">
 												<label class="small mb-1" for="inputId">아이디</label> <input
-													class="form-control" id="inputId" type="text"
+													class="form-control" id="inputId" type="text" name="id"
 													placeholder="아이디를 입력하세요" />
 											</div>
 											<!-- Form Group (비밀번호)-->
