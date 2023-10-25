@@ -14,7 +14,7 @@ public interface TestMapper {
 	//로그인
 	public TestMember login(TestMember m);
 	
-	//이메일 중복체크
+	//id 중복체크
 	@Select("select count(*) from user_info where id=#{id}")
 	public int idCheck(String id);
 }
