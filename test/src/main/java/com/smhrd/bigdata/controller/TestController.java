@@ -98,6 +98,7 @@ public class TestController {
 		TestMember user=service.login(m);
 		if(user != null) {
 			session.setAttribute("user", user);
+			
 			return "redirect:/";
 		} else {
 			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
