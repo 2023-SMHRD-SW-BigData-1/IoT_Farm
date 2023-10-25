@@ -1,21 +1,8 @@
 <!DOCTYPE html>
 <%@page import="com.smhrd.bigdata.model.TestMember"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Account Settings - Billing - SB Admin Pro</title>
-        <link href="css/styles.css" rel="stylesheet" />
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="nav-fixed">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<body class="nav-fixed">
     
         <!-- 헤더부분 -->
         <% TestMember user=(TestMember)session.getAttribute("user");%>
@@ -29,7 +16,7 @@
 			<% if(user!=null){ %>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
-				style="margin-top: 1.8rem" href="/bigdata/login" role="button">
+				style="margin-top: 1.8rem" href="/bigdata/mydata" role="button">
 					<div class="fw-900 text-lg">마이데이터</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
@@ -45,12 +32,20 @@
 			<!-- Alerts Dropdown-->
 			<li
 				class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
+				
+				
+				
+				
 				<a class="btn btn-icon btn-transparent-dark dropdown-toggle btn-lg"
 				style="margin-top: 1.3rem" id="navbarDropdownAlerts"
 				href="javascript:void(0);" role="button" data-bs-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> <i
 					data-feather="bell"></i>
 			</a>
+			
+			
+			
+			
 				<div
 					class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
 					aria-labelledby="navbarDropdownAlerts">
@@ -121,10 +116,10 @@
 					aria-labelledby="navbarDropdownUserImage">
 					<h6 class="dropdown-header d-flex align-items-center">
 						<img class="dropdown-user-img"
-							src="assets/img/illustrations/profiles/profile-1.png" />
+							src="assets/img/illustrations/profiles/${user.p_img }.png" />
 						<div class="dropdown-user-details">
-							<div class="dropdown-user-details-name">Valerie Luna</div>
-							<div class="dropdown-user-details-email">vluna@aol.com</div>
+							<div class="dropdown-user-details-name">${user.name}</div>
+							<div class="dropdown-user-details-email">${user.email }</div>
 						</div>
 					</h6>
 					<div class="dropdown-divider"></div>
@@ -144,7 +139,7 @@
 			
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
-				style="margin-top: 1.8rem" href="/bigdata/mydata" role="button">
+				style="margin-top: 1.8rem" href="/bigdata/login" role="button">
 					<div class="fw-900 text-lg">마이데이터</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
@@ -167,7 +162,4 @@
 		</ul>
 	</nav>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
+</body>

@@ -26,6 +26,11 @@ public class TestController {
 
 	@Autowired
 	TestService service;
+	
+	@GetMapping("/header")
+	public String header(Model model) {
+		return "header";
+	}
 
 	@GetMapping("/join")
 	public String joinForm(@ModelAttribute TestMember m) {
