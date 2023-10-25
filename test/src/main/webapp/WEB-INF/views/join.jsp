@@ -18,6 +18,29 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
+<script>
+    function checkId(){
+        let input = $('#inputId').val();
+        console.log(input);
+
+        $.ajax({
+            url : "join/idcheck",
+            type : "get",
+            data : {'input' : input },
+            success : function(result){
+                if(result=="success"){
+                    $('#result').text("사용할 수 있는 아이디").css('color', 'blue');
+                } else {
+                    $('#result').text("사용할 수 없는 아이디").css('color', 'red');
+                }
+            },
+            error : function(){
+                alert('error!');
+            }
+        });
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="nav-fixed">
 	<div id="layoutAuthentication">
@@ -33,7 +56,6 @@
 								</div>
 								<div class="card-body">
 									<!-- Join form-->
-<<<<<<< HEAD
 									<form action="join" method="post">
 										<!-- Form Group (아이디)-->
 										<div class="mb-3">
@@ -41,9 +63,8 @@
 												class="form-control" id="inputId" type="text" name="id" />
 										</div>
 										<div class="d-flex align-items-center justify-content-right">
-											<span class="idcheck">출력란</span>
-											<button type="button" class="btn btn-primary h-10"
-												onclick="checkId()">중복확인</button>
+											<span id="result"></span> <input type="button" value="중복체크"
+												class="btn btn-primary h-8" onclick="checkId()" style="margin-left: 10px; height: 36px;" >
 										</div>
 										<!-- Form Group (비밀번호)-->
 										<div class="mb-3">
@@ -74,58 +95,16 @@
 										<div
 											class="d-flex align-items-center justify-content-right mt-4 mb-0">
 											<button type="submit" class="btn btn-primary btn-default">확인</button>
-=======
-									<form action="/join" method="post">
-										<!-- Form Group (아이디)-->
-										<div class="mb-3">
-											<label class="small mb-1" for="inputId">아이디</label> <input
-												class="form-control" id="inputId" type="text" name="id" />
 										</div>
-										<div class="d-flex align-items-center justify-content-right">
-											<span class="joincheck">(출력란)</span>
-											<button class="btn btn-primary h-10">중복확인</button>
-										</div>
-										<!-- Form Group (비밀번호)-->
-										<div class="mb-3">
-											<label class="small mb-1" for="inputPassword">비밀번호</label> <input
-												class="form-control" id="inputPassword" type="password" name="pw"/>
-										</div>
-										<!-- From Grooup (닉네임) -->
-										<div class="mb-3">
-											<label class="small mb-1" for="nickname">닉네임</label> <input
-												class="form-control" id="nickname" type="text" name="name" />
-										</div>
-										<!-- From Grooup (Email) -->
-										<div class="mb-3">
-											<label class="small mb-1" for="Email">이메일</label> <input
-												class="form-control" id="Email" type="text" name="email"/>
-											<div
-												class="d-flex align-items-center justify-content-right mt-10px">
-												<button class="btn btn-primary h-10">인증번호 전송</button>
-											</div>
-											<div class="join_email">
-												<input class="form-control wd-30 h-10" id="inputEmail"
-													type="text"></input>
-												<button class="btn btn-primary h-10 ml-10">인증번호
-													확인</button>
-											</div>
-										</div>
-										<!-- Form Group (join box)-->
-										
-										<div
-											class="d-flex align-items-center justify-content-right mt-4 mb-0">
-											<a class="btn btn-primary" href="/bigdata/login">확인</a>
->>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
-
-										</div>
-									</form>
 								</div>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-			</main>
 		</div>
+		</main>
+	</div>
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.bigdata.service.TestService;
@@ -15,7 +16,8 @@ public class TestRestController {
 	@Autowired
 	private TestService service;	
 	
-	public String idCheck(@RequestParam("input") String input) {
+	@GetMapping("join/idcheck")
+	public 	@ResponseBody String idCheck(@RequestParam("input") String input) {
 		int cnt = service.idCheck(input);
 		
 		if(cnt>0) {
