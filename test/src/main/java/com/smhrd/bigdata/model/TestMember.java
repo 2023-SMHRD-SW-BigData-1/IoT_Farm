@@ -19,6 +19,7 @@ public class TestMember {
 	private String pclass;
 	private Date joindate;
 	private String email;
+	private String p_img;
 	
 	public TestMember(String id, String pw) {
 		this.id = id;
