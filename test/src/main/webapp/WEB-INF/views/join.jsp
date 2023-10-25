@@ -18,43 +18,6 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
-<script>
-	function checkId() {
-		var id = document.getElementById("id").value;
-
-		// Ajax로 중복 체크 요청을 보냅니다
-		var xhr = new XMLHttpRequest();
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState === XMLHttpRequest.DONE) {
-				if (xhr.status === 200) {
-					var idCheckElement = document.querySelector('.idcheck');
-					idCheckElement.innerText = xhr.responseText;
-				}
-			}
-		};
-		xhr.open("GET", "/member/idcheck?input=" + id, true);
-		xhr.send();
-		return false; // 기본 동작 (페이지 전환)을 방지합니다.
-	}
-	function checkDuplicate(id) {
-		var xhr = new XMLHttpRequest();
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState === XMLHttpRequest.DONE) {
-				if (xhr.status === 200) {
-					var messageElement = document
-							.getElementById("idCheckMessage");
-					if (xhr.responseText === "fail") {
-						messageElement.innerText = "이미 사용 중인 아이디입니다.";
-					} else {
-						messageElement.innerText = "사용 가능한 아이디입니다.";
-					}
-				}
-			}
-		};
-		xhr.open("GET", "/idCheck?input=" + id, true);
-		xhr.send();
-	}
-</script>
 </head>
 <body class="nav-fixed">
 	<div id="layoutAuthentication">
