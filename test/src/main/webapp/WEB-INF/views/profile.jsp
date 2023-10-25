@@ -46,16 +46,16 @@
 								<div class="card-header">Profile</div>
 								<div class="card-body text-center">
 									<div class="row my-3">
-										<div class="col-xl-4 mt-2">Username</div>
-										<div class="col-xl-8"><input class="form-control form-control-solid bg-gray-100 text-lg" value="Valerie Luna" disabled/></div>
+										<div class="col-xl-4 mt-3">Username</div>
+										<div class="col-xl-8"><input class="form-control form-control-solid bg-gray-100 text-lg" value="${user.name}" disabled/></div>
 									</div>
 									<div class="row my-3">
-										<div class="col-xl-4 mt-2">Version</div>
-										<div class="col-xl-8"><input class="form-control form-control-solid bg-gray-100 text-lg" value="Paid" disabled/></div>
+										<div class="col-xl-4 mt-3">Version</div>
+										<div class="col-xl-8"><input class="form-control form-control-solid bg-gray-100 text-lg" value="${user.pclass}" disabled/></div>
 									</div>
 									<div class="row my-3">
-										<div class="col-xl-4 mt-2">E-mail</div>
-										<div class="col-xl-8"><input class="form-control form-control-solid bg-gray-100 text-lg" value="vluna@aol.com" disabled/></div>	
+										<div class="col-xl-4 mt-3">E-mail</div>
+										<div class="col-xl-8"><input class="form-control form-control-solid bg-gray-100 text-lg" value="${user.email}" disabled/></div>	
 									</div>
 								</div>
 							</div>
@@ -68,7 +68,7 @@
 									<!-- Profile picture image-->
 									<div class="mb-lg-4"></div>
 									<img class="img-account-profile rounded-circle mb-2"
-										src="assets/img/illustrations/profiles/profile-1.png" alt="" />
+										src="assets/img/illustrations/profiles/${user.p_img}.png" alt="" />
 									<div class="mb-lg-4"></div>
 									<!-- Profile picture help block-->
 									<button class="btn round-button"
@@ -116,7 +116,7 @@
 								<div class="card-body row">
 									<div class="col-xl-4 pt-lg-2 ps-lg-5">
 										<div class="text-gray-500 text-lg">현재 이용 버전</div>
-										<div class="text-xl fw-700" style="margin-top: -0.7rem">Paid</div>
+										<div class="text-xl fw-700" style="margin-top: -0.7rem">${user.pclass}</div>
 									</div>
 									<div class="col-xl-8  pt-lg-2 text-lg">
 										<div >Total number of IoT (최대 X개)</div>
