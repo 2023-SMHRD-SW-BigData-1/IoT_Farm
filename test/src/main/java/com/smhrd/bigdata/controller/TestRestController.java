@@ -12,20 +12,20 @@ import com.smhrd.bigdata.service.TestService;
 
 @RestController
 public class TestRestController {
-	
-	@Autowired
-	private TestService service;	
-	
-	@GetMapping("join/idcheck")
-	public 	@ResponseBody String idCheck(@RequestParam("input") String input) {
-		int cnt = service.idCheck(input);
-		
-		if(cnt>0) {
-			return "fail";
-		}else {
-			return "success";
-		}
-	}
-	
-	
+   
+   @Autowired
+   private TestService service;   
+   
+   @GetMapping("join/idcheck")
+   public    @ResponseBody String idCheck(@RequestParam("input") String input) {
+      int cnt = service.idCheck(input);
+      
+      if(cnt>0) {
+         return "fail";
+      }else {
+         return "success";
+      }
+   }
+   
+   
 }
