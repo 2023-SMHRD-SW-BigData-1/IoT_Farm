@@ -1,11 +1,15 @@
 <!DOCTYPE html>
+<%@page import="ch.qos.logback.core.recovery.ResilientSyslogOutputStream"%>
 <%@page import="com.smhrd.bigdata.model.TestMember"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <body class="nav-fixed">
     
         <!-- 헤더부분 -->
-        <% TestMember user=(TestMember)session.getAttribute("user");%>
+        <% TestMember user=(TestMember)session.getAttribute("user");
+        Integer maxIot=(Integer)session.getAttribute("maxIot");
+        Integer maxSensor=(Integer)session.getAttribute("maxSensor");
+        %>
 		<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
@@ -17,7 +21,7 @@
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
 				style="margin-top: 1.8rem" href="/bigdata/mydata" role="button">
-					<div class="fw-900 text-lg">마이데이터</div>
+					<div class="fw-900 text-lg">${version}마이데이터</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"

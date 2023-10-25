@@ -88,30 +88,29 @@ public class TestController {
       return "guide";
    }
 
-   @GetMapping("/login")
-   public String loginform() {
-      return "login";
-   }
-   
-   @PostMapping("/login_action")
-   public String login_action(@ModelAttribute TestMember m, Model model, HttpSession session) {
-      TestMember user=service.login(m);
-      if(user != null) {
-         session.setAttribute("user", user);
-         
-         return "redirect:/";
-      } else {
-         model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
-           return "login";
-      }
-   }
-   
-   @GetMapping("/logout_action")
-   public String logout_action(HttpSession session) {
-      session.invalidate();
-      return "main";
-   }
-
+	@GetMapping("/login")
+	public String loginform() {
+		return "login";
+	}
+	
+	@PostMapping("/login_action")
+	public String login_action(@ModelAttribute TestMember m, Model model, HttpSession session) {
+		TestMember user=service.login(m);
+		if(user != null) {
+			session.setAttribute("user", user);
+			
+			return "redirect:/";
+		} else {
+			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
+	        return "login";
+		}
+	}
+	
+	@GetMapping("/logout_action")
+	public String logout_action(HttpSession session) {
+		session.invalidate();
+		return "main";
+	}
    @GetMapping("/question")
    public String question() {
       return "question";
