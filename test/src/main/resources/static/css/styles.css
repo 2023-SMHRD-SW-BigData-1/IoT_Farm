@@ -7952,6 +7952,7 @@ textarea.form-control-lg {
   border-bottom: 1px solid #e0e5ec;
   border-top-left-radius: calc(0.5rem - 1px);
   border-top-right-radius: calc(0.5rem - 1px);
+  position: relative;
 }
 .modal-header .btn-close {
   padding: 0.5rem 0.5rem;
@@ -21091,9 +21092,28 @@ pre[class*=language-] {
 .join_email{display: flex; align-items: center}
 .ml-10{margin-left: 10px;}
 .nav-menu{display: flex; position: relative;}
-.nav-plus{position: absolute; right: 0; top: 0; margin-right: 5%; margin-top: 7%;  font-size: x-large; color: #000; background:none; border: none;}
+.nav-plus{position: absolute; right: 0; top: 0; margin-right: 5%; margin-top: 7%;  font-size: large; color: #000; background:none; border: none;}
 .modal-flex{display: flex; align-items: center;}
-.modal-iot{width: 100px;}
+.modal-iot{width: 128px;}
+.wd-40{width: 40%;}
+.dashboard-count{ padding: 0.875rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #69707a;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #c5ccd6;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 0.35rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}
+  span.modal-span {
+    position: absolute;
+    margin-top: 8%;
+    font-size: x-small;
+}
 
 
 /*===========================================================*/
