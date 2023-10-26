@@ -36,7 +36,9 @@
 						<!-- Sidenav Menu Heading (Core)-->
 						<div class="sidenav-menu-heading nav-menu">
 							<div>iot register</div>
-							<button class="nav-plus" href="#" data-bs-toggle="modal"
+							<button
+								class="nav-plus badge bg-primary-soft text-primary ms-auto"
+								href="#" data-bs-toggle="modal"
 								data-bs-target="#exampleModalCenter">+</button>
 						</div>
 
@@ -62,7 +64,10 @@
 						<!-- Sidenav Heading (Custom)-->
 						<div class="sidenav-menu-heading nav-menu">
 							<div>dash boards</div>
-							<button class="nav-plus" href="#">+</button>
+							<button
+								class="nav-plus badge bg-primary-soft text-primary ms-auto"
+								href="#" data-bs-toggle="modal"
+								data-bs-target="#exampleModalCenter1">+</button>
 						</div>
 
 						<div class="collapse" id="collapsePages"
@@ -146,13 +151,77 @@
 			</footer>
 		</div>
 
-		<!-- Modal -->
+		<!-- iot Modal -->
 		<div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalCenterTitle">IoT 등록</h5>
+						<button class="btn-close" type="button" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<form>
+						<div class="modal-body">
+							<div class="mb-3 modal-flex">
+								<div class="modal-iot">IoT 이름:</div>
+								<input class="form-control" id="inputIot" type="text" />
+							</div>
+						</div>
+						<div class="modal-footer">
+
+							<button class="btn btn-primary" type="submit" aria-label="Close">확인</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- dashboard Modal 1 -->
+		<div class="modal" id="exampleModalCenter1" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">대시보드 생성</h5>
+						<button class="btn-close" type="button" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="mb-3 modal-flex">
+							<div class="wd-40">대시보드 이름:</div>
+							<input class="form-control" id="inputDashboard" type="text" />
+						</div>
+						<div class="mb-3 modal-flex">
+							<div class="modal-iot">사용 차트 수:</div>
+							<select class="dashboard-count">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="4">5</option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+
+						<button class="btn btn-primary" type="button"
+							data-bs-toggle="modal" data-bs-target="#exampleModalCenter2">다음</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- dashboard Modal 2 -->
+		<div class="modal" id="exampleModalCenter2" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">차트 생성</h5>
+						<span class="modal-span">차트 타입은 가이드라인에서 자세히 확인할 수 있습니다.</span>
 						<button class="btn-close" type="button" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
@@ -171,9 +240,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-secondary" type="button"
-							data-bs-dismiss="modal">취소</button>
-						<button class="btn btn-primary" type="button">확인</button>
+						<button class="btn btn-primary" type="button" aria-label="Close">확인</button>
 					</div>
 				</div>
 			</div>
