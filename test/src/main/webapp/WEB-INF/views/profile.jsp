@@ -18,6 +18,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
 </head>
 <body class="nav-fixed">
 
@@ -67,43 +69,43 @@
 								<div class="card-body text-center">
 									<!-- Profile picture image-->
 									<div class="mb-lg-4"></div>
-									<img class="img-account-profile rounded-circle mb-2"
+									<img id="profile-image" class="img-account-profile rounded-circle mb-2"
 										src="assets/img/illustrations/profiles/${user.p_img}.png" alt="" />
 									<div class="mb-lg-4"></div>
 									<!-- Profile picture help block-->
-									<button class="btn round-button"
-										style="height: 3.8rem; width: 3.8rem">
+									<button class="btn round-button" onclick="changeImg('profile-1')"
+										style="height: 3.8rem; width: 3.8rem"> 
 										<img src="assets/img/illustrations/profiles/profile-1.png"
 											style="width: 3.8rem">
 									</button>
-									<button class="btn round-button"
+									<button class="btn round-button" onclick="changeImg('profile-2')" 
 										style="height: 3.8rem; width: 3.8rem">
 										<img src="assets/img/illustrations/profiles/profile-2.png"
 											style="width: 3.8rem">
 									</button>
-									<button class="btn round-button"
+									<button class="btn round-button" onclick="changeImg('profile-3')"
 										style="height: 3.8rem; width: 3.8rem">
 										<img src="assets/img/illustrations/profiles/profile-3.png"
 											style="width: 3.8rem">
 									</button>
-									<button class="btn round-button"
+									<button class="btn round-button" onclick="changeImg('profile-4')"
 										style="height: 3.8rem; width: 3.8rem">
 										<img src="assets/img/illustrations/profiles/profile-4.png"
 											style="width: 3.8rem">
 									</button>
-									<button class="btn round-button"
+									<button class="btn round-button" onclick="changeImg('profile-5')"
 										style="height: 3.8rem; width: 3.8rem">
 										<img src="assets/img/illustrations/profiles/profile-5.png"
 											style="width: 3.8rem">
 									</button>
-									<button class="btn round-button"
+									<button class="btn round-button" onclick="changeImg('profile-6')"
 										style="height: 3.8rem; width: 3.8rem">
 										<img src="assets/img/illustrations/profiles/profile-6.png"
 											style="width: 3.8rem">
 									</button>
 									<div class="mb-lg-4"></div>
 									<!-- Profile picture upload button-->
-									<button class="btn btn-primary" style="font-size: 1rem" type="button">Change
+									<button class="btn btn-primary" style="font-size: 1rem" type="button" onclick="sendImage()">Change
 										profile image</button>
 								</div>
 							</div>
@@ -119,10 +121,10 @@
 										<div class="text-xl fw-700" style="margin-top: -0.7rem">${user.pclass}</div>
 									</div>
 									<div class="col-xl-8  pt-lg-2 text-lg">
-										<div >Total number of IoT (최대 ${maxIot}개)</div>
-										<div style="display:flex;margin-top: -0.7rem"><div class="mx-xl-1 fw-600" style="font-size: 2rem">X</div><div style="padding-top: 0.75rem">개 이용 중</div></div>
-										<div class="mt-2">Total number of sensors (최대 ${maxSensor }개)</div>
-										<div class="pb-lg-4" style="display:flex;margin-top: -0.7rem"><div class="mx-xl-1 fw-600" style="font-size: 2rem">6</div><div style="padding-top: 0.75rem">개 이용 중</div></div>
+										<div >Total number of IoT (최대 ${max.maxIot}개)</div>
+										<div style="display:flex;margin-top: -0.7rem"><div class="mx-xl-1 fw-600" style="font-size: 2rem">${max.myIot }</div><div style="padding-top: 0.75rem">개 이용 중</div></div>
+										<div class="mt-2">Total number of sensors (최대 ${max.maxSensor }개)</div>
+										<div class="pb-lg-4" style="display:flex;margin-top: -0.7rem"><div class="mx-xl-1 fw-600" style="font-size: 2rem">${max.mySensor }</div><div style="padding-top: 0.75rem">개 이용 중</div></div>
 										<div class="text-center"><a class="btn btn-block btn-outline-blue" href="/bigdata/pricing" style="font-size: 1rem">더 많은 장치 이용하기<i data-feather="arrow-right"></i></a></div>
 									
 									</div>
@@ -133,18 +135,19 @@
 							<div class="card mb-4 mt-4">
 								<div class="card-header">Change Username</div>
 								<div class="card-body">
-									<form>
+									<form action="updateName" method="post">
 										<!-- Form Group (username)-->
 										<div class="mb-3">
 											<label class="mb-1" for="inputUsername">Username (
 												사이트에서 표시되는 방식 )</label> <input class="form-control"
 												id="inputUsername" type="text"
-												placeholder="Enter your username" value="username" style="font-size: 1rem"/>
+												placeholder="Enter your username" value="${user.name }" style="font-size: 1rem"/>
 										</div>
 
 										<!-- Save changes button-->
-										<button class="btn btn-primary" style="font-size: 1rem" type="button">Save
-											change</button>
+										<button class="btn btn-primary" style="font-size: 1rem" type="submit">Save
+											change
+										</button>
 									</form>
 								</div>
 							</div>
@@ -154,6 +157,42 @@
 			</main>
 		</div>
 	</div>
+	<script>
+	var profileImage = document.getElementById('profile-image');
+    var initialImageSrc = "assets/img/illustrations/profiles/${user.p_img}.png";
+    var image="${user.p_img}";
+    profileImage.src = initialImageSrc;
+
+    // 이미지 변경 함수
+    function changeImg(newSrc) {
+        profileImage.src = "assets/img/illustrations/profiles/"+newSrc+".png";
+        image=newSrc;
+    }
+    
+    var changeImages = document.querySelectorAll('.changeImages');
+    function sendImage() {
+        $.ajax({
+            url : "updateImg",
+            type : "get",
+            data : {'img' : image },
+            success : function(result){
+                if(result=="success"){
+                	alert('이미지변경성공');
+                	changeImages.forEach(function(element) {
+                		  element.src = "assets/img/illustrations/profiles/" + image + ".png";
+                		});
+                } else {
+                	alert('이미지변경실패');
+                }
+            },
+            error : function(){
+                alert('error!');
+            }
+        });
+    }
+    
+    // 이름 변경 함수
+	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>

@@ -36,6 +36,11 @@ public class TestService {
        return mapper.idCheck(id);
    }
    
+public int updateImg(String id, String img) {
+	// TODO Auto-generated method stub
+	return mapper.updateImg(id, img);
+}
+   
    
 }
    

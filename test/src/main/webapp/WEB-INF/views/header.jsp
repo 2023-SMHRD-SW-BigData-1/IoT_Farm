@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.smhrd.bigdata.model.IoT_Sensor"%>
 <%@page import="ch.qos.logback.core.recovery.ResilientSyslogOutputStream"%>
 <%@page import="com.smhrd.bigdata.model.TestMember"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -7,9 +8,7 @@
     
         <!-- 헤더부분 -->
         <% TestMember user=(TestMember)session.getAttribute("user");
-        Integer maxIot=(Integer)session.getAttribute("maxIot");
-        Integer maxSensor=(Integer)session.getAttribute("maxSensor");
-        %>
+        IoT_Sensor max=(IoT_Sensor)session.getAttribute("max");%>
 		<nav
 		class="topnav00 navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
 		id="sidenavAccordion">
@@ -113,13 +112,13 @@
 				style="margin-top: 1.3rem" id="navbarDropdownUserImage"
 				href="javascript:void(0);" role="button" data-bs-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"><img
-					class="img-fluid"
-					src="assets/img/illustrations/profiles/profile-1.png" /> </a>
+					class="img-fluid changeImages"
+					src="assets/img/illustrations/profiles/${user.p_img }.png" /> </a>
 				<div
 					class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
 					aria-labelledby="navbarDropdownUserImage">
 					<h6 class="dropdown-header d-flex align-items-center">
-						<img class="dropdown-user-img"
+						<img class="dropdown-user-img changeImages"
 							src="assets/img/illustrations/profiles/${user.p_img }.png" />
 						<div class="dropdown-user-details">
 							<div class="dropdown-user-details-name">${user.name}</div>

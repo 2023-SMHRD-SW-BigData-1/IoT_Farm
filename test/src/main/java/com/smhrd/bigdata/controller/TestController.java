@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.smhrd.bigdata.model.IoT_Sensor;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.service.TestService;
 
@@ -96,9 +97,28 @@ public class TestController {
 	@PostMapping("/login_action")
 	public String login_action(@ModelAttribute TestMember m, Model model, HttpSession session) {
 		TestMember user=service.login(m);
+		
 		if(user != null) {
 			session.setAttribute("user", user);
 			
+			
+			/*
+			int usingIot=service.iotNum(user.getUser_num()); // 유저의 iot 개수 함수
+			int usingSensor=service.sensorNum(user.getUser_num()); // 유저의 sensor 개수 함수
+			*/
+			int usingIot=2;
+			int usingSensor=2;
+			
+			
+			IoT_Sensor max;
+			if(user.getPclass().equals("Free")) {
+				max=new IoT_Sensor(3,9,usingIot,usingSensor);
+			}else if(user.getPclass().equals("Paid")) {
+				max=new IoT_Sensor(10,30,usingIot,usingSensor);
+			}else {
+				max=new IoT_Sensor(20,100,usingIot,usingSensor);
+			}
+			session.setAttribute("max", max);
 			return "redirect:/";
 		} else {
 			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
