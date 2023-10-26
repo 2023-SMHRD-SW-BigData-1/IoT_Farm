@@ -1,5 +1,6 @@
 package com.smhrd.bigdata.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -22,4 +23,13 @@ public interface TestMapper {
 
 	@Update("update user_info set p_img=#{img} where id=#{id}")
 	public int updateImg(String id, String img);
+
+	@Update("update user_info set name=#{name} where id=#{id}")
+	public int updateName(String id, String name);
+
+	@Update("update user_info set pw=#{newPassword} where id=#{id}")
+	public int updatePw(String id, String newPassword);
+
+	@Delete("delete from user_info where id=#{id}")
+	public void delete(String id);
 }

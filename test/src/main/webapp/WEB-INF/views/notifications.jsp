@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.smhrd.bigdata.model.TestMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html lang="en">
@@ -20,7 +21,9 @@
 	crossorigin="anonymous"></script>
 </head>
 <body class="nav-fixed">
-
+	<%
+	TestMember user = (TestMember) session.getAttribute("user");
+	%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<!-- 네비게이션 삭제 style="margin-left: -15rem; margin-top:-3.5rem"-->
 	<div id="layoutSidenav">
@@ -53,17 +56,31 @@
 							<div class="card mb-4">
 								<div class="card-header">Notification Preferences</div>
 								<div class="card-body">
-									<div class="alert alert-primary" role="alert">이메일 알림은 Paid버전부터 이용이 가능합니다!<br>감사합니다!</div>
+									<%
+									if (user.getPclass().equals("Free")) {
+									%>
+									<div class="alert alert-primary" role="alert">
+										이메일 알림은 Paid 버전부터 이용 가능합니다!<br>감사합니다!
+									</div>
+									<%
+									}
+									%>
 									<form>
 										<!-- Form Group (notification preference checkboxes)-->
 										<div class="form-check mb-2">
+											<% if (user.getPclass().equals("Free")) { %>
 											<input class="form-check-input" id="checkAutoGroup"
-												type="checkbox" checked /> <label class="form-check-label"
+												type="checkbox" disabled/> <label class="form-check-label"
 												for="checkAutoGroup">이메일 알림</label>
+											<% }else{ %>
+											<input class="form-check-input" id="checkAutoGroup"
+												type="checkbox"  disabled/> <label class="form-check-label"
+												for="checkAutoGroup">이메일 알림</label>
+											<% } %>
 										</div>
 										<div class="form-check mb-3">
 											<input class="form-check-input" id="checkAutoProduct"
-												type="checkbox" /> <label class="form-check-label"
+												type="checkbox"/> <label class="form-check-label"
 												for="checkAutoProduct">웹 알림</label>
 										</div>
 										<!-- Submit button-->
@@ -84,7 +101,7 @@
 										<!-- Form Group (current password)-->
 										<div class="mb-3">
 											<label class="small mb-1" for="currentPassword">현재
-												이메일</label> <input class="form-control" value="vluna@aol.com"
+												이메일</label> <input class="form-control" value="${user.email }"
 												disabled />
 										</div>
 										<!-- Form Group (new password)-->
@@ -125,7 +142,7 @@
 										<div class="mb-3">
 											<label class="small mb-1" for="inputNotificationEmail">사용
 												이메일</label> <input class="form-control" id="inputNotificationEmail"
-												type="email" value="name@example.com" disabled />
+												type="email" value="${user.email }" disabled />
 										</div>
 										<!-- Form Group (email updates checkboxes)-->
 										<div class="mb-0">

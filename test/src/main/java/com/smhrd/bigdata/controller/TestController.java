@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -54,6 +55,19 @@ public class TestController {
       return "profile";
    }
 
+   @PostMapping("/updateName")
+   public String updateName(@ModelAttribute TestMember m, HttpSession session, Model model) {
+       TestMember user = (TestMember) session.getAttribute("user");
+       if (service.updateName(user.getId(), m.getName()) > 0) {
+           user.setName(m.getName());
+           model.addAttribute("alertMessage", "프로필이 업데이트되었습니다."); // 알림 메시지를 모델에 추가
+           return "profile";
+       } else {
+           model.addAttribute("alertMessage", "프로필 업데이트가 실패했습니다."); // 알림 메시지를 모델에 추가
+           return "profile";
+       }
+   }
+   
    @GetMapping("/billing")
    public String billing(Model model) {
       return "billing";
@@ -62,6 +76,45 @@ public class TestController {
    @GetMapping("/security")
    public String security(Model model) {
       return "security";
+   }
+   
+   @PostMapping("/changePw")
+   public String changePassword(@RequestParam("cPw") String currentPassword,
+                                @RequestParam("nPw") String newPassword,
+                                @RequestParam("cnPw") String confirmNewPassword,
+                                HttpSession session, Model model) {
+       // 세션에서 사용자 정보 가져오기
+       TestMember user = (TestMember) session.getAttribute("user");
+       
+       // 현재 비밀번호와 사용자의 저장된 비밀번호 비교
+       if (!user.getPw().equals(currentPassword)) {
+           model.addAttribute("alertMessage", "현재 비밀번호가 일치하지 않습니다.");
+           return "security";
+       }
+
+       // 새 비밀번호와 비밀번호 확인 일치 여부 확인
+       if (!newPassword.equals(confirmNewPassword)) {
+           model.addAttribute("alertMessage", "새 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+           return "security";
+       }
+
+       // 비밀번호 변경 로직 실행
+       if (service.changePw(user.getId(), newPassword) > 0) {
+           user.setPw(newPassword);
+           model.addAttribute("alertMessage", "비밀번호가 성공적으로 변경되었습니다.");
+           return "security";
+       } else {
+           model.addAttribute("alertMessage", "비밀번호 변경을 실패하였습니다.");
+           return "security";
+       }
+   }
+   
+   @GetMapping("/delete")
+   public String delete(HttpSession session) {
+	  TestMember user = (TestMember) session.getAttribute("user");
+	  service.delete(user.getId());
+	  session.invalidate();
+      return "main";
    }
 
    @GetMapping("/notifications")

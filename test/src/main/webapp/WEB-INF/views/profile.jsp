@@ -19,12 +19,12 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	
 </head>
 <body class="nav-fixed">
 
 	<!-- 헤더부분 -->
 	<jsp:include page="header.jsp"></jsp:include>
+
 
 	<!-- 네비게이션 삭제 style="margin-left: -15rem; margin-top:-3.5rem"-->
 	<div id="layoutSidenav">
@@ -141,7 +141,7 @@
 											<label class="mb-1" for="inputUsername">Username (
 												사이트에서 표시되는 방식 )</label> <input class="form-control"
 												id="inputUsername" type="text"
-												placeholder="Enter your username" value="${user.name }" style="font-size: 1rem"/>
+												placeholder="Enter your username" value="${user.name }" style="font-size: 1rem" name="name"/>
 										</div>
 
 										<!-- Save changes button-->
@@ -177,12 +177,12 @@
             data : {'img' : image },
             success : function(result){
                 if(result=="success"){
-                	alert('이미지변경성공');
+                	alert('프로필이 업데이트되었습니다.');
                 	changeImages.forEach(function(element) {
                 		  element.src = "assets/img/illustrations/profiles/" + image + ".png";
                 		});
                 } else {
-                	alert('이미지변경실패');
+                	alert('프로필 업데이트가 실패했습니다.');
                 }
             },
             error : function(){
@@ -191,7 +191,12 @@
         });
     }
     
-    // 이름 변경 함수
+    window.onload = function() {
+        var alertMessage = "${alertMessage}";
+        if (alertMessage !== "") {
+            alert(alertMessage);
+        }
+    };
 	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

@@ -40,6 +40,19 @@ public int updateImg(String id, String img) {
 	// TODO Auto-generated method stub
 	return mapper.updateImg(id, img);
 }
+
+public int updateName(String id, String name) {
+	return mapper.updateName(id,name);
+}
+
+public int changePw(String id, String newPassword) {
+	// TODO Auto-generated method stub
+	return mapper.updatePw(id,newPassword);
+}
+
+public void delete(String id) {
+	mapper.delete(id);
+}
    
    
 }
