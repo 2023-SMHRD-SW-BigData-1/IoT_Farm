@@ -32,4 +32,9 @@ public interface TestMapper {
 
 	@Delete("delete from user_info where id=#{id}")
 	public void delete(String id);
+	
+	//iot 기기등록
+	@Insert("insert iot_info (iot_name) VALUES (#{iotName})")
+	public int iotadd(String iotName);
+	
 }

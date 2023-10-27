@@ -21,7 +21,7 @@ public class TestMember {
 	private String email;
 	private String p_img;
 	
-	public TestMember(String id, String pw) {
+	public TestMember(String id, String pw, String iot_name) {
 		this.id = id;
 		this.pw = pw;
 	}

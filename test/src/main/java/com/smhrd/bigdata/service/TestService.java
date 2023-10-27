@@ -53,7 +53,9 @@ public int changePw(String id, String newPassword) {
 public void delete(String id) {
 	mapper.delete(id);
 }
-   
+   public int iotadd(String iotName) {
+	   return mapper.iotadd(iotName);
+   }
    
 }
    

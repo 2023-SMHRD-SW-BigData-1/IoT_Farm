@@ -161,11 +161,11 @@
 						<button class="btn-close" type="button" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					<form>
+					<form id="iotForm" action="mydata/iotadd" method="get">
 						<div class="modal-body">
 							<div class="mb-3 modal-flex">
 								<div class="modal-iot">IoT 이름:</div>
-								<input class="form-control" id="inputIot" type="text" />
+								<input class="form-control" id="inputIot" type="text" name="iotName"/>
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -250,5 +250,31 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#iotForm").submit(function(event) {
+				event.preventDefault();
+				var iotName = $("#inputIot").val();
+
+				// AJAX 요청을 사용하여 서버로 데이터를 보냅니다.
+				$.ajax({
+					type : "GET",
+					url : "mydata/iotadd", // 서버 측 코드가 위치한 URL
+					data : {
+						iotName : iotName
+					},
+					success : function(response) {
+						// 성공 시 처리
+						console.log("데이터가 성공적으로 전송되었습니다.");
+					},
+					error : function() {
+						// 오류 시 처리
+						console.log("데이터 전송 중 오류가 발생했습니다.");
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>
