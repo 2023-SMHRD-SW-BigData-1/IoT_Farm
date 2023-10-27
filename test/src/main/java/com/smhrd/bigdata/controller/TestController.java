@@ -121,6 +121,28 @@ public class TestController {
       return "notifications";
    }
    
+   @PostMapping("/noti")
+   public String noti(@RequestParam(value = "select_noti") String[] check, HttpSession session, Model model) {
+	   int checknum=0;
+	   for(String str:check) {
+		   if(str.equals("email")) {
+			   checknum+=10;
+		   }
+		   if(str.equals("web")) {
+			   checknum+=1;
+		   }
+	   }
+       TestMember user = (TestMember) session.getAttribute("user");
+       if (service.updateSelect_noti(user.getId(), user.getSelect_noti()) > 0) {
+           user.setSelect_noti(String.valueOf(checknum));
+           model.addAttribute("alertMessage", "설정이 저장되었습니다."); // 알림 메시지를 모델에 추가
+           return "notifications";
+       } else {
+           model.addAttribute("alertMessage", "설정 저장이 실패했습니다."); // 알림 메시지를 모델에 추가
+           return "notifications";
+       }
+   }
+   
    @PostMapping("/changeEmail")
    public String changePassword(@RequestParam("cEmail") String email,
                                 HttpSession session, Model model) {
