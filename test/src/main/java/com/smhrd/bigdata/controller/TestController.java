@@ -116,10 +116,32 @@ public class TestController {
 	  session.invalidate();
       return "main";
    }
-
    @GetMapping("/notifications")
    public String notifications(Model model) {
       return "notifications";
+   }
+   
+   @PostMapping("/changeEmail")
+   public String changePassword(@RequestParam("cEmail") String email,
+                                HttpSession session, Model model) {
+       // 세션에서 사용자 정보 가져오기
+       TestMember user = (TestMember) session.getAttribute("user");
+       
+       // 현재 email와 사용자의 저장된 email 비교
+       if (user.getEmail().equals(email)) {
+           model.addAttribute("alertMessage", "같은 이메일로 변경할 수 없습니다.");
+           return "notifications";
+       }
+
+       // 비밀번호 변경 로직 실행
+       if (service.changeEmail(user.getId(), email) > 0) {
+           user.setEmail(email);
+           model.addAttribute("alertMessage", "이메일이 성공적으로 변경되었습니다.");
+           return "notifications";
+       } else {
+           model.addAttribute("alertMessage", "이메일 변경을 실패하였습니다.");
+           return "notifications";
+       }
    }
 
    @GetMapping("/pricing")

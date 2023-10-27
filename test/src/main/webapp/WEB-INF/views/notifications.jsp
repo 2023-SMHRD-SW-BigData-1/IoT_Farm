@@ -65,23 +65,24 @@
 									<%
 									}
 									%>
+
 									<form>
 										<!-- Form Group (notification preference checkboxes)-->
 										<div class="form-check mb-2">
-											<% if (user.getPclass().equals("Free")) { %>
+											
 											<input class="form-check-input" id="checkAutoGroup"
-												type="checkbox" disabled/> <label class="form-check-label"
-												for="checkAutoGroup">이메일 알림</label>
-											<% }else{ %>
-											<input class="form-check-input" id="checkAutoGroup"
-												type="checkbox"  disabled/> <label class="form-check-label"
-												for="checkAutoGroup">이메일 알림</label>
-											<% } %>
+												name="select_noti" value="email" type="checkbox" <%
+											if (user.getPclass().equals("Free")) {
+											%>disabled<%}%> />
+											<label class="form-check-label" for="checkAutoGroup">이메일
+												알림</label>
+											
+											
 										</div>
 										<div class="form-check mb-3">
 											<input class="form-check-input" id="checkAutoProduct"
-												type="checkbox"/> <label class="form-check-label"
-												for="checkAutoProduct">웹 알림</label>
+												name="select_noti" value="web" type="checkbox" /> <label
+												class="form-check-label" for="checkAutoProduct">웹 알림</label>
 										</div>
 										<!-- Submit button-->
 										<button class="btn btn-primary" type="button"
@@ -97,7 +98,7 @@
 							<div class="card mb-4 ">
 								<div class="card-header">Change Email Address</div>
 								<div class="card-body">
-									<form>
+									<form action="changeEmail" method="post">
 										<!-- Form Group (current password)-->
 										<div class="mb-3">
 											<label class="small mb-1" for="currentPassword">현재
@@ -107,16 +108,15 @@
 										<!-- Form Group (new password)-->
 										<div class="mb-3">
 											<label class="small mb-1" for="newPassword">변경 이메일</label> <input
-												class="form-control" id="newPassword" type="password"
-												placeholder="새 비밀번호 입력" />
+												class="form-control" id="newPassword" type="text"
+												name="cEmail" placeholder="새 이메일 입력" />
 										</div>
-										<button class="btn btn-primary" type="button"
+										<button class="btn btn-primary" type="submit"
 											style="font-size: 1rem">Save change</button>
 									</form>
 								</div>
 							</div>
 						</div>
-
 
 
 
@@ -134,7 +134,12 @@
 							<div class="card card-header-actions mb-4">
 								<div class="card-header">
 									Email Notifications
-									<button class="btn btn-primary btn-sm" style="font-size: 1rem">Update</button>
+
+
+									<button class="btn btn-primary btn-sm" style="font-size: 1rem"
+										<%if (user.getPclass().equals("Free")) {%>
+										disabled <%}%>>Update</button>
+
 								</div>
 								<div class="card-body">
 									<form>
@@ -146,32 +151,35 @@
 										</div>
 										<!-- Form Group (email updates checkboxes)-->
 										<div class="mb-0">
+
+
 											<div class="form-check mb-2">
 												<input class="form-check-input" id="checkAccountGroups"
-													type="checkbox" checked disabled /> <label
-													class="form-check-label" for="checkAccountGroups">사용자
-													정보 변경</label>
-											</div>
-											<div class="form-check mb-2">
-												<input class="form-check-input" id="checkProductUpdates"
-													type="checkbox" checked /> <label class="form-check-label"
-													for="checkProductUpdates">IoT/센서에 대한 정보 변경</label>
+													name="email_noti" value="email" type="checkbox" checked
+													disabled /> <label class="form-check-label"
+													for="checkAccountGroups">사용자 정보 변경</label>
 											</div>
 											<div class="form-check mb-2">
 												<input class="form-check-input" id="checkProductNew"
-													type="checkbox" checked /> <label class="form-check-label"
-													for="checkProductNew">센서의 이상치 감지</label>
+													name="email_noti" value="email" type="checkbox" /> <label
+													class="form-check-label" for="checkProductNew">센서의
+													이상치 감지</label>
 											</div>
 											<div class="form-check mb-2">
 												<input class="form-check-input" id="checkPromotional"
-													type="checkbox" /> <label class="form-check-label"
-													for="checkPromotional">결제일 안내</label>
+													name="email_noti" value="email" type="checkbox" /> <label
+													class="form-check-label" for="checkPromotional">결제일
+													안내</label>
 											</div>
 											<div class="form-check">
 												<input class="form-check-input" id="checkSecurity"
-													type="checkbox" checked /> <label class="form-check-label"
-													for="checkSecurity">아오팜 업데이트 소식</label>
+													name="email_noti" value="email" type="checkbox" /> <label
+													class="form-check-label" for="checkSecurity">아오팜
+													업데이트 소식</label>
 											</div>
+
+
+
 										</div>
 									</form>
 								</div>
@@ -201,13 +209,8 @@
 													정보 변경</label>
 											</div>
 											<div class="form-check mb-2">
-												<input class="form-check-input" id="checkProductUpdates"
-													type="checkbox" checked /> <label class="form-check-label"
-													for="checkProductUpdates">IoT/센서에 대한 정보 변경</label>
-											</div>
-											<div class="form-check mb-2">
 												<input class="form-check-input" id="checkProductNew"
-													type="checkbox" checked /> <label class="form-check-label"
+													type="checkbox" /> <label class="form-check-label"
 													for="checkProductNew">센서의 이상치 감지</label>
 											</div>
 											<div class="form-check mb-2">
@@ -217,7 +220,7 @@
 											</div>
 											<div class="form-check">
 												<input class="form-check-input" id="checkSecurity"
-													type="checkbox" checked /> <label class="form-check-label"
+													type="checkbox" /> <label class="form-check-label"
 													for="checkSecurity">아오팜 업데이트 소식</label>
 											</div>
 										</div>
@@ -246,6 +249,14 @@
 			</main>
 		</div>
 	</div>
+	<script>
+		window.onload = function() {
+			var alertMessage = "${alertMessage}";
+			if (alertMessage !== "") {
+				alert(alertMessage);
+			}
+		}
+	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>

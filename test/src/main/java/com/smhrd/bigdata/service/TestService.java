@@ -53,6 +53,10 @@ public int changePw(String id, String newPassword) {
 public void delete(String id) {
 	mapper.delete(id);
 }
+
+public int changeEmail(String id, String email) {
+	return mapper.updateEmail(id,email);
+}
    
    
 }

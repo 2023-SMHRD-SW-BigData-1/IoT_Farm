@@ -32,4 +32,7 @@ public interface TestMapper {
 
 	@Delete("delete from user_info where id=#{id}")
 	public void delete(String id);
+
+	@Update("update user_info set email=#{email} where id=#{id}")
+	public int updateEmail(String id, String email);
 }
