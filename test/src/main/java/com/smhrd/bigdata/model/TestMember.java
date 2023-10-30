@@ -24,11 +24,14 @@ public class TestMember {
 	private Date joindate;
 	private String email;
 	private String p_img;
+	private String select_noti;
+	private String email_noti;
+	private String web_noti;
+	
 	public TestMember(String id, String pw) {
 		this.id = id;
 		this.pw = pw;
 	}
 	
-
 
 }

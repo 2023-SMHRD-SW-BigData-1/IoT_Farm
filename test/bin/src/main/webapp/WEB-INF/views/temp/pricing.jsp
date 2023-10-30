@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Account Settings - Profile - SB Admin Pro</title>
+        <title>Pricing - SB Admin Pro</title>
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -498,104 +498,295 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
-                        <div class="container-xl px-4">
-                            <div class="page-header-content">
-                                <div class="row align-items-center justify-content-between pt-3">
-                                    <div class="col-auto mb-3">
-                                        <h1 class="page-header-title">
-                                            <div class="page-header-icon"><i data-feather="user"></i></div>
-                                            Account Settings - Profile
-                                        </h1>
+                    <!-- Main page content-->
+                    <div class="container-xl px-4">
+                        <div class="text-center my-10">
+                            <h1 class="text-primary mb-2 display-6 fw-bold">Pricing Plans</h1>
+                            <p class="lead mb-0">Pricing built for any business. No surprises, no hassle.</p>
+                        </div>
+                        <!-- Detailed pricing example-->
+                        <div class="pricing-detailed">
+                            <div class="row align-items-center g-0">
+                                <!-- Detailed pricing column 1-->
+                                <div class="col-lg-6 z-1 mb-4 mb-lg-0">
+                                    <div class="card text-center border-0">
+                                        <div class="card-header bg-transparent justify-content-center py-4"><h5 class="text-primary mb-0">Standard</h5></div>
+                                        <div class="card-body p-5">
+                                            <p class="lead mb-4">One easy to understand pricing plan for all of our users! Get complete access to all of our features.</p>
+                                            <div class="mb-4">
+                                                <span class="display-4 fw-bold text-dark">$9</span>
+                                                <span>/mo</span>
+                                            </div>
+                                            <ul class="list-unstyled">
+                                                <li class="d-flex align-items-center justify-content-center mb-3">
+                                                    <i class="text-primary me-2" data-feather="check-circle"></i>
+                                                    Unlimited access to all of our products
+                                                </li>
+                                                <li class="d-flex align-items-center justify-content-center mb-3">
+                                                    <i class="text-primary me-2" data-feather="check-circle"></i>
+                                                    No setup fees or any hidden fees
+                                                </li>
+                                                <li class="d-flex align-items-center justify-content-center">
+                                                    <i class="text-primary me-2" data-feather="check-circle"></i>
+                                                    Dedicated customer support
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a class="card-footer d-flex align-items-center justify-content-center" href="#!">
+                                            Start now
+                                            <i class="ms-2" data-feather="arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Detailed pricing column 2-->
+                                <div class="col-lg-6">
+                                    <div class="card bg-dark text-center pricing-detailed-behind">
+                                        <div class="card-header justify-content-center py-4"><h5 class="mb-0 text-white">Custom</h5></div>
+                                        <div class="card-body text-white-50 p-5">Need something more? We offer customized, enterprise level plans for specific implementations. Contact our sales team to learn more about custom licensing!</div>
+                                        <a class="card-footer bg-gray-800 text-white d-flex align-items-center justify-content-center" href="#!">
+                                            Contact sales
+                                            <i class="ms-2" data-feather="arrow-right"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </header>
-                    <!-- Main page content-->
-                    <div class="container-xl px-4 mt-4">
-                        <!-- Account page navigation-->
-                        <nav class="nav nav-borders">
-                            <a class="nav-link active ms-0" href="account-profile.html">Profile</a>
-                            <a class="nav-link" href="account-billing.html">Billing</a>
-                            <a class="nav-link" href="account-security.html">Security</a>
-                            <a class="nav-link" href="account-notifications.html">Notifications</a>
-                        </nav>
-                        <hr class="mt-0 mb-4" />
-                        <div class="row">
-                            <div class="col-xl-4">
-                                <!-- Profile picture card-->
-                                <div class="card mb-4 mb-xl-0">
-                                    <div class="card-header">Profile Picture</div>
-                                    <div class="card-body text-center">
-                                        <!-- Profile picture image-->
-                                        <img class="img-account-profile rounded-circle mb-2" src="assets/img/illustrations/profiles/profile-1.png" alt="" />
-                                        <!-- Profile picture help block-->
-                                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                                        <!-- Profile picture upload button-->
-                                        <button class="btn btn-primary" type="button">Upload new image</button>
+                    </div>
+                    <hr class="my-10" />
+                    <div class="container-xl px-4">
+                        <div class="text-center my-10">
+                            <h1 class="text-primary mb-2">Pricing built for your business.</h1>
+                            <p class="lead">Start out small and upgrade as you grow. No surprises, no hassle.</p>
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input class="btn-check" id="btnMonthlyBilling" type="radio" name="btnradio" autocomplete="off" checked />
+                                <label class="btn btn-outline-primary" for="btnMonthlyBilling">Monthly Billing</label>
+                                <input class="btn-check" id="btnYearlyBilling" type="radio" name="btnradio" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="btnYearlyBilling">Yearly Billing</label>
+                            </div>
+                        </div>
+                        <!-- Pricing columns example-->
+                        <div class="pricing-columns">
+                            <div class="row justify-content-center">
+                                <!-- Pricing column 1-->
+                                <div class="col-xl-4 col-lg-6 mb-4 mb-xl-0">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-transparent">
+                                            <span class="badge bg-primary-soft text-primary rounded-pill py-2 px-3 mb-2">Individual</span>
+                                            <div class="pricing-columns-price">
+                                                $9
+                                                <span>/month</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">
+                                                    <i class="text-primary me-2" data-feather="check-circle"></i>
+                                                    1 user account
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-primary me-2" data-feather="check-circle"></i>
+                                                    Remove ads
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-primary me-2" data-feather="check-circle"></i>
+                                                    Premium assets
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-primary me-2" data-feather="check-circle"></i>
+                                                    Saved projects
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a class="card-footer d-flex align-items-center justify-content-between" href="#!">
+                                            Get started!
+                                            <i data-feather="arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Pricing column 2-->
+                                <div class="col-xl-4 col-lg-6 mb-4 mb-xl-0">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-transparent">
+                                            <span class="badge bg-secondary-soft text-secondary rounded-pill py-2 px-3 mb-2">Team</span>
+                                            <div class="pricing-columns-price">
+                                                $39
+                                                <span>/month</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">
+                                                    <i class="text-secondary me-2" data-feather="check-circle"></i>
+                                                    Up to 5 user accounts
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-secondary me-2" data-feather="check-circle"></i>
+                                                    Remove ads
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-secondary me-2" data-feather="check-circle"></i>
+                                                    Premium assets
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-secondary me-2" data-feather="check-circle"></i>
+                                                    Saved projects
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-secondary me-2" data-feather="check-circle"></i>
+                                                    Team collaboration tools
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a class="card-footer d-flex align-items-center justify-content-between text-secondary" href="#!">
+                                            Get started!
+                                            <i data-feather="arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Pricing column 3-->
+                                <div class="col-xl-4 col-lg-6">
+                                    <div class="pricing-table">
+                                        <div class="card h-100">
+                                            <div class="card-header bg-transparent">
+                                                <span class="badge bg-success-soft text-success rounded-pill py-2 px-3 mb-2">Organization</span>
+                                                <div class="pricing-columns-price">
+                                                    $249
+                                                    <span>/month</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-0">
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+                                                        <i class="text-success me-2" data-feather="check-circle"></i>
+                                                        Up to 50 user accounts
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success me-2" data-feather="check-circle"></i>
+                                                        Remove ads
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success me-2" data-feather="check-circle"></i>
+                                                        Premium assets
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success me-2" data-feather="check-circle"></i>
+                                                        Saved projects
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success me-2" data-feather="check-circle"></i>
+                                                        Team collaboration tools
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success me-2" data-feather="check-circle"></i>
+                                                        Create teams &amp; groups
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success me-2" data-feather="check-circle"></i>
+                                                        Priority customer support
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a class="card-footer d-flex align-items-center justify-content-between text-success" href="#!">
+                                                Get started!
+                                                <i data-feather="arrow-right"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-8">
-                                <!-- Account details card-->
-                                <div class="card mb-4">
-                                    <div class="card-header">Account Details</div>
-                                    <div class="card-body">
-                                        <form>
-                                            <!-- Form Group (username)-->
-                                            <div class="mb-3">
-                                                <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username" />
-                                            </div>
-                                            <!-- Form Row-->
-                                            <div class="row gx-3 mb-3">
-                                                <!-- Form Group (first name)-->
-                                                <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputFirstName">First name</label>
-                                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" />
-                                                </div>
-                                                <!-- Form Group (last name)-->
-                                                <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputLastName">Last name</label>
-                                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna" />
-                                                </div>
-                                            </div>
-                                            <!-- Form Row        -->
-                                            <div class="row gx-3 mb-3">
-                                                <!-- Form Group (organization name)-->
-                                                <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputOrgName">Organization name</label>
-                                                    <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap" />
-                                                </div>
-                                                <!-- Form Group (location)-->
-                                                <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputLocation">Location</label>
-                                                    <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA" />
-                                                </div>
-                                            </div>
-                                            <!-- Form Group (email address)-->
-                                            <div class="mb-3">
-                                                <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com" />
-                                            </div>
-                                            <!-- Form Row-->
-                                            <div class="row gx-3 mb-3">
-                                                <!-- Form Group (phone number)-->
-                                                <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputPhone">Phone number</label>
-                                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567" />
-                                                </div>
-                                                <!-- Form Group (birthday)-->
-                                                <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                                    <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988" />
-                                                </div>
-                                            </div>
-                                            <!-- Save changes button-->
-                                            <button class="btn btn-primary" type="button">Save changes</button>
-                                        </form>
-                                    </div>
+                        </div>
+                    </div>
+                    <hr class="my-10" />
+                    <div class="container-xl px-4">
+                        <div class="text-center my-10">
+                            <h1 class="text-primary mb-2 display-6 fw-bold">Pricing Plans</h1>
+                            <p class="lead mb-0">Compare our pricing plans and pick what's right for you.</p>
+                        </div>
+                        <!-- Pricing table example-->
+                        <div class="card rounded-lg overflow-hidden mb-5">
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr class="bg-dark text-white">
+                                                <th class="py-4" scope="col"></th>
+                                                <th class="py-4" scope="col">Individual</th>
+                                                <th class="py-4" scope="col">Team</th>
+                                                <th class="py-4" scope="col">Organization</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th class="p-3" scope="row">Pricing</th>
+                                                <td class="p-3 w-25" style="min-width: 12.5rem">
+                                                    <div class="text-dark mb-2">
+                                                        <span class="h1">$9</span>
+                                                        <span class="small text-muted fw-normal">/mo.</span>
+                                                    </div>
+                                                    <p class="small">A basic plan for new users and individuals.</p>
+                                                    <div class="d-grid"><button class="btn btn-primary" type="button">Choose Plan</button></div>
+                                                </td>
+                                                <td class="p-3 w-25" style="min-width: 12.5rem">
+                                                    <div class="text-dark mb-2">
+                                                        <span class="h1">$39</span>
+                                                        <span class="small text-muted fw-normal">/mo.</span>
+                                                    </div>
+                                                    <p class="small">Our most popular plan. with more features.</p>
+                                                    <div class="d-grid"><button class="btn btn-primary" type="button">Choose Plan</button></div>
+                                                </td>
+                                                <td class="p-3 w-25" style="min-width: 12.5rem">
+                                                    <div class="text-dark mb-2">
+                                                        <span class="h1">$249</span>
+                                                        <span class="small text-muted fw-normal">/mo.</span>
+                                                    </div>
+                                                    <p class="small">Our most advanced plan for enterpise users.</p>
+                                                    <div class="d-grid"><button class="btn btn-primary" type="button">Choose Plan</button></div>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg-gray-100">
+                                                <th class="p-3" scope="row">User accounts</th>
+                                                <td class="p-3">1</td>
+                                                <td class="p-3">Up to 5</td>
+                                                <td class="p-3">Up to 50</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="p-3" scope="row">Ad free</th>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                            </tr>
+                                            <tr class="bg-gray-100">
+                                                <th class="p-3" scope="row">Premium assets</th>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="p-3" scope="row">Saved projects</th>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                            </tr>
+                                            <tr class="bg-gray-100">
+                                                <th class="p-3" scope="row">Team collaboration tools</th>
+                                                <td class="p-3"><i class="fas fa-xmark text-red"></i></td>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="p-3" scope="row">Create teams &amp; groups</th>
+                                                <td class="p-3"><i class="fas fa-xmark text-red"></i></td>
+                                                <td class="p-3"><i class="fas fa-xmark text-red"></i></td>
+                                                <td class="p-3"><i class="fas fa-check text-green"></i></td>
+                                            </tr>
+                                            <tr class="bg-gray-100">
+                                                <th class="p-3" scope="row">Customer support</th>
+                                                <td class="p-3">Email only</td>
+                                                <td class="p-3">Email &amp; phone</td>
+                                                <td class="p-3">Dedicated account manager</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

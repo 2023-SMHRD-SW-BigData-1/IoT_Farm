@@ -116,10 +116,122 @@ public class TestController {
 	  session.invalidate();
       return "main";
    }
-
    @GetMapping("/notifications")
    public String notifications(Model model) {
       return "notifications";
+   }
+   
+   @PostMapping("/noti")
+   public String noti(@RequestParam(value = "select_noti") String[] check, HttpSession session, Model model) {
+	   String[] check_num = {"0", "0"};
+	   String checknoti="";
+	   for(String str:check) {
+		   if(str.equals("email")) {
+			   check_num[0]="1";
+		   }
+		   if(str.equals("web")) {
+			   check_num[1]="1";
+		   }
+	   }
+	   for(String str:check_num) {
+		   checknoti+=str;
+	   }
+       TestMember user = (TestMember) session.getAttribute("user");
+       if (service.updateSelect_noti(user.getId(), checknoti) > 0) {
+           user.setSelect_noti(checknoti);
+           model.addAttribute("alertMessage", "설정이 저장되었습니다."); // 알림 메시지를 모델에 추가
+           return "notifications";
+       } else {
+           model.addAttribute("alertMessage", "설정이 실패했습니다."); // 알림 메시지를 모델에 추가
+           return "notifications";
+       }
+   }
+   
+   @PostMapping("/changeEmail")
+   public String changePassword(@RequestParam("cEmail") String email,
+                                HttpSession session, Model model) {
+       // 세션에서 사용자 정보 가져오기
+       TestMember user = (TestMember) session.getAttribute("user");
+       
+       // 현재 email와 사용자의 저장된 email 비교
+       if (user.getEmail().equals(email)) {
+           model.addAttribute("alertMessage", "같은 이메일로 변경할 수 없습니다.");
+           return "notifications";
+       }
+
+       // 비밀번호 변경 로직 실행
+       if (service.changeEmail(user.getId(), email) > 0) {
+           user.setEmail(email);
+           model.addAttribute("alertMessage", "이메일이 성공적으로 변경되었습니다.");
+           return "notifications";
+       } else {
+           model.addAttribute("alertMessage", "이메일 변경을 실패하였습니다.");
+           return "notifications";
+       }
+   }
+   
+   @PostMapping("/noti_email")
+   public String noti_email(@RequestParam(value = "email_noti") String[] check, HttpSession session, Model model) {
+	   String[] check_num = {"1", "0","0","0"};
+	   String checknoti="";
+	   for(String str:check) {
+		   if(str.equals("op1")) {
+			   check_num[0]="1";
+		   }
+		   if(str.equals("op2")) {
+			   check_num[1]="1";
+		   }
+		   if(str.equals("op3")) {
+			   check_num[2]="1";
+		   }
+		   if(str.equals("op4")) {
+			   check_num[3]="1";
+		   }
+	   }
+	   for(String str:check_num) {
+		   checknoti+=str;
+	   }
+       TestMember user = (TestMember) session.getAttribute("user");
+       if (service.updateEmail_noti(user.getId(), checknoti) > 0) {
+           user.setEmail_noti(checknoti);
+           model.addAttribute("alertMessage", "설정이 저장되었습니다."); // 알림 메시지를 모델에 추가
+           return "notifications";
+       } else {
+           model.addAttribute("alertMessage", "설정이 실패했습니다."); // 알림 메시지를 모델에 추가
+           return "notifications";
+       }
+   }
+   
+   @PostMapping("/noti_web")
+   public String noti_web(@RequestParam(value = "web_noti") String[] check, HttpSession session, Model model) {
+	   String[] check_num = {"1", "0","0","0"};
+	   String checknoti="";
+	   for(String str:check) {
+		   if(str.equals("op1")) {
+			   check_num[0]="1";
+		   }
+		   if(str.equals("op2")) {
+			   check_num[1]="1";
+		   }
+		   if(str.equals("op3")) {
+			   check_num[2]="1";
+		   }
+		   if(str.equals("op4")) {
+			   check_num[3]="1";
+		   }
+	   }
+	   for(String str:check_num) {
+		   checknoti+=str;
+	   }
+       TestMember user = (TestMember) session.getAttribute("user");
+       if (service.updateWeb_noti(user.getId(), checknoti) > 0) {
+           user.setWeb_noti(checknoti);
+           model.addAttribute("alertMessage", "설정이 저장되었습니다."); // 알림 메시지를 모델에 추가
+           return "notifications";
+       } else {
+           model.addAttribute("alertMessage", "설정이 실패했습니다."); // 알림 메시지를 모델에 추가
+           return "notifications";
+       }
    }
 
    @GetMapping("/pricing")
@@ -156,13 +268,11 @@ public class TestController {
 			
 			
 			/*
-			int usingIot=service.iotNum(user.getUser_num()); // 유저의 iot 개수 함수
-			int usingSensor=service.sensorNum(user.getUser_num()); // 유저의 sensor 개수 함수
+			int usingIot=service.iotNum(user.getUser_num());
+			int usingSensor=service.sensorNum(user.getUser_num());
 			*/
 			int usingIot=2;
 			int usingSensor=2;
-			
-			
 			IoT_Sensor max;
 			if(user.getPclass().equals("Free")) {
 				max=new IoT_Sensor(3,9,usingIot,usingSensor);
@@ -174,6 +284,7 @@ public class TestController {
 			session.setAttribute("max", max);
 			
 			System.out.println(user.getUser_num());
+
 			return "redirect:/";
 		} else {
 			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");

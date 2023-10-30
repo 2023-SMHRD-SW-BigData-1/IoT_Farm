@@ -34,7 +34,7 @@ public interface TestMapper {
 
 	@Delete("delete from user_info where id=#{id}")
 	public void delete(String id);
-	
+
 	//iot 기기등록
 	@Insert("insert into useriot_info (iot_name, user_num) VALUES (#{iot_name}, #{user_num})")
 	public int iotadd(String iot_name, int user_num);
@@ -42,5 +42,17 @@ public interface TestMapper {
 	@Select("select iot_name from useriot_info where user_num=#{user_num}")
 	public List<String> user_iot(int user_num);
 
+
+	@Update("update user_info set email=#{email} where id=#{id}")
+	public int updateEmail(String id, String email);
+
+	@Update("update user_info set select_noti=#{select_noti} where id=#{id}")
+	public int updateSelect_noti(String id, String select_noti);
+
+	@Update("update user_info set email_noti=#{checknoti} where id=#{id}")
+	public int updateEmail_noti(String id, String checknoti);
+
+	@Update("update user_info set web_noti=#{checknoti} where id=#{id}")
+	public int updateWeb_noti(String id, String checknoti);
 	
 }

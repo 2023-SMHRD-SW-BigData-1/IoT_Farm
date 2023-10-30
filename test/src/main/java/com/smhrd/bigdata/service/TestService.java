@@ -58,14 +58,30 @@ public class TestService {
 	}
 
 	public int iotadd(String iotName, int user_num) {
-		return mapper.iotadd(iotName,user_num);
+		return mapper.iotadd(iotName, user_num);
 	}
-	
-	public List<String> user_iot(int user_num){
+
+	public List<String> user_iot(int user_num) {
 		return mapper.user_iot(user_num);
 	}
-	
 
-	
 
+	public int changeEmail(String id, String email) {
+		return mapper.updateEmail(id, email);
+	}
+
+	public int updateSelect_noti(String id, String select_noti) {
+		// TODO Auto-generated method stub
+		return mapper.updateSelect_noti(id, select_noti);
+	}
+
+	public int updateEmail_noti(String id, String checknoti) {
+		// TODO Auto-generated method stub
+		return mapper.updateEmail_noti(id, checknoti);
+	}
+
+	public int updateWeb_noti(String id, String checknoti) {
+		// TODO Auto-generated method stub
+		return mapper.updateWeb_noti(id, checknoti);
+	}
 }

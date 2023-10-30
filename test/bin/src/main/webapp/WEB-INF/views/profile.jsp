@@ -125,7 +125,8 @@
 										<div style="display:flex;margin-top: -0.7rem"><div class="mx-xl-1 fw-600" style="font-size: 2rem">${max.myIot }</div><div style="padding-top: 0.75rem">개 이용 중</div></div>
 										<div class="mt-2">Total number of sensors (최대 ${max.maxSensor }개)</div>
 										<div class="pb-lg-4" style="display:flex;margin-top: -0.7rem"><div class="mx-xl-1 fw-600" style="font-size: 2rem">${max.mySensor }</div><div style="padding-top: 0.75rem">개 이용 중</div></div>
-										<div class="text-center"><a class="btn btn-block btn-outline-blue" href="/bigdata/pricing" style="font-size: 1rem"><div class="mt-1">더 많은 장치 이용하기</div><i data-feather="arrow-right"></i></a></div>
+										<div class="text-center"><a class="btn btn-block btn-outline-blue" href="/bigdata/pricing" style="font-size: 1rem">더 많은 장치 이용하기<i data-feather="arrow-right"></i></a></div>
+									
 									</div>
 								</div>
 							</div>
