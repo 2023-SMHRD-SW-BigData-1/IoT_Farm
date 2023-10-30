@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.TestMember;
 
 @Mapper
@@ -54,5 +55,14 @@ public interface TestMapper {
 
 	@Update("update user_info set web_noti=#{checknoti} where id=#{id}")
 	public int updateWeb_noti(String id, String checknoti);
+
+	@Select("select count(*) from useriot_info where user_num=#{user_num}")
+	public int iotNum(int user_num);
+
+	@Select("select count(*) from iotsensor_info where user_num=#{user_num}")
+	public int sensorNum(int user_num);
+
+	@Select("select * from deal where user_num=#{i}")
+	public List<Bill> billList(int i);
 	
 }

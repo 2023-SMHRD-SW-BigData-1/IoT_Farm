@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.smhrd.bigdata.mapper.TestMapper;
+import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.TestMember;
 
 @Service
@@ -65,7 +66,6 @@ public class TestService {
 		return mapper.user_iot(user_num);
 	}
 
-
 	public int changeEmail(String id, String email) {
 		return mapper.updateEmail(id, email);
 	}
@@ -83,5 +83,20 @@ public class TestService {
 	public int updateWeb_noti(String id, String checknoti) {
 		// TODO Auto-generated method stub
 		return mapper.updateWeb_noti(id, checknoti);
+	}
+
+	public int iotNum(int user_num) {
+		// TODO Auto-generated method stub
+		return mapper.iotNum(user_num);
+	}
+
+	public int sensorNum(int user_num) {
+		// TODO Auto-generated method stub
+		return mapper.sensorNum(user_num);
+	}
+
+	public List<Bill> billList(int i) {
+		// TODO Auto-generated method stub
+		return mapper.billList(i);
 	}
 }
