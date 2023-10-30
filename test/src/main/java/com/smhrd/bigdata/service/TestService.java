@@ -1,5 +1,7 @@
 package com.smhrd.bigdata.service;
 
+import java.util.List;
+
 import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.smhrd.bigdata.mapper.TestMapper;
+import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.TestMember;
 
 @Service
@@ -72,6 +75,21 @@ public int updateEmail_noti(String id, String checknoti) {
 public int updateWeb_noti(String id, String checknoti) {
 	// TODO Auto-generated method stub
 	return mapper.updateWeb_noti(id, checknoti);
+}
+
+public int iotNum(int user_num) {
+	// TODO Auto-generated method stub
+	return mapper.iotNum(user_num);
+}
+
+public int sensorNum(int user_num) {
+	// TODO Auto-generated method stub
+	return mapper.sensorNum(user_num);
+}
+
+public List<Bill> billList(int i) {
+	// TODO Auto-generated method stub
+	return mapper.billList(i);
 }
 }
    

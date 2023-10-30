@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -8,7 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Account Settings - Billing - SB Admin Pro</title>
+        <title>Tables - SB Admin Pro</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -82,58 +84,48 @@
                         <!-- Billing history card-->
                         <div class="card mb-4">
                             <div class="card-header">Billing History</div>
-                            <div class="card-body p-0">
-                                <!-- Billing history table-->
-                                <div class="table-responsive table-billing-history">
-                                    <table class="table mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th class="border-gray-200" scope="col">Transaction ID</th>
-                                                <th class="border-gray-200" scope="col">Date</th>
-                                                <th class="border-gray-200" scope="col">Product</th>
-                                                <th class="border-gray-200" scope="col">Amount</th>
-                                                <th class="border-gray-200" scope="col">end date</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>#39201</td>
-                                                <td>06/15/2021</td>
-                                                <td><span class="badge bg-success">Paid</span></td>
-                                                <td>$29.99</td>
-                                                <td>06/15/2021</td>
-                                            </tr>
-                                            <tr>
-                                                <td>#38594</td>
-                                                <td>05/15/2021</td>
-                                                <td><span class="badge bg-yellow">Premium</span></td>
-                                                <td>$29.99</td>
-                                                <td>06/15/2021</td>
-                                            </tr>
-                                            <tr>
-                                                <td>#38223</td>
-                                                <td>04/15/2021</td>
-                                                <td><span class="badge bg-success">Paid</span></td>
-                                                <td>$29.99</td>
-                                                <td>06/15/2021</td>
-                                            </tr>
-                                            <tr>
-                                                <td>#38125</td>
-                                                <td>03/15/2021</td>
-                                                <td><span class="badge bg-success">Paid</span></td>
-                                                <td>$29.99</td>
-                                                <td>06/15/2021</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction ID</th>
+                                            <th>Product</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                            <th>End Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Transaction ID</th>
+                                            <th>Product</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                            <th>End Date</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                          				<c:forEach items="${list}" var="bill">
+                                        <tr>
+                                            <td>#${bill.deal_num}</td>
+                                            <td><div class="badge bg-primary text-white rounded-pill">${bill.product}</div></td>
+                                            <td>${bill.price}</td>
+                                            <td>${bill.start_date}</td>
+                                            <td>${bill.end_date}</td>
+                                        </tr>
+                           				</c:forEach>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                        
                     </div>
                 </main>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables/datatables-simple-demo.js"></script>
     </body>
 </html>
