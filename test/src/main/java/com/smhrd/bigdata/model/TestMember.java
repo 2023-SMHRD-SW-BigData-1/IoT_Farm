@@ -1,6 +1,10 @@
 package com.smhrd.bigdata.model;
 
 import java.util.Date;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,10 +24,11 @@ public class TestMember {
 	private Date joindate;
 	private String email;
 	private String p_img;
-	
-	public TestMember(String id, String pw, String iot_name) {
+	public TestMember(String id, String pw) {
 		this.id = id;
 		this.pw = pw;
 	}
+	
+
 
 }

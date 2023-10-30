@@ -1,5 +1,7 @@
 package com.smhrd.bigdata.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -34,7 +36,11 @@ public interface TestMapper {
 	public void delete(String id);
 	
 	//iot 기기등록
-	@Insert("insert iot_info (iot_name) VALUES (#{iotName})")
-	public int iotadd(String iotName);
+	@Insert("insert into useriot_info (iot_name, user_num) VALUES (#{iot_name}, #{user_num})")
+	public int iotadd(String iot_name, int user_num);
+	
+	@Select("select iot_name from useriot_info where user_num=#{user_num}")
+	public List<String> user_iot(int user_num);
+
 	
 }

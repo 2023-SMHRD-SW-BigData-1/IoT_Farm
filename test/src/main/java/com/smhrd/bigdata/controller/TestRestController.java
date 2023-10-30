@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +24,8 @@ public class TestRestController {
 
 	@Autowired
 	private TestService service;
+	
+	
 
 	@GetMapping("join/idcheck")
 	public @ResponseBody String idCheck(@RequestParam("input") String input) {
@@ -47,18 +50,7 @@ public class TestRestController {
 		}
 	}
 	
-	@GetMapping("mydata/iotadd")
-	public String iotadd(@RequestParam("iotName") String iotName) {
-		int cnt = service.iotadd(iotName);
-		if(cnt>0) {
-			System.out.println("success");
-			return "success";
-		}else {
-			System.out.println("fail");
-			return "fail";
-		}
-		
-		
-	}
+
+	
 
 }

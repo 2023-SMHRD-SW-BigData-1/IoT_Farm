@@ -1,5 +1,7 @@
 package com.smhrd.bigdata.service;
 
+import java.util.List;
+
 import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,50 +14,58 @@ import com.smhrd.bigdata.model.TestMember;
 
 @Service
 public class TestService {
-      
-   @Autowired
-   private TestMapper mapper;
-   
-   @Autowired
-   private EmailService emails;
 
-   @Transactional
-   public void join(TestMember m) {
-      mapper.join(m);
-      String email = m.getEmail();
-      String subject = "회원 가입 완료";
-      String text = "회원 가입 완료";
-      System.out.println(1);
-      emails.sendSimpleMessage(email, subject, text);
-   }
+	@Autowired
+	private TestMapper mapper;
 
-   public TestMember login(TestMember m) {
-      return mapper.login(m);      
-   }
-   public int idCheck(String id) {
-       return mapper.idCheck(id);
-   }
-   
-public int updateImg(String id, String img) {
-	// TODO Auto-generated method stub
-	return mapper.updateImg(id, img);
-}
+	@Autowired
+	private EmailService emails;
 
-public int updateName(String id, String name) {
-	return mapper.updateName(id,name);
-}
+	@Transactional
+	public void join(TestMember m) {
+		mapper.join(m);
+		String email = m.getEmail();
+		String subject = "회원 가입 완료";
+		String text = "회원 가입 완료";
+		System.out.println(1);
+		emails.sendSimpleMessage(email, subject, text);
+	}
 
-public int changePw(String id, String newPassword) {
-	// TODO Auto-generated method stub
-	return mapper.updatePw(id,newPassword);
-}
+	public TestMember login(TestMember m) {
+		return mapper.login(m);
+	}
 
-public void delete(String id) {
-	mapper.delete(id);
+	public int idCheck(String id) {
+		return mapper.idCheck(id);
+	}
+
+	public int updateImg(String id, String img) {
+		// TODO Auto-generated method stub
+		return mapper.updateImg(id, img);
+	}
+
+	public int updateName(String id, String name) {
+		return mapper.updateName(id, name);
+	}
+
+	public int changePw(String id, String newPassword) {
+		// TODO Auto-generated method stub
+		return mapper.updatePw(id, newPassword);
+	}
+
+	public void delete(String id) {
+		mapper.delete(id);
+	}
+
+	public int iotadd(String iotName, int user_num) {
+		return mapper.iotadd(iotName,user_num);
+	}
+	
+	public List<String> user_iot(int user_num){
+		return mapper.user_iot(user_num);
+	}
+	
+
+	
+
 }
-   public int iotadd(String iotName) {
-	   return mapper.iotadd(iotName);
-   }
-   
-}
-   

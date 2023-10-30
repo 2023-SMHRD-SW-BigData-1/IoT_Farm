@@ -172,6 +172,8 @@ public class TestController {
 				max=new IoT_Sensor(20,100,usingIot,usingSensor);
 			}
 			session.setAttribute("max", max);
+			
+			System.out.println(user.getUser_num());
 			return "redirect:/";
 		} else {
 			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
@@ -214,7 +216,29 @@ public class TestController {
       return "pwfind3";
    }
    @GetMapping("/mydata")
-   public String mydata() {
+   public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
+	   TestMember user = (TestMember)session.getAttribute("user");
+	   
+	   List<String> list = service.user_iot(user.getUser_num());
+	   
+	   System.out.println(list);
+	   System.out.println(user.getUser_num());
+	   model.addAttribute("iotList",list);
+	   
       return "mydata";
    }
+	@PostMapping("mydata/iotadd")
+	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		int cnt = service.iotadd(iotName,user.getUser_num());
+		if(cnt>0) {
+			System.out.println("success");
+			return "redirect:/mydata";
+		}else {
+			System.out.println("fail");
+			return "fail";
+		}
+	}
+
+	
 }

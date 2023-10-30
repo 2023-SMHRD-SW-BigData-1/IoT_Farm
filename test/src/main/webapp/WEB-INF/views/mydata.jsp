@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -45,22 +46,32 @@
 
 
 						<!-- Sidenav Accordion (Utilities)-->
-						<a class="nav-link collapsed mt-10px" href="javascript:void(0);"
-							data-bs-toggle="collapse" data-bs-target="#collapseUtilities"
-							aria-expanded="false" aria-controls="collapseUtilities">
-							<div class="nav-link-icon">
-								<i data-feather="tool"></i>
-							</div> Divice1
-							<div class="sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapseUtilities"
-							data-bs-parent="#accordionSidenav">
-							<nav class="sidenav-menu-nested nav">
-								<a class="nav-link" href="animations.html">센서 등록</a>
-							</nav>
-						</div>
+						<tbody>
+							<c:forEach items="${iotList }" var="item" varStatus="status">
+								<tr>
+									<td><a class="nav-link collapsed mt-10px"
+										href="javascript:void(0);" data-bs-toggle="collapse"
+										data-bs-target="#collapseUtilities${status.index }"
+										aria-expanded="false" aria-controls="collapseUtilities">
+											<div class="nav-link-icon">
+												<i data-feather="tool"></i>
+											</div>${item }
+											<div class="sidenav-collapse-arrow">
+												<i class="fas fa-angle-down"></i>
+											</div>
+									</a></td>
+									<td><div class="collapse"
+											id="collapseUtilities${status.index }"
+											data-bs-parent="#accordionSidenav">
+											<nav class="sidenav-menu-nested nav">
+												<a class="nav-link" href="#" data-bs-toggle="modal"
+													data-bs-target="#exampleModalCenter3">센서 등록</a>
+											</nav>
+										</div></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+
 						<!-- Sidenav Heading (Custom)-->
 						<div class="sidenav-menu-heading nav-menu">
 							<div>dash boards</div>
@@ -161,16 +172,18 @@
 						<button class="btn-close" type="button" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					<form id="iotForm" action="mydata/iotadd" method="get">
+					<form id="iotForm" action="mydata/iotadd" method="post">
 						<div class="modal-body">
 							<div class="mb-3 modal-flex">
 								<div class="modal-iot">IoT 이름:</div>
-								<input class="form-control" id="inputIot" type="text" name="iotName"/>
+								<input class="form-control" id="inputIot" type="text"
+									name="iotName" />
 							</div>
 						</div>
 						<div class="modal-footer">
 
-							<button class="btn btn-primary" type="submit" aria-label="Close">확인</button>
+							<button class="btn btn-primary" type="submit"
+								onclick="location.href='mydata'">확인</button>
 						</div>
 					</form>
 				</div>
@@ -245,36 +258,50 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- sensor Modal -->
+		<div class="modal" id="exampleModalCenter3" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">센서 등록</h5>
+						<button class="btn-close" type="button" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<form id="sensorForm" action="mydata/sensoradd" method="post">
+						<div class="modal-body">
+							<div class="mb-3 modal-flex">
+								<div class="wd-40">센서 이름:</div>
+								<input class="form-control" id="inputDashboard" type="text" />
+							</div>
+							<div class="mb-3 modal-flex">
+								<div class="modal-iot">센서 종류:</div>
+								<select class="dashboard-count">
+									<option value="1">온도</option>
+									<option value="2">습도</option>
+									<option value="3">조도</option>
+									<option value="4">토양수분</option>
+									<option value="4">강우</option>
+								</select>
+							</div>
+						</div>
+						<div class="modal-footer">
+
+							<button class="btn btn-primary" type="submit"
+								onclick="location.href='mydata'">확인</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$("#iotForm").submit(function(event) {
-				event.preventDefault();
-				var iotName = $("#inputIot").val();
 
-				// AJAX 요청을 사용하여 서버로 데이터를 보냅니다.
-				$.ajax({
-					type : "GET",
-					url : "mydata/iotadd", // 서버 측 코드가 위치한 URL
-					data : {
-						iotName : iotName
-					},
-					success : function(response) {
-						// 성공 시 처리
-						console.log("데이터가 성공적으로 전송되었습니다.");
-					},
-					error : function() {
-						// 오류 시 처리
-						console.log("데이터 전송 중 오류가 발생했습니다.");
-					}
-				});
-			});
-		});
-	</script>
 </body>
 </html>
