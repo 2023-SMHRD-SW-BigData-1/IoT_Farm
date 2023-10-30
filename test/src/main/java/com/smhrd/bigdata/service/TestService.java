@@ -57,11 +57,6 @@ public void delete(String id) {
 public int changeEmail(String id, String email) {
 	return mapper.updateEmail(id,email);
 }
-
-public int updateSelect_noti(String id, String select_noti) {
-	// TODO Auto-generated method stub
-	return mapper.updateSelect_noti(id, select_noti);
-}
    
    
 }
