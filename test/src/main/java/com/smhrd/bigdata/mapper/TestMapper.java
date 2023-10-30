@@ -38,4 +38,12 @@ public interface TestMapper {
 
 	@Update("update user_info set select_noti=#{select_noti} where id=#{id}")
 	public int updateSelect_noti(String id, String select_noti);
+
+	@Update("update user_info set email_noti=#{checknoti} where id=#{id}")
+	public int updateEmail_noti(String id, String checknoti);
+
+	@Update("update user_info set web_noti=#{checknoti} where id=#{id}")
+	public int updateWeb_noti(String id, String checknoti);
+	
+	
 }

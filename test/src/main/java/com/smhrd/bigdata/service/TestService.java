@@ -62,7 +62,15 @@ public int updateSelect_noti(String id, String select_noti) {
 	// TODO Auto-generated method stub
 	return mapper.updateSelect_noti(id, select_noti);
 }
+
+public int updateEmail_noti(String id, String checknoti) {
+	// TODO Auto-generated method stub
+	return mapper.updateEmail_noti(id, checknoti);
+}
    
-   
+public int updateWeb_noti(String id, String checknoti) {
+	// TODO Auto-generated method stub
+	return mapper.updateWeb_noti(id, checknoti);
+}
 }
    
