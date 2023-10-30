@@ -79,17 +79,6 @@
                         
                         
                         
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                         <!-- Billing history card-->
                         <div class="card mb-4">
                             <div class="card-header">Billing History</div>
