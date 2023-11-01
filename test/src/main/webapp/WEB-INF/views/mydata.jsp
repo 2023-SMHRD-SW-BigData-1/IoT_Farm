@@ -47,25 +47,25 @@
 
 						<!-- Sidenav Accordion (Utilities)-->
 						<tbody>
-							<c:forEach items="${iotList }" var="item" varStatus="status">
+							<c:forEach items="${iotList }" var="item">
 								<tr>
 									<td><a class="nav-link collapsed mt-10px"
 										href="javascript:void(0);" data-bs-toggle="collapse"
-										data-bs-target="#collapseUtilities${status.index }"
+										data-bs-target="#collapseUtilities${item.iot_num }"
 										aria-expanded="false" aria-controls="collapseUtilities">
 											<div class="nav-link-icon">
 												<i data-feather="tool"></i>
-											</div>${item }
+											</div>${item.iot_name }
 											<div class="sidenav-collapse-arrow">
 												<i class="fas fa-angle-down"></i>
 											</div>
 									</a></td>
 									<td><div class="collapse"
-											id="collapseUtilities${status.index }"
+											id="collapseUtilities${item.iot_num }"
 											data-bs-parent="#accordionSidenav">
 											<nav class="sidenav-menu-nested nav">
 												<a class="nav-link" href="#" data-bs-toggle="modal"
-													data-bs-target="#exampleModalCenter3">센서 등록</a>
+													data-bs-target="#exampleModalCenter${item.iot_num }">센서등록</a>
 											</nav>
 										</div></td>
 								</tr>
@@ -258,44 +258,49 @@
 				</div>
 			</div>
 		</div>
+		<tbody>
+			<c:forEach items="${iotList }" var="item">
+				<!-- sensor Modal -->
+				<div class="modal" id="exampleModalCenter${item.iot_num }"
+					tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalCenterTitle">센서 등록</h5>
+								<button class="btn-close" type="button" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<form id="sensorForm" action="mydata/sensoradd/${item.iot_num}"
+								method="get">
+								<div class="modal-body">
+									<div class="mb-3 modal-flex">
+										<div class="wd-40">센서 이름:</div>
+										<input class="form-control" id="inputDashboard" type="text"
+											name="sensorName" />
+									</div>
+									<div class="mb-3 modal-flex">
+										<div class="modal-iot">센서 종류:</div>
+										<select class="dashboard-count" name="sensorType">
+											<option value="1">온도</option>
+											<option value="2">습도</option>
+											<option value="3">조도</option>
+											<option value="4">토양수분</option>
+											<option value="5">강우</option>
+										</select>
+									</div>
+								</div>
+								<div class="modal-footer">
 
-		<!-- sensor Modal -->
-		<div class="modal" id="exampleModalCenter3" tabindex="-1"
-			role="dialog" aria-labelledby="exampleModalCenterTitle"
-			aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalCenterTitle">센서 등록</h5>
-						<button class="btn-close" type="button" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<form id="sensorForm" action="mydata/sensoradd" method="post">
-						<div class="modal-body">
-							<div class="mb-3 modal-flex">
-								<div class="wd-40">센서 이름:</div>
-								<input class="form-control" id="inputDashboard" type="text" />
-							</div>
-							<div class="mb-3 modal-flex">
-								<div class="modal-iot">센서 종류:</div>
-								<select class="dashboard-count">
-									<option value="1">온도</option>
-									<option value="2">습도</option>
-									<option value="3">조도</option>
-									<option value="4">토양수분</option>
-									<option value="4">강우</option>
-								</select>
-							</div>
+									<button class="btn btn-primary" type="submit"
+										onclick="location.href='mydata'">확인</button>
+								</div>
+							</form>
 						</div>
-						<div class="modal-footer">
-
-							<button class="btn btn-primary" type="submit"
-								onclick="location.href='mydata'">확인</button>
-					</form>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
+			</c:forEach>
+		</tbody>
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

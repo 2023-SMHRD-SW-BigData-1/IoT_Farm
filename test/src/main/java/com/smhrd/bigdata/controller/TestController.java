@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.IoT_Sensor;
 import com.smhrd.bigdata.model.TestMember;
+import com.smhrd.bigdata.model.Useriot_Info;
 import com.smhrd.bigdata.service.TestService;
 
 @Controller
@@ -285,9 +286,8 @@ public class TestController {
 				max = new IoT_Sensor(30, 150, usingIot, usingSensor);
 			}
 			session.setAttribute("max", max);
-			
-			System.out.println(user.getUser_num());
 
+			System.out.println(user.getUser_num());
 
 			return "redirect:/";
 		} else {
@@ -322,32 +322,27 @@ public class TestController {
 		return "pwfind";
 	}
 
+	@GetMapping("/mydata")
+	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
+		TestMember user = (TestMember) session.getAttribute("user");
 
-   @GetMapping("/mydata")
-   public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
-	   TestMember user = (TestMember)session.getAttribute("user");
-	   
-	   List<String> list = service.user_iot(user.getUser_num());
-	   
-	   System.out.println(list);
-	   System.out.println(user.getUser_num());
-	   model.addAttribute("iotList",list);
-	   
-      return "mydata";
-   }
+		List<Useriot_Info> list = service.user_iot(user.getUser_num());
+
+		model.addAttribute("iotList", list);
+
+		return "mydata";
+	}
+
 	@PostMapping("mydata/iotadd")
 	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
 		TestMember user = (TestMember) session.getAttribute("user");
-		int cnt = service.iotadd(iotName,user.getUser_num());
-		if(cnt>0) {
-			System.out.println("success");
+		int cnt = service.iotadd(iotName, user.getUser_num());
+		if (cnt > 0) {
 			return "redirect:/mydata";
-		}else {
-			System.out.println("fail");
+		} else {
 			return "fail";
 		}
 	}
-
 
 	@GetMapping("/pwfind2")
 	public String pwfind2() {
@@ -359,8 +354,19 @@ public class TestController {
 		return "pwfind3";
 	}
 
-	@GetMapping("/mydata")
-	public String mydata() {
-		return "mydata";
+	@GetMapping("mydata/sensoradd/{idx}")
+	public String sensoradd(HttpSession session, @RequestParam("sensorName") String sensorName,
+			@RequestParam("sensorType") int sensorType, @PathVariable String idx) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		
+		int cnt = service.sensoradd(idx,sensorName, user.getUser_num(), sensorType);
+		if (cnt > 0) {
+			System.out.println(sensorName);
+			return "redirect:/mydata";
+		} else {
+			System.out.println(sensorName+"fail");
+			return "redirect:/mydata";
+		}
 	}
+
 }
