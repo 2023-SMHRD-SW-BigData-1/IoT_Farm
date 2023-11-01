@@ -1,5 +1,7 @@
 package com.smhrd.bigdata.model;
 
+
+
 import java.sql.Date;
 
 import lombok.AllArgsConstructor;

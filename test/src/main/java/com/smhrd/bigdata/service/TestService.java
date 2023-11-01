@@ -105,3 +105,8 @@ public class TestService {
 		return mapper.sensoradd(iot_num, sensorName, user_num, sensorType);
 	}
 }
+public Bill last_payment(int user_num) {
+	// TODO Auto-generated method stub
+	return mapper.last_payment(user_num);
+}
+}
