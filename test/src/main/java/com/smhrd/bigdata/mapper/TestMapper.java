@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.TestMember;
+import com.smhrd.bigdata.model.Useriot_Info;
 
 @Mapper
 public interface TestMapper {
@@ -40,8 +41,8 @@ public interface TestMapper {
 	@Insert("insert into useriot_info (iot_name, user_num) VALUES (#{iot_name}, #{user_num})")
 	public int iotadd(String iot_name, int user_num);
 	
-	@Select("select iot_name from useriot_info where user_num=#{user_num}")
-	public List<String> user_iot(int user_num);
+	@Select("select * from useriot_info where user_num=#{user_num}")
+	public List<Useriot_Info> user_iot(int user_num);
 
 
 	@Update("update user_info set email=#{email} where id=#{id}")
@@ -65,4 +66,7 @@ public interface TestMapper {
 	@Select("select * from deal where user_num=#{i}")
 	public List<Bill> billList(int i);
 	
+	//sensor 등록
+	@Insert("insert into iotsensor_info (iot_num,sensor_name, user_num, sensor_type) VALUES (#{iot_num} ,#{sensor_name}, #{user_num}, #{sensor_type})")
+	public int sensoradd(String iot_num ,String sensor_name, int user_num, int sensor_type);
 }
