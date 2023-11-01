@@ -54,8 +54,11 @@ public interface TestMapper {
 	@Select("select count(*) from iotsensor_info where user_num=#{user_num}")
 	public int sensorNum(int user_num);
 
-	@Select("select * from deal where user_num=#{i}")
+	@Select("select * from deal where user_num=#{i} order by deal_num desc")
 	public List<Bill> billList(int i);
+
+	@Select("select * from deal where user_num=#{user_num} order by deal_num desc LIMIT 1")
+	public Bill last_payment(int user_num);
 	
 	
 }

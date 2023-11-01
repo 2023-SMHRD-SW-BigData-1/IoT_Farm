@@ -78,6 +78,7 @@ public class TestController {
 	public String billing(Model model, HttpSession session) {
 		TestMember user = (TestMember) session.getAttribute("user");
 		List<Bill> list = service.billList(user.getUser_num());
+		model.addAttribute("last", service.last_payment(user.getUser_num()));
 		model.addAttribute("list", list);
 		return "billing";
 	}

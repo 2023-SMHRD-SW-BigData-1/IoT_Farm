@@ -91,5 +91,10 @@ public List<Bill> billList(int i) {
 	// TODO Auto-generated method stub
 	return mapper.billList(i);
 }
+
+public Bill last_payment(int user_num) {
+	// TODO Auto-generated method stub
+	return mapper.last_payment(user_num);
+}
 }
    
