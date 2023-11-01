@@ -3,17 +3,20 @@ package com.smhrd.bigdata.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -21,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.smhrd.bigdata.model.IoT_Sensor;
 import com.smhrd.bigdata.model.TestMember;
+import com.smhrd.bigdata.service.EmailService;
 import com.smhrd.bigdata.service.TestService;
 
 @Controller
@@ -28,6 +32,10 @@ public class TestController {
 
    @Autowired
    TestService service;
+   
+   
+   @Autowired
+   EmailService emailservice;
    
    @GetMapping("/header")
    public String header(Model model) {
@@ -45,6 +53,7 @@ public class TestController {
       return "redirect:/";
    }
 
+   
    @GetMapping("/")
    public String boardList(Model model) {
       return "main";

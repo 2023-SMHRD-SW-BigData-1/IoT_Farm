@@ -19,7 +19,6 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
 	function checkId() {
 		let input = $('#inputId').val();
@@ -43,6 +42,87 @@
 			}
 		});
 	}
+</script>
+<script>
+	function sendEmail() {
+		let email = $('#inputEmail').val(); // 이메일 주소값 얻어오기!
+		console.log(email); // 이메일 오는지 확인
+
+		$.ajax({
+			url : 'join/emailSend', // 수정된 부분
+			type : 'get',
+			data : {
+				'email' : email
+			},
+			success : function(data) {
+				alert('인증번호가 전송되었습니다.');
+				code = data;
+			}
+		}); // end ajax
+	}
+	function checkEmail() {
+		let inputCode = $('#checkInput').val(); // 입력한 인증번호 가져오기
+		console.log(inputCode)
+		console.log(code)
+		let $resultMsg = $('#mailCheckWarn'); // 결과를 표시할 요소
+
+		if (inputCode == code) {
+			$resultMsg.html('인증번호가 일치합니다');
+			$resultMsg.css('color', 'green');
+			$('#send').attr('disabled', true);
+
+			$('#inputEmail').attr('readonly', true);
+			$('#inputEmail').attr('onFocus',
+					'this.initialSelect = this.selectedIndex');
+			$('#inputEmail').attr('onChange',
+					'this.selectedIndex = this.initialSelect');
+		} else {
+			$resultMsg.html('인증번호가 불일치 합니다');
+			$resultMsg.css('color', 'red');
+			$('#send').val('재전송');
+		}
+	}
+</script>
+<script>
+	function validateId() {
+		let input = $('#inputId').val();
+		return input.trim() !== '';
+	}
+
+	function validatePassword() {
+		let input = $('#inputPassword').val();
+		return input.trim() !== '';
+	}
+
+	function validateNickname() {
+		let input = $('#inputnickname').val();
+		return input.trim() !== '';
+	}
+
+	function validateEmail() {
+		let input = $('#inputEmail').val();
+		return input.trim() !== '';
+	}
+
+	function validateCode() {
+		let input = $('#checkInput').val();
+		return input.trim() !== '' && input === code;
+	}
+
+	function validateForm() {
+		if (validateId() && validatePassword() && validateNickname()
+				&& validateEmail() && validateCode()) {
+			return true;
+		} else {
+			alert('모든 항목을 올바르게 입력해주세요.');
+			return false;
+		}
+	}
+    function submitForm() {
+        if (validateForm()) {
+            $('form').submit();
+        }
+    }
 </script>
 </head>
 <body class="nav-fixed">
@@ -84,36 +164,43 @@
 										</div>
 										<!-- From Grooup (Email) -->
 										<div class="mb-3">
+
 											<label class="small mb-1" for="inputEmail">이메일</label> <input
 												class="form-control" id="inputEmail" type="text"
 												name="email" />
 										</div>
 										<div class="d-flex align-items-center justify-content-right">
-											<span id="send"></span> <input type="button" value="인증번호 전송"
-												class="btn btn-primary h-8" onclik="sendVerificationCode()"
+											<input id="send" type="button" value="인증번호 전송"
+												onclick="sendEmail()" class="btn btn-primary h-8"
 												style="margin-left: 10px; height: 36px;">
 										</div>
-										<div class="join_email">
-											<input class="form-control wd-30 h-10" id="inputCheck"
-												type="text"></input>
-											<button class="btn btn-primary h-10 ml-10">인증번호 확인</button>
+										<div class="d-flex align-items-center justify-content-right">
+											<label class="small mb-1" for="inputNumber">인증번호 6자리를
+												입력해주세요</label> <input class="form-control mailCheckInput"
+												id="checkInput" type="text" name="code" />
 										</div>
-								</div>
-								<!-- Form Group (join box)-->
-								<div
-									class="d-flex align-items-center justify-content-right mt-4 mb-0">
-									<button type="submit" class="btn btn-primary btn-default">확인</button>
-								</div>
+										<div>
+											<input id="check" type="button" value="인증번호 확인"
+												onclick="checkEmail()" class="btn btn-primary h-8"
+												style="margin-left: 10px; height: 36px;">
+										</div>
+
+										<span id="mailCheckWarn"></span>
+										<!-- Form Group (join box)-->
+										<div
+											class="d-flex align-items-center justify-content-right mt-4 mb-0">
+											<button type="button" class="btn btn-primary btn-default"
+												onclick="submitForm()">확인</button>
+										</div>
+								</form>
 							</div>
-							</form>
 						</div>
 					</div>
 				</div>
 		</div>
+		</main>
 	</div>
-	</main>
 	</div>
-	</div>	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>

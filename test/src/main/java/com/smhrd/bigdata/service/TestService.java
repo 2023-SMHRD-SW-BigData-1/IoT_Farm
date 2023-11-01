@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.smhrd.bigdata.mapper.TestMapper;
 import com.smhrd.bigdata.model.TestMember;
-
 @Service
 public class TestService {
       
@@ -17,18 +16,12 @@ public class TestService {
    private TestMapper mapper;
    
    @Autowired
-   private EmailService emails;
-
+   private EmailService emailservice;
+   
    @Transactional
    public void join(TestMember m) {
       mapper.join(m);
-      String email = m.getEmail();
-      String subject = "회원 가입 완료";
-      String text = "회원 가입 완료";
-      System.out.println(1);
-      emails.sendSimpleMessage(email, subject, text);
    }
-
    public TestMember login(TestMember m) {
       return mapper.login(m);      
    }
