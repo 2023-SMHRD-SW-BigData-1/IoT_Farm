@@ -72,4 +72,7 @@ public interface TestMapper {
 	//sensor 등록
 	@Insert("insert into iotsensor_info (iot_num,sensor_name, user_num, sensor_type) VALUES (#{iot_num} ,#{sensor_name}, #{user_num}, #{sensor_type})")
 	public int sensoradd(String iot_num ,String sensor_name, int user_num, int sensor_type);
+
+	@Insert("insert into deal(user_num,product,price) values(#{data[0]},#{data[1]},#{data[2]})")
+	public void addPayment(String[] data);
 }

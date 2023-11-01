@@ -110,4 +110,8 @@ public class TestService {
 		// TODO Auto-generated method stub
 		return mapper.last_payment(user_num);
 	}
+
+	public void addPayment(String[] data) {
+		mapper.addPayment(data);
+	}
 }

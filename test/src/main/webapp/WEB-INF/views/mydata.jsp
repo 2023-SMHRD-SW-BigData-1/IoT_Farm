@@ -60,6 +60,7 @@
 												<i class="fas fa-angle-down"></i>
 											</div>
 									</a></td>
+									<div id="sensorList${iotList }"></div>
 									<td><div class="collapse"
 											id="collapseUtilities${item.iot_num }"
 											data-bs-parent="#accordionSidenav">
