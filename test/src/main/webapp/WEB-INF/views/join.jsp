@@ -32,9 +32,9 @@
 			},
 			success : function(result) {
 				if (result == "success") {
-					$('#result').text("사용할 수 있는 아이디").css('color', 'blue');
+					$('#result').text("사용할 수 있는 아이디　").css('color', 'blue');
 				} else {
-					$('#result').text("사용할 수 없는 아이디").css('color', 'red');
+					$('#result').text("사용할 수 없는 아이디　").css('color', 'red');
 				}
 			},
 			error : function() {
@@ -80,13 +80,16 @@
 			$resultMsg.html('인증번호가 불일치 합니다');
 			$resultMsg.css('color', 'red');
 			$('#send').val('재전송');
+			code='';
 		}
+		
+		
 	}
 </script>
 <script>
 	function validateId() {
 		let input = $('#inputId').val();
-		return input.trim() !== '';
+		return input.trim() !== ''&& $('#result').text() === "사용할 수 있는 아이디　";
 	}
 
 	function validatePassword() {
@@ -114,101 +117,84 @@
 				&& validateEmail() && validateCode()) {
 			return true;
 		} else {
-			alert('모든 항목을 올바르게 입력해주세요.');
+			alert('모든 항목을 올바르게 입력해주세요');
 			return false;
 		}
 	}
-    function submitForm() {
-        if (validateForm()) {
-            $('form').submit();
-        }
-    }
+	function submitForm() {
+		if (validateForm()) {
+			$('form').submit();
+		}
+		
+	}
 </script>
 </head>
 <body class="nav-fixed">
 	<div id="layoutAuthentication">
 		<div id="layoutAuthentication_content">
 			<main>
-				<div class="container-xl px-4">
-					<div class="row justify-content-center">
-						<div class="col-lg-5">
-							<!-- Basic login form-->
-							<div class="card shadow-lg border-0 rounded-lg mt-5">
-								<div class="card-header justify-content-center">
-									<h1 class="fw-light my-4">회원가입</h1>
-								</div>
-								<div class="card-body">
-									<!-- Join form-->
-									<form action="join" method="post">
-										<!-- Form Group (아이디)-->
-										<div class="mb-3">
-											<label class="small mb-1" for="inputId">아이디</label> <input
-												class="form-control" id="inputId" type="text" name="id" />
-										</div>
-										<div class="d-flex align-items-center justify-content-right">
-											<span id="result"></span> <input type="button" value="중복체크"
-												class="btn btn-primary h-8" onclick="checkId()"
-												style="margin-left: 10px; height: 36px;">
-										</div>
-										<!-- Form Group (비밀번호)-->
-										<div class="mb-3">
-											<label class="small mb-1" for="inputPassword">비밀번호</label> <input
-												class="form-control" id="inputPassword" type="password"
-												name="pw" />
-										</div>
-										<!-- From Grooup (닉네임) -->
-										<div class="mb-3">
-											<label class="small mb-1" for="inputnickname">닉네임</label> <input
-												class="form-control" id="inputnickname" type="text"
-												name="name" />
-										</div>
-										<!-- From Grooup (Email) -->
-										<div class="mb-3">
+                <div class="container-xl px-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <!-- Basic login form-->
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header justify-content-center">
+                                    <h1 class="fw-light my-4">회원가입</h1>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Join form-->
+                                    <form action="join" method="post">
+                                        <!-- Form Group (아이디)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputId">아이디</label>
+                                            <input class="form-control" id="inputId" type="text" name="id" />
+                                            <div class="d-flex align-items-center justify-content-right">
+                                                <span id="result"></span>
+                                                <input type="button" value="중복체크" class="btn btn-primary h-8" onclick="checkId()" style="margin-top: 10px; height: 36px;">
+                                            </div>
+                                        </div>
+                                        <!-- Form Group (비밀번호)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputPassword">비밀번호</label>
+                                            <input class="form-control" id="inputPassword" type="password" name="pw" />
+                                        </div>
+                                        <!-- From Grooup (닉네임) -->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputnickname">닉네임</label>
+                                            <input class="form-control" id="inputnickname" type="text" name="name" />
+                                        </div>
+                                        <!-- From Grooup (Email) -->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputEmail">이메일</label>
+                                            <input class="form-control" id="inputEmail" type="text" name="email" />
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-right">
+                                            <input id="send" type="button" value="인증번호 전송" onclick="sendEmail()" class="btn btn-primary h-8" style="margin-left: 10px; height: 36px;">
+                                        </div>
+                                    <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
+    <label class="small mb-1" for="inputNumber" style="flex: 1; white-space: nowrap;">인증번호 6자리를 입력해주세요</label> 
+    <input class="form-control mailCheckInput" id="checkInput" type="text" name="code" style="flex: 1; margin-left: 10px;" />
+    <input id="check" type="button" value="인증번호 확인" onclick="checkEmail()" class="btn btn-primary h-8" style="margin-left: 10px; height: 36px;" />
+</div>
 
-											<label class="small mb-1" for="inputEmail">이메일</label> <input
-												class="form-control" id="inputEmail" type="text"
-												name="email" />
-										</div>
-										<div class="d-flex align-items-center justify-content-right">
-											<input id="send" type="button" value="인증번호 전송"
-												onclick="sendEmail()" class="btn btn-primary h-8"
-												style="margin-left: 10px; height: 36px;">
-										</div>
-										<div class="d-flex align-items-center justify-content-right">
-											<label class="small mb-1" for="inputNumber">인증번호 6자리를
-												입력해주세요</label> <input class="form-control mailCheckInput"
-												id="checkInput" type="text" name="code" />
-										</div>
-										<div>
-											<input id="check" type="button" value="인증번호 확인"
-												onclick="checkEmail()" class="btn btn-primary h-8"
-												style="margin-left: 10px; height: 36px;">
-										</div>
+                                        <span id="mailCheckWarn"></span>
+                                        <!-- Form Group (join box)-->
+                                        <div class="d-flex align-items-center justify-content-right mt-4 mb-0">
+                                            <button type="button" class="btn btn-primary btn-default" onclick="submitForm()">확인</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
 
-										<span id="mailCheckWarn"></span>
-										<!-- Form Group (join box)-->
-										<div
-											class="d-flex align-items-center justify-content-right mt-4 mb-0">
-											<button type="button" class="btn btn-primary btn-default"
-												onclick="submitForm()">확인</button>
-										</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-		</div>
-		</main>
-	</div>
-	</div>
-<<<<<<< HEAD
-=======
-	</div>
->>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-	<script src="js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
 </body>
+</html>
 
 </html>
