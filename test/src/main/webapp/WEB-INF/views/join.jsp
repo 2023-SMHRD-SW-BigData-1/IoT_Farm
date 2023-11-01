@@ -201,6 +201,10 @@
 		</main>
 	</div>
 	</div>
+<<<<<<< HEAD
+=======
+	</div>
+>>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>

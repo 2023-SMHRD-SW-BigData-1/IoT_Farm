@@ -1,6 +1,10 @@
 package com.smhrd.bigdata.model;
 
 import java.util.Date;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,4 +32,6 @@ public class TestMember {
 		this.id = id;
 		this.pw = pw;
 	}
+	
+
 }
