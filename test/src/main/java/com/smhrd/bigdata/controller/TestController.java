@@ -285,6 +285,9 @@ public class TestController {
 				max = new IoT_Sensor(30, 150, usingIot, usingSensor);
 			}
 			session.setAttribute("max", max);
+			
+			System.out.println(user.getUser_num());
+
 
 			return "redirect:/";
 		} else {
@@ -318,6 +321,33 @@ public class TestController {
 	public String pwfind() {
 		return "pwfind";
 	}
+
+
+   @GetMapping("/mydata")
+   public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
+	   TestMember user = (TestMember)session.getAttribute("user");
+	   
+	   List<String> list = service.user_iot(user.getUser_num());
+	   
+	   System.out.println(list);
+	   System.out.println(user.getUser_num());
+	   model.addAttribute("iotList",list);
+	   
+      return "mydata";
+   }
+	@PostMapping("mydata/iotadd")
+	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		int cnt = service.iotadd(iotName,user.getUser_num());
+		if(cnt>0) {
+			System.out.println("success");
+			return "redirect:/mydata";
+		}else {
+			System.out.println("fail");
+			return "fail";
+		}
+	}
+
 
 	@GetMapping("/pwfind2")
 	public String pwfind2() {
