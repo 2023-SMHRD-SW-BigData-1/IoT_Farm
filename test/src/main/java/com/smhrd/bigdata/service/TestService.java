@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.smhrd.bigdata.mapper.TestMapper;
 import com.smhrd.bigdata.model.Bill;
+import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.model.Useriot_Info;
 
@@ -66,6 +67,11 @@ public class TestService {
 	public List<Useriot_Info> user_iot(int user_num) {
 		return mapper.user_iot(user_num);
 	}
+	
+	public List<Iotsensor_Info> Iotsensor(int iot_num){
+		return mapper.Iotsensor(iot_num);
+	}
+	
 
 	public int changeEmail(String id, String email) {
 		return mapper.updateEmail(id, email);
@@ -101,10 +107,8 @@ public class TestService {
 		return mapper.billList(i);
 	}
 	public int sensoradd(String iot_num, String sensorName, int user_num, int sensorType) {
-		System.out.println("서비스 진입");
 		return mapper.sensoradd(iot_num, sensorName, user_num, sensorType);
 	}
-}
 public Bill last_payment(int user_num) {
 	// TODO Auto-generated method stub
 	return mapper.last_payment(user_num);

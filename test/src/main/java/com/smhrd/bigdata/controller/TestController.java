@@ -2,6 +2,7 @@ package com.smhrd.bigdata.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.IoT_Sensor;
+import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.model.Useriot_Info;
 import com.smhrd.bigdata.service.TestService;
@@ -287,7 +289,7 @@ public class TestController {
 			}
 			session.setAttribute("max", max);
 
-			System.out.println(user.getUser_num());
+//			System.out.println(user.getUser_num());
 
 			return "redirect:/";
 		} else {
@@ -325,12 +327,26 @@ public class TestController {
 	@GetMapping("/mydata")
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
 		TestMember user = (TestMember) session.getAttribute("user");
-
+		
 		List<Useriot_Info> list = service.user_iot(user.getUser_num());
-
+		List<List<Iotsensor_Info>> sensorList=new ArrayList<>();
+		
+		for (Useriot_Info element : list) {
+			sensorList.add(service.Iotsensor(element.getIot_num()));
+		}
+		
 		model.addAttribute("iotList", list);
-
+		model.addAttribute("sensorList",sensorList);
 		return "mydata";
+		
+		/*
+		List<List<String>> outerList = new ArrayList<>();
+
+		List<String> innerList1 = new ArrayList<>();
+		innerList1.add("Inner List 1 - Element 1");
+		innerList1.add("Inner List 1 - Element 2");
+		outerList.add(innerList1);
+*/
 	}
 
 	@PostMapping("mydata/iotadd")
@@ -358,13 +374,11 @@ public class TestController {
 	public String sensoradd(HttpSession session, @RequestParam("sensorName") String sensorName,
 			@RequestParam("sensorType") int sensorType, @PathVariable String idx) {
 		TestMember user = (TestMember) session.getAttribute("user");
-		
-		int cnt = service.sensoradd(idx,sensorName, user.getUser_num(), sensorType);
+
+		int cnt = service.sensoradd(idx, sensorName, user.getUser_num(), sensorType);
 		if (cnt > 0) {
-			System.out.println(sensorName);
 			return "redirect:/mydata";
 		} else {
-			System.out.println(sensorName+"fail");
 			return "redirect:/mydata";
 		}
 	}

@@ -47,27 +47,37 @@
 
 						<!-- Sidenav Accordion (Utilities)-->
 						<tbody>
-							<c:forEach items="${iotList }" var="item">
+							<c:forEach items="${iotList}" var="item">
 								<tr>
 									<td><a class="nav-link collapsed mt-10px"
 										href="javascript:void(0);" data-bs-toggle="collapse"
-										data-bs-target="#collapseUtilities${item.iot_num }"
+										data-bs-target="#collapseUtilities${item.iot_num}"
 										aria-expanded="false" aria-controls="collapseUtilities">
 											<div class="nav-link-icon">
 												<i data-feather="tool"></i>
-											</div>${item.iot_name }
+											</div> ${item.iot_name}
 											<div class="sidenav-collapse-arrow">
 												<i class="fas fa-angle-down"></i>
 											</div>
 									</a></td>
-									<td><div class="collapse"
-											id="collapseUtilities${item.iot_num }"
+									<td>
+										<div class="collapse" id="collapseUtilities${item.iot_num}"
 											data-bs-parent="#accordionSidenav">
 											<nav class="sidenav-menu-nested nav">
+												<c:forEach items="${sensorList}" var="item2">
+													<c:forEach items="${item2}" var="item3">
+														<c:if
+															test="${item.getIot_num().equals(item3.getIot_num())}">
+															<a class="nav-link" href="#" data-bs-toggle="modal">${item3.sensor_name}</a>
+														</c:if>
+													</c:forEach>
+												</c:forEach>
+
 												<a class="nav-link" href="#" data-bs-toggle="modal"
-													data-bs-target="#exampleModalCenter${item.iot_num }">센서등록</a>
+													data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</a>
 											</nav>
-										</div></td>
+										</div>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -276,7 +286,7 @@
 								<div class="modal-body">
 									<div class="mb-3 modal-flex">
 										<div class="wd-40">센서 이름:</div>
-										<input class="form-control" id="inputDashboard" type="text"
+										<input class="form-control" id="inputsensorName" type="text"
 											name="sensorName" />
 									</div>
 									<div class="mb-3 modal-flex">
@@ -307,6 +317,5 @@
 		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </body>
 </html>

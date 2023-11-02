@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.smhrd.bigdata.model.Bill;
+import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.model.Useriot_Info;
 
@@ -43,7 +44,10 @@ public interface TestMapper {
 	
 	@Select("select * from useriot_info where user_num=#{user_num}")
 	public List<Useriot_Info> user_iot(int user_num);
-
+	
+	//sensor name 가져오기
+	@Select("select * from iotsensor_info where iot_num=#{iot_num}")
+	public List<Iotsensor_Info> Iotsensor(int iot_num);
 
 	@Update("update user_info set email=#{email} where id=#{id}")
 	public int updateEmail(String id, String email);
