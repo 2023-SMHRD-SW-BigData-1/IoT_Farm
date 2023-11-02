@@ -12,6 +12,13 @@ public class EmailService {
    @Autowired
    private JavaMailSender emailSender;
    
+   public String makeRandomNumber() {
+	   // 난수의 범위 111111 ~ 999999 (6자리 난수)
+	   Random r = new Random();
+	   int checkNum = r.nextInt(888888) + 111111;
+	return String.valueOf(checkNum);
+   }
+   
    public void sendSimpleMessage(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
@@ -21,14 +28,4 @@ public class EmailService {
         System.out.println(2);
     }
    
-   @Service
-   public class VerificationService {
-
-       public String generateVerificationCode() {
-           // 랜덤한 6자리 숫자를 생성합니다.
-           Random random = new Random();
-           int verificationCode = 100000 + random.nextInt(900000);
-           return String.valueOf(verificationCode);
-       }
-   }
 }
