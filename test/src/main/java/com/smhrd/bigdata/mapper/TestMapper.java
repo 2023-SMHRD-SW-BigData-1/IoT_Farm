@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.smhrd.bigdata.model.Bill;
+import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.model.Useriot_Info;
 
@@ -47,6 +48,14 @@ public interface TestMapper {
 
 	@Select("select * from useriot_info where user_num=#{user_num}")
 	public List<Useriot_Info> user_iot(int user_num);
+	
+	//dashboard 등록
+	@Insert("insert into dashboard_info (dashboard_name, user_num) VALUES (#{dashboard_name}, #{user_num})")
+	public int dashboardadd(String dashboard_name, int user_num);
+	
+	//sensor name 가져오기
+	@Select("select * from iotsensor_info where iot_num=#{iot_num}")
+	public List<Iotsensor_Info> Iotsensor(int iot_num);
 
 	@Update("update user_info set email=#{email} where id=#{id}")
 	public int updateEmail(String id, String email);
@@ -74,6 +83,9 @@ public interface TestMapper {
 
 	// sensor 등록
 	@Insert("insert into iotsensor_info (iot_num,sensor_name, user_num, sensor_type) VALUES (#{iot_num} ,#{sensor_name}, #{user_num}, #{sensor_type})")
-	public int sensoradd(String iot_num, String sensor_name, int user_num, int sensor_type);
 
+	public int sensoradd(String iot_num ,String sensor_name, int user_num, int sensor_type);
+
+	@Insert("insert into deal(user_num,product,price) values(#{data[0]},#{data[1]},#{data[2]})")
+	public void addPayment(String[] data);
 }

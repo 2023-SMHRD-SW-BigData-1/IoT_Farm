@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,6 +63,17 @@ public class TestRestController {
 		} else {
 			return "fail";
 		}
-		
+	}
+
+	@PostMapping("mydata/dashboardadd1")
+	public String dashboardadd1(HttpSession session, @RequestParam("dbName") String dbName) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		int cnt = service.dashboardadd(dbName, user.getUser_num());
+		   if(cnt>0) {
+			   return "success";
+		   }else {
+			   return "fail";
+		   }
+
 	}
 }
