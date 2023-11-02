@@ -158,8 +158,8 @@
 			<!-- 로그인 -->
 			<li class="nav-item no-caret d-none d-md-block me-3"><a
 				class="nav-link  btn btn-outline-success p-3"
-				style="margin-top: 1.8rem;border-radius:3rem;width:7rem" href="/bigdata/login" role="button">
-					<div class="fw-900 text-lg">로그인</div>
+				style="margin-top: 1.6rem;border-radius:3rem;width:7rem" href="/bigdata/login" role="button">
+					<div class="fw-900 text-lg mt-1">로그인</div>
 			</a></li>
 			<%} %>
 		</ul>

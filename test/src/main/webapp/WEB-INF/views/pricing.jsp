@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.smhrd.bigdata.model.TestMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -24,6 +25,7 @@
 </head>
 <body class="nav-fixed">
 	<jsp:include page="header.jsp"></jsp:include>
+	<%TestMember user=(TestMember)session.getAttribute("user");%>
 	<div id="layoutSidenav">
 
 		<div id="layoutSidenav_content"
@@ -68,8 +70,7 @@
 											<li
 												class="d-flex align-items-center justify-content-center mb-3">
 												<i class="text-primary me-2" data-feather="check-circle"></i>
-												더 많은 연결
-											</li>
+												최대 10개의 IoT, 30개의 Sensor 더 많은 연결</li>
 											<li
 												class="d-flex align-items-center justify-content-center mb-3">
 												<i class="text-primary me-2" data-feather="check-circle"></i>
@@ -77,11 +78,17 @@
 											</li>
 										</ul>
 									</div>
+									<% if(user.getPclass().equals("Free")){ %>
 									<a
 										class="card-footer d-flex align-items-center justify-content-center"
 										href="#" onclick="buyPaid()"> Start now <i class="ms-2"
 										data-feather="arrow-right"></i>
 									</a>
+									<%}else if(user.getPclass().equals("Paid")){ %>
+									<div class="card-footer d-flex align-items-center justify-content-center" style="color:#0061f2"> 이용중인 버전입니다
+									</div>
+									<%}else{ %>
+									<%} %>
 								</div>
 							</div>
 
@@ -106,7 +113,7 @@
 											<li
 												class="d-flex align-items-center justify-content-center mb-3">
 												<i class="text-primary me-2" data-feather="check-circle"></i>
-												더 더 많은 연결
+												최대 30개의 IoT, 150개의 Sensor 더 더 많은 연결
 											</li>
 											<li
 												class="d-flex align-items-center justify-content-center mb-3">
@@ -141,30 +148,38 @@
 	<script>
 	function buyPaid(){
 		BootPay.request({
-			price : '9900', //실제 결제되는 가격
-			application_id : "6540ac0d00c78a001c21b77a",
-			name : 'Paid', //결제창에서 보여질 이름
-			pg : 'inicis',
-			items : [ {
-				item_name : 'Paid', //상품명
-				qty : 1, //수량
-				unique : '1', //해당 상품을 구분짓는 primary key
-				price : 9900, //상품 단가
-			} ],
-			order_id : '고유order_id_1234', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+		    price: '9900', // 실제 결제되는 가격
+		    application_id: "6540ac0d00c78a001c21b77a",
+		    name: 'Paid', // 결제창에서 보여질 이름
+		    pg: 'inicis',
+		    items: [{
+		        item_name: 'Paid', // 상품명
+		        qty: 1, // 수량
+		        unique: '1', // 해당 상품을 구분짓는 primary key
+		        price: 9900, // 상품 단가
+		    }],
+		    order_id: 'Paid_${user.id}' // 고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
 		}).error(function(data) {
-			//결제 진행시 에러가 발생하면 수행됩니다.
-			console.log(data);
+			var form = document.createElement("form");
+		    form.method = "GET";
+		    form.action = "/bigdata/pay_fail";
+		    document.body.appendChild(form);
+		    form.submit();
 		}).cancel(function(data) {
-			//결제가 취소되면 수행됩니다.
-			console.log(data);
-		}).close(function(data) {
-			// 결제창이 닫힐때 수행됩니다. (성공,실패,취소에 상관없이 모두 수행됨)
-			console.log(data);
+		    alert("결제가 취소되었습니다");
 		}).done(function(data) {
-			//결제가 정상적으로 완료되면 수행됩니다
-			//비즈니스 로직을 수행하기 전에 결제 유효성 검증을 하시길 추천합니다.
-			console.log(data);
+			var form = document.createElement("form");
+		    form.method = "POST";
+		    form.action = "/bigdata/pay_success";
+		    
+		    var input = document.createElement("input");
+		    input.type = "hidden";
+		    input.name = "paymentData"; // 컨트롤러에서 사용할 데이터 이름
+		    input.value =["${user.user_num}", "Paid", "9900"]; // 수정된 값 전달
+		    form.appendChild(input);
+		    
+		    document.body.appendChild(form);
+		    form.submit();
 		});
 	}
 	
@@ -180,21 +195,28 @@
 				unique : '2', //해당 상품을 구분짓는 primary key
 				price : 55000, //상품 단가
 			} ],
-			order_id : '고유order_id_1234', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+			order_id : 'Premium_${user.id}', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
 		}).error(function(data) {
-			//결제 진행시 에러가 발생하면 수행됩니다.
-			console.log(data);
+			var form = document.createElement("form");
+		    form.method = "GET";
+		    form.action = "/bigdata/pay_fail";
+		    document.body.appendChild(form);
+		    form.submit();
 		}).cancel(function(data) {
-			//결제가 취소되면 수행됩니다.
-			
-			console.log(data);
-		}).close(function(data) {
-			// 결제창이 닫힐때 수행됩니다. (성공,실패,취소에 상관없이 모두 수행됨)
-			console.log(data);
+		    alert("결제가 취소되었습니다");
 		}).done(function(data) {
-			//결제가 정상적으로 완료되면 수행됩니다
-			//비즈니스 로직을 수행하기 전에 결제 유효성 검증을 하시길 추천합니다.
-			console.log(data);
+			var form = document.createElement("form");
+		    form.method = "POST";
+		    form.action = "/bigdata/pay_success";
+		    
+		    var input = document.createElement("input");
+		    input.type = "hidden";
+		    input.name = "paymentData"; // 컨트롤러에서 사용할 데이터 이름
+		    input.value =["${user.user_num}", "Premium", "55000"]; // 수정된 값 전달
+		    form.appendChild(input);
+		    
+		    document.body.appendChild(form);
+		    form.submit();
 		});
 	}
 	</script>

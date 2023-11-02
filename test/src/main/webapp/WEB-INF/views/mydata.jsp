@@ -60,8 +60,14 @@
 												<i class="fas fa-angle-down"></i>
 											</div>
 									</a></td>
+<<<<<<< HEAD
 									<td>
 										<div class="collapse" id="collapseUtilities${item.iot_num}"
+=======
+									<div id="sensorList${iotList }"></div>
+									<td><div class="collapse"
+											id="collapseUtilities${item.iot_num }"
+>>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
 											data-bs-parent="#accordionSidenav">
 											<nav class="sidenav-menu-nested nav">
 												<c:forEach items="${sensorList}" var="item2">

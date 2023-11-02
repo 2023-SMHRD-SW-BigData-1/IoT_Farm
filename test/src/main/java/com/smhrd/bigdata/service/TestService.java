@@ -21,17 +21,9 @@ public class TestService {
 	@Autowired
 	private TestMapper mapper;
 
-	@Autowired
-	private EmailService emails;
-
 	@Transactional
 	public void join(TestMember m) {
 		mapper.join(m);
-		String email = m.getEmail();
-		String subject = "회원 가입 완료";
-		String text = "회원 가입 완료";
-		System.out.println(1);
-		emails.sendSimpleMessage(email, subject, text);
 	}
 
 	public TestMember login(TestMember m) {
@@ -51,27 +43,9 @@ public class TestService {
 		return mapper.updateName(id, name);
 	}
 
-	public int changePw(String id, String newPassword) {
-		// TODO Auto-generated method stub
-		return mapper.updatePw(id, newPassword);
-	}
-
-	public void delete(String id) {
-		mapper.delete(id);
-	}
-
 	public int iotadd(String iotName, int user_num) {
 		return mapper.iotadd(iotName, user_num);
 	}
-
-	public List<Useriot_Info> user_iot(int user_num) {
-		return mapper.user_iot(user_num);
-	}
-	
-	public List<Iotsensor_Info> Iotsensor(int iot_num){
-		return mapper.Iotsensor(iot_num);
-	}
-	
 
 	public int changeEmail(String id, String email) {
 		return mapper.updateEmail(id, email);
@@ -92,25 +66,51 @@ public class TestService {
 		return mapper.updateWeb_noti(id, checknoti);
 	}
 
-	public int iotNum(int user_num) {
-		// TODO Auto-generated method stub
-		return mapper.iotNum(user_num);
-	}
-
 	public int sensorNum(int user_num) {
 		// TODO Auto-generated method stub
 		return mapper.sensorNum(user_num);
+	}
+
+	public int sensoradd(String iot_num, String sensorName, int user_num, int sensorType) {
+		System.out.println("서비스 진입");
+		return mapper.sensoradd(iot_num, sensorName, user_num, sensorType);
+	}
+
+	public int changePw(String id, String newPassword) {
+		// TODO Auto-generated method stub
+		return mapper.updatePw(id, newPassword);
+	}
+
+	public void delete(String id) {
+		mapper.delete(id);
+	}
+
+	public List<Useriot_Info> user_iot(int user_num) {
+		return mapper.user_iot(user_num);
+	}
+
+	public List<Iotsensor_Info> Iotsensor(int iot_num) {
+		return mapper.Iotsensor(iot_num);
+	}
+
+	public int iotNum(int user_num) {
+		// TODO Auto-generated method stub
+		return mapper.iotNum(user_num);
 	}
 
 	public List<Bill> billList(int i) {
 		// TODO Auto-generated method stub
 		return mapper.billList(i);
 	}
-	public int sensoradd(String iot_num, String sensorName, int user_num, int sensorType) {
-		return mapper.sensoradd(iot_num, sensorName, user_num, sensorType);
+
+	public void addPayment(String[] data) {
+		mapper.addPayment(data);
+
 	}
-public Bill last_payment(int user_num) {
-	// TODO Auto-generated method stub
-	return mapper.last_payment(user_num);
-}
+
+	public Bill last_payment(int user_num) {
+		// TODO Auto-generated method stub
+		return mapper.last_payment(user_num);
+	}
+
 }

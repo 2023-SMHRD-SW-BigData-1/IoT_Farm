@@ -3,18 +3,22 @@ package com.smhrd.bigdata.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -24,14 +28,20 @@ import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.IoT_Sensor;
 import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.TestMember;
+import com.smhrd.bigdata.service.EmailService;
 import com.smhrd.bigdata.model.Useriot_Info;
 import com.smhrd.bigdata.service.TestService;
 
 @Controller
 public class TestController {
 
-	@Autowired
-	TestService service;
+   @Autowired
+   TestService service;
+   
+   @Autowired
+   EmailService emailservice;
+   
+
 
 	@GetMapping("/test")
 	public String table() {
@@ -42,6 +52,7 @@ public class TestController {
 	public String header(Model model) {
 		return "header";
 	}
+
 
 	@GetMapping("/join")
 	public String joinForm(@ModelAttribute TestMember m) {
@@ -81,7 +92,13 @@ public class TestController {
 	public String billing(Model model, HttpSession session) {
 		TestMember user = (TestMember) session.getAttribute("user");
 		List<Bill> list = service.billList(user.getUser_num());
-		model.addAttribute("last", service.last_payment(user.getUser_num()));
+		Bill last=service.last_payment(user.getUser_num());
+		Bill test=new Bill("null"," "," "," ",new Date(1,1,1),new Date(1,1,1));
+		if(last!=null) {
+			model.addAttribute("last",last );
+		}else {
+			model.addAttribute("last",test);
+		}
 		model.addAttribute("list", list);
 		return "billing";
 	}
@@ -250,8 +267,14 @@ public class TestController {
 		return "pricing";
 	}
 
-	@GetMapping("/pay_success")
-	public String pay_success(Model model) {
+	@PostMapping("/pay_success")
+	public String pay_success(@RequestParam(value = "paymentData") String[] data) {
+        // 받은 값들을 활용하여 원하는 로직을 수행하고 결과를 반환하거나 다른 처리를 수행할 수 있습니다.
+        // 예시: 받은 값들을 로그로 출력
+        System.out.println("user_num: " + data[0]);
+        System.out.println("product: " + data[1]);
+        System.out.println("price: " + data[2]);
+        service.addPayment(data);
 		return "pay_success";
 	}
 
@@ -329,14 +352,18 @@ public class TestController {
 		TestMember user = (TestMember) session.getAttribute("user");
 		
 		List<Useriot_Info> list = service.user_iot(user.getUser_num());
+
 		List<List<Iotsensor_Info>> sensorList=new ArrayList<>();
 		
 		for (Useriot_Info element : list) {
 			sensorList.add(service.Iotsensor(element.getIot_num()));
 		}
+
 		
 		model.addAttribute("iotList", list);
+
 		model.addAttribute("sensorList",sensorList);
+
 		return "mydata";
 		
 		/*

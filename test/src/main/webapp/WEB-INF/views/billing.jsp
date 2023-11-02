@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.smhrd.bigdata.model.TestMember"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Calendar"%>
@@ -35,7 +36,10 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<div id="layoutSidenav">
 <%
+TestMember user=(TestMember)session.getAttribute("user");
 Bill last=(Bill)request.getAttribute("last");
+
+
 Calendar calendar = Calendar.getInstance();
 calendar.setTime(last.getEnd_date());
 calendar.add(Calendar.DAY_OF_MONTH, 1);
@@ -65,8 +69,10 @@ List<Bill> list = (List<Bill>) request.getAttribute("list");
 							<div class="card h-100 border-start-lg border-start-primary">
 								<div class="card-body">
 									<div class="small text-muted">최근 결제 내역</div>
+									<%if(!last.getDeal_num().equals("null")){ %>
 									<div class="h3">${last.start_date}</div>
 									<div>${last.product } 상품 결제</div>
+									<%} %>
 								</div>
 							</div>
 						</div>
@@ -76,25 +82,30 @@ List<Bill> list = (List<Bill>) request.getAttribute("list");
 								<div class="card-body">
 									<div class="small text-muted">현재 버전</div>
 									<div class="h3">${user.pclass }</div>
+									<%if(!user.getPclass().equals("Premium")){ %>
 									<a class="text-arrow-icon small text-secondary"
 										href="/bigdata/pricing"> 업그레이드 하러가기 <i
 										data-feather="arrow-right"></i>
 									</a>
+									<%}else{ %>
+									<a class="text-arrow-icon small text-secondary"
+										href="/bigdata/qna"> 이상의 기능 신청하기 <i
+										data-feather="arrow-right"></i>
+									</a>
+									<%} %>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-4 mb-4">
+						<%if(!user.getPclass().equals("Free")){ %>
 							<!-- Billing card 3-->
 							<div class="card h-100 border-start-lg border-start-success">
 								<div class="card-body">
 									<div class="small text-muted">다음 결제일</div>
 									<div class="h3 d-flex align-items-center"><%=next_date%></div>
-									<a class="text-arrow-icon small text-success"
-										href="/bigdata/pricing"> 사전 결제 하러가기 <i
-										data-feather="arrow-right"></i>
-									</a>
 								</div>
 							</div>
+							<%} %>
 						</div>
 					</div>
 
@@ -124,7 +135,7 @@ List<Bill> list = (List<Bill>) request.getAttribute("list");
 											<td>#<%=bill.getDeal_num()%></td>
 											<td>
 												<div
-													class="badge <%if (bill.getProduct().equals("paid")) {%>bg-primary<%} else {%>bg-warning<%}%> text-white rounded-pill">
+													class="badge <%if (bill.getProduct().equals("Paid")) {%>bg-primary<%} else {%>bg-warning<%}%> text-white rounded-pill">
 													<%=bill.getProduct()%>
 												</div>
 											</td>
