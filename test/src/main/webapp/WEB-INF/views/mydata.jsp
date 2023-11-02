@@ -31,9 +31,51 @@
 			}
 
 		});
-		
-    }
-		
+	    var sensorSelect = document.getElementById("sensorSelect");
+	    var modal2Body = document.getElementById("modal2-body");
+
+	    // 선택한 값 가져오기
+	    var selectedValue = sensorSelect.value;
+
+	    // modal2-body 내용 업데이트
+	    modal2Body.innerHTML = "";
+
+	    for (var i = 0; i < selectedValue; i++) {
+	        var modal2Content = document.createElement("div");
+	        modal2Content.classList.add("modal-body");
+	        modal2Content.innerHTML = `
+	            <div class="mb-3 modal-flex">
+	                <div class="modal-iot">사용 IoT:</div>
+	                <select class="dashboard-count" id="iotSelect">
+	                    <option value="none"></option>
+	                    <option value="1">1</option>
+	                    <option value="2">2</option>
+	                </select>
+	            </div>
+	            <div class="mb-3 modal-flex">
+	                <div class="modal-iot">사용 센서:</div>
+	                <select class="dashboard-count">
+	                    <option value="none"></option>
+	                    <option value="1">1</option>
+	                    <option value="2">2</option>
+	                </select>
+	            </div>
+	            <div class="mb-3 modal-flex">
+	                <div class="modal-iot">차트 타입:</div>
+	                <select class="dashboard-count" name="dashboardType">
+	                    <option value="none"></option>
+	                    <option value="1">1</option>
+	                    <option value="2">2</option>
+	                </select>
+	            </div>
+	        `;
+
+	        modal2Body.appendChild(modal2Content);
+	    }
+	}
+	</script>
+}
+
 </script>
 </head>
 <body class="nav-fixed">
@@ -120,7 +162,7 @@
 						<a class="nav-link collapsed mt-10px" href="dashboard-1.html">
 							<div class="nav-link-icon">
 								<i data-feather="activity"></i>
-							</div>Dashboard1
+							</div>토마토 온도 대시보드
 						</a>
 
 
@@ -149,11 +191,9 @@
 										<div class="page-header-icon">
 											<i data-feather="layout"></i>
 										</div>
-										Boxed Layout
+										토마토 온도 대시보드
 									</h1>
-									<div class="page-header-subtitle">On larger screens, this
-										layout will keep the page content from expanding beyond a max
-										width.</div>
+									<div class="page-header-subtitle">토마토 온도 센서</div>
 								</div>
 							</div>
 						</div>
@@ -162,15 +202,77 @@
 				<!-- Main page content-->
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
-						<div class="card-header">Boxed Layout Example</div>
+
 						<div class="card-body">
-							This is an example of a page with the default boxed layout. We've
-							expanded Bootstrap by adding a ne w xxl breakpoint. As the screen
-							width gets larger, the container element will set a max width to
-							the content. The boxed layout uses th e max width container
-							element on the page header and in the main page content in this
-							example.
-							<div style="height: 3000rem">네비게이션 확인</div>
+							<div class="col-lg-8 mb-4">
+								<!-- Area chart example-->
+								<div class="card mb-4">
+									<div class="card-header">Revenue Summary</div>
+									<div class="card-body">
+										<div class="chart-area">
+											<canvas id="myAreaChart" width="100%" height="30"></canvas>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-6">
+										<!-- Bar chart example-->
+										<div class="card h-100">
+											<div class="card-header">Sales Reporting</div>
+											<div
+												class="card-body d-flex flex-column justify-content-center">
+												<div class="chart-bar">
+													<canvas id="myBarChart" width="100%" height="30"></canvas>
+												</div>
+											</div>
+											<div class="card-footer position-relative">
+												<a class="stretched-link" href="#!">
+													<div
+														class="text-xs d-flex align-items-center justify-content-between">
+														View More Reports <i class="fas fa-long-arrow-alt-right"></i>
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<!-- Pie chart example-->
+										<div class="card h-100">
+											<div class="card-header">Traffic Sources</div>
+											<div class="card-body">
+												<div class="chart-pie mb-4">
+													<canvas id="myPieChart" width="100%" height="50"></canvas>
+												</div>
+												<div class="list-group list-group-flush">
+													<div
+														class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
+														<div class="me-3">
+															<i class="fas fa-circle fa-sm me-1 text-blue"></i> Direct
+														</div>
+														<div class="fw-500 text-dark">55%</div>
+													</div>
+													<div
+														class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
+														<div class="me-3">
+															<i class="fas fa-circle fa-sm me-1 text-purple"></i>
+															Social
+														</div>
+														<div class="fw-500 text-dark">15%</div>
+													</div>
+													<div
+														class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
+														<div class="me-3">
+															<i class="fas fa-circle fa-sm me-1 text-green"></i>
+															Referral
+														</div>
+														<div class="fw-500 text-dark">30%</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -255,55 +357,26 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- dashboard Modal 2 -->
-			<div class="modal" id="exampleModalCenter2" tabindex="-1"
-				role="dialog" aria-labelledby="exampleModalCenterTitle"
-				aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalCenterTitle">차트 생성</h5>
-							<span class="modal-span">차트 타입은 가이드라인에서 자세히 확인할 수 있습니다.</span>
-							<button class="btn-close" type="button" data-bs-dismiss="modal"
-								aria-label="Close"></button>
-						</div>
-
-						<div class="modal-body">
-							<div class="mb-3 modal-flex">
-								<div class="modal-iot">사용 IoT:</div>
-								<select class="dashboard-count" id="iotSelect">
-									<option value="none"></option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-
-								</select>
-							</div>
-							<div class="mb-3 modal-flex">
-								<div class="modal-iot">사용 센서:</div>
-								<select class="dashboard-count">
-									<option value="none"></option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-
-								</select>
-							</div>
-							<div class="mb-3 modal-flex">
-								<div class="modal-iot">차트 타입:</div>
-								<select class="dashboard-count" name="dashboardType">
-									<option value="none"></option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-
-								</select>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button class="btn btn-primary" type="submit" aria-label="Close">확인</button>
-						</div>
+		</form>
+		<!-- dashboard Modal 2 -->
+		<div class="modal" id="exampleModalCenter2" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">차트 생성</h5>
+						<span class="modal-span">차트 타입은 가이드라인에서 자세히 확인할 수 있습니다.</span>
+						<button class="btn-close" type="button" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div id="modal2-body"></div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" type="submit" aria-label="Close">확인</button>
 					</div>
 				</div>
 			</div>
+		</div>
 		</form>
 		<tbody>
 			<c:forEach items="${iotList }" var="item">
