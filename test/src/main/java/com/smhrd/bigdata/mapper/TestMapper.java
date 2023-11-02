@@ -79,4 +79,7 @@ public interface TestMapper {
 
 	@Insert("insert into deal(user_num,product,price) values(#{data[0]},#{data[1]},#{data[2]})")
 	public void addPayment(String[] data);
+
+	@Update("update user_info set pclass=#{product} where user_num=#{user_num}")
+	public void setPclass(String user_num, String product);
 }

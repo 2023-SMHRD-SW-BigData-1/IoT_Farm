@@ -113,4 +113,8 @@ public class TestService {
 		return mapper.last_payment(user_num);
 	}
 
+	public void setPclass(String user_num, String product) {
+		mapper.setPclass(user_num,product);
+	}
+
 }

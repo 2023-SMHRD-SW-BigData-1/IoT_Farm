@@ -49,6 +49,9 @@
 						<tbody>
 							<c:forEach items="${iotList}" var="item">
 								<tr>
+								
+								
+								
 									<td><a class="nav-link collapsed mt-10px"
 										href="javascript:void(0);" data-bs-toggle="collapse"
 										data-bs-target="#collapseUtilities${item.iot_num}"
@@ -60,14 +63,14 @@
 												<i class="fas fa-angle-down"></i>
 											</div>
 									</a></td>
-<<<<<<< HEAD
+									
+
 									<td>
-										<div class="collapse" id="collapseUtilities${item.iot_num}"
-=======
+										<div class="collapse" id="collapseUtilities${item.iot_num}"/>
+
 									<div id="sensorList${iotList }"></div>
 									<td><div class="collapse"
 											id="collapseUtilities${item.iot_num }"
->>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
 											data-bs-parent="#accordionSidenav">
 											<nav class="sidenav-menu-nested nav">
 												<c:forEach items="${sensorList}" var="item2">
@@ -84,6 +87,9 @@
 											</nav>
 										</div>
 									</td>
+									
+									
+									
 								</tr>
 							</c:forEach>
 						</tbody>

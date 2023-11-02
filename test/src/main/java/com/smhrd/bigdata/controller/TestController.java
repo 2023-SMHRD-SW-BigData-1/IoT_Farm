@@ -87,7 +87,7 @@ public class TestController {
 			return "profile";
 		}
 	}
-
+	
 	@GetMapping("/billing")
 	public String billing(Model model, HttpSession session) {
 		TestMember user = (TestMember) session.getAttribute("user");
@@ -263,18 +263,28 @@ public class TestController {
 	}
 
 	@GetMapping("/pricing")
-	public String pricing(Model model) {
+	public String pricing(Model model, HttpSession session) {
 		return "pricing";
 	}
 
 	@PostMapping("/pay_success")
-	public String pay_success(@RequestParam(value = "paymentData") String[] data) {
+	public String pay_success(@RequestParam(value = "paymentData") String[] data, HttpSession session) {
         // 받은 값들을 활용하여 원하는 로직을 수행하고 결과를 반환하거나 다른 처리를 수행할 수 있습니다.
         // 예시: 받은 값들을 로그로 출력
-        System.out.println("user_num: " + data[0]);
-        System.out.println("product: " + data[1]);
-        System.out.println("price: " + data[2]);
+        TestMember user=(TestMember)session.getAttribute("user");
+        
+        //환불요청
+        if(user.getPclass().equals("Paid")) {
+        	Bill last=service.last_payment(user.getUser_num());
+        	emailservice.sendSimpleMessage("kimhasin@gmail.com", "업그레이드로 인한 환불요청", last.getDeal_num()+"확인 요청");
+        }
+        
         service.addPayment(data);
+        service.setPclass(data[0],data[1]);
+        
+        user.setPclass(data[1]);
+        session.setAttribute("user", user);
+        
 		return "pay_success";
 	}
 
