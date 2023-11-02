@@ -46,6 +46,10 @@ public class TestService {
 	public int iotadd(String iotName, int user_num) {
 		return mapper.iotadd(iotName, user_num);
 	}
+	
+	public int dashboardadd(String dashboardName, int user_num) {
+		return mapper.dashboardadd(dashboardName, user_num);
+	}
 
 	public int changeEmail(String id, String email) {
 		return mapper.updateEmail(id, email);

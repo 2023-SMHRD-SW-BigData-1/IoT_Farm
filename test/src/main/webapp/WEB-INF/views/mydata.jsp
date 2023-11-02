@@ -19,6 +19,22 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
+<script>
+	function nextModal() {
+		let dbName = $('#inputDbName').val();
+		
+		$.ajax({
+			url : "mydata/dashboardadd1",
+			type : "post",
+			data : {
+				'dbName' : dbName
+			}
+
+		});
+		
+    }
+		
+</script>
 </head>
 <body class="nav-fixed">
 
@@ -60,14 +76,10 @@
 												<i class="fas fa-angle-down"></i>
 											</div>
 									</a></td>
-<<<<<<< HEAD
 									<td>
-										<div class="collapse" id="collapseUtilities${item.iot_num}"
-=======
-									<div id="sensorList${iotList }"></div>
-									<td><div class="collapse"
-											id="collapseUtilities${item.iot_num }"
->>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
+										<div class="collapse" id="collapseUtilities${item.iot_num}"></div>
+										<div id="sensorList${iotList }"></div>
+										<div class="collapse" id="collapseUtilities${item.iot_num }"
 											data-bs-parent="#accordionSidenav">
 											<nav class="sidenav-menu-nested nav">
 												<c:forEach items="${sensorList}" var="item2">
@@ -78,7 +90,6 @@
 														</c:if>
 													</c:forEach>
 												</c:forEach>
-
 												<a class="nav-link" href="#" data-bs-toggle="modal"
 													data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</a>
 											</nav>
@@ -207,73 +218,93 @@
 		</div>
 
 		<!-- dashboard Modal 1 -->
-		<div class="modal" id="exampleModalCenter1" tabindex="-1"
-			role="dialog" aria-labelledby="exampleModalCenterTitle"
-			aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalCenterTitle">대시보드 생성</h5>
-						<button class="btn-close" type="button" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<div class="mb-3 modal-flex">
-							<div class="wd-40">대시보드 이름:</div>
-							<input class="form-control" id="inputDashboard" type="text" />
+		<form action="mydata/dashboardadd1" method="post">
+			<div class="modal" id="exampleModalCenter1" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalCenterTitle"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalCenterTitle">대시보드 생성</h5>
+							<button class="btn-close" type="button" data-bs-dismiss="modal"
+								aria-label="Close"></button>
 						</div>
-						<div class="mb-3 modal-flex">
-							<div class="modal-iot">사용 차트 수:</div>
-							<select class="dashboard-count">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="4">5</option>
-							</select>
+						<div class="modal-body">
+							<div class="mb-3 modal-flex">
+								<div class="wd-40">대시보드 이름:</div>
+								<input class="form-control" id="inputDbName"
+									name="dashboardName" type="text" />
+							</div>
+							<div class="mb-3 modal-flex">
+								<div class="modal-iot">사용 차트 수:</div>
+								<select class="dashboard-count chart-width" id="sensorSelect">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="4">5</option>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="modal-footer">
+						<div class="modal-footer">
 
-						<button class="btn btn-primary" type="button"
-							data-bs-toggle="modal" data-bs-target="#exampleModalCenter2">다음</button>
+							<button class="btn btn-primary" type="button"
+								data-bs-toggle="modal" data-bs-target="#exampleModalCenter2"
+								onclick="nextModal()">다음</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- dashboard Modal 2 -->
-		<div class="modal" id="exampleModalCenter2" tabindex="-1"
-			role="dialog" aria-labelledby="exampleModalCenterTitle"
-			aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalCenterTitle">차트 생성</h5>
-						<span class="modal-span">차트 타입은 가이드라인에서 자세히 확인할 수 있습니다.</span>
-						<button class="btn-close" type="button" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<div class="mb-3 modal-flex">
-							<div class="modal-iot">IoT 이름:</div>
-							<input class="form-control" id="inputIot" type="text" />
+			<!-- dashboard Modal 2 -->
+			<div class="modal" id="exampleModalCenter2" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalCenterTitle"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalCenterTitle">차트 생성</h5>
+							<span class="modal-span">차트 타입은 가이드라인에서 자세히 확인할 수 있습니다.</span>
+							<button class="btn-close" type="button" data-bs-dismiss="modal"
+								aria-label="Close"></button>
 						</div>
-						<div class="mb-3 modal-flex">
-							<div class="modal-iot">고유코드:</div>
-							<input class="form-control" id="inputCode" type="text" />
+
+						<div class="modal-body">
+							<div class="mb-3 modal-flex">
+								<div class="modal-iot">사용 IoT:</div>
+								<select class="dashboard-count" id="iotSelect">
+									<option value="none"></option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+
+								</select>
+							</div>
+							<div class="mb-3 modal-flex">
+								<div class="modal-iot">사용 센서:</div>
+								<select class="dashboard-count">
+									<option value="none"></option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+
+								</select>
+							</div>
+							<div class="mb-3 modal-flex">
+								<div class="modal-iot">차트 타입:</div>
+								<select class="dashboard-count" name="dashboardType">
+									<option value="none"></option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+
+								</select>
+							</div>
 						</div>
-						<div class="mb-3 modal-flex">
-							<div class="modal-iot">사용IP:</div>
-							<input class="form-control" id="inputIp" type="text" />
+						<div class="modal-footer">
+							<button class="btn btn-primary" type="submit" aria-label="Close">확인</button>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-primary" type="button" aria-label="Close">확인</button>
 					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 		<tbody>
 			<c:forEach items="${iotList }" var="item">
 				<!-- sensor Modal -->

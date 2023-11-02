@@ -21080,7 +21080,7 @@ pre[class*=language-] {
 .bd{border: 1px solid #000;}
 .bdr{border: 1px solid red;}
 .bdb{border: 1px solid blue;}
-.bdy{border: 1px solid yellow;}
+.bdy{border: 1px solid yellow;}	
 .mt{margin-top: 50px;}
 .d-ff{ display: flex; align-items: center; justify-content: center; width: 100%;}
 .w-1600 {width: 1600px;}
@@ -21097,6 +21097,7 @@ pre[class*=language-] {
 .modal-iot{width: 128px;}
 .wd-40{width: 40%;}
 .dashboard-count{ padding: 0.875rem 1.125rem;
+  width: 100%;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1;
@@ -21114,6 +21115,7 @@ pre[class*=language-] {
     margin-top: 8%;
     font-size: x-small;
 }
+.chart-width{width: 20%;}
 
 
 /*===========================================================*/

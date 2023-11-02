@@ -45,6 +45,10 @@ public interface TestMapper {
 	@Select("select * from useriot_info where user_num=#{user_num}")
 	public List<Useriot_Info> user_iot(int user_num);
 	
+	//dashboard 등록
+	@Insert("insert into dashboard_info (dashboard_name, user_num) VALUES (#{dashboard_name}, #{user_num})")
+	public int dashboardadd(String dashboard_name, int user_num);
+	
 	//sensor name 가져오기
 	@Select("select * from iotsensor_info where iot_num=#{iot_num}")
 	public List<Iotsensor_Info> Iotsensor(int iot_num);

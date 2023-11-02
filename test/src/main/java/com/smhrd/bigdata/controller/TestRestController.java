@@ -65,5 +65,15 @@ public class TestRestController {
 		   return "fail";
 	   }
    }
+	@PostMapping("mydata/dashboardadd1")
+	public String dashboardadd1(HttpSession session, @RequestParam("dbName") String dbName) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		int cnt = service.dashboardadd(dbName, user.getUser_num());
+		   if(cnt>0) {
+			   return "success";
+		   }else {
+			   return "fail";
+		   }
+	}
 }
    

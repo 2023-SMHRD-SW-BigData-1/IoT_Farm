@@ -225,18 +225,30 @@
 						<button class="btn-close" type="button" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					<div class="modal-body">
+					<div class="modal-body bd">
 						<div class="mb-3 modal-flex">
-							<div class="modal-iot">IoT 이름:</div>
-							<input class="form-control" id="inputIot" type="text" />
+							<div class="modal-iot">IoT:</div>
+							<select class="dashboard-count">
+								<option value="1">1</option>
+								<option value="2">2</option>
+
+							</select>
 						</div>
 						<div class="mb-3 modal-flex">
-							<div class="modal-iot">고유코드:</div>
-							<input class="form-control" id="inputCode" type="text" />
+							<div class="modal-iot">사용 센서:</div>
+							<select class="dashboard-count">
+								<option value="1">1</option>
+								<option value="2">2</option>
+
+							</select>
 						</div>
 						<div class="mb-3 modal-flex">
-							<div class="modal-iot">사용IP:</div>
-							<input class="form-control" id="inputIp" type="text" />
+							<div class="modal-iot">차트 타입:</div>
+							<select class="dashboard-count">
+								<option value="1">1</option>
+								<option value="2">2</option>
+
+							</select>
 						</div>
 					</div>
 					<div class="modal-footer">
