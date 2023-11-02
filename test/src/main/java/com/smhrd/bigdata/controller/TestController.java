@@ -1,26 +1,19 @@
 package com.smhrd.bigdata.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.IoT_Sensor;
@@ -327,10 +320,6 @@ public class TestController {
 		return "qna";
 	}
 
-	@GetMapping("/pwfind")
-	public String pwfind() {
-		return "pwfind";
-	}
 
 	@GetMapping("/mydata")
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
@@ -353,9 +342,13 @@ public class TestController {
 			return "fail";
 		}
 	}
-
+	
+	@GetMapping("/pwfind")
+	public String pwfind() {
+		return "pwfind";
+	}
 	@GetMapping("/pwfind2")
-	public String pwfind2() {
+	public String pwfind2(HttpSession session) {
 		return "pwfind2";
 	}
 
@@ -363,6 +356,23 @@ public class TestController {
 	public String pwfind3() {
 		return "pwfind3";
 	}
+	
+	@PostMapping("/updatePassword")
+	@ResponseBody
+	public String updatePassword(@RequestParam String email, @RequestParam String newPassword) {
+	    // 이메일과 새 비밀번호를 받아서 업데이트 로직을 작성합니다.
+	    boolean success = emailservice.updatePasswordByEmail(email, newPassword);
+	    if (success) {
+	        return "success";
+	    } else {
+	        return "error";
+	    }
+	}
+	@GetMapping("/redirect-pwfind2")
+	public String redirectToPwfind2() {
+	    return "redirect:/bigdata/pwfind2";
+	}
+
 
 	@GetMapping("mydata/sensoradd/{idx}")
 	public String sensoradd(HttpSession session, @RequestParam("sensorName") String sensorName,
