@@ -7,11 +7,13 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.smhrd.bigdata.mapper.TestMapper;
+import com.smhrd.bigdata.model.TestMember;
 
 import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 
 @Service
 public class EmailService {
@@ -83,5 +85,6 @@ public class EmailService {
             e.printStackTrace();
             return false;
         }
+        
     }
 }
