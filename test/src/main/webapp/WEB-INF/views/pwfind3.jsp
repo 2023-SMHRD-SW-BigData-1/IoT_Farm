@@ -18,6 +18,28 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
+	<script>
+	function updatePassword() {
+	    var newPassword = document.getElementById('inputPassword').value;
+	    var email = sessionStorage.getItem('email'); // 세션에 저장된 이메일 가져오기
+
+	    // 비밀번호 업데이트 요청
+	    $.ajax({
+	        url: '/bigdata/updatePassword',
+	        type: 'POST',
+	        data: { email: email, newPassword: newPassword },
+	        success: function(result) {
+	            if (result === 'success') {
+	                alert('비밀번호가 성공적으로 업데이트되었습니다.');
+	                window.location.href = '/bigdata/login';
+	            } else {
+	                alert('비밀번호 업데이트에 실패했습니다. 다시 시도해주세요.');
+	            }
+	        }
+	    });
+	}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="nav-fixed nav_login">
 	<div id="layoutAuthentication">
@@ -36,15 +58,15 @@
 										<form>
 											<!-- Form Group-->
 											<div class="mb-3">
-												<label class="small mb-1" for="inputId">새 비밀번호 입력</label> <input
-													class="form-control" id="inputId" type="text"
+												<label class="small mb-1" for="inputPassword">새 비밀번호 입력</label> <input
+													class="form-control" id="inputPassword" type="text"
 													placeholder="비밀번호를 입력하세요" />
 											</div>
 											<!-- Form Group (비밀번호)-->
 											<!-- Form Group (login box)-->
 											<div
 												class="d-flex align-items-center justify-content-right mt-4 mb-0">
-													<a class="btn btn-primary qna_btn" href="/bigdata/login">확인</a>
+													<button type="button" class="btn btn-primary qna_btn" onclick="updatePassword()">확인</button>
 											</div>
 										</form>
 									</div>
