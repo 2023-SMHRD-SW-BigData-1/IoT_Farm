@@ -49,89 +49,39 @@
 
 							<!-- 1 -->
 							<!-- Notifications preferences card-->
-							<div class="card mb-4">
-								<div class="card-header">Notification Preferences</div>
+							<div class="card mb-4 card-header-actions">
+								<div class="card-header">
+									Notification Preferences
+									<button class="btn btn-primary btn-sm" style="font-size: 1rem"
+										onclick="submitNoti()">Save</button>
+								</div>
 								<div class="card-body">
-									<%
-									if (user.getPclass().equals("Free")) {
-									%>
-									<div class="alert alert-primary" role="alert">
-										이메일 알림은 Paid 버전부터 이용 가능합니다!<br>감사합니다!
-									</div>
-									<%
-									}
-									%>
 
-									<form action="noti" method="post">
-										<!-- Form Group (notification preference checkboxes)-->
+
+									<form action="noti" method="post" id="noti_form">
 										<div class="form-check mb-2">
 
 											<input class="form-check-input" id="checkAutoGroup"
 												name="select_noti" value="email" type="checkbox"
-												<%if (user.getSelect_noti().charAt(0) == '1') {%> checked
-												<%}%> <%if (user.getPclass().equals("Free")) {%> disabled
+												<%if (user.getSelect_noti().equals("1")) {%> checked
 												<%}%> /> <label class="form-check-label"
 												for="checkAutoGroup">이메일 알림</label>
-
-
 										</div>
-										<div class="form-check mb-3">
-											<input class="form-check-input" id="checkAutoProduct"
-												name="select_noti" value="web" type="checkbox"
-												<%if (user.getSelect_noti().charAt(1) == '1') {%> checked
-												<%}%> /> <label class="form-check-label"
-												for="checkAutoProduct">웹 알림</label>
-										</div>
-										<!-- Submit button-->
-										<button class="btn btn-primary" type="submit"
-											style="font-size: 1rem">Save change</button>
-									</form>
-								</div>
-							</div>
-
-
-
-
-							<!-- 2 -->
-							<div class="card mb-4 ">
-								<div class="card-header">Change Email Address</div>
-								<div class="card-body">
-									<form action="changeEmail" method="post">
-										<!-- Form Group (current password)-->
-										<div class="mb-3">
-											<label class="small mb-1" for="currentPassword">현재
-												이메일</label> <input class="form-control" value="${user.email }"
-												disabled />
-										</div>
-										<!-- Form Group (new password)-->
-										<div class="mb-3">
-											<label class="small mb-1" for="newPassword">변경 이메일</label> <input
-												class="form-control" id="newPassword" type="text"
-												name="cEmail" placeholder="새 이메일 입력" />
-										</div>
-										<button class="btn btn-primary" type="submit"
-											style="font-size: 1rem">Save change</button>
 									</form>
 								</div>
 							</div>
 						</div>
 
 
-
-
-
-
 						<!-- 3 -->
 						<div class="col-lg-8">
-						
-						
-						
 							<!-- Email notifications preferences card-->
 							<div class="card card-header-actions mb-4">
 								<div class="card-header">
 									Email Notifications
-									<button class="btn btn-primary btn-sm" style="font-size: 1rem" onclick="submitEmail()"
-										<%if (user.getPclass().equals("Free")) {%> disabled <%}%>>Update</button>
+									<button class="btn btn-primary btn-sm" style="font-size: 1rem"
+										onclick="submitEmail()"
+										<%if (user.getSelect_noti().equals("0")) {%> disabled <%}%>>Update</button>
 								</div>
 								<div class="card-body">
 									<form action="noti_email" method="post" id="noti_email_form">
@@ -151,23 +101,16 @@
 													for="checkAccountGroups">사용자 정보 변경</label>
 											</div>
 											<div class="form-check mb-2">
-												<input class="form-check-input" id="checkProductNew"
+												<input class="form-check-input" id="checkPromotional"
 													name="email_noti" value="op2" type="checkbox"
 													<%if (user.getEmail_noti().charAt(1) == '1') {%> checked
-													<%}%> /> <label class="form-check-label"
-													for="checkProductNew">센서의 이상치 감지</label>
-											</div>
-											<div class="form-check mb-2">
-												<input class="form-check-input" id="checkPromotional"
-													name="email_noti" value="op3" type="checkbox"
-													<%if (user.getEmail_noti().charAt(2) == '1') {%> checked
 													<%}%> /> <label class="form-check-label"
 													for="checkPromotional">결제일 안내</label>
 											</div>
 											<div class="form-check">
 												<input class="form-check-input" id="checkSecurity"
-													name="email_noti" value="op4" type="checkbox"
-													<%if (user.getEmail_noti().charAt(3) == '1') {%> checked
+													name="email_noti" value="op3" type="checkbox"
+													<%if (user.getEmail_noti().charAt(2) == '1') {%> checked
 													<%}%> /> <label class="form-check-label"
 													for="checkSecurity">아오팜 업데이트 소식</label>
 											</div>
@@ -175,12 +118,6 @@
 									</form>
 								</div>
 							</div>
-
-
-
-
-
-
 						</div>
 
 					</div>
@@ -195,13 +132,13 @@
 				alert(alertMessage);
 			}
 		}
-		
-		function submitEmail(){
+
+		function submitEmail() {
 			document.getElementById("noti_email_form").submit();
 		}
-		
-		function submitWeb(){
-			document.getElementById("noti_web_form").submit();
+
+		function submitNoti() {
+			document.getElementById("noti_form").submit();
 		}
 	</script>
 	<script

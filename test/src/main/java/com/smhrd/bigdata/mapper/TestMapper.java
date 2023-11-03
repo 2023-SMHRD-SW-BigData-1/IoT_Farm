@@ -66,7 +66,7 @@ public interface TestMapper {
 	public int updateEmail(String id, String email);
 
 	@Update("update user_info set select_noti=#{select_noti} where id=#{id}")
-	public int updateSelect_noti(String id, String select_noti);
+	public void updateSelect_noti(String id, String select_noti);
 
 	@Update("update user_info set email_noti=#{checknoti} where id=#{id}")
 	public int updateEmail_noti(String id, String checknoti);
