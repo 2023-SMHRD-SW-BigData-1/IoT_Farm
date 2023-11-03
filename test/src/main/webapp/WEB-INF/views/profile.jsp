@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.smhrd.bigdata.model.TestMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html lang="en">
@@ -24,7 +25,7 @@
 
 	<!-- 헤더부분 -->
 	<jsp:include page="header.jsp"></jsp:include>
-
+<%TestMember user=(TestMember)session.getAttribute("user");%>
 
 	<!-- 네비게이션 삭제 style="margin-left: -15rem; margin-top:-3.5rem"-->
 	<div id="layoutSidenav">
@@ -37,8 +38,13 @@
 					<nav class="nav nav-borders">
 						<a class="nav-link active" href="/bigdata/profile">프로필</a> <a
 							class="nav-link" href="/bigdata/billing"> 청구 </a> <a
-							class="nav-link" href="/bigdata/security"> 보안 </a> <a
-							class="nav-link" href="/bigdata/notifications"> 알림 </a>
+							class="nav-link" href="/bigdata/security"> 보안 </a>
+							<%if (user.getPclass().equals("Free")) {%>
+							<a class="nav-link" href="#!" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Paid 버전부터 가능합니다!">알림</a>
+							<%}else{ %>
+							<a class="nav-link" href="/bigdata/notifications"> 알림 </a>
+							<%} %>
+							
 					</nav>
 					<hr class="mt-0 mb-4" />
 					<div class="row">

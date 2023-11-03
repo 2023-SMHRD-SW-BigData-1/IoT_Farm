@@ -67,13 +67,13 @@
 								<div class="card card-collapsable">
 									<a id="faq03" class="card-header" href="#collapseCardExample3"
 										data-bs-toggle="collapse" role="button" aria-expanded="false"
-										aria-controls="collapseCardExample">정기 유료결제 해지를 하고싶어요
+										aria-controls="collapseCardExample">유료결제 해지를 하고싶어요
 										<div class="card-collapsable-arrow">
 											<i class="fas fa-chevron-right"></i>
 										</div>
 									</a>
 									<div class="collapse" id="collapseCardExample3">
-										<div class="card-body">...</div>
+										<div class="card-body">유료서비스 이용을 10일 이하로 한 경우 환불이 가능합니다.<br>'마이페이지-청구'에서 환불할 거래고유번호를 포함해서 문의사항에 문의해주세요. </div>
 									</div>
 								</div>
 								<!-- faq 4번 -->
@@ -89,31 +89,6 @@
 										<div class="card-body">...</div>
 									</div>
 								</div>
-								<!-- faq 5번 -->
-								<div class="card card-collapsable">
-									<a id="faq05" class="card-header" href="#collapseCardExample5"
-										data-bs-toggle="collapse" role="button" aria-expanded="false"
-										aria-controls="collapseCardExample">...
-										<div class="card-collapsable-arrow">
-											<i class="fas fa-chevron-right"></i>
-										</div>
-									</a>
-									<div class="collapse" id="collapseCardExample5">
-										<div class="card-body">...</div>
-									</div>
-								</div>
-								<!-- faq 6번 -->
-								<div class="card card-collapsable">
-									<a id="faq06" class="card-header" href="#collapseCardExample6"
-										data-bs-toggle="collapse" role="button" aria-expanded="false"
-										aria-controls="collapseCardExample">...
-										<div class="card-collapsable-arrow">
-											<i class="fas fa-chevron-right"></i>
-										</div>
-									</a>
-									<div class="collapse" id="collapseCardExample6">
-										<div class="card-body">...</div>
-									</div>
 								</div>
 
 							</div>

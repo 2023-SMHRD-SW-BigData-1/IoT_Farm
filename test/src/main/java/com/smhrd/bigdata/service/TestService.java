@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.smhrd.bigdata.mapper.TestMapper;
 import com.smhrd.bigdata.model.Bill;
+import com.smhrd.bigdata.model.Dashboard_Info;
 import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.model.Useriot_Info;
@@ -55,19 +56,13 @@ public class TestService {
 		return mapper.updateEmail(id, email);
 	}
 
-	public int updateSelect_noti(String id, String select_noti) {
-		// TODO Auto-generated method stub
-		return mapper.updateSelect_noti(id, select_noti);
+	public void updateSelect_noti(String id, String select_noti) {
+		mapper.updateSelect_noti(id, select_noti);
 	}
 
 	public int updateEmail_noti(String id, String checknoti) {
 		// TODO Auto-generated method stub
 		return mapper.updateEmail_noti(id, checknoti);
-	}
-
-	public int updateWeb_noti(String id, String checknoti) {
-		// TODO Auto-generated method stub
-		return mapper.updateWeb_noti(id, checknoti);
 	}
 
 	public int sensorNum(int user_num) {
@@ -92,11 +87,15 @@ public class TestService {
 	public List<Useriot_Info> user_iot(int user_num) {
 		return mapper.user_iot(user_num);
 	}
-
+	
 	public List<Iotsensor_Info> Iotsensor(int iot_num) {
 		return mapper.Iotsensor(iot_num);
 	}
-
+	
+	public List<Dashboard_Info> dashboard(int user_num){
+		return mapper.dashboard(user_num);
+	}
+	
 	public int iotNum(int user_num) {
 		// TODO Auto-generated method stub
 		return mapper.iotNum(user_num);
@@ -115,6 +114,10 @@ public class TestService {
 	public Bill last_payment(int user_num) {
 		// TODO Auto-generated method stub
 		return mapper.last_payment(user_num);
+	}
+
+	public void setPclass(String user_num, String product) {
+		mapper.setPclass(user_num,product);
 	}
 
 }

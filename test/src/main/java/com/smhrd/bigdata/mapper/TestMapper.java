@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.smhrd.bigdata.model.Bill;
+import com.smhrd.bigdata.model.Dashboard_Info;
 import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.model.Useriot_Info;
@@ -53,6 +54,10 @@ public interface TestMapper {
 	@Insert("insert into dashboard_info (dashboard_name, user_num) VALUES (#{dashboard_name}, #{user_num})")
 	public int dashboardadd(String dashboard_name, int user_num);
 	
+	//dashboard 가져오기
+	@Select("select * from dashboard_info where user_num=#{user_num}")
+	public List<Dashboard_Info> dashboard(int user_num);
+	
 	//sensor name 가져오기
 	@Select("select * from iotsensor_info where iot_num=#{iot_num}")
 	public List<Iotsensor_Info> Iotsensor(int iot_num);
@@ -61,7 +66,7 @@ public interface TestMapper {
 	public int updateEmail(String id, String email);
 
 	@Update("update user_info set select_noti=#{select_noti} where id=#{id}")
-	public int updateSelect_noti(String id, String select_noti);
+	public void updateSelect_noti(String id, String select_noti);
 
 	@Update("update user_info set email_noti=#{checknoti} where id=#{id}")
 	public int updateEmail_noti(String id, String checknoti);
@@ -88,4 +93,7 @@ public interface TestMapper {
 
 	@Insert("insert into deal(user_num,product,price) values(#{data[0]},#{data[1]},#{data[2]})")
 	public void addPayment(String[] data);
+
+	@Update("update user_info set pclass=#{product} where user_num=#{user_num}")
+	public void setPclass(String user_num, String product);
 }
