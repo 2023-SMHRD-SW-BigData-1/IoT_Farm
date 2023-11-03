@@ -18,39 +18,62 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
-</head>
+<script>
+function pwfEmail() {
+    let email = document.getElementById('inputEmail').value;
+    console.log(email);
+
+    // 이메일 전송 요청
+    fetch('/bigdata/pwfemailSend?email=' + encodeURIComponent(email))
+        .then(response => response.text())
+        .then(checkNum => {
+            // 이메일 전송 성공 시 checkNum을 받아오고, 세션에 저장 후 리다이렉트 수행
+            console.log(checkNum);
+
+            // 세션에 인증번호 저장
+            sessionStorage.setItem('authCode', checkNum);
+            sessionStorage.setItem('email', email);
+
+            // pwfind2 페이지로 이동
+            window.location.href = '/bigdata/pwfind2';
+        });
+}
+</script>
+
 <body class="nav-fixed nav_login">
 	<div id="layoutAuthentication">
 		<div id="layoutAuthentication_content" class="mt-100p">
 			<main>
-					<div class="container-xl px-4 w-1600">
-						<div class="row">
-							<div class="col-lg-5">
-								<!-- Basic login form-->
-								<div class="card shadow-lg border-0 rounded-lg mt-5">
-									<div class="card-header justify-content-center">
-										<h1 class="fw-light my-4">비밀번호 찾기</h1>
-									</div>
-									<div class="card-body">
-										<form action="/bigdata/pwfind2" method="get">
-											<!-- Form Group-->
-											<div class="mb-3">
-												<label class="small mb-1" for="inputId">아이디</label> <input
-													class="form-control" id="inputId" type="text" name="id"
-													placeholder="아이디를 입력하세요" />
-											</div>
-											<!-- Form Group (비밀번호)-->
-											<!-- Form Group (login box)-->
-											<div
-												class="d-flex align-items-center justify-content-right	 mt-4 mb-0">
-													<a class="btn btn-primary qna_btn" href="/bigdata/pwfind2">다음</a>
-											</div>
-										</form>
-									</div>
+				<div class="container-xl px-4 w-1600">
+					<div class="row">
+						<div class="col-lg-5">
+							<!-- Basic login form-->
+							<div class="card shadow-lg border-0 rounded-lg mt-5">
+								<div class="card-header justify-content-center">
+									<h1 class="fw-light my-4">비밀번호 찾기</h1>
+								</div>
+								<div class="card-body">
+									<form id="pwfForm" action="/bigdata/pwfemailSend" method="get">
+										<!-- Form Group-->
+										<div class="mb-3">
+											<label class="small mb-1" for="inputEmail">이메일</label> <input
+												class="form-control" id="inputEmail" type="text"
+												name="email" placeholder="회원가입시 등록한 이메일을 입력하세요" />
+										</div>
+										<!-- Form Group (비밀번호)-->
+										<!-- Form Group (login box)-->
+										<div class="d-flex align-items-center justify-content-right">
+											<input id="pwsend" type="button" value="다음"
+												class="btn btn-primary h-8"
+												style="margin-left: 10px; height: 40px;"
+												onclick="pwfEmail();">
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 			</main>
 		</div>
 	</div>
