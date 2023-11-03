@@ -44,17 +44,10 @@
 	        var modal2Content = document.createElement("div");
 	        modal2Content.classList.add("modal-body");
 	        modal2Content.innerHTML = `
-	            <div class="mb-3 modal-flex">
-	                <div class="modal-iot">사용 IoT:</div>
-	                <select class="dashboard-count" id="iotSelect">
-	                    <option value="none"></option>
-	                    <option value="1">1</option>
-	                    <option value="2">2</option>
-	                </select>
-	            </div>
+	        
 	            <div class="mb-3 modal-flex">
 	                <div class="modal-iot">사용 센서:</div>
-	                <select class="dashboard-count">
+	                <select class="dashboard-count" id="iotSelect">
 	                    <option value="none"></option>
 	                    <option value="1">1</option>
 	                    <option value="2">2</option>
@@ -74,9 +67,7 @@
 	    }
 	}
 	</script>
-}
 
-</script>
 </head>
 <body class="nav-fixed">
 
@@ -86,7 +77,7 @@
 
 		<!-- 내비게이션 -->
 		<div id="layoutSidenav_nav">
-			<nav class="sidenav shadow-right sidenav-light">
+			<nav class="sidenav shadow-right sidenav-light ">
 				<a href="/bigdata/" class="mx-4 mt-n4 mb-sm-5"> <img
 					class="img-fluid" src="assets/img/ioflogo.png" alt="" />
 				</a>
@@ -158,12 +149,14 @@
 
 						<!-- Sidenav Accordion (Dashboard)-->
 
-
+						<c:forEach items="${dashboardList }" var="item">
 						<a class="nav-link collapsed mt-10px" href="dashboard-1.html">
 							<div class="nav-link-icon">
 								<i data-feather="activity"></i>
-							</div>토마토 온도 대시보드
+							</div>${item.dashboard_name }
+						
 						</a>
+						</c:forEach>
 
 
 					</div>
@@ -204,7 +197,7 @@
 					<div class="card mt-n10">
 
 						<div class="card-body">
-							<div class="col-lg-8 mb-4">
+							<div class="mb-4">
 								<!-- Area chart example-->
 								<div class="card mb-4">
 									<div class="card-header">Revenue Summary</div>
@@ -227,8 +220,7 @@
 											</div>
 											<div class="card-footer position-relative">
 												<a class="stretched-link" href="#!">
-													<div
-														class="text-xs d-flex align-items-center justify-content-between">
+													<div class="text-xs d-flex align-items-center justify-content-between">
 														View More Reports <i class="fas fa-long-arrow-alt-right"></i>
 													</div>
 												</a>
@@ -422,10 +414,14 @@
 			</c:forEach>
 		</tbody>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="assets/demo/chart-pie-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
+        <script src="js/litepicker.js"></script>
 </body>
 </html>

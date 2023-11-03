@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.smhrd.bigdata.model.Bill;
+import com.smhrd.bigdata.model.Dashboard_Info;
 import com.smhrd.bigdata.model.IoT_Sensor;
 import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.TestMember;
@@ -347,7 +348,9 @@ public class TestController {
 	@GetMapping("/mydata")
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
 		TestMember user = (TestMember) session.getAttribute("user");
-
+		
+		List<Dashboard_Info> dashboardList = service.dashboard(user.getUser_num());
+		
 		List<Useriot_Info> list = service.user_iot(user.getUser_num());
 
 		List<List<Iotsensor_Info>> sensorList = new ArrayList<>();
@@ -355,7 +358,8 @@ public class TestController {
 		for (Useriot_Info element : list) {
 			sensorList.add(service.Iotsensor(element.getIot_num()));
 		}
-
+		model.addAttribute("dashboardList", dashboardList);
+		
 		model.addAttribute("iotList", list);
 
 		model.addAttribute("sensorList", sensorList);
