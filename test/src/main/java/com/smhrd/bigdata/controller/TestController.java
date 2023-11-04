@@ -305,7 +305,7 @@ public class TestController {
 			session.setAttribute("max", max);
 
 //			System.out.println(user.getUser_num());
-
+// 이준 푸쉬 제발
 			return "redirect:/";
 		} else {
 			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
@@ -412,26 +412,6 @@ public class TestController {
 		}
 	}
 
-	@PostMapping("mydata/chartadd")
-	public String chartadd(HttpSession session, @RequestParam("chartName") String chartName,
-			@RequestParam("chartType") String chartType, @RequestParam("sensorNum") String sensorNum) {
-		TestMember user = (TestMember) session.getAttribute("user");
-		
-		String[] sensorNumList = sensorNum.split(","); 
-		String[] chartTypeList = chartType.split(","); 
-		String [] chartNameList = chartName.split(",");
-		for(int i = 0; i<chartNameList.length; i++) {
-		String dashboardNum = (String) session.getAttribute("dashboardNum");
-		
-			System.out.println(chartNameList[i]);
-			System.out.println(chartTypeList[i]);
-			System.out.println(sensorNumList[i]);
-			service.chartadd(dashboardNum, chartNameList[i], chartTypeList[i], sensorNumList[i]);
-		}
-		
-		return "redirect:/mydata";
-
-	}
 
 	@PostMapping("mydata/iotadd")
 	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
@@ -442,6 +422,26 @@ public class TestController {
 		} else {
 			return "fail";
 		}
+	}
+	@PostMapping("mydata/chartadd")
+	public String chartadd(HttpSession session, @RequestParam("chartName") String chartName,
+			@RequestParam("chartType") String chartType, @RequestParam("sensorNum") String sensorNum) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		
+		String[] sensorNumList = sensorNum.split(","); 
+		String[] chartTypeList = chartType.split(","); 
+		String [] chartNameList = chartName.split(",");
+		for(int i = 0; i<chartNameList.length; i++) {
+			String dashboardNum = (String) session.getAttribute("dashboardNum");
+			
+			System.out.println(chartNameList[i]);
+			System.out.println(chartTypeList[i]);
+			System.out.println(sensorNumList[i]);
+			service.chartadd(dashboardNum, chartNameList[i], chartTypeList[i], sensorNumList[i]);
+		}
+		
+		return "redirect:/mydata";
+		
 	}
 
 }
