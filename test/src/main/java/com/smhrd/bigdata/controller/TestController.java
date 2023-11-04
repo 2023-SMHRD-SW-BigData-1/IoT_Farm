@@ -1,13 +1,11 @@
 package com.smhrd.bigdata.controller;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-
 
 import javax.servlet.http.HttpSession;
 
@@ -291,7 +289,7 @@ public class TestController {
 			session.setAttribute("max", max);
 
 //			System.out.println(user.getUser_num());
-
+// 이준 푸쉬 제발
 			return "redirect:/";
 		} else {
 			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
@@ -320,13 +318,14 @@ public class TestController {
 		return "qna";
 	}
 
-
 	@GetMapping("/mydata")
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
 		TestMember user = (TestMember) session.getAttribute("user");
-		
+
 		List<Dashboard_Info> dashboardList = service.dashboard(user.getUser_num());
-		
+
+		List<Iotsensor_Info> snList = service.sensorSelect(user.getUser_num());
+
 		List<Useriot_Info> list = service.user_iot(user.getUser_num());
 
 		List<List<Iotsensor_Info>> sensorList = new ArrayList<>();
@@ -335,11 +334,12 @@ public class TestController {
 			sensorList.add(service.Iotsensor(element.getIot_num()));
 		}
 		model.addAttribute("dashboardList", dashboardList);
-		
+
 		model.addAttribute("iotList", list);
 
 		model.addAttribute("sensorList", sensorList);
 
+		model.addAttribute("snList", snList);
 		return "mydata";
 
 		/*
@@ -350,11 +350,12 @@ public class TestController {
 		 * innerList1.add("Inner List 1 - Element 2"); outerList.add(innerList1);
 		 */
 	}
-	
+
 	@GetMapping("/pwfind")
 	public String pwfind() {
 		return "pwfind";
 	}
+
 	@GetMapping("/pwfind2")
 	public String pwfind2(HttpSession session) {
 		return "pwfind2";
@@ -364,23 +365,23 @@ public class TestController {
 	public String pwfind3() {
 		return "pwfind3";
 	}
-	
+
 	@PostMapping("/updatePassword")
 	@ResponseBody
 	public String updatePassword(@RequestParam String email, @RequestParam String newPassword) {
-	    // 이메일과 새 비밀번호를 받아서 업데이트 로직을 작성합니다.
-	    boolean success = emailservice.updatePasswordByEmail(email, newPassword);
-	    if (success) {
-	        return "success";
-	    } else {
-	        return "error";
-	    }
-	}
-	@GetMapping("/redirect-pwfind2")
-	public String redirectToPwfind2() {
-	    return "redirect:/bigdata/pwfind2";
+		// 이메일과 새 비밀번호를 받아서 업데이트 로직을 작성합니다.
+		boolean success = emailservice.updatePasswordByEmail(email, newPassword);
+		if (success) {
+			return "success";
+		} else {
+			return "error";
+		}
 	}
 
+	@GetMapping("/redirect-pwfind2")
+	public String redirectToPwfind2() {
+		return "redirect:/bigdata/pwfind2";
+	}
 
 	@GetMapping("mydata/sensoradd/{idx}")
 	public String sensoradd(HttpSession session, @RequestParam("sensorName") String sensorName,
@@ -389,22 +390,49 @@ public class TestController {
 
 		int cnt = service.sensoradd(idx, sensorName, user.getUser_num(), sensorType);
 		if (cnt > 0) {
+			// service.sensoradd(idx, sensorName, user.getUser_num(), sensorType);
 			return "redirect:/mydata";
 		} else {
 			return "redirect:/mydata";
 		}
 	}
 
+
 	@PostMapping("mydata/iotadd")
 	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
 		TestMember user = (TestMember) session.getAttribute("user");
+		IoT_Sensor max=(IoT_Sensor)session.getAttribute("max");
 		int cnt = service.iotadd(iotName, user.getUser_num());
 		if (cnt > 0) {
+			
+			int x=max.getMyIot()+1;
+			max.setMyIot(x);
+			session.setAttribute("max", max);
+			
 			return "redirect:/mydata";
 		} else {
 			return "fail";
 		}
 	}
-	
+	@PostMapping("mydata/chartadd")
+	public String chartadd(HttpSession session, @RequestParam("chartName") String chartName,
+			@RequestParam("chartType") String chartType, @RequestParam("sensorNum") String sensorNum) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		
+		String[] sensorNumList = sensorNum.split(","); 
+		String[] chartTypeList = chartType.split(","); 
+		String [] chartNameList = chartName.split(",");
+		for(int i = 0; i<chartNameList.length; i++) {
+			String dashboardNum = (String) session.getAttribute("dashboardNum");
+			
+			System.out.println(chartNameList[i]);
+			System.out.println(chartTypeList[i]);
+			System.out.println(sensorNumList[i]);
+			service.chartadd(dashboardNum, chartNameList[i], chartTypeList[i], sensorNumList[i]);
+		}
+		
+		return "redirect:/mydata";
+		
+	}
 
 }

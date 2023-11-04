@@ -69,6 +69,7 @@ public class TestRestController {
 	public String dashboardadd1(HttpSession session, @RequestParam("dbName") String dbName) {
 		TestMember user = (TestMember) session.getAttribute("user");
 		int cnt = service.dashboardadd(dbName, user.getUser_num());
+		session.setAttribute("dashboardNum",service.dashboardNum(dbName));
 		   if(cnt>0) {
 			   return "success";
 		   }else {
@@ -76,4 +77,5 @@ public class TestRestController {
 		   }
 
 	}
+	
 }

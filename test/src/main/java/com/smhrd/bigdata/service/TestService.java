@@ -75,7 +75,11 @@ public class TestService {
 		System.out.println("서비스 진입");
 		return mapper.sensoradd(iot_num, sensorName, user_num, sensorType);
 	}
-
+	
+	public int chartadd(String dashboard_num, String chartNameList, String chartTypeList, String sensorNumList ) {
+		return mapper.chartadd(dashboard_num, chartNameList, chartTypeList, sensorNumList);
+	}
+	
 	public int changePw(String id, String newPassword) {
 		// TODO Auto-generated method stub
 		return mapper.updatePw(id, newPassword);
@@ -91,6 +95,10 @@ public class TestService {
 	
 	public List<Iotsensor_Info> Iotsensor(int iot_num) {
 		return mapper.Iotsensor(iot_num);
+	}
+	
+	public List<Iotsensor_Info> sensorSelect(int user_num){
+		return mapper.sensorSelect(user_num);
 	}
 	
 	public List<Dashboard_Info> dashboard(int user_num){
@@ -117,8 +125,13 @@ public class TestService {
 		return mapper.last_payment(user_num);
 	}
 
+	public String dashboardNum(String dbName) {
+		// TODO Auto-generated method stub
+		return mapper.dashboardNum(dbName);
+	}
 	public void setPclass(String user_num, String product) {
 		mapper.setPclass(user_num,product);
+
 	}
 	
 	public List<String> classUpUserList(LocalDate currentDate){
