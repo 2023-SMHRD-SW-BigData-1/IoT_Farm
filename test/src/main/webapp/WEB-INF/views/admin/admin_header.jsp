@@ -15,29 +15,27 @@
 		<ul class="navbar-nav align-items-center ms-auto">
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
-				style="margin-top: 1.8rem" href="/bigdata/guide" role="button">
+				style="margin-top: 1.8rem" href="/bigdata/user_mng" role="button">
 					<div class="fw-900 text-lg">고객관리</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
-				style="margin-top: 1.8rem" href="/bigdata/question" role="button">
+				style="margin-top: 1.8rem" href="/bigdata/update_send" role="button">
 					<div class="fw-900 text-lg">업데이트</div>
 			</a></li>
 			
 			<!-- User Dropdown-->
 			<li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
-				<a class="btn btn-icon btn-transparent-dark dropdown-toggle btn-lg"
-				style="margin-top: 1.3rem" id="navbarDropdownUserImage"
+			
+				<a class="btn btn-icon btn-transparent-dark dropdown-toggle btn-lg "
+				style="margin-top: 1.3rem;background-color:#BAD669" id="navbarDropdownUserImage"
 				href="javascript:void(0);" role="button" data-bs-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false"><img
-					class="img-fluid changeImages"
-					src="assets/img/illustrations/profiles/${user.p_img }.png" /> </a>
+				aria-haspopup="true" aria-expanded="false"><div class="fw-700 text-lg">A</div></a>
+				
 				<div
 					class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
 					aria-labelledby="navbarDropdownUserImage">
 					<h6 class="dropdown-header d-flex align-items-center">
-						<img class="dropdown-user-img changeImages"
-							src="assets/img/illustrations/profiles/${user.p_img }.png" />
 						<div class="dropdown-user-details">
 							<div class="dropdown-user-details-name">${user.name}</div>
 							<div class="dropdown-user-details-email">${user.email }</div>

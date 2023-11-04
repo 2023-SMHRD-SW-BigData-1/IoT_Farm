@@ -275,7 +275,9 @@ public class TestController {
 
 		if (user != null) {
 			session.setAttribute("user", user);
-
+			if (user.getPclass().equals("Admin")) {
+				return "admin/user_mng";
+			}
 			int usingIot = service.iotNum(user.getUser_num());
 			int usingSensor = service.sensorNum(user.getUser_num());
 			IoT_Sensor max;
@@ -287,9 +289,6 @@ public class TestController {
 				max = new IoT_Sensor(30, 150, usingIot, usingSensor);
 			}
 			session.setAttribute("max", max);
-
-//			System.out.println(user.getUser_num());
-// 이준 푸쉬 제발
 			return "redirect:/";
 		} else {
 			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
@@ -435,4 +434,13 @@ public class TestController {
 		
 	}
 
+	@GetMapping("/user_mng")
+	public String user_mng() {
+		return "admin/user_mng";
+	}
+	
+	@GetMapping("/update_send")
+	public String update_send() {
+		return "admin/update_send";
+	}
 }
