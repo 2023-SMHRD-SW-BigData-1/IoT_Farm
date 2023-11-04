@@ -5,6 +5,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.smhrd.bigdata.mapper.TestMapper;
 import com.smhrd.bigdata.model.TestMember;
@@ -58,6 +59,17 @@ public class EmailService {
 	    mailSend(setFrom, toMail, title, content);
 	    return checkNum;
    }
+   
+   public void sendQnaEmail(String qnaTitle, String qnaContent, String email) {
+
+       String setFrom = "kimhasin@gmail.com"; // 발신자 이메일 주소
+       String toMail = "kimhasin@gmail.com"; // 관리자 이메일 주소
+       String title = "새로운 문의사항이 등록되었습니다"; // 이메일 제목
+       String content = "문의 회원 : "+ email + "<br>" + "문의 제목 : " + qnaTitle + "<br>" + "문의 내용: " + qnaContent ; // 이메일 내용
+
+       mailSend(setFrom, toMail, title, content);
+   }
+   
    
 	public void mailSend(String setFrom, String toMail, String title, String content) { 
 		MimeMessage message = emailSender.createMimeMessage();
