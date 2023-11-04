@@ -71,6 +71,29 @@
 								</div>
 							</div>
 
+
+<!-- 2 -->
+							<div class="card mb-4 ">
+								<div class="card-header">Change Email Address</div>
+								<div class="card-body">
+									<form action="changeEmail" method="post">
+										<!-- Form Group (current password)-->
+										<div class="mb-3">
+											<label class="small mb-1" for="currentPassword">현재
+												이메일</label> <input class="form-control" value="${user.email }"
+												disabled />
+										</div>
+										<!-- Form Group (new password)-->
+										<div class="mb-3">
+											<label class="small mb-1" for="newPassword">변경 이메일</label> <input
+												class="form-control" id="newPassword" type="text"
+												name="cEmail" placeholder="새 이메일 입력" />
+										</div>
+										<button class="btn btn-primary" type="submit"
+											style="font-size: 1rem">Save change</button>
+									</form>
+								</div>
+							</div>
 						</div>
 						<div class="col-lg-4">
 

@@ -79,7 +79,7 @@ public class TestController {
 			return "profile";
 		}
 	}
-
+	
 	@GetMapping("/billing")
 	public String billing(Model model, HttpSession session) {
 		TestMember user = (TestMember) session.getAttribute("user");
@@ -129,45 +129,6 @@ public class TestController {
 		}
 	}
 
-	@GetMapping("/delete")
-	public String delete(HttpSession session) {
-		TestMember user = (TestMember) session.getAttribute("user");
-		service.delete(user.getId());
-		session.invalidate();
-		return "main";
-	}
-
-	@GetMapping("/notifications")
-	public String notifications(Model model) {
-		return "notifications";
-	}
-
-	@PostMapping("/noti")
-	public String noti(@RequestParam(value = "select_noti") String[] check, HttpSession session, Model model) {
-		String[] check_num = { "0", "0" };
-		String checknoti = "";
-		for (String str : check) {
-			if (str.equals("email")) {
-				check_num[0] = "1";
-			}
-			if (str.equals("web")) {
-				check_num[1] = "1";
-			}
-		}
-		for (String str : check_num) {
-			checknoti += str;
-		}
-		TestMember user = (TestMember) session.getAttribute("user");
-		if (service.updateSelect_noti(user.getId(), checknoti) > 0) {
-			user.setSelect_noti(checknoti);
-			model.addAttribute("alertMessage", "설정이 저장되었습니다."); // 알림 메시지를 모델에 추가
-			return "notifications";
-		} else {
-			model.addAttribute("alertMessage", "설정이 실패했습니다."); // 알림 메시지를 모델에 추가
-			return "notifications";
-		}
-	}
-
 	@PostMapping("/changeEmail")
 	public String changePassword(@RequestParam("cEmail") String email, HttpSession session, Model model) {
 		// 세션에서 사용자 정보 가져오기
@@ -189,10 +150,38 @@ public class TestController {
 			return "notifications";
 		}
 	}
+	
+	@GetMapping("/delete")
+	public String delete(HttpSession session) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		service.delete(user.getId());
+		session.invalidate();
+		return "main";
+	}
+
+	@GetMapping("/notifications")
+	public String notifications(Model model) {
+		return "notifications";
+	}
+
+	@PostMapping("/noti")
+	public String noti(@RequestParam(value = "select_noti", defaultValue = "0") String check, HttpSession session, Model model) {
+		String checknoti="0";
+		if (check.equals("email")) {
+			checknoti = "1";
+		}
+		TestMember user = (TestMember) session.getAttribute("user");
+		service.updateSelect_noti(user.getId(), checknoti);
+		user.setSelect_noti(checknoti);
+		model.addAttribute("alertMessage", "설정이 저장되었습니다."); // 알림 메시지를 모델에 추가
+		return "notifications";
+	}
+
+	
 
 	@PostMapping("/noti_email")
 	public String noti_email(@RequestParam(value = "email_noti") String[] check, HttpSession session, Model model) {
-		String[] check_num = { "1", "0", "0", "0" };
+		String[] check_num = { "1", "0", "0"};
 		String checknoti = "";
 		for (String str : check) {
 			if (str.equals("op1")) {
@@ -203,9 +192,6 @@ public class TestController {
 			}
 			if (str.equals("op3")) {
 				check_num[2] = "1";
-			}
-			if (str.equals("op4")) {
-				check_num[3] = "1";
 			}
 		}
 		for (String str : check_num) {
@@ -222,51 +208,28 @@ public class TestController {
 		}
 	}
 
-	@PostMapping("/noti_web")
-	public String noti_web(@RequestParam(value = "web_noti") String[] check, HttpSession session, Model model) {
-		String[] check_num = { "1", "0", "0", "0" };
-		String checknoti = "";
-		for (String str : check) {
-			if (str.equals("op1")) {
-				check_num[0] = "1";
-			}
-			if (str.equals("op2")) {
-				check_num[1] = "1";
-			}
-			if (str.equals("op3")) {
-				check_num[2] = "1";
-			}
-			if (str.equals("op4")) {
-				check_num[3] = "1";
-			}
-		}
-		for (String str : check_num) {
-			checknoti += str;
-		}
-		TestMember user = (TestMember) session.getAttribute("user");
-		if (service.updateWeb_noti(user.getId(), checknoti) > 0) {
-			user.setWeb_noti(checknoti);
-			model.addAttribute("alertMessage", "설정이 저장되었습니다."); // 알림 메시지를 모델에 추가
-			return "notifications";
-		} else {
-			model.addAttribute("alertMessage", "설정이 실패했습니다."); // 알림 메시지를 모델에 추가
-			return "notifications";
-		}
-	}
-
 	@GetMapping("/pricing")
-	public String pricing(Model model) {
+	public String pricing(Model model, HttpSession session) {
 		return "pricing";
 	}
 
 	@PostMapping("/pay_success")
-	public String pay_success(@RequestParam(value = "paymentData") String[] data) {
-		// 받은 값들을 활용하여 원하는 로직을 수행하고 결과를 반환하거나 다른 처리를 수행할 수 있습니다.
-		// 예시: 받은 값들을 로그로 출력
-		System.out.println("user_num: " + data[0]);
-		System.out.println("product: " + data[1]);
-		System.out.println("price: " + data[2]);
-		service.addPayment(data);
+	public String pay_success(@RequestParam(value = "paymentData") String[] data, HttpSession session) {
+        // 받은 값들을 활용하여 원하는 로직을 수행하고 결과를 반환하거나 다른 처리를 수행할 수 있습니다.
+        // 예시: 받은 값들을 로그로 출력
+        TestMember user=(TestMember)session.getAttribute("user");
+        
+        //환불요청
+        if(user.getPclass().equals("Paid")) {
+        	Bill last=service.last_payment(user.getUser_num());
+        	emailservice.mailSend("kimhasin@gmail.com",user.getEmail(), "업그레이드로 인한 환불요청", last.getDeal_num()+"확인 요청");
+        }
+        
+        service.addPayment(data);
+        service.setPclass(data[0],data[1]);
+        
+        user.setPclass(data[1]);
+        session.setAttribute("user", user);
 		return "pay_success";
 	}
 

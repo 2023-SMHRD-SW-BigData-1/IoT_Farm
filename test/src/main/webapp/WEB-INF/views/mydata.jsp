@@ -24,7 +24,7 @@
 <script>
 	function nextModal() {
 		let dbName = $('#inputDbName').val();
-		
+
 		$.ajax({
 			url : "mydata/dashboardadd1",
 			type : "post",
@@ -33,6 +33,8 @@
 			}
 
 		});
+	}
+	
 	    var sensorSelect = document.getElementById("sensorSelect");
 	    var modal2Body = document.getElementById("modal2-body");
 
@@ -75,6 +77,7 @@
 	    }
 	}
 	</script>
+<<<<<<< HEAD
 	<script type="text/javascript">
 		function chartBtn(){
 			<%
@@ -84,6 +87,8 @@
 		}
 	</script>
 
+=======
+>>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
 </head>
 <body class="nav-fixed">
 
@@ -114,6 +119,9 @@
 						<tbody>
 							<c:forEach items="${iotList}" var="item">
 								<tr>
+
+
+
 									<td><a class="nav-link collapsed mt-10px"
 										href="javascript:void(0);" data-bs-toggle="collapse"
 										data-bs-target="#collapseUtilities${item.iot_num}"
@@ -126,6 +134,10 @@
 											</div>
 									</a></td>
 									<td>
+										<div class="collapse" id="collapseUtilities${item.iot_num}" ></div>
+										<div id="sensorList${iotList }"></div>
+									<td><div class="collapse"
+											id="collapseUtilities${item.iot_num }" ></div>
 										<div class="collapse" id="collapseUtilities${item.iot_num}"></div>
 										<div id="sensorList${iotList }"></div>
 										<div class="collapse" id="collapseUtilities${item.iot_num }"
@@ -142,8 +154,10 @@
 												<a class="nav-link" href="#" data-bs-toggle="modal"
 													data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</a>
 											</nav>
-										</div>
-									</td>
+										</div></td>
+
+
+
 								</tr>
 							</c:forEach>
 						</tbody>

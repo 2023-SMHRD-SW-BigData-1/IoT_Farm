@@ -56,19 +56,13 @@ public class TestService {
 		return mapper.updateEmail(id, email);
 	}
 
-	public int updateSelect_noti(String id, String select_noti) {
-		// TODO Auto-generated method stub
-		return mapper.updateSelect_noti(id, select_noti);
+	public void updateSelect_noti(String id, String select_noti) {
+		mapper.updateSelect_noti(id, select_noti);
 	}
 
 	public int updateEmail_noti(String id, String checknoti) {
 		// TODO Auto-generated method stub
 		return mapper.updateEmail_noti(id, checknoti);
-	}
-
-	public int updateWeb_noti(String id, String checknoti) {
-		// TODO Auto-generated method stub
-		return mapper.updateWeb_noti(id, checknoti);
 	}
 
 	public int sensorNum(int user_num) {
@@ -133,6 +127,10 @@ public class TestService {
 	public String dashboardNum(String dbName) {
 		// TODO Auto-generated method stub
 		return mapper.dashboardNum(dbName);
+	}
+	public void setPclass(String user_num, String product) {
+		mapper.setPclass(user_num,product);
+
 	}
 
 }
