@@ -1,12 +1,10 @@
 package com.smhrd.bigdata.controller;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
-
 
 import javax.servlet.http.HttpSession;
 
@@ -336,13 +334,14 @@ public class TestController {
 		return "qna";
 	}
 
-
 	@GetMapping("/mydata")
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
 		TestMember user = (TestMember) session.getAttribute("user");
-		
+
 		List<Dashboard_Info> dashboardList = service.dashboard(user.getUser_num());
-		
+
+		List<Iotsensor_Info> snList = service.sensorSelect(user.getUser_num());
+
 		List<Useriot_Info> list = service.user_iot(user.getUser_num());
 
 		List<List<Iotsensor_Info>> sensorList = new ArrayList<>();
@@ -351,11 +350,12 @@ public class TestController {
 			sensorList.add(service.Iotsensor(element.getIot_num()));
 		}
 		model.addAttribute("dashboardList", dashboardList);
-		
+
 		model.addAttribute("iotList", list);
 
 		model.addAttribute("sensorList", sensorList);
 
+		model.addAttribute("snList", snList);
 		return "mydata";
 
 		/*
@@ -366,11 +366,12 @@ public class TestController {
 		 * innerList1.add("Inner List 1 - Element 2"); outerList.add(innerList1);
 		 */
 	}
-	
+
 	@GetMapping("/pwfind")
 	public String pwfind() {
 		return "pwfind";
 	}
+
 	@GetMapping("/pwfind2")
 	public String pwfind2(HttpSession session) {
 		return "pwfind2";
@@ -380,23 +381,23 @@ public class TestController {
 	public String pwfind3() {
 		return "pwfind3";
 	}
-	
+
 	@PostMapping("/updatePassword")
 	@ResponseBody
 	public String updatePassword(@RequestParam String email, @RequestParam String newPassword) {
-	    // 이메일과 새 비밀번호를 받아서 업데이트 로직을 작성합니다.
-	    boolean success = emailservice.updatePasswordByEmail(email, newPassword);
-	    if (success) {
-	        return "success";
-	    } else {
-	        return "error";
-	    }
-	}
-	@GetMapping("/redirect-pwfind2")
-	public String redirectToPwfind2() {
-	    return "redirect:/bigdata/pwfind2";
+		// 이메일과 새 비밀번호를 받아서 업데이트 로직을 작성합니다.
+		boolean success = emailservice.updatePasswordByEmail(email, newPassword);
+		if (success) {
+			return "success";
+		} else {
+			return "error";
+		}
 	}
 
+	@GetMapping("/redirect-pwfind2")
+	public String redirectToPwfind2() {
+		return "redirect:/bigdata/pwfind2";
+	}
 
 	@GetMapping("mydata/sensoradd/{idx}")
 	public String sensoradd(HttpSession session, @RequestParam("sensorName") String sensorName,
@@ -411,6 +412,27 @@ public class TestController {
 		}
 	}
 
+	@PostMapping("mydata/chartadd")
+	public String chartadd(HttpSession session, @RequestParam("chartName") String chartName,
+			@RequestParam("chartType") String chartType, @RequestParam("sensorNum") String sensorNum) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		
+		String[] sensorNumList = sensorNum.split(","); 
+		String[] chartTypeList = chartType.split(","); 
+		String [] chartNameList = chartName.split(",");
+		for(int i = 0; i<chartNameList.length; i++) {
+		String dashboardNum = (String) session.getAttribute("dashboardNum");
+		
+			System.out.println(chartNameList[i]);
+			System.out.println(chartTypeList[i]);
+			System.out.println(sensorNumList[i]);
+			service.chartadd(dashboardNum, chartNameList[i], chartTypeList[i], sensorNumList[i]);
+		}
+		
+		return "redirect:/mydata";
+
+	}
+
 	@PostMapping("mydata/iotadd")
 	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
 		TestMember user = (TestMember) session.getAttribute("user");
@@ -421,6 +443,5 @@ public class TestController {
 			return "fail";
 		}
 	}
-	
 
 }

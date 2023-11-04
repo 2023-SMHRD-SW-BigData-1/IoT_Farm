@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.bigdata.model.Useriot_Info"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -44,28 +46,42 @@
 	        var modal2Content = document.createElement("div");
 	        modal2Content.classList.add("modal-body");
 	        modal2Content.innerHTML = `
-	        
+	        	<div class="mb-3 modal-flex">
+				<div class="modal-iot">차트 이름:</div>
+				<input class="form-control" id="inputchartName"
+					name="chartName" type="text" />
+			</div>
 	            <div class="mb-3 modal-flex">
-	                <div class="modal-iot">사용 센서:</div>
-	                <select class="dashboard-count" id="iotSelect">
+	                <div class="modal-iot">사용 IoT + 센서:</div>
+	                <select class="dashboard-count" id="iotSelect" name="sensorNum">
 	                    <option value="none"></option>
-	                    <option value="1">1</option>
-	                    <option value="2">2</option>
+	        <c:forEach items="${snList}" var="item">
+	                    <option value="${item.sensor_num}">${item.sensor_name}</option>
+	        </c:forEach>
 	                </select>
 	            </div>
 	            <div class="mb-3 modal-flex">
 	                <div class="modal-iot">차트 타입:</div>
-	                <select class="dashboard-count" name="dashboardType">
+	                <select class="dashboard-count" name="chartType">
 	                    <option value="none"></option>
-	                    <option value="1">1</option>
-	                    <option value="2">2</option>
+	                    <option value="bar">bar</option>
+	                    <option value="circle">circle</option>
 	                </select>
 	            </div>
+	            <div class="line2"></div>
 	        `;
 
 	        modal2Body.appendChild(modal2Content);
 	    }
 	}
+	</script>
+	<script type="text/javascript">
+		function chartBtn(){
+			<%
+			List<Useriot_Info> list = (List<Useriot_Info>) request.getAttribute("iotList");
+			session.setAttribute("name", list );
+			%>
+		}
 	</script>
 
 </head>
@@ -150,12 +166,12 @@
 						<!-- Sidenav Accordion (Dashboard)-->
 
 						<c:forEach items="${dashboardList }" var="item">
-						<a class="nav-link collapsed mt-10px" href="dashboard-1.html">
-							<div class="nav-link-icon">
-								<i data-feather="activity"></i>
-							</div>${item.dashboard_name }
-						
-						</a>
+							<a class="nav-link collapsed mt-10px" href="dashboard-1.html">
+								<div class="nav-link-icon">
+									<i data-feather="activity"></i>
+								</div>${item.dashboard_name }
+
+							</a>
 						</c:forEach>
 
 
@@ -220,7 +236,8 @@
 											</div>
 											<div class="card-footer position-relative">
 												<a class="stretched-link" href="#!">
-													<div class="text-xs d-flex align-items-center justify-content-between">
+													<div
+														class="text-xs d-flex align-items-center justify-content-between">
 														View More Reports <i class="fas fa-long-arrow-alt-right"></i>
 													</div>
 												</a>
@@ -362,10 +379,13 @@
 						<button class="btn-close" type="button" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					<div id="modal2-body"></div>
-					<div class="modal-footer">
-						<button class="btn btn-primary" type="submit" aria-label="Close">확인</button>
-					</div>
+					<form action="mydata/chartadd" method="post">
+						<div id="modal2-body"></div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" type="submit" aria-label="Close"
+								onclick="chartBtn()">확인</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -415,13 +435,18 @@
 		</tbody>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="assets/demo/chart-pie-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
-        <script src="js/litepicker.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+		crossorigin="anonymous"></script>
+	<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script src="assets/demo/chart-pie-demo.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"
+		crossorigin="anonymous"></script>
+	<script src="js/litepicker.js"></script>
 </body>
 </html>

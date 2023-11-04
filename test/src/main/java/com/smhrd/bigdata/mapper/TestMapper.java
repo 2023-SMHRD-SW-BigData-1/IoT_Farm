@@ -56,12 +56,16 @@ public interface TestMapper {
 	
 	//dashboard 가져오기
 	@Select("select * from dashboard_info where user_num=#{user_num}")
-	public List<Dashboard_Info> dashboard(int user_num);
+	public List<Dashboard_Info> dashboard(int user_num); 
 	
 	//sensor name 가져오기
 	@Select("select * from iotsensor_info where iot_num=#{iot_num}")
 	public List<Iotsensor_Info> Iotsensor(int iot_num);
-
+	
+	//sensor name 가져오기
+	@Select("select * from iotsensor_info where user_num=#{user_num}")
+	public List<Iotsensor_Info> sensorSelect(int user_num);
+	
 	@Update("update user_info set email=#{email} where id=#{id}")
 	public int updateEmail(String id, String email);
 
@@ -87,10 +91,16 @@ public interface TestMapper {
 	public Bill last_payment(int user_num);
 
 	// sensor 등록
-	@Insert("insert into iotsensor_info (iot_num,sensor_name, user_num, sensor_type) VALUES (#{iot_num} ,#{sensor_name}, #{user_num}, #{sensor_type})")
-
+	@Insert("insert into iotsensor_info (iot_num, sensor_name, user_num, sensor_type) VALUES (#{iot_num} ,#{sensor_name}, #{user_num}, #{sensor_type})")
 	public int sensoradd(String iot_num ,String sensor_name, int user_num, int sensor_type);
+	
+	//chart 등록하기
+	@Insert("insert into dashboard_chart (dashboard_num, chart_type, chart_name, sensor_num) VALUES (#{dashboard_num},#{chartTypeList },#{chartNameList},#{sensorNumList})")
+	public int chartadd(String dashboard_num, String chartTypeList, String chartNameList, String sensorNumList);
 
 	@Insert("insert into deal(user_num,product,price) values(#{data[0]},#{data[1]},#{data[2]})")
 	public void addPayment(String[] data);
+	
+	@Select("select dashboard_num from dashboard_info where dashboard_name=#{dbName}")
+	public String dashboardNum(String dbName);
 }
