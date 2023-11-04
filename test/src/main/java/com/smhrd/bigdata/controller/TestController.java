@@ -136,7 +136,7 @@ public class TestController {
 			if (!user.getPclass().equals("Free")) {
 				if (user.getSelect_noti().equals("1")) {
 					if (user.getEmail_noti().charAt(0)=='1') {
-						emailservice.mailSend("kimhasin@gmail.com", user.getEmail(), "아오팜 개인정보 변경 알림",
+						emailservice.mailSend("aofarmad@gmail.com", user.getEmail(), "아오팜 개인정보 변경 알림",
 								"비밀번호가 변경되었음을 알립니다.");
 					}
 				}
@@ -168,7 +168,7 @@ public class TestController {
 			if (!user.getPclass().equals("Free")) {
 				if (user.getSelect_noti().equals("1")) {
 					if (user.getEmail_noti().charAt(0)=='1') {
-						emailservice.mailSend("kimhasin@gmail.com", user.getEmail(), "아오팜 개인정보 변경 알림",
+						emailservice.mailSend("aofarmad@gmail.com", user.getEmail(), "아오팜 개인정보 변경 알림",
 								"이메일이 변경되었음을 알립니다.");
 					}
 				}
@@ -251,7 +251,7 @@ public class TestController {
 		// 환불요청
 		if (user.getPclass().equals("Paid")) {
 			Bill last = service.last_payment(user.getUser_num());
-			emailservice.mailSend("kimhasin@gmail.com", user.getEmail(), "업그레이드로 인한 환불요청",
+			emailservice.mailSend("aofarmad@gmail.com", user.getEmail(), "업그레이드로 인한 환불요청",
 					last.getDeal_num() + "확인 요청");
 		}
 

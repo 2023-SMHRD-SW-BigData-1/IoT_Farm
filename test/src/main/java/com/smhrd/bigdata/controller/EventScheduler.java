@@ -30,7 +30,7 @@ public class EventScheduler {
 			if (!user.getPclass().equals("Free")) {
 				if (user.getSelect_noti().equals("1")) {
 					if (user.getEmail_noti().charAt(1)=='1') {
-						emailservice.mailSend("kimhasin@gmail.com", user.getEmail(), "결제일 알림",
+						emailservice.mailSend("aofarmad@gmail.com", user.getEmail(), "결제일 알림",
 								user.getPclass() + "버전의 사용기간이 끝났습니다.");
 					}
 				}
