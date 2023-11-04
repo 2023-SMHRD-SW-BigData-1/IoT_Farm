@@ -92,11 +92,7 @@ public interface TestMapper {
 	public Bill last_payment(int user_num);
 
 	// sensor 등록
-<<<<<<< HEAD
-	@Insert("insert into iotsensor_info (iot_num,sensor_name, user_num, sensor_type) VALUES (#{iot_num} ,#{sensor_name}, #{user_num}, #{sensor_type})")
-=======
 	@Insert("insert into iotsensor_info (iot_num, sensor_name, user_num, sensor_type) VALUES (#{iot_num} ,#{sensor_name}, #{user_num}, #{sensor_type})")
->>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
 	public int sensoradd(String iot_num ,String sensor_name, int user_num, int sensor_type);
 	
 	//chart 등록하기
@@ -114,7 +110,6 @@ public interface TestMapper {
 	@Update("update user_info set pclass=#{product} where user_num=#{user_num}")
 	public void setPclass(String user_num, String product);
 
-<<<<<<< HEAD
 	@Select("SELECT user_num FROM (\r\n"
 			+ "      SELECT user_num, MAX(`end_date`) AS `latest_end_date`\r\n"
 			+ "      FROM `deal`\r\n"
@@ -125,7 +120,4 @@ public interface TestMapper {
 
 	@Select("select * from user_info where user_num=#{userNum}")
 	public TestMember userInfo(String userNum);
-
-=======
->>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
 }
