@@ -15,6 +15,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="nav-fixed">
+    <jsp:include page="admin_header.jsp"></jsp:include>
         
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">

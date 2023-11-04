@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -131,6 +132,16 @@ public class TestController {
 		if (service.changePw(user.getId(), newPassword) > 0) {
 			user.setPw(newPassword);
 			model.addAttribute("alertMessage", "비밀번호가 성공적으로 변경되었습니다.");
+			
+			if (!user.getPclass().equals("Free")) {
+				if (user.getSelect_noti().equals("1")) {
+					if (user.getEmail_noti().charAt(0)=='1') {
+						emailservice.mailSend("kimhasin@gmail.com", user.getEmail(), "아오팜 개인정보 변경 알림",
+								"비밀번호가 변경되었음을 알립니다.");
+					}
+				}
+			}
+			
 			return "security";
 		} else {
 			model.addAttribute("alertMessage", "비밀번호 변경을 실패하였습니다.");
@@ -153,6 +164,16 @@ public class TestController {
 		if (service.changeEmail(user.getId(), email) > 0) {
 			user.setEmail(email);
 			model.addAttribute("alertMessage", "이메일이 성공적으로 변경되었습니다.");
+			
+			if (!user.getPclass().equals("Free")) {
+				if (user.getSelect_noti().equals("1")) {
+					if (user.getEmail_noti().charAt(0)=='1') {
+						emailservice.mailSend("kimhasin@gmail.com", user.getEmail(), "아오팜 개인정보 변경 알림",
+								"이메일이 변경되었음을 알립니다.");
+					}
+				}
+			}
+			
 			return "notifications";
 		} else {
 			model.addAttribute("alertMessage", "이메일 변경을 실패하였습니다.");
@@ -277,7 +298,7 @@ public class TestController {
 			session.setAttribute("max", max);
 
 //			System.out.println(user.getUser_num());
-
+// 이준 푸쉬 제발
 			return "redirect:/";
 		} else {
 			model.addAttribute("errorMessage", "ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 ID 입니다.");
@@ -311,10 +332,13 @@ public class TestController {
 		TestMember user = (TestMember) session.getAttribute("user");
 
 		List<Dashboard_Info> dashboardList = service.dashboard(user.getUser_num());
+		service.dashboard(user.getUser_num());
 
-		List<Useriot_Info> list = service.user_iot(user.getUser_num());
+	      List<Iotsensor_Info> snList = service.sensorSelect(user.getUser_num());
 
-		List<List<Iotsensor_Info>> sensorList = new ArrayList<>();
+	      List<Useriot_Info> list = service.user_iot(user.getUser_num());
+
+	      List<List<Iotsensor_Info>> sensorList = new ArrayList<>();
 
 		for (Useriot_Info element : list) {
 			sensorList.add(service.Iotsensor(element.getIot_num()));
@@ -325,6 +349,7 @@ public class TestController {
 
 		model.addAttribute("sensorList", sensorList);
 
+		model.addAttribute("snList", snList);
 		return "mydata";
 
 		/*
@@ -375,21 +400,49 @@ public class TestController {
 
 		int cnt = service.sensoradd(idx, sensorName, user.getUser_num(), sensorType);
 		if (cnt > 0) {
+			// service.sensoradd(idx, sensorName, user.getUser_num(), sensorType);
 			return "redirect:/mydata";
 		} else {
 			return "redirect:/mydata";
 		}
 	}
 
+
 	@PostMapping("mydata/iotadd")
 	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
 		TestMember user = (TestMember) session.getAttribute("user");
+		IoT_Sensor max=(IoT_Sensor)session.getAttribute("max");
 		int cnt = service.iotadd(iotName, user.getUser_num());
 		if (cnt > 0) {
+			
+			int x=max.getMyIot()+1;
+			max.setMyIot(x);
+			session.setAttribute("max", max);
+			
 			return "redirect:/mydata";
 		} else {
 			return "fail";
 		}
+	}
+	@PostMapping("mydata/chartadd")
+	public String chartadd(HttpSession session, @RequestParam("chartName") String chartName,
+			@RequestParam("chartType") String chartType, @RequestParam("sensorNum") String sensorNum) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		
+		String[] sensorNumList = sensorNum.split(","); 
+		String[] chartTypeList = chartType.split(","); 
+		String [] chartNameList = chartName.split(",");
+		for(int i = 0; i<chartNameList.length; i++) {
+			String dashboardNum = (String) session.getAttribute("dashboardNum");
+			
+			System.out.println(chartNameList[i]);
+			System.out.println(chartTypeList[i]);
+			System.out.println(sensorNumList[i]);
+			service.chartadd(dashboardNum, chartNameList[i], chartTypeList[i], sensorNumList[i]);
+		}
+		
+		return "redirect:/mydata";
+		
 	}
 
 }
