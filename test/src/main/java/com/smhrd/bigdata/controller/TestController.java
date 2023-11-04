@@ -1,12 +1,10 @@
 package com.smhrd.bigdata.controller;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
-
 
 import javax.servlet.http.HttpSession;
 
@@ -69,6 +67,15 @@ public class TestController {
 		return "profile";
 	}
 
+	@PostMapping("/submitQna")
+	public String submitQna(Model model, @RequestParam("qnaTitle") String qnaTitle,
+			@RequestParam("qnaContent") String qnaContent, HttpSession session) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		emailservice.sendQnaEmail(qnaTitle, qnaContent, user.getEmail());
+		model.addAttribute("alertMessage", "문의사항이 정상적으로 등록되었습니다");
+		return "question";
+	}
+
 	@PostMapping("/updateName")
 	public String updateName(@ModelAttribute TestMember m, HttpSession session, Model model) {
 		TestMember user = (TestMember) session.getAttribute("user");
@@ -81,7 +88,7 @@ public class TestController {
 			return "profile";
 		}
 	}
-	
+
 	@GetMapping("/billing")
 	public String billing(Model model, HttpSession session) {
 		TestMember user = (TestMember) session.getAttribute("user");
@@ -152,7 +159,7 @@ public class TestController {
 			return "notifications";
 		}
 	}
-	
+
 	@GetMapping("/delete")
 	public String delete(HttpSession session) {
 		TestMember user = (TestMember) session.getAttribute("user");
@@ -167,8 +174,9 @@ public class TestController {
 	}
 
 	@PostMapping("/noti")
-	public String noti(@RequestParam(value = "select_noti", defaultValue = "0") String check, HttpSession session, Model model) {
-		String checknoti="0";
+	public String noti(@RequestParam(value = "select_noti", defaultValue = "0") String check, HttpSession session,
+			Model model) {
+		String checknoti = "0";
 		if (check.equals("email")) {
 			checknoti = "1";
 		}
@@ -179,11 +187,9 @@ public class TestController {
 		return "notifications";
 	}
 
-	
-
 	@PostMapping("/noti_email")
 	public String noti_email(@RequestParam(value = "email_noti") String[] check, HttpSession session, Model model) {
-		String[] check_num = { "1", "0", "0"};
+		String[] check_num = { "1", "0", "0" };
 		String checknoti = "";
 		for (String str : check) {
 			if (str.equals("op1")) {
@@ -217,21 +223,22 @@ public class TestController {
 
 	@PostMapping("/pay_success")
 	public String pay_success(@RequestParam(value = "paymentData") String[] data, HttpSession session) {
-        // 받은 값들을 활용하여 원하는 로직을 수행하고 결과를 반환하거나 다른 처리를 수행할 수 있습니다.
-        // 예시: 받은 값들을 로그로 출력
-        TestMember user=(TestMember)session.getAttribute("user");
-        
-        //환불요청
-        if(user.getPclass().equals("Paid")) {
-        	Bill last=service.last_payment(user.getUser_num());
-        	emailservice.mailSend("kimhasin@gmail.com",user.getEmail(), "업그레이드로 인한 환불요청", last.getDeal_num()+"확인 요청");
-        }
-        
-        service.addPayment(data);
-        service.setPclass(data[0],data[1]);
-        
-        user.setPclass(data[1]);
-        session.setAttribute("user", user);
+		// 받은 값들을 활용하여 원하는 로직을 수행하고 결과를 반환하거나 다른 처리를 수행할 수 있습니다.
+		// 예시: 받은 값들을 로그로 출력
+		TestMember user = (TestMember) session.getAttribute("user");
+
+		// 환불요청
+		if (user.getPclass().equals("Paid")) {
+			Bill last = service.last_payment(user.getUser_num());
+			emailservice.mailSend("kimhasin@gmail.com", user.getEmail(), "업그레이드로 인한 환불요청",
+					last.getDeal_num() + "확인 요청");
+		}
+
+		service.addPayment(data);
+		service.setPclass(data[0], data[1]);
+
+		user.setPclass(data[1]);
+		session.setAttribute("user", user);
 		return "pay_success";
 	}
 
@@ -299,13 +306,12 @@ public class TestController {
 		return "qna";
 	}
 
-
 	@GetMapping("/mydata")
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
 		TestMember user = (TestMember) session.getAttribute("user");
-		
+
 		List<Dashboard_Info> dashboardList = service.dashboard(user.getUser_num());
-		
+
 		List<Useriot_Info> list = service.user_iot(user.getUser_num());
 
 		List<List<Iotsensor_Info>> sensorList = new ArrayList<>();
@@ -314,7 +320,7 @@ public class TestController {
 			sensorList.add(service.Iotsensor(element.getIot_num()));
 		}
 		model.addAttribute("dashboardList", dashboardList);
-		
+
 		model.addAttribute("iotList", list);
 
 		model.addAttribute("sensorList", sensorList);
@@ -329,11 +335,12 @@ public class TestController {
 		 * innerList1.add("Inner List 1 - Element 2"); outerList.add(innerList1);
 		 */
 	}
-	
+
 	@GetMapping("/pwfind")
 	public String pwfind() {
 		return "pwfind";
 	}
+
 	@GetMapping("/pwfind2")
 	public String pwfind2(HttpSession session) {
 		return "pwfind2";
@@ -343,23 +350,23 @@ public class TestController {
 	public String pwfind3() {
 		return "pwfind3";
 	}
-	
+
 	@PostMapping("/updatePassword")
 	@ResponseBody
 	public String updatePassword(@RequestParam String email, @RequestParam String newPassword) {
-	    // 이메일과 새 비밀번호를 받아서 업데이트 로직을 작성합니다.
-	    boolean success = emailservice.updatePasswordByEmail(email, newPassword);
-	    if (success) {
-	        return "success";
-	    } else {
-	        return "error";
-	    }
-	}
-	@GetMapping("/redirect-pwfind2")
-	public String redirectToPwfind2() {
-	    return "redirect:/bigdata/pwfind2";
+		// 이메일과 새 비밀번호를 받아서 업데이트 로직을 작성합니다.
+		boolean success = emailservice.updatePasswordByEmail(email, newPassword);
+		if (success) {
+			return "success";
+		} else {
+			return "error";
+		}
 	}
 
+	@GetMapping("/redirect-pwfind2")
+	public String redirectToPwfind2() {
+		return "redirect:/bigdata/pwfind2";
+	}
 
 	@GetMapping("mydata/sensoradd/{idx}")
 	public String sensoradd(HttpSession session, @RequestParam("sensorName") String sensorName,
@@ -384,6 +391,5 @@ public class TestController {
 			return "fail";
 		}
 	}
-	
 
 }

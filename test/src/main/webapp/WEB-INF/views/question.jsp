@@ -18,6 +18,18 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
+	
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
+	crossorigin="anonymous"></script>
+		<script>
+		window.onload = function() {
+			var alertMessage = "${alertMessage}";
+			if (alertMessage !== "") {
+				alert(alertMessage);
+			}
+		};
+	</script>
 </head>
 <body class="nav-fixed">
 		<jsp:include page="header.jsp"></jsp:include>
