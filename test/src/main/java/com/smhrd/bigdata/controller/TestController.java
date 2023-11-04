@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -124,6 +125,16 @@ public class TestController {
 		if (service.changePw(user.getId(), newPassword) > 0) {
 			user.setPw(newPassword);
 			model.addAttribute("alertMessage", "비밀번호가 성공적으로 변경되었습니다.");
+			
+			if (!user.getPclass().equals("Free")) {
+				if (user.getSelect_noti().equals("1")) {
+					if (user.getEmail_noti().charAt(0)=='1') {
+						emailservice.mailSend("kimhasin@gmail.com", user.getEmail(), "아오팜 개인정보 변경 알림",
+								"비밀번호가 변경되었음을 알립니다.");
+					}
+				}
+			}
+			
 			return "security";
 		} else {
 			model.addAttribute("alertMessage", "비밀번호 변경을 실패하였습니다.");
@@ -146,6 +157,16 @@ public class TestController {
 		if (service.changeEmail(user.getId(), email) > 0) {
 			user.setEmail(email);
 			model.addAttribute("alertMessage", "이메일이 성공적으로 변경되었습니다.");
+			
+			if (!user.getPclass().equals("Free")) {
+				if (user.getSelect_noti().equals("1")) {
+					if (user.getEmail_noti().charAt(0)=='1') {
+						emailservice.mailSend("kimhasin@gmail.com", user.getEmail(), "아오팜 개인정보 변경 알림",
+								"이메일이 변경되었음을 알립니다.");
+					}
+				}
+			}
+			
 			return "notifications";
 		} else {
 			model.addAttribute("alertMessage", "이메일 변경을 실패하였습니다.");

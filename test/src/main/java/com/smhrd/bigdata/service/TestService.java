@@ -1,5 +1,6 @@
 package com.smhrd.bigdata.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.catalina.User;
@@ -118,6 +119,15 @@ public class TestService {
 
 	public void setPclass(String user_num, String product) {
 		mapper.setPclass(user_num,product);
+	}
+	
+	public List<String> classUpUserList(LocalDate currentDate){
+		return mapper.classUpUserList(currentDate);
+	}
+
+	public TestMember userInfo(String userNum) {
+		// TODO Auto-generated method stub
+		return mapper.userInfo(userNum);
 	}
 
 }

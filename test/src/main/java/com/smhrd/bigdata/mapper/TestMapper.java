@@ -1,5 +1,6 @@
 package com.smhrd.bigdata.mapper;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -88,7 +89,6 @@ public interface TestMapper {
 
 	// sensor 등록
 	@Insert("insert into iotsensor_info (iot_num,sensor_name, user_num, sensor_type) VALUES (#{iot_num} ,#{sensor_name}, #{user_num}, #{sensor_type})")
-
 	public int sensoradd(String iot_num ,String sensor_name, int user_num, int sensor_type);
 
 	@Insert("insert into deal(user_num,product,price) values(#{data[0]},#{data[1]},#{data[2]})")
@@ -96,4 +96,16 @@ public interface TestMapper {
 
 	@Update("update user_info set pclass=#{product} where user_num=#{user_num}")
 	public void setPclass(String user_num, String product);
+
+	@Select("SELECT user_num FROM (\r\n"
+			+ "      SELECT user_num, MAX(`end_date`) AS `latest_end_date`\r\n"
+			+ "      FROM `deal`\r\n"
+			+ "      GROUP BY user_num\r\n"
+			+ "    ) latest\r\n"
+			+ "    WHERE `latest_end_date` < #{currentDate}")
+	public List<String> classUpUserList(LocalDate currentDate);
+
+	@Select("select * from user_info where user_num=#{userNum}")
+	public TestMember userInfo(String userNum);
+
 }
