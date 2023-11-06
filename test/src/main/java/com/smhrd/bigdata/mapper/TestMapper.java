@@ -120,4 +120,9 @@ public interface TestMapper {
 
 	@Select("select * from user_info where user_num=#{userNum}")
 	public TestMember userInfo(String userNum);
+
+	@Select("select * from user_info")
+	public List<TestMember> userAll();
+	
+	
 }

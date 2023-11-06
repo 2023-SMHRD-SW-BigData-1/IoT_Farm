@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.smhrd.bigdata.model.TestMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html lang="en">
@@ -23,7 +24,7 @@
 
 	<!-- 헤더부분 -->
 	<jsp:include page="header.jsp"></jsp:include>
-<%TestMember user=(TestMember)session.getAttribute("user");%>
+<% TestMember user=(TestMember)session.getAttribute("user");%>
 	<!-- 네비게이션 삭제 style="margin-left: -15rem; margin-top:-3.5rem"-->
 	<div id="layoutSidenav">
 

@@ -37,16 +37,6 @@ public class TestController {
 	@Autowired
 	EmailService emailservice;
 
-	@GetMapping("/test")
-	public String table() {
-		return "daeun/tables";
-	}
-
-	@GetMapping("/header")
-	public String header(Model model) {
-		return "header";
-	}
-
 	@GetMapping("/join")
 	public String joinForm(@ModelAttribute TestMember m) {
 		return "join";
@@ -285,7 +275,7 @@ public class TestController {
 		if (user != null) {
 			session.setAttribute("user", user);
 			if (user.getPclass().equals("Admin")) {
-				return "admin/user_mng";
+				return "redirect:/user_mng";
 			}
 			int usingIot = service.iotNum(user.getUser_num());
 			int usingSensor = service.sensorNum(user.getUser_num());
@@ -445,12 +435,87 @@ public class TestController {
 	}
 
 	@GetMapping("/user_mng")
-	public String user_mng() {
+	public String user_mng(Model model) {
+		List<TestMember> list = service.userAll();
+		model.addAttribute("list", list);
 		return "admin/user_mng";
 	}
 	
 	@GetMapping("/update_send")
 	public String update_send() {
 		return "admin/update_send";
+	}
+	
+	@PostMapping("/sendUpdate")
+	public String sendUpdate(Model model, @RequestParam("Title") String title,
+			@RequestParam("Content") String content) {
+		
+		List<TestMember> list = service.userAll();
+		for (TestMember user : list) {
+
+			if (!user.getPclass().equals("Free")) {
+				if (user.getSelect_noti().equals("1")) {
+					if (user.getEmail_noti().charAt(2)=='1') {
+						emailservice.mailSend("aofarmad@gmail.com", user.getEmail(), title, content);
+					}
+				}
+			}
+			
+			
+		}
+		model.addAttribute("alertMessage", "이메일 발송이 성공하였습니다");
+		return "admin/update_send";
+	}
+	
+
+
+	@GetMapping("guide/guide_first")
+	public String guide_first() {
+		return "guide/guide_first";
+	}
+	
+	@GetMapping("guide/guide_iotSetting")
+	public String header() {
+		return "guide/guide_iotSetting";
+	}
+	
+	@GetMapping("guide/guide_iotRegistor")
+	public String iotRegistor() {
+		return "guide/guide_iotRegistor";
+	}
+	
+	@GetMapping("guide/guide_sensorRegistor")
+	public String sensorRegistor() {
+		return "guide/guide_sensorRegistor";
+	}
+	
+	@GetMapping("guide/guide_sensor1")
+	public String sensor1() {
+		return "guide/guide_sensor1";
+	}
+	
+	@GetMapping("guide/guide_sensor2")
+	public String sensor2() {
+		return "guide/guide_sensor2";
+	}
+	
+	@GetMapping("guide/guide_sensor3")
+	public String sensor3() {
+		return "guide/guide_sensor3";
+	}
+	
+	@GetMapping("guide/guide_sensor4")
+	public String sensor4() {
+		return "guide/guide_sensor4";
+	}
+	
+	@GetMapping("guide/guide_sensor5")
+	public String sensor5() {
+		return "guide/guide_sensor5";
+	}
+	
+	@GetMapping("guide/guide_dashboard")
+	public String dashboard() {
+		return "guide/guide_dashboard";
 	}
 }

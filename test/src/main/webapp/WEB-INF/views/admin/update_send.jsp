@@ -15,9 +15,7 @@
 <script data-search-pseudo-elements defer
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
 	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
-	crossorigin="anonymous"></script>
+
 </head>
 <body class="nav-fixed">
 	<jsp:include page="admin_header.jsp"></jsp:include>
@@ -26,37 +24,46 @@
 			style="margin-left: -15rem; margin-top: -3.5rem">
 			<main>
 
+				<form action="sendUpdate" method = "post">
+					<div class="container-fluid px-4">
+						<div>
+							<h1 class="collapse_text">업데이트</h1>
+						</div>
+						<div class="row gx-4">
+							<div class="col-lg-8 qna_box">
 
-				<div class="container-fluid px-4">
-					<div>
-						<h1 class="collapse_text">업데이트</h1>
-					</div>
-					<div class="row gx-4">
-						<div class="col-lg-8 qna_box">
+								<div class="card card-header-actions mb-4">
+									<div class="card-header">
+										<div class="qna_title">이메일 제목</div>
 
-							<div class="card card-header-actions mb-4">
-								<div class="card-header">
-									<div class="qna_title">문의사항:</div>
-
-									<input class="edit_title form-control" type="text"
-										placeholder="제목을 입력하세요">
-								</div>
-								<div class="card-body">
-									<textarea class="lh-base form-control qna_ta" type="text"
-										placeholder="내용을 입력하세요" rows="20"></textarea>
-									<div class="qna_btn_div">
-										<button class="btn btn-primary">의견제출</button>
+										<input class="edit_title form-control" type="text"
+											placeholder="제목을 입력하세요" name = "Title">
+									</div>
+									<div class="card-body">
+										<textarea class="lh-base form-control qna_ta"
+											placeholder="내용을 입력하세요" rows="20" name= "Content"></textarea>
+										<div class="qna_btn_div">
+							<button class="btn btn-primary" type="submit">이메일 발송</button>
+										</div>
 									</div>
 								</div>
+
 							</div>
 
 						</div>
-
 					</div>
-				</div>
+				</form>
 			</main>
 		</div>
 	</div>
+	<script>
+		window.onload = function() {
+			var alertMessage = "${alertMessage}";
+			if (alertMessage !== "") {
+				alert(alertMessage);
+			}
+		};
+	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>

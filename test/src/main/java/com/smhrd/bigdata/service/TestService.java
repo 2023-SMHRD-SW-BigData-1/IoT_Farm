@@ -143,4 +143,9 @@ public class TestService {
 		return mapper.userInfo(userNum);
 	}
 
+	public List<TestMember> userAll() {
+		// TODO Auto-generated method stub
+		return mapper.userAll();
+	}
+
 }
