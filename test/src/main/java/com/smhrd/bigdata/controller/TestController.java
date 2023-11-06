@@ -319,7 +319,7 @@ public class TestController {
 	@GetMapping("/mydata")
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
 		TestMember user = (TestMember) session.getAttribute("user");
-
+		
 		List<Dashboard_Info> dashboardList = service.dashboard(user.getUser_num());
 		service.dashboard(user.getUser_num());
 
@@ -340,14 +340,6 @@ public class TestController {
 
 		model.addAttribute("snList", snList);
 		return "mydata";
-
-		/*
-		 * List<List<String>> outerList = new ArrayList<>();
-		 * 
-		 * List<String> innerList1 = new ArrayList<>();
-		 * innerList1.add("Inner List 1 - Element 1");
-		 * innerList1.add("Inner List 1 - Element 2"); outerList.add(innerList1);
-		 */
 	}
 
 	@GetMapping("/pwfind")
@@ -382,19 +374,6 @@ public class TestController {
 		return "redirect:/bigdata/pwfind2";
 	}
 
-	@GetMapping("mydata/sensoradd/{idx}")
-	public String sensoradd(HttpSession session, @RequestParam("sensorName") String sensorName,
-			@RequestParam("sensorType") int sensorType, @PathVariable String idx) {
-		TestMember user = (TestMember) session.getAttribute("user");
-
-		int cnt = service.sensoradd(idx, sensorName, user.getUser_num(), sensorType);
-		if (cnt > 0) {
-			// service.sensoradd(idx, sensorName, user.getUser_num(), sensorType);
-			return "redirect:/mydata";
-		} else {
-			return "redirect:/mydata";
-		}
-	}
 
 
 	@PostMapping("mydata/iotadd")
@@ -402,12 +381,13 @@ public class TestController {
 		TestMember user = (TestMember) session.getAttribute("user");
 		IoT_Sensor max=(IoT_Sensor)session.getAttribute("max");
 		int cnt = service.iotadd(iotName, user.getUser_num());
+		
 		if (cnt > 0) {
-			
-			int x=max.getMyIot()+1;
+			int x = max.getMyIot()+1;
+			System.out.println(max.getMyIot());
+			System.out.println(max.getMaxIot());
 			max.setMyIot(x);
 			session.setAttribute("max", max);
-			
 			return "redirect:/mydata";
 		} else {
 			return "fail";
@@ -423,7 +403,6 @@ public class TestController {
 		String [] chartNameList = chartName.split(",");
 		for(int i = 0; i<chartNameList.length; i++) {
 			String dashboardNum = (String) session.getAttribute("dashboardNum");
-			
 			System.out.println(chartNameList[i]);
 			System.out.println(chartTypeList[i]);
 			System.out.println(sensorNumList[i]);
@@ -432,6 +411,27 @@ public class TestController {
 		
 		return "redirect:/mydata";
 		
+	}
+	
+	@GetMapping("mydata/sensoradd/{idx}")
+	public String sensoradd(HttpSession session, @RequestParam("sensorName") String sensorName,
+			@RequestParam("sensorType") int sensorType, @PathVariable String idx) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		IoT_Sensor max=(IoT_Sensor)session.getAttribute("max");
+		
+		int cnt = service.sensoradd(idx, sensorName, user.getUser_num(), sensorType);
+		if (cnt > 0) {
+			
+			int x = max.getMySensor()+1;
+			System.out.println(max.getMySensor());
+			System.out.println(max.getMaxSensor());
+			max.setMySensor(x);
+			session.setAttribute("max", max);
+			
+			return "redirect:/mydata";
+		} else {
+			return "redirect:/mydata";
+		}
 	}
 
 	@GetMapping("/user_mng")

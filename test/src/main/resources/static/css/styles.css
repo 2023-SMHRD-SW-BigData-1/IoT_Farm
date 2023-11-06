@@ -21116,6 +21116,7 @@ pre[class*=language-] {
     font-size: x-small;
 }
 .chart-width{width: 20%;}
+.sensor-btn{background: none; border: none; font-weight: bolder;}
 
 /*===========================================================*/
 

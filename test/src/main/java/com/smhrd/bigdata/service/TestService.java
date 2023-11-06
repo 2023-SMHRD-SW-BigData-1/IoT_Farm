@@ -142,10 +142,15 @@ public class TestService {
 		// TODO Auto-generated method stub
 		return mapper.userInfo(userNum);
 	}
-
+	
 	public List<TestMember> userAll() {
 		// TODO Auto-generated method stub
 		return mapper.userAll();
+	}
+	
+	public int checkDuplicateSensor(String idx, int sensorType) {
+		// TODO Auto-generated method stub
+		return mapper.checkDuplicateSensor(idx, sensorType);
 	}
 
 }

@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="com.smhrd.bigdata.model.IoT_Sensor"%>
+<%@page import="com.smhrd.bigdata.model.TestMember"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.bigdata.model.Useriot_Info"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -33,7 +35,7 @@
 			}
 
 		});
-	}
+	
 	
 	    var sensorSelect = document.getElementById("sensorSelect");
 	    var modal2Body = document.getElementById("modal2-body");
@@ -82,6 +84,9 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 
+	<%
+	IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
+	%>
 	<div id="layoutSidenav">
 
 		<!-- 내비게이션 -->
@@ -95,10 +100,21 @@
 						<!-- Sidenav Menu Heading (Core)-->
 						<div class="sidenav-menu-heading nav-menu">
 							<div>iot register</div>
+							<%
+							if (max.getMaxIot() > max.getMyIot()) {
+							%>
 							<button
 								class="nav-plus badge bg-primary-soft text-primary ms-auto"
 								href="#" data-bs-toggle="modal"
 								data-bs-target="#exampleModalCenter">+</button>
+							<%
+							} else {
+							%>
+							<button class="nav-plus badge bg-primary-soft text-primary "
+								href="#">+</button>
+							<%
+							}
+							%>
 						</div>
 
 
@@ -122,10 +138,10 @@
 											</div>
 									</a></td>
 									<td>
-										<div class="collapse" id="collapseUtilities${item.iot_num}" ></div>
+										<div class="collapse" id="collapseUtilities${item.iot_num}"></div>
 										<div id="sensorList${iotList }"></div>
 									<td><div class="collapse"
-											id="collapseUtilities${item.iot_num }" ></div>
+											id="collapseUtilities${item.iot_num }"></div>
 										<div class="collapse" id="collapseUtilities${item.iot_num}"></div>
 										<div id="sensorList${iotList }"></div>
 										<div class="collapse" id="collapseUtilities${item.iot_num }"
@@ -139,8 +155,19 @@
 														</c:if>
 													</c:forEach>
 												</c:forEach>
-												<a class="nav-link" href="#" data-bs-toggle="modal"
-													data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</a>
+												<%
+												if (max.getMaxSensor() > max.getMySensor()) {
+												%>
+												<button class="nav-link sensor-btn" data-bs-toggle="modal"
+													data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</button>
+												<%
+												} else {
+												%>
+												<button class="nav-link sensor-btn" data-bs-toggle="modal"
+													href="#">센서등록</button>
+												<%
+												}
+												%>
 											</nav>
 										</div></td>
 
@@ -210,7 +237,8 @@
 						</div>
 					</div>
 				</header>
-				<!-- Main page content-->
+				
+				<!-- Dashboard content-->
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
 
@@ -355,7 +383,6 @@
 									<option value="2">2</option>
 									<option value="3">3</option>
 									<option value="4">4</option>
-									<option value="4">5</option>
 								</select>
 							</div>
 						</div>
@@ -415,7 +442,8 @@
 									</div>
 									<div class="mb-3 modal-flex">
 										<div class="modal-iot">센서 종류:</div>
-										<select class="dashboard-count" name="sensorType">
+										<select class="dashboard-count" id="iot_sensor"
+											name="sensorType">
 											<option value="1">온도</option>
 											<option value="2">습도</option>
 											<option value="3">조도</option>
@@ -427,7 +455,7 @@
 								<div class="modal-footer">
 
 									<button class="btn btn-primary" type="submit"
-										onclick="location.href='mydata'">확인</button>
+										onclick="checkIotSensor()">확인</button>
 								</div>
 							</form>
 						</div>
@@ -436,7 +464,8 @@
 			</c:forEach>
 		</tbody>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
@@ -450,5 +479,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"
 		crossorigin="anonymous"></script>
 	<script src="js/litepicker.js"></script>
+
 </body>
 </html>
