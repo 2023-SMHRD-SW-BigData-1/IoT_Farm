@@ -143,4 +143,9 @@ public class TestService {
 		return mapper.userInfo(userNum);
 	}
 
+	public int checkDuplicateSensor(String idx, int sensorType) {
+		// TODO Auto-generated method stub
+		return mapper.checkDuplicateSensor(idx, sensorType);
+	}
+
 }

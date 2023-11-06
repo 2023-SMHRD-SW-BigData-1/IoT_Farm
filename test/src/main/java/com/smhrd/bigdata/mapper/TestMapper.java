@@ -120,4 +120,8 @@ public interface TestMapper {
 
 	@Select("select * from user_info where user_num=#{userNum}")
 	public TestMember userInfo(String userNum);
+
+	
+	@Select("select * from iotsensor_info where iot_num=#{idx} AND sensor_type=#{sensorType}")
+	public int checkDuplicateSensor(String idx, int sensorType);
 }

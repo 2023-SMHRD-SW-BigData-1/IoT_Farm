@@ -121,9 +121,6 @@
 							</div> 대시보드 구성하기
 						</a>
 
-
-
-
 					</div>
 				</div>
 			</nav>
@@ -155,20 +152,25 @@
 					<div class="card mt-n10">
 						<div class="card-header">환영합니다!</div>
 						<div class="card-body">
-							아오팜은 IoT 클라우드 솔루션과 모니터링 웹서비스를 지원하고 있습니다.<br>
-							클라우드 서비스와 같이 자신에게 맞는 모니터링 대시보드를 구성해봅시다! 
-							
+							아오팜은 IoT 클라우드 솔루션과 모니터링 웹서비스를 지원하고 있습니다.<br> 클라우드 서비스와 같이
+							자신에게 맞는 모니터링 대시보드를 구성해봅시다!
+
 						</div>
 					</div>
 					<div class="card mt-4">
 						<div class="card-header">IoT 클라우드 서비스 이용하기</div>
 						<div class="card-body">
-							아오팜은 자신 센서데이터를 저장할 수 있는 IoT 클라우드 서비스를 제공하고 있습니다.
+							아오팜은 자신 센서데이터를 저장할 수 있는 IoT 클라우드 서비스를 제공하고 있습니다. <br> 다음의
+							단계를 따라가면서 클라우드 서비스를 이용해봅시다.<br>
 							<br>
-							다음의 단계를 따라가면서 클라우드 서비스를 이용해봅시다.<br><br><br><br><br><br><br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
 							<div class="step mb-5">
 								<div class="step-item active">
-									<a class="step-item-link text-lg fw-700" href="#!">IoT 세팅하기</a>
+									<a class="step-item-link text-lg fw-700" href="guide">IoT 세팅하기</a>
 								</div>
 								<div class="step-item">
 									<a class="step-item-link" href="#!">IoT 등록하기</a>
@@ -181,23 +183,16 @@
 								</div>
 							</div>
 							<div class="text-lg">아두이노 세팅하기</div>
-							https://www.arduino.cc/에 접속합니다.
-							
-							
+							1. 아두이노 IDE 설치하기 https://www.arduino.cc/en/software에 접속후 사용자 컴퓨터
+							사양에 맞는 파일을 다운로드 합니다.<br> (아오팜 에서는 Arduino IDE ) 다운로드 버튼을 누르고 JUST
+							DOWNLOAD 버튼을 누르면 됩니다.<br>+ Chrome이 아닌 Internet Exploer나 Microsoft
+							Edge에서 다운로드를 권장합니다. <br>아오팜에서 사용중인 아두이노 보드는 “아두이노 D1 R32”입니다. 아두이노 D1
+							R32 기준의 코드 가이드 라인이 제공 됩니다.
+
 						</div>
 					</div>
-					
-					
-					
-							
-							
-							
-							
-							
-							
+
 				</div>
-
-
 
 			</main>
 			<footer class="footer-admin mt-auto footer-light">
