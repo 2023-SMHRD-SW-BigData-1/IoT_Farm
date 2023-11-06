@@ -5,6 +5,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.smhrd.bigdata.mapper.TestMapper;
 import com.smhrd.bigdata.model.TestMember;
@@ -33,7 +34,7 @@ public class EmailService {
    
    public String joinEmail(String email) {
 	    String checkNum = makeRandomNumber(); // makeRandomNumber()의 반환 값을 변수에 저장
-	    String setFrom = "kimhasin@gmail.com"; // email-config에 설정한 자신의 이메일 주소를 입력 
+	    String setFrom = "aofarmad@gmail.com"; // email-config에 설정한 자신의 이메일 주소를 입력 
 	    String toMail = email;
 	    String title = "회원 가입 인증 이메일 입니다."; // 이메일 제목 
 	    String content = 
@@ -48,7 +49,7 @@ public class EmailService {
    
    public String pwfEmail(String email) {
 	   String checkNum = makeRandomNumber(); // makeRandomNumber()의 반환 값을 변수에 저장
-	    String setFrom = "kimhasin@gmail.com"; // email-config에 설정한 자신의 이메일 주소를 입력 
+	    String setFrom = "aofarmad@gmail.com"; // email-config에 설정한 자신의 이메일 주소를 입력 
 	    String toMail = email;
 	    String title = "비밀번호 찾기 이메일 입니다."; // 이메일 제목 
 	    String content = 
@@ -58,6 +59,17 @@ public class EmailService {
 	    mailSend(setFrom, toMail, title, content);
 	    return checkNum;
    }
+   
+   public void sendQnaEmail(String qnaTitle, String qnaContent, String email) {
+
+       String setFrom = "aofarmad@gmail.com"; // 발신자 이메일 주소
+       String toMail = "aofarmad@gmail.com"; // 관리자 이메일 주소
+       String title = "새로운 문의사항이 등록되었습니다"; // 이메일 제목
+       String content = "문의 회원 : "+ email + "<br>" + "문의 제목 : " + qnaTitle + "<br>" + "문의 내용: " + qnaContent ; // 이메일 내용
+
+       mailSend(setFrom, toMail, title, content);
+   }
+   
    
 	public void mailSend(String setFrom, String toMail, String title, String content) { 
 		MimeMessage message = emailSender.createMimeMessage();
