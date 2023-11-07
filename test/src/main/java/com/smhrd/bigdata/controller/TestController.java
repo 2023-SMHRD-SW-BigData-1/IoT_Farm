@@ -441,6 +441,12 @@ public class TestController {
 		return "admin/user_mng";
 	}
 	
+	@GetMapping("user_mng/delete/{idx}")
+	public String sensoradd(@PathVariable String idx) {
+		service.delete(idx);
+		return "redirect:/user_mng";
+	}
+	
 	@GetMapping("/update_send")
 	public String update_send() {
 		return "admin/update_send";
@@ -460,8 +466,6 @@ public class TestController {
 					}
 				}
 			}
-			
-			
 		}
 		model.addAttribute("alertMessage", "이메일 발송이 성공하였습니다");
 		return "admin/update_send";

@@ -81,7 +81,7 @@
 												</div>
 											</td>
 											<td>
-											<button class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i data-feather="more-vertical"></i></button>
+											<a class="btn btn-datatable btn-icon btn-transparent-dark" href="user_mng/delete/<%=user.getId()%>"><i data-feather="trash-2"></i></a>
 											</td>
 										</tr>
 										<%
