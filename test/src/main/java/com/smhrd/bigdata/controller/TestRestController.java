@@ -81,6 +81,36 @@ public class TestRestController {
 		}
 	}
 	
+	
+	@PostMapping("mydata/iotadd")
+	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
+		String api;
+		while(true) {
+			api=emailservice.makeRandomNumber();
+			if(service.apiSearch(api)!=null) {
+				continue;
+			}
+			System.out.println("api:"+api);
+			break;
+		}
+		int cnt = service.iotadd(user.getUser_num(),iotName,api);
+
+		if (cnt > 0) {
+			int x = max.getMyIot() + 1;
+			System.out.println(max.getMyIot());
+			System.out.println(max.getMaxIot());
+			max.setMyIot(x);
+			session.setAttribute("max", max);
+			
+			return api;
+		} else {
+			return "fail";
+		}
+	}
+	
+
 	@GetMapping("mydata/{idx}")
 	@ResponseBody
 	public List<Sensor_Re> sensor_re(@PathVariable int idx) {

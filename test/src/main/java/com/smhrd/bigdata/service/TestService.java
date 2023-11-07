@@ -46,10 +46,6 @@ public class TestService {
 		return mapper.updateName(id, name);
 	}
 
-	public int iotadd(String iotName, int user_num) {
-		return mapper.iotadd(iotName, user_num);
-	}
-
 	public int dashboardadd(String dashboardName, int user_num) {
 		return mapper.dashboardadd(dashboardName, user_num);
 	}
@@ -152,6 +148,15 @@ public class TestService {
 	public List<TestMember> userAll() {
 		// TODO Auto-generated method stub
 		return mapper.userAll();
+	}
+
+	public String apiSearch(String api) {
+		// TODO Auto-generated method stub
+		return mapper.apiSearch(api);
+	}
+
+	public int iotadd(int user_num, String iotName, String api) {
+		return mapper.iotadd(user_num,iotName, api);
 	}
 
 }

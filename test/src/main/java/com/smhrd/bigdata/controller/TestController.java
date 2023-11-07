@@ -38,9 +38,9 @@ public class TestController {
 
 	@Autowired
 	EmailService emailservice;
-
+	
 	@GetMapping("/join")
-	public String joinForm(@ModelAttribute TestMember m) {
+	public String joinForm() {
 		return "join";
 	}
 
@@ -322,12 +322,13 @@ public class TestController {
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
 		TestMember user = (TestMember) session.getAttribute("user");
 
+		//대쉬보드 리스트
 		List<Dashboard_Info> dashboardList = service.dashboard(user.getUser_num());
-		service.dashboard(user.getUser_num());
-
+		//센서 리스트
 		List<Iotsensor_Info> snList = service.sensorSelect(user.getUser_num());
+		//아이오티 리스트
 		List<Useriot_Info> list = service.user_iot(user.getUser_num());
-
+		//아이오티 마다의 센서리스트를 리스트함
 		List<List<Iotsensor_Info>> sensorList = new ArrayList<>();
 
 		for (Useriot_Info element : list) {
@@ -375,23 +376,7 @@ public class TestController {
 		return "redirect:/bigdata/pwfind2";
 	}
 
-	@PostMapping("mydata/iotadd")
-	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
-		TestMember user = (TestMember) session.getAttribute("user");
-		IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
-		int cnt = service.iotadd(iotName, user.getUser_num());
-
-		if (cnt > 0) {
-			int x = max.getMyIot() + 1;
-			System.out.println(max.getMyIot());
-			System.out.println(max.getMaxIot());
-			max.setMyIot(x);
-			session.setAttribute("max", max);
-			return "redirect:/mydata";
-		} else {
-			return "fail";
-		}
-	}
+	
 
 	@PostMapping("mydata/chartadd")
 	public String chartadd(HttpSession session, @RequestParam("chartName") String chartName,
