@@ -49,7 +49,7 @@ public class TestService {
 	public int iotadd(String iotName, int user_num) {
 		return mapper.iotadd(iotName, user_num);
 	}
-	
+
 	public int dashboardadd(String dashboardName, int user_num) {
 		return mapper.dashboardadd(dashboardName, user_num);
 	}
@@ -76,11 +76,11 @@ public class TestService {
 		System.out.println("서비스 진입");
 		return mapper.sensoradd(iot_num, sensorName, user_num, sensorType);
 	}
-	
-	public int chartadd(String dashboard_num, String chartNameList, String chartTypeList, String sensorNumList ) {
+
+	public int chartadd(String dashboard_num, String chartNameList, String chartTypeList, String sensorNumList) {
 		return mapper.chartadd(dashboard_num, chartNameList, chartTypeList, sensorNumList);
 	}
-	
+
 	public int changePw(String id, String newPassword) {
 		// TODO Auto-generated method stub
 		return mapper.updatePw(id, newPassword);
@@ -93,19 +93,19 @@ public class TestService {
 	public List<Useriot_Info> user_iot(int user_num) {
 		return mapper.user_iot(user_num);
 	}
-	
+
 	public List<Iotsensor_Info> Iotsensor(int iot_num) {
 		return mapper.Iotsensor(iot_num);
 	}
-	
-	public List<Iotsensor_Info> sensorSelect(int user_num){
+
+	public List<Iotsensor_Info> sensorSelect(int user_num) {
 		return mapper.sensorSelect(user_num);
 	}
-	
-	public List<Dashboard_Info> dashboard(int user_num){
+
+	public List<Dashboard_Info> dashboard(int user_num) {
 		return mapper.dashboard(user_num);
 	}
-	
+
 	public int iotNum(int user_num) {
 		// TODO Auto-generated method stub
 		return mapper.iotNum(user_num);
@@ -130,12 +130,13 @@ public class TestService {
 		// TODO Auto-generated method stub
 		return mapper.dashboardNum(dbName);
 	}
+
 	public void setPclass(String user_num, String product) {
-		mapper.setPclass(user_num,product);
+		mapper.setPclass(user_num, product);
 
 	}
-	
-	public List<String> classUpUserList(LocalDate currentDate){
+
+	public List<String> classUpUserList(LocalDate currentDate) {
 		return mapper.classUpUserList(currentDate);
 	}
 
@@ -143,9 +144,14 @@ public class TestService {
 		// TODO Auto-generated method stub
 		return mapper.userInfo(userNum);
 	}
-	
-	public List<Sensor_Re> sensor_re(int sensor_num){
+
+	public List<Sensor_Re> sensor_re(int sensor_num) {
 		return mapper.sensor_re(sensor_num);
 	}
-	
+
+	public List<TestMember> userAll() {
+		// TODO Auto-generated method stub
+		return mapper.userAll();
+	}
+
 }

@@ -57,7 +57,7 @@
 										<!-- Form Group (login box)-->
 										<div
 											class="d-flex align-items-center justify-content-between mt-4 mb-0">
-											<a class="small" href="/bigdata/pwfind">비밀번호를 잊어버리셨나요?</a>
+											<a class="small" href="/bigdata/pwfind">비밀번호를 잃어버리셨나요?</a>
 											<button type="submit"
 												class="btn btn-primary qna_btn btn-default">로그인</button>
 										</div>

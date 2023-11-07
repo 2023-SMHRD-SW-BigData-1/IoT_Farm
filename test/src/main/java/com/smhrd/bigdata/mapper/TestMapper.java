@@ -122,6 +122,10 @@ public interface TestMapper {
 	@Select("select * from user_info where user_num=#{userNum}")
 	public TestMember userInfo(String userNum);
 	
+	@Select("select * from user_info")
+	public List<TestMember> userAll();
+	
+	
 	@Select("select * from sensor_re where sensor_num = #{sensor_num} and re_date between date_sub(now(), interval 7 day) and now();")
 	public List<Sensor_Re> sensor_re(int sensor_num);
 

@@ -24,7 +24,7 @@
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
-				style="margin-top: 1.8rem" href="/bigdata/guide" role="button">
+				style="margin-top: 1.8rem" href="/bigdata/guide/guide_first" role="button">
 					<div class="fw-900 text-lg">가이드라인</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
@@ -74,7 +74,7 @@
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
 				class="nav-link"
-				style="margin-top: 1.8rem" href="/bigdata/guide" role="button">
+				style="margin-top: 1.8rem" href="/bigdata/guide/guide_first" role="button">
 					<div class="fw-900 text-lg">가이드라인</div>
 			</a></li>
 			<li class="nav-item dropdown no-caret d-none d-md-block me-3"><a
