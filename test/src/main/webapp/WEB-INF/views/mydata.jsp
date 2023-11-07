@@ -108,6 +108,7 @@
 
 	<%
 	IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
+	List<Iotsensor_Info> snList = (List<Iotsensor_Info>)request.getAttribute("snList");
 	%>
 	<div id="layoutSidenav">
 
@@ -218,14 +219,12 @@
 						<!-- Sidenav Accordion (Dashboard)-->
 
 						<c:forEach items="${dashboardList }" var="item">
-							<c:forEach items="${snList}" var="item2">
 								<a class="nav-link collapsed mt-10px" href="#"
-									onclick="dataselect(${item2.sensor_num})">
+									onclick="dataselect(<%=snList.getSensor_num %>)">
 									<div class="nav-link-icon">
 										<i data-feather="activity"></i>
 									</div>${item.dashboard_name}
 								</a>
-							</c:forEach>
 						</c:forEach>
 
 
@@ -515,6 +514,10 @@ function dataselect(idx) {
         	dataList.push(reselect[i].sensor_value);
         	minList.push(reselect[i].re_time);
         	}
+        	const maxValue = Math.max(...dataList);
+        	console.log(maxValue);
+        	
+        	
         	console.log(dataList);
         	var ctx = document.getElementById("myAreaChart");
         	var myLineChart = new Chart(ctx, {
@@ -563,6 +566,8 @@ function dataselect(idx) {
 	        	            }],
         	            yAxes: [{
         	                ticks: {
+        	                	min: 0,
+        	                    max: maxValue,
         	                    maxTicksLimit: 5,
         	                    padding: 10,
         	                    // Include a dollar sign in the ticks
@@ -613,13 +618,13 @@ function dataselect(idx) {
         	var myBarChart = new Chart(ctx, {
         	    type: "bar",
         	    data: {
-        	        labels: ["January", "February", "March", "April", "May", "June"],
+        	        labels: timeList,
         	        datasets: [{
-        	            label: "Revenue",
+        	            label: "값",
         	            backgroundColor: "rgba(0, 97, 242, 1)",
         	            hoverBackgroundColor: "rgba(0, 97, 242, 0.9)",
         	            borderColor: "#4e73df",
-        	            data: [4215, 5312, 6251, 7841, 9821, 14984],
+        	            data: dataList,
         	            maxBarThickness: 25
         	        }]
         	    },
@@ -649,8 +654,8 @@ function dataselect(idx) {
         	            yAxes: [{
         	                ticks: {
         	                    min: 0,
-        	                    max: 2000,
-        	                    maxTicksLimit: 3,
+        	                    max: maxValue,
+        	                    maxTicksLimit: 5,
         	                    padding: 10,
         	                    // Include a dollar sign in the ticks
         	                    callback: function(value, index, values) {
@@ -683,9 +688,11 @@ function dataselect(idx) {
         	            caretPadding: 10,
         	            callbacks: {
         	                label: function(tooltipItem, chart) {
-        	                    var datasetLabel =
-        	                        chart.datasets[tooltipItem.datasetIndex].label || "";
-        	                    return datasetLabel + ": $" + number_format(tooltipItem.yLabel);
+        	                	var datasetLabel =
+       	                         chart.datasets[tooltipItem.datasetIndex].label || "";
+       	                     var labelText = datasetLabel + " : " + number_format(tooltipItem.yLabel);
+       	                     labelText += ", 시간 : " + minList[tooltipItem.index]; // minList 값 추가
+       	                     return labelText;
         	                }
         	            }
         	        }
