@@ -79,8 +79,8 @@ public class TestRestController {
 		} else {
 			return "fail";
 		}
-
 	}
+	
 	
 	@PostMapping("mydata/iotadd")
 	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
@@ -110,6 +110,7 @@ public class TestRestController {
 		}
 	}
 	
+
 	@GetMapping("mydata/{idx}")
 	@ResponseBody
 	public List<Sensor_Re> sensor_re(@PathVariable int idx) {

@@ -280,7 +280,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-lg-6">
+									<div class="mb-4">
 										<!-- Bar chart example-->
 										<div class="card h-100">
 											<div class="card-header">Sales Reporting</div>
@@ -297,42 +297,6 @@
 														View More Reports <i class="fas fa-long-arrow-alt-right"></i>
 													</div>
 												</a>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<!-- Pie chart example-->
-										<div class="card h-100">
-											<div class="card-header">Traffic Sources</div>
-											<div class="card-body">
-												<div class="chart-pie mb-4">
-													<canvas id="myPieChart" width="100%" height="50"></canvas>
-												</div>
-												<div class="list-group list-group-flush">
-													<div
-														class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
-														<div class="me-3">
-															<i class="fas fa-circle fa-sm me-1 text-blue"></i> Direct
-														</div>
-														<div class="fw-500 text-dark">55%</div>
-													</div>
-													<div
-														class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
-														<div class="me-3">
-															<i class="fas fa-circle fa-sm me-1 text-purple"></i>
-															Social
-														</div>
-														<div class="fw-500 text-dark">15%</div>
-													</div>
-													<div
-														class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
-														<div class="me-3">
-															<i class="fas fa-circle fa-sm me-1 text-green"></i>
-															Referral
-														</div>
-														<div class="fw-500 text-dark">30%</div>
-													</div>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -363,6 +327,34 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalCenterTitle">IoT 등록</h5>
+						<button class="btn-close" type="button" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<form id="iotForm" action="mydata/iotadd" method="post">
+						<div class="modal-body">
+							<div class="mb-3 modal-flex">
+								<div class="modal-iot">IoT 이름:</div>
+								<input class="form-control" id="inputIot" type="text"
+									name="iotName" />
+							</div>
+						</div>
+						<div class="modal-footer">
+
+							<button class="btn btn-primary" type="button"
+								data-bs-target="#iotnextmodal">다음</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- iot Modal2 -->
+		<div class="modal" id="#iotnextmodal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">11111111111</h5>
 						<button class="btn-close" type="button" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
@@ -509,8 +501,8 @@
 	// Area Chart Example
 function dataselect(idx) {
 		let timeList = [];
+		let minList = [];
 		let dataList = [];
-		
 		
     $.ajax({
         type: "GET",
@@ -519,17 +511,20 @@ function dataselect(idx) {
         success: function(response) {
         	var reselect = response;
         	console.log(reselect);
-        	
-        	timeList.push(reselect.re_date);
-        	dataList.push(reselect.re_value);
-        	
+        	for(i = 0; i < reselect.length; i++){
+        	timeList.push(reselect[i].re_date);
+        	dataList.push(reselect[i].sensor_value);
+        	minList.push(reselect[i].re_time);
+        	}
+        	console.log(dataList);
         	var ctx = document.getElementById("myAreaChart");
         	var myLineChart = new Chart(ctx, {
         	    type: "line",
         	    data: {
-        	        labels: ,
+        	        labels: 
+        	        	timeList,
         	        datasets: [{
-        	            label: "Earnings",
+        	            label: "값",
         	            lineTension: 0.3,
         	            backgroundColor: "rgba(0, 97, 242, 0.05)",
         	            borderColor: "rgba(0, 97, 242, 1)",
@@ -541,21 +536,7 @@ function dataselect(idx) {
         	            pointHoverBorderColor: "rgba(0, 97, 242, 1)",
         	            pointHitRadius: 10,
         	            pointBorderWidth: 2,
-        	            data: [
-        	                0,
-        	                10000,
-        	                5000,
-        	                15000,
-        	                10000,
-        	                20000,
-        	                15000,
-        	                25000,
-        	                20000,
-        	                30000,
-        	                25000,
-        	                40000
-        	                
-        	            ]
+        	            data: dataList
         	        }]
         	    },
         	    options: {
@@ -568,19 +549,19 @@ function dataselect(idx) {
         	                bottom: 0
         	            }
         	        },
-        	        scales: {
-        	            xAxes: [{
-        	                time: {
-        	                    unit: "date"
-        	                },
-        	                gridLines: {
-        	                    display: false,
-        	                    drawBorder: false
-        	                },
-        	                ticks: {
-        	                    maxTicksLimit: 7
-        	                }
-        	            }],
+	        	        scales: {
+	        	            xAxes: [{
+	        	                time: {
+	        	                    unit: "date"
+	        	                },
+	        	                gridLines: {
+	        	                    display: false,
+	        	                    drawBorder: false
+	        	                },
+	        	                ticks: {
+	        	                    maxTicksLimit: timeList.length
+	        	                }
+	        	            }],
         	            yAxes: [{
         	                ticks: {
         	                    maxTicksLimit: 5,
@@ -618,6 +599,91 @@ function dataselect(idx) {
         	            caretPadding: 10,
         	            callbacks: {
         	                label: function(tooltipItem, chart) {
+        	                	 var datasetLabel =
+        	                         chart.datasets[tooltipItem.datasetIndex].label || "";
+        	                     var labelText = datasetLabel + " : " + number_format(tooltipItem.yLabel);
+        	                     labelText += ", 시간 : " + minList[tooltipItem.index]; // minList 값 추가
+        	                     return labelText;
+        	                }
+        	            }
+        	        }
+        	    }
+        	}); 
+        	// Bar Chart Example
+        	var ctx = document.getElementById("myBarChart");
+        	var myBarChart = new Chart(ctx, {
+        	    type: "bar",
+        	    data: {
+        	        labels: ["January", "February", "March", "April", "May", "June"],
+        	        datasets: [{
+        	            label: "Revenue",
+        	            backgroundColor: "rgba(0, 97, 242, 1)",
+        	            hoverBackgroundColor: "rgba(0, 97, 242, 0.9)",
+        	            borderColor: "#4e73df",
+        	            data: [4215, 5312, 6251, 7841, 9821, 14984],
+        	            maxBarThickness: 25
+        	        }]
+        	    },
+        	    options: {
+        	        maintainAspectRatio: false,
+        	        layout: {
+        	            padding: {
+        	                left: 10,
+        	                right: 25,
+        	                top: 25,
+        	                bottom: 0
+        	            }
+        	        },
+        	        scales: {
+        	            xAxes: [{
+        	                time: {
+        	                    unit: "month"
+        	                },
+        	                gridLines: {
+        	                    display: false,
+        	                    drawBorder: false
+        	                },
+        	                ticks: {
+        	                    maxTicksLimit: 6
+        	                }
+        	            }],
+        	            yAxes: [{
+        	                ticks: {
+        	                    min: 0,
+        	                    max: 2000,
+        	                    maxTicksLimit: 3,
+        	                    padding: 10,
+        	                    // Include a dollar sign in the ticks
+        	                    callback: function(value, index, values) {
+        	                        return number_format(value);
+        	                    }
+        	                },
+        	                gridLines: {
+        	                    color: "rgb(234, 236, 244)",
+        	                    zeroLineColor: "rgb(234, 236, 244)",
+        	                    drawBorder: false,
+        	                    borderDash: [2],
+        	                    zeroLineBorderDash: [2]
+        	                }
+        	            }]
+        	        },
+        	        legend: {
+        	            display: false
+        	        },
+        	        tooltips: {
+        	            titleMarginBottom: 10,
+        	            titleFontColor: "#6e707e",
+        	            titleFontSize: 14,
+        	            backgroundColor: "rgb(255,255,255)",
+        	            bodyFontColor: "#858796",
+        	            borderColor: "#dddfeb",
+        	            borderWidth: 1,
+        	            xPadding: 15,
+        	            yPadding: 15,
+        	            displayColors: false,
+        	            caretPadding: 10,
+        	            callbacks: {
+        	                label: function(tooltipItem, chart) {
         	                    var datasetLabel =
         	                        chart.datasets[tooltipItem.datasetIndex].label || "";
         	                    return datasetLabel + ": $" + number_format(tooltipItem.yLabel);
@@ -625,15 +691,16 @@ function dataselect(idx) {
         	            }
         	        }
         	    }
-        	}); 
+        	});        
         },
         error: function(xhr, status, error) {
             console.log("error"); // 오타 수정
         }
     });
-
+    
 	};
-
+	
+	
 	</script>
 
 </body>
