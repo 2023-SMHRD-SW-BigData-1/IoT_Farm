@@ -66,7 +66,7 @@
 						</div>
 					</div>
 
-					<div class="card mt-4 mb-15">
+					<div class="card mt-4 mb-15 pb-5">
 						<div class="card-header">드라이버 설치하기</div>
 						<div class="card-body px-5">
 

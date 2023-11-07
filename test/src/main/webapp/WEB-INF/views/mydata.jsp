@@ -110,8 +110,8 @@
 							<%
 							} else {
 							%>
-							<button class="nav-plus badge bg-primary-soft text-primary "
-								href="#">+</button>
+							<a style="text-decoration: none" class="nav-plus badge bg-primary-soft text-primary" href="#!" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
+							 data-bs-content="더 많은 IoT를 사용 가능을 위해 버전 업그레이드가 필요합니다!" title="IoT의 최대개수에 도달했습니다.">+</a>
 							<%
 							}
 							%>
@@ -131,7 +131,7 @@
 										data-bs-target="#collapseUtilities${item.iot_num}"
 										aria-expanded="false" aria-controls="collapseUtilities">
 											<div class="nav-link-icon">
-												<i data-feather="tool"></i>
+												<i data-feather="settings"></i>
 											</div> ${item.iot_name}
 											<div class="sidenav-collapse-arrow">
 												<i class="fas fa-angle-down"></i>
@@ -197,7 +197,7 @@
 						<c:forEach items="${dashboardList }" var="item">
 							<a class="nav-link collapsed mt-10px" href="dashboard-1.html">
 								<div class="nav-link-icon">
-									<i data-feather="activity"></i>
+									<i data-feather="layout"></i>
 								</div>${item.dashboard_name }
 
 							</a>
