@@ -119,7 +119,7 @@
 				</a>
 				<div class="sidenav-menu">
 					<div class="nav accordion" id="accordionSidenav">
-						<!-- Sidenav Menu Heading (Core)-->
+						<!-- iot-->
 						<div class="sidenav-menu-heading nav-menu">
 							<div>iot register</div>
 							<%
@@ -128,7 +128,7 @@
 							<button
 								class="nav-plus badge bg-primary-soft text-primary ms-auto"
 								href="#" data-bs-toggle="modal"
-								data-bs-target="#exampleModalCenter">+</button>
+								data-bs-target="#iotModal1">+</button>
 							<%
 							} else {
 							%>
@@ -142,104 +142,105 @@
 							}
 							%>
 						</div>
-						<!-- Sidenav Accordion (Utilities)-->
-						<tbody>
-							<c:forEach items="${iotList}" var="item">
-								<tr>
+
+						<c:forEach items="${iotList}" var="item">
+							<a class="nav-link collapsed mt-10px" href="javascript:void(0);"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapseUtilities${item.iot_num}"
+								aria-expanded="false" aria-controls="collapseUtilities">
+								<div class="nav-link-icon">
+									<i data-feather="settings"></i>
+								</div> ${item.iot_name}
+								<div class="sidenav-collapse-arrow">
+									<i class="fas fa-angle-down"></i>
+								</div>
+							</a>
+							<div class="collapse" id="collapseUtilities${item.iot_num }"
+								data-bs-parent="#accordionSidenav">
+								<nav class="sidenav-menu-nested nav">
+									<c:forEach items="${sensorList}" var="item2">
+										<c:forEach items="${item2}" var="item3">
+											<c:if test="${item.getIot_num().equals(item3.getIot_num())}">
+												<a class="nav-link" href="#" data-bs-toggle="modal">${item3.sensor_name}</a>
+											</c:if>
+										</c:forEach>
+									</c:forEach>
+									<%
+									if (max.getMaxSensor() > max.getMySensor()) {
+									%>
+									<button class="nav-link sensor-btn" data-bs-toggle="modal"
+										data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</button>
+			
+												<!-- sensor Modal -->
+												<div class="modal" id="exampleModalCenter${item.iot_num }"
+													tabindex="-1" role="dialog"
+													aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+													<div class="modal-dialog modal-dialog-centered"
+														role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="exampleModalCenterTitle">센서 등록</h5>
+																<button class="btn-close" type="button"
+																	data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<form id="sensorForm"
+																action="mydata/sensoradd/${item.iot_num}" method="get">
+																<div class="modal-body">
+																	<div class="mb-3 modal-flex">
+																		<div class="wd-40">센서 이름:</div>
+																		<input class="form-control" id="inputsensorName"
+																			type="text" name="sensorName" />
+																	</div>
+																	<div class="mb-3 modal-flex">
+																		<div class="modal-iot">센서 종류:</div>
+																		<select class="dashboard-count" id="iot_sensor"
+																			name="sensorType">
+																			<option value="1">온도</option>
+																			<option value="2">습도</option>
+																			<option value="3">조도</option>
+																			<option value="4">토양수분</option>
+																			<option value="5">강우</option>
+																		</select>
+																	</div>
+																</div>
+																<div class="modal-footer">
+																	<button class="btn btn-primary" type="submit">확인</button>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+									<%
+									}
+									%>
+								</nav>
+							</div>
+						</c:forEach>
 
 
-
-									<td><a class="nav-link collapsed mt-10px"
-										href="javascript:void(0);" data-bs-toggle="collapse"
-										data-bs-target="#collapseUtilities${item.iot_num}"
-										aria-expanded="false" aria-controls="collapseUtilities">
-											<div class="nav-link-icon">
-												<i data-feather="settings"></i>
-											</div> ${item.iot_name}
-											<div class="sidenav-collapse-arrow">
-												<i class="fas fa-angle-down"></i>
-											</div>
-									</a></td>
-									<td>
-										<div class="collapse" id="collapseUtilities${item.iot_num}"></div>
-										<div id="sensorList${iotList }"></div>
-									<td><div class="collapse"
-											id="collapseUtilities${item.iot_num }"></div>
-										<div class="collapse" id="collapseUtilities${item.iot_num}"></div>
-										<div id="sensorList${iotList }"></div>
-										<div class="collapse" id="collapseUtilities${item.iot_num }"
-											data-bs-parent="#accordionSidenav">
-											<nav class="sidenav-menu-nested nav">
-												<c:forEach items="${sensorList}" var="item2">
-													<c:forEach items="${item2}" var="item3">
-														<c:if
-															test="${item.getIot_num().equals(item3.getIot_num())}">
-															<a class="nav-link" href="#" data-bs-toggle="modal">${item3.sensor_name}</a>
-														</c:if>
-													</c:forEach>
-												</c:forEach>
-												<%
-												if (max.getMaxSensor() > max.getMySensor()) {
-												%>
-												<button class="nav-link sensor-btn" data-bs-toggle="modal"
-													data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</button>
-												<%
-												} else {
-												%>
-												<button class="nav-link sensor-btn" data-bs-toggle="modal"
-													href="#">센서등록</button>
-												<%
-												}
-												%>
-											</nav>
-										</div></td>
-
-
-
-								</tr>
-							</c:forEach>
-						</tbody>
-
-						<!-- Sidenav Heading (Custom)-->
+						<!-- dashboard-->
 						<div class="sidenav-menu-heading nav-menu">
 							<div>dash boards</div>
 							<button
 								class="nav-plus badge bg-primary-soft text-primary ms-auto"
 								href="#" data-bs-toggle="modal"
-								data-bs-target="#exampleModalCenter1">+</button>
+								data-bs-target="#dashboardModal1">+</button>
 						</div>
-
-						<div class="collapse" id="collapsePages"
-							data-bs-parent="#accordionSidenav">
-							<nav class="sidenav-menu-nested nav accordion"
-								id="accordionSidenavPagesMenu"></nav>
-						</div>
-
-						<!-- Sidenav Accordion (Dashboard)-->
 
 						<c:forEach items="${dashboardList }" var="item">
 							<c:forEach items="${snList}" var="item2">
 								<a class="nav-link collapsed mt-10px" href="#"
 									onclick="dataselect(${item2.sensor_num})">
 									<div class="nav-link-icon">
-										<i data-feather="activity"></i>
+										<i data-feather="layout"></i>
 									</div>${item.dashboard_name}
 								</a>
 							</c:forEach>
 						</c:forEach>
-
-
-					</div>
-				</div>
-				<!-- Sidenav Footer-->
-				<div class="sidenav-footer">
-					<div class="sidenav-footer-content">
-						<div class="sidenav-footer-subtitle">Logged in as:</div>
-						<div class="sidenav-footer-title">Valerie Luna</div>
-					</div>
-				</div>
-			</nav>
-		</div>
+						</div>
+						</div>
+						</nav>
+						</div>
 
 		<!-- 본문 -->
 		<div id="layoutSidenav_content" style="margin-top: -3.5rem">

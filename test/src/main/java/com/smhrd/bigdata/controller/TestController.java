@@ -38,9 +38,9 @@ public class TestController {
 
 	@Autowired
 	EmailService emailservice;
-
+	
 	@GetMapping("/join")
-	public String joinForm(@ModelAttribute TestMember m) {
+	public String joinForm() {
 		return "join";
 	}
 
@@ -375,23 +375,7 @@ public class TestController {
 		return "redirect:/bigdata/pwfind2";
 	}
 
-	@PostMapping("mydata/iotadd")
-	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
-		TestMember user = (TestMember) session.getAttribute("user");
-		IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
-		int cnt = service.iotadd(iotName, user.getUser_num());
-
-		if (cnt > 0) {
-			int x = max.getMyIot() + 1;
-			System.out.println(max.getMyIot());
-			System.out.println(max.getMaxIot());
-			max.setMyIot(x);
-			session.setAttribute("max", max);
-			return "redirect:/mydata";
-		} else {
-			return "fail";
-		}
-	}
+	
 
 	@PostMapping("mydata/chartadd")
 	public String chartadd(HttpSession session, @RequestParam("chartName") String chartName,

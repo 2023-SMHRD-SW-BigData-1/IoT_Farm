@@ -46,8 +46,8 @@ public interface TestMapper {
 	public void delete(String id);
 
 	// iot 기기등록
-	@Insert("insert into useriot_info (iot_name, user_num) VALUES (#{iot_name}, #{user_num})")
-	public int iotadd(String iot_name, int user_num);
+	@Insert("insert into useriot_info (user_num,iot_name,api_key) VALUES (#{user_num}, #{iotName}, #{api})")
+	public int iotadd(int user_num,String iotName,String api);
 
 	@Select("select * from useriot_info where user_num=#{user_num}")
 	public List<Useriot_Info> user_iot(int user_num);
@@ -128,5 +128,8 @@ public interface TestMapper {
 	
 	@Select("select * from sensor_re where sensor_num = #{sensor_num} and re_date between date_sub(now(), interval 7 day) and now();")
 	public List<Sensor_Re> sensor_re(int sensor_num);
+
+	@Select("select iot_num from useriot_info where api_key=#{api}")
+	public String apiSearch(String api);
 
 }
