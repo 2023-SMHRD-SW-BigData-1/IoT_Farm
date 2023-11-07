@@ -51,10 +51,9 @@
 				<!-- Main page content-->
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
-						<div class="card-header">환영합니다!</div>
+						<div class="card-header">IoT 등록하기</div>
 						<div class="card-body">
-							아오팜은 IoT 클라우드 솔루션과 모니터링 웹서비스를 지원하고 있습니다.<br> 클라우드 서비스와 같이
-							자신에게 맞는 모니터링 대시보드를 구성해봅시다!
+							IoT 기기를 등록은 먼저 로그인 후 마이데이터로 들어 갑니다.
 
 						</div>
 					</div>
