@@ -79,8 +79,8 @@ public class TestRestController {
 		} else {
 			return "fail";
 		}
-
 	}
+	
 	@GetMapping("mydata/{idx}")
 	@ResponseBody
 	public List<Sensor_Re> sensor_re(@PathVariable int idx) {
