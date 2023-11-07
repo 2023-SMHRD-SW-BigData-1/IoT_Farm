@@ -81,13 +81,19 @@ public class TestRestController {
 		}
 
 	}
-
 	@GetMapping("mydata/{idx}")
-	public List<Sensor_Re> sensor_re(@PathVariable int idx, Model model) {
-		List<Sensor_Re> reselect = service.sensor_re(idx);
-		System.out.println(reselect);
-		model.addAttribute("reselect", reselect);
-		return reselect;
+	@ResponseBody
+	public List<Sensor_Re> sensor_re(@PathVariable int idx) {
+	    List<Sensor_Re> reselect = service.sensor_re(idx);
+	    return reselect;
+	    
+//	@GetMapping("mydata/{idx}")
+//	@ResponseBody
+//	public String sensor_re(@PathVariable int idx, Model model) {
+//		List<Sensor_Re> reselect = service.sensor_re(idx);
+//		System.out.println(reselect);
+//		model.addAttribute("reselect", reselect);
+//		return "success";
 	}
 
 }

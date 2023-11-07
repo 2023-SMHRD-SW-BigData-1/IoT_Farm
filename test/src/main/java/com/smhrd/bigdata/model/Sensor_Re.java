@@ -1,6 +1,7 @@
 package com.smhrd.bigdata.model;
 
 import java.security.Timestamp;
+import java.sql.Date;
 import java.sql.Time;
 
 import lombok.AllArgsConstructor;
@@ -17,6 +18,6 @@ public class Sensor_Re {
 	private int iot_num;
 	private int sensor_num;
 	private String sensor_value;
-	private Timestamp re_date;
+	private Date re_date;
 	private Time re_time;
 }

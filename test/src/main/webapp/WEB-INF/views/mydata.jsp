@@ -214,16 +214,15 @@
 						<!-- Sidenav Accordion (Dashboard)-->
 
 						<c:forEach items="${dashboardList }" var="item">
-							<c:forEach items="${snList }" var="item2">
-								<a class="nav-link collapsed mt-10px"
-									href="mydata/${item2.sensor_num }"
-									onclick ="dataselect()">
+							<c:forEach items="${snList}" var="item2">
+								<a class="nav-link collapsed mt-10px" href="#"
+									onclick="dataselect(${item2.sensor_num})">
 									<div class="nav-link-icon">
 										<i data-feather="activity"></i>
-									</div>${item.dashboard_name }
-
+									</div>${item.dashboard_name}
 								</a>
 							</c:forEach>
+
 						</c:forEach>
 
 
@@ -504,137 +503,132 @@
 	<script src="js/litepicker.js"></script>
 	<script>
 	// Area Chart Example
-	function dataselect(idx){
-		$.ajax({
-			type : "GET",
-			url : "mydata/"+idx,
-			data : {reselect : "reselect"},
-			success : function(response){
-				console.log(reselect)
-			},
-			error:function(xhr, status, error){
-				consloe.log("error")
-			}
-		})
-	};
+function dataselect(idx) {
+		let timeList = [];
+		let dataList = [];
 		
-	var ctx = document.getElementById("myAreaChart");
-	var myLineChart = new Chart(ctx, {
-	    type: "line",
-	    data: {
-	        labels: [
-	            "Jan",
-	            "Feb",
-	            "Mar",
-	            "Apr",
-	            "May",
-	            "Jun",
-	            "Jul",
-	            "Aug",
-	            "Sep",
-	            "Oct",
-	            "Nov",
-	            "Dec"
-	        ],
-	        datasets: [{
-	            label: "Earnings",
-	            lineTension: 0.3,
-	            backgroundColor: "rgba(0, 97, 242, 0.05)",
-	            borderColor: "rgba(0, 97, 242, 1)",
-	            pointRadius: 3,
-	            pointBackgroundColor: "rgba(0, 97, 242, 1)",
-	            pointBorderColor: "rgba(0, 97, 242, 1)",
-	            pointHoverRadius: 3,
-	            pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
-	            pointHoverBorderColor: "rgba(0, 97, 242, 1)",
-	            pointHitRadius: 10,
-	            pointBorderWidth: 2,
-	            data: [
-	                0,
-	                10000,
-	                5000,
-	                15000,
-	                10000,
-	                20000,
-	                15000,
-	                25000,
-	                20000,
-	                30000,
-	                25000,
-	                40000
-	                
-	            ]
-	        }]
-	    },
-	    options: {
-	        maintainAspectRatio: false,
-	        layout: {
-	            padding: {
-	                left: 10,
-	                right: 25,
-	                top: 25,
-	                bottom: 0
-	            }
-	        },
-	        scales: {
-	            xAxes: [{
-	                time: {
-	                    unit: "date"
-	                },
-	                gridLines: {
-	                    display: false,
-	                    drawBorder: false
-	                },
-	                ticks: {
-	                    maxTicksLimit: 7
-	                }
-	            }],
-	            yAxes: [{
-	                ticks: {
-	                    maxTicksLimit: 5,
-	                    padding: 10,
-	                    // Include a dollar sign in the ticks
-	                    callback: function(value, index, values) {
-	                        return number_format(value);
-	                    }
-	                },
-	                gridLines: {
-	                    color: "rgb(234, 236, 244)",
-	                    zeroLineColor: "rgb(234, 236, 244)",
-	                    drawBorder: false,
-	                    borderDash: [2],
-	                    zeroLineBorderDash: [2]
-	                }
-	            }]
-	        },
-	        legend: {
-	            display: false
-	        },
-	        tooltips: {
-	            backgroundColor: "rgb(255,255,255)",
-	            bodyFontColor: "#858796",
-	            titleMarginBottom: 10,
-	            titleFontColor: "#6e707e",
-	            titleFontSize: 14,
-	            borderColor: "#dddfeb",
-	            borderWidth: 1,
-	            xPadding: 15,
-	            yPadding: 15,
-	            displayColors: false,
-	            intersect: false,
-	            mode: "index",
-	            caretPadding: 10,
-	            callbacks: {
-	                label: function(tooltipItem, chart) {
-	                    var datasetLabel =
-	                        chart.datasets[tooltipItem.datasetIndex].label || "";
-	                    return datasetLabel + ": $" + number_format(tooltipItem.yLabel);
-	                }
-	            }
-	        }
-	    }
-	});
-	
+		
+    $.ajax({
+        type: "GET",
+        url: "mydata/" + idx,
+        dataType: "json",
+        success: function(response) {
+        	var reselect = response;
+        	console.log(reselect);
+        	
+        	timeList.push(reselect.re_date);
+        	dataList.push(reselect.re_value);
+        	
+        	var ctx = document.getElementById("myAreaChart");
+        	var myLineChart = new Chart(ctx, {
+        	    type: "line",
+        	    data: {
+        	        labels: ,
+        	        datasets: [{
+        	            label: "Earnings",
+        	            lineTension: 0.3,
+        	            backgroundColor: "rgba(0, 97, 242, 0.05)",
+        	            borderColor: "rgba(0, 97, 242, 1)",
+        	            pointRadius: 3,
+        	            pointBackgroundColor: "rgba(0, 97, 242, 1)",
+        	            pointBorderColor: "rgba(0, 97, 242, 1)",
+        	            pointHoverRadius: 3,
+        	            pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
+        	            pointHoverBorderColor: "rgba(0, 97, 242, 1)",
+        	            pointHitRadius: 10,
+        	            pointBorderWidth: 2,
+        	            data: [
+        	                0,
+        	                10000,
+        	                5000,
+        	                15000,
+        	                10000,
+        	                20000,
+        	                15000,
+        	                25000,
+        	                20000,
+        	                30000,
+        	                25000,
+        	                40000
+        	                
+        	            ]
+        	        }]
+        	    },
+        	    options: {
+        	        maintainAspectRatio: false,
+        	        layout: {
+        	            padding: {
+        	                left: 10,
+        	                right: 25,
+        	                top: 25,
+        	                bottom: 0
+        	            }
+        	        },
+        	        scales: {
+        	            xAxes: [{
+        	                time: {
+        	                    unit: "date"
+        	                },
+        	                gridLines: {
+        	                    display: false,
+        	                    drawBorder: false
+        	                },
+        	                ticks: {
+        	                    maxTicksLimit: 7
+        	                }
+        	            }],
+        	            yAxes: [{
+        	                ticks: {
+        	                    maxTicksLimit: 5,
+        	                    padding: 10,
+        	                    // Include a dollar sign in the ticks
+        	                    callback: function(value, index, values) {
+        	                        return number_format(value);
+        	                    }
+        	                },
+        	                gridLines: {
+        	                    color: "rgb(234, 236, 244)",
+        	                    zeroLineColor: "rgb(234, 236, 244)",
+        	                    drawBorder: false,
+        	                    borderDash: [2],
+        	                    zeroLineBorderDash: [2]
+        	                }
+        	            }]
+        	        },
+        	        legend: {
+        	            display: false
+        	        },
+        	        tooltips: {
+        	            backgroundColor: "rgb(255,255,255)",
+        	            bodyFontColor: "#858796",
+        	            titleMarginBottom: 10,
+        	            titleFontColor: "#6e707e",
+        	            titleFontSize: 14,
+        	            borderColor: "#dddfeb",
+        	            borderWidth: 1,
+        	            xPadding: 15,
+        	            yPadding: 15,
+        	            displayColors: false,
+        	            intersect: false,
+        	            mode: "index",
+        	            caretPadding: 10,
+        	            callbacks: {
+        	                label: function(tooltipItem, chart) {
+        	                    var datasetLabel =
+        	                        chart.datasets[tooltipItem.datasetIndex].label || "";
+        	                    return datasetLabel + ": $" + number_format(tooltipItem.yLabel);
+        	                }
+        	            }
+        	        }
+        	    }
+        	}); 
+        },
+        error: function(xhr, status, error) {
+            console.log("error"); // 오타 수정
+        }
+    });
+
+	};
 
 	</script>
 
