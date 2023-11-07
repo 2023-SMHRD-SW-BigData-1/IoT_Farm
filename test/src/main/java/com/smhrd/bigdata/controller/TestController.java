@@ -322,12 +322,13 @@ public class TestController {
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
 		TestMember user = (TestMember) session.getAttribute("user");
 
+		//대쉬보드 리스트
 		List<Dashboard_Info> dashboardList = service.dashboard(user.getUser_num());
-		service.dashboard(user.getUser_num());
-
+		//센서 리스트
 		List<Iotsensor_Info> snList = service.sensorSelect(user.getUser_num());
+		//아이오티 리스트
 		List<Useriot_Info> list = service.user_iot(user.getUser_num());
-
+		//아이오티 마다의 센서리스트를 리스트함
 		List<List<Iotsensor_Info>> sensorList = new ArrayList<>();
 
 		for (Useriot_Info element : list) {
