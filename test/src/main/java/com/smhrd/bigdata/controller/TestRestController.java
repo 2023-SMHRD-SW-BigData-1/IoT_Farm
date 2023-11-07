@@ -1,6 +1,7 @@
 package com.smhrd.bigdata.controller;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smhrd.bigdata.model.IoT_Sensor;
+import com.smhrd.bigdata.model.Sensor_Re;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.service.EmailService;
 import com.smhrd.bigdata.service.TestService;
@@ -54,8 +57,6 @@ public class TestRestController {
 		return authCode; // 클라이언트에게 인증번호를 반환한다.
 	}
 
-
-
 	@GetMapping("updateImg")
 	public String updateUser(HttpSession session, @RequestParam("img") String img) {
 		TestMember user = (TestMember) session.getAttribute("user");
@@ -72,13 +73,21 @@ public class TestRestController {
 	public String dashboardadd1(HttpSession session, @RequestParam("dbName") String dbName) {
 		TestMember user = (TestMember) session.getAttribute("user");
 		int cnt = service.dashboardadd(dbName, user.getUser_num());
-		session.setAttribute("dashboardNum",service.dashboardNum(dbName));
-		   if(cnt>0) {
-			   return "success";
-		   }else {
-			   return "fail";
-		   }
+		session.setAttribute("dashboardNum", service.dashboardNum(dbName));
+		if (cnt > 0) {
+			return "success";
+		} else {
+			return "fail";
+		}
 
 	}
-	
+
+	@GetMapping("mydata/{idx}")
+	public List<Sensor_Re> sensor_re(@PathVariable int idx, Model model) {
+		List<Sensor_Re> reselect = service.sensor_re(idx);
+		System.out.println(reselect);
+		model.addAttribute("reselect", reselect);
+		return reselect;
+	}
+
 }

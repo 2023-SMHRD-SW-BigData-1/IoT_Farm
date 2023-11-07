@@ -14,6 +14,7 @@ import com.smhrd.bigdata.mapper.TestMapper;
 import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.Dashboard_Info;
 import com.smhrd.bigdata.model.Iotsensor_Info;
+import com.smhrd.bigdata.model.Sensor_Re;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.model.Useriot_Info;
 
@@ -142,10 +143,9 @@ public class TestService {
 		// TODO Auto-generated method stub
 		return mapper.userInfo(userNum);
 	}
-
-	public int checkDuplicateSensor(String idx, int sensorType) {
-		// TODO Auto-generated method stub
-		return mapper.checkDuplicateSensor(idx, sensorType);
+	
+	public List<Sensor_Re> sensor_re(int sensor_num){
+		return mapper.sensor_re(sensor_num);
 	}
-
+	
 }

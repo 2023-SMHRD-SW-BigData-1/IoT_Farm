@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="com.smhrd.bigdata.model.Iotsensor_Info"%>
+<%@page import="org.springframework.ui.Model"%>
+<%@page import="com.smhrd.bigdata.model.Sensor_Re"%>
 <%@page import="com.smhrd.bigdata.model.IoT_Sensor"%>
 <%@page import="com.smhrd.bigdata.model.TestMember"%>
 <%@page import="java.util.List"%>
@@ -24,6 +27,27 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
 <script>
+	/* function dashboard_click(idx) {
+        $.ajax({
+            url: "mydata/" + idx, // 요청을 보낼 URL
+            type: "GET", // HTTP 요청 메서드 (GET 요청)
+            success: function(response) {
+                // 요청이 성공하면 실행할 코드
+                console.log("요청 성공!");
+                // 여기에서 response를 사용하여 원하는 작업을 수행할 수 있습니다.
+            },
+            error: function(xhr, status, error) {
+            	console.log(idx);
+                // 요청이 실패하면 실행할 코드
+                console.log("요청 실패!");
+                console.log("상태 코드: " + status);
+                console.log("에러: " + error);
+            }
+        });
+    }
+ */   
+	</script>
+<script>
 	function nextModal() {
 		let dbName = $('#inputDbName').val();
 
@@ -35,8 +59,6 @@
 			}
 
 		});
-	
-	
 	    var sensorSelect = document.getElementById("sensorSelect");
 	    var modal2Body = document.getElementById("modal2-body");
 
@@ -116,9 +138,6 @@
 							}
 							%>
 						</div>
-
-
-
 						<!-- Sidenav Accordion (Utilities)-->
 						<tbody>
 							<c:forEach items="${iotList}" var="item">
@@ -195,12 +214,16 @@
 						<!-- Sidenav Accordion (Dashboard)-->
 
 						<c:forEach items="${dashboardList }" var="item">
-							<a class="nav-link collapsed mt-10px" href="dashboard-1.html">
-								<div class="nav-link-icon">
-									<i data-feather="activity"></i>
-								</div>${item.dashboard_name }
+							<c:forEach items="${snList }" var="item2">
+								<a class="nav-link collapsed mt-10px"
+									href="mydata/${item2.sensor_num }"
+									onclick ="dataselect()">
+									<div class="nav-link-icon">
+										<i data-feather="activity"></i>
+									</div>${item.dashboard_name }
 
-							</a>
+								</a>
+							</c:forEach>
 						</c:forEach>
 
 
@@ -237,7 +260,7 @@
 						</div>
 					</div>
 				</header>
-				
+
 				<!-- Dashboard content-->
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
@@ -479,6 +502,141 @@
 	<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"
 		crossorigin="anonymous"></script>
 	<script src="js/litepicker.js"></script>
+	<script>
+	// Area Chart Example
+	function dataselect(idx){
+		$.ajax({
+			type : "GET",
+			url : "mydata/"+idx,
+			data : {reselect : "reselect"},
+			success : function(response){
+				console.log(reselect)
+			},
+			error:function(xhr, status, error){
+				consloe.log("error")
+			}
+		})
+	};
+		
+	var ctx = document.getElementById("myAreaChart");
+	var myLineChart = new Chart(ctx, {
+	    type: "line",
+	    data: {
+	        labels: [
+	            "Jan",
+	            "Feb",
+	            "Mar",
+	            "Apr",
+	            "May",
+	            "Jun",
+	            "Jul",
+	            "Aug",
+	            "Sep",
+	            "Oct",
+	            "Nov",
+	            "Dec"
+	        ],
+	        datasets: [{
+	            label: "Earnings",
+	            lineTension: 0.3,
+	            backgroundColor: "rgba(0, 97, 242, 0.05)",
+	            borderColor: "rgba(0, 97, 242, 1)",
+	            pointRadius: 3,
+	            pointBackgroundColor: "rgba(0, 97, 242, 1)",
+	            pointBorderColor: "rgba(0, 97, 242, 1)",
+	            pointHoverRadius: 3,
+	            pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
+	            pointHoverBorderColor: "rgba(0, 97, 242, 1)",
+	            pointHitRadius: 10,
+	            pointBorderWidth: 2,
+	            data: [
+	                0,
+	                10000,
+	                5000,
+	                15000,
+	                10000,
+	                20000,
+	                15000,
+	                25000,
+	                20000,
+	                30000,
+	                25000,
+	                40000
+	                
+	            ]
+	        }]
+	    },
+	    options: {
+	        maintainAspectRatio: false,
+	        layout: {
+	            padding: {
+	                left: 10,
+	                right: 25,
+	                top: 25,
+	                bottom: 0
+	            }
+	        },
+	        scales: {
+	            xAxes: [{
+	                time: {
+	                    unit: "date"
+	                },
+	                gridLines: {
+	                    display: false,
+	                    drawBorder: false
+	                },
+	                ticks: {
+	                    maxTicksLimit: 7
+	                }
+	            }],
+	            yAxes: [{
+	                ticks: {
+	                    maxTicksLimit: 5,
+	                    padding: 10,
+	                    // Include a dollar sign in the ticks
+	                    callback: function(value, index, values) {
+	                        return number_format(value);
+	                    }
+	                },
+	                gridLines: {
+	                    color: "rgb(234, 236, 244)",
+	                    zeroLineColor: "rgb(234, 236, 244)",
+	                    drawBorder: false,
+	                    borderDash: [2],
+	                    zeroLineBorderDash: [2]
+	                }
+	            }]
+	        },
+	        legend: {
+	            display: false
+	        },
+	        tooltips: {
+	            backgroundColor: "rgb(255,255,255)",
+	            bodyFontColor: "#858796",
+	            titleMarginBottom: 10,
+	            titleFontColor: "#6e707e",
+	            titleFontSize: 14,
+	            borderColor: "#dddfeb",
+	            borderWidth: 1,
+	            xPadding: 15,
+	            yPadding: 15,
+	            displayColors: false,
+	            intersect: false,
+	            mode: "index",
+	            caretPadding: 10,
+	            callbacks: {
+	                label: function(tooltipItem, chart) {
+	                    var datasetLabel =
+	                        chart.datasets[tooltipItem.datasetIndex].label || "";
+	                    return datasetLabel + ": $" + number_format(tooltipItem.yLabel);
+	                }
+	            }
+	        }
+	    }
+	});
+	
+
+	</script>
 
 </body>
 </html>

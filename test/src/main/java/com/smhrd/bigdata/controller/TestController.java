@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.Dashboard_Info;
 import com.smhrd.bigdata.model.IoT_Sensor;
 import com.smhrd.bigdata.model.Iotsensor_Info;
+import com.smhrd.bigdata.model.Sensor_Re;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.service.EmailService;
 import com.smhrd.bigdata.model.Useriot_Info;
@@ -132,16 +134,16 @@ public class TestController {
 		if (service.changePw(user.getId(), newPassword) > 0) {
 			user.setPw(newPassword);
 			model.addAttribute("alertMessage", "비밀번호가 성공적으로 변경되었습니다.");
-			
+
 			if (!user.getPclass().equals("Free")) {
 				if (user.getSelect_noti().equals("1")) {
-					if (user.getEmail_noti().charAt(0)=='1') {
+					if (user.getEmail_noti().charAt(0) == '1') {
 						emailservice.mailSend("aofarmad@gmail.com", user.getEmail(), "아오팜 개인정보 변경 알림",
 								"비밀번호가 변경되었음을 알립니다.");
 					}
 				}
 			}
-			
+
 			return "security";
 		} else {
 			model.addAttribute("alertMessage", "비밀번호 변경을 실패하였습니다.");
@@ -164,16 +166,16 @@ public class TestController {
 		if (service.changeEmail(user.getId(), email) > 0) {
 			user.setEmail(email);
 			model.addAttribute("alertMessage", "이메일이 성공적으로 변경되었습니다.");
-			
+
 			if (!user.getPclass().equals("Free")) {
 				if (user.getSelect_noti().equals("1")) {
-					if (user.getEmail_noti().charAt(0)=='1') {
+					if (user.getEmail_noti().charAt(0) == '1') {
 						emailservice.mailSend("aofarmad@gmail.com", user.getEmail(), "아오팜 개인정보 변경 알림",
 								"이메일이 변경되었음을 알립니다.");
 					}
 				}
 			}
-			
+
 			return "notifications";
 		} else {
 			model.addAttribute("alertMessage", "이메일 변경을 실패하였습니다.");
@@ -330,15 +332,14 @@ public class TestController {
 	@GetMapping("/mydata")
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
 		TestMember user = (TestMember) session.getAttribute("user");
-		
+
 		List<Dashboard_Info> dashboardList = service.dashboard(user.getUser_num());
 		service.dashboard(user.getUser_num());
 
-	      List<Iotsensor_Info> snList = service.sensorSelect(user.getUser_num());
+		List<Iotsensor_Info> snList = service.sensorSelect(user.getUser_num());
+		List<Useriot_Info> list = service.user_iot(user.getUser_num());
 
-	      List<Useriot_Info> list = service.user_iot(user.getUser_num());
-
-	      List<List<Iotsensor_Info>> sensorList = new ArrayList<>();
+		List<List<Iotsensor_Info>> sensorList = new ArrayList<>();
 
 		for (Useriot_Info element : list) {
 			sensorList.add(service.Iotsensor(element.getIot_num()));
@@ -385,16 +386,14 @@ public class TestController {
 		return "redirect:/bigdata/pwfind2";
 	}
 
-
-
 	@PostMapping("mydata/iotadd")
 	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
 		TestMember user = (TestMember) session.getAttribute("user");
-		IoT_Sensor max=(IoT_Sensor)session.getAttribute("max");
+		IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
 		int cnt = service.iotadd(iotName, user.getUser_num());
-		
+
 		if (cnt > 0) {
-			int x = max.getMyIot()+1;
+			int x = max.getMyIot() + 1;
 			System.out.println(max.getMyIot());
 			System.out.println(max.getMaxIot());
 			max.setMyIot(x);
@@ -404,45 +403,48 @@ public class TestController {
 			return "fail";
 		}
 	}
+
 	@PostMapping("mydata/chartadd")
 	public String chartadd(HttpSession session, @RequestParam("chartName") String chartName,
 			@RequestParam("chartType") String chartType, @RequestParam("sensorNum") String sensorNum) {
 		TestMember user = (TestMember) session.getAttribute("user");
-		
-		String[] sensorNumList = sensorNum.split(","); 
-		String[] chartTypeList = chartType.split(","); 
-		String [] chartNameList = chartName.split(",");
-		for(int i = 0; i<chartNameList.length; i++) {
+
+		String[] sensorNumList = sensorNum.split(",");
+		String[] chartTypeList = chartType.split(",");
+		String[] chartNameList = chartName.split(",");
+		for (int i = 0; i < chartNameList.length; i++) {
 			String dashboardNum = (String) session.getAttribute("dashboardNum");
 			System.out.println(chartNameList[i]);
 			System.out.println(chartTypeList[i]);
 			System.out.println(sensorNumList[i]);
 			service.chartadd(dashboardNum, chartNameList[i], chartTypeList[i], sensorNumList[i]);
 		}
-		
+
 		return "redirect:/mydata";
-		
+
 	}
-	
+
 	@GetMapping("mydata/sensoradd/{idx}")
 	public String sensoradd(HttpSession session, @RequestParam("sensorName") String sensorName,
 			@RequestParam("sensorType") int sensorType, @PathVariable String idx) {
 		TestMember user = (TestMember) session.getAttribute("user");
-		IoT_Sensor max=(IoT_Sensor)session.getAttribute("max");
-		
+		IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
+
 		int cnt = service.sensoradd(idx, sensorName, user.getUser_num(), sensorType);
 		if (cnt > 0) {
-			
-			int x = max.getMySensor()+1;
+
+			int x = max.getMySensor() + 1;
 			System.out.println(max.getMySensor());
 			System.out.println(max.getMaxSensor());
 			max.setMySensor(x);
 			session.setAttribute("max", max);
-			
+
 			return "redirect:/mydata";
 		} else {
 			return "redirect:/mydata";
 		}
 	}
+
+
 
 }

@@ -13,6 +13,7 @@ import org.apache.ibatis.annotations.Update;
 import com.smhrd.bigdata.model.Bill;
 import com.smhrd.bigdata.model.Dashboard_Info;
 import com.smhrd.bigdata.model.Iotsensor_Info;
+import com.smhrd.bigdata.model.Sensor_Re;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.model.Useriot_Info;
 
@@ -120,8 +121,8 @@ public interface TestMapper {
 
 	@Select("select * from user_info where user_num=#{userNum}")
 	public TestMember userInfo(String userNum);
-
 	
-	@Select("select * from iotsensor_info where iot_num=#{idx} AND sensor_type=#{sensorType}")
-	public int checkDuplicateSensor(String idx, int sensorType);
+	@Select("select * from sensor_re where sensor_num = #{sensor_num} and re_date between date_sub(now(), interval 7 day) and now();")
+	public List<Sensor_Re> sensor_re(int sensor_num);
+
 }
