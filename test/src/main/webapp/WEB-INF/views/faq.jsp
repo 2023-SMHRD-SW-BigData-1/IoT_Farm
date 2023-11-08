@@ -71,7 +71,7 @@
 					<div class="card card-collapsable">
 						<a id="faq05" class="card-header" href="#collapseCardExample3"
 							data-bs-toggle="collapse" role="button" aria-expanded="false"
-							aria-controls="collapseCardExample">센서를 등록하는데 갯수 초과 메세지가 왔어요.
+							aria-controls="collapseCardExample">센서 등록 버튼이 사라졌어요.
 							더 많은 센서를 등록 할 수는 없는건가요?
 							<div class="card-collapsable-arrow">
 								<i class="fas fa-chevron-right"></i>
