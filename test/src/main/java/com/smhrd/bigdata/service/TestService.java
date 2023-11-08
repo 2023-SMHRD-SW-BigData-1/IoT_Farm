@@ -73,8 +73,8 @@ public class TestService {
 		return mapper.sensoradd(iot_num, sensorName, user_num, sensorType);
 	}
 
-	public int chartadd(String dashboard_num, String chartNameList, String chartTypeList, String sensorNumList) {
-		return mapper.chartadd(dashboard_num, chartNameList, chartTypeList, sensorNumList);
+	public int chartadd(String dashboard_num, String chartTypeList, String chartNameList, String sensorNumList) {
+		return mapper.chartadd(dashboard_num, chartTypeList, chartNameList, sensorNumList);
 	}
 
 	public int changePw(String id, String newPassword) {
