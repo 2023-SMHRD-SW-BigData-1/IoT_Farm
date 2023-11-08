@@ -94,7 +94,7 @@
 										<%
 										if (max.getMaxSensor() > max.getMySensor()) {
 										%>
-										<button class="nav-link sensor-btn" data-bs-toggle="modal"
+										<button class="nav-link sensor-btn" data-bs-toggle="modal" href="#"
 											data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</button>
 										<%
 										}

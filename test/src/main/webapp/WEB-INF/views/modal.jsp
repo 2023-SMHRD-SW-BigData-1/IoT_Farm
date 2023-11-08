@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
 	function nextModal() {
 		let dbName = $('#inputDbName').val();
@@ -149,55 +149,18 @@
 				<button class="btn-close" type="button" data-bs-dismiss="modal"
 					aria-label="Close"></button>
 			</div>
-			<div id="apikey"></div>
+			<div id="apikey" class="m-4" style="text-align: center"></div>
 			<div class="modal-footer">
 				<a href="mydata">확인</a>
 			</div>
 		</div>
 	</div>
 </div>
-<c:forEach items="${iotList}" var="item">
-	<!-- sensor Modal -->
-	<div class="modal" id="exampleModalCenter${item.iot_num }"
-		tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalCenterTitle">센서 등록</h5>
-					<button class="btn-close" type="button" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<form id="sensorForm" action="mydata/sensoradd/${item.iot_num}"
-					method="get">
-					<div class="modal-body">
-						<div class="mb-3 modal-flex">
-							<div class="wd-40">센서 이름:</div>
-							<input class="form-control" id="inputsensorName" type="text"
-								name="sensorName" />
-						</div>
-						<div class="mb-3 modal-flex">
-							<div class="modal-iot">센서 종류:</div>
-							<select class="dashboard-count" id="iot_sensor" name="sensorType">
-								<option value="1">온도</option>
-								<option value="2">습도</option>
-								<option value="3">조도</option>
-								<option value="4">토양수분</option>
-								<option value="5">강우</option>
-							</select>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-primary" type="submit">확인</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</c:forEach>
+
+
 <!-- sensor Modal -->
 <c:forEach items="${iotList}" var="item">
-	<div class="modal" id="exampleModalCenter${item.iot_num }"
+	<div class="modal" id="exampleModalCenter${item.iot_num}"
 		tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
