@@ -39,10 +39,9 @@
 									<h1 class="page-header-title fw-800">
 										<div class="page-header-icon ">
 											<i data-feather="book"></i>
-										</div>
-										서비스 소개
+										</div>센서 등록하기
 									</h1>
-									<div class="page-header-subtitle">아오팜에 처음오셨나요?</div>
+									<div class="page-header-subtitle">클라우드 서비스 준비3</div>
 								</div>
 							</div>
 						</div>
@@ -51,35 +50,20 @@
 				<!-- Main page content-->
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
-						<div class="card-header">환영합니다!</div>
-						<div class="card-body">
-							아오팜은 IoT 클라우드 솔루션과 모니터링 웹서비스를 지원하고 있습니다.<br> 클라우드 서비스와 같이
-							자신에게 맞는 모니터링 대시보드를 구성해봅시다!
-
-						</div>
-					</div>
-					<div class="card mt-4">
 						<div class="card-header">IoT 클라우드 서비스 이용하기</div>
-						<div class="card-body">
-							아오팜은 자신 센서데이터를 저장할 수 있는 IoT 클라우드 서비스를 제공하고 있습니다. <br> 다음의
-							단계를 따라가면서 클라우드 서비스를 이용해봅시다.<br> <br> <br> <br>
-							<br> <br> <br>
-							<div class="step mb-5">
-								<div class="step-item active">
-									<a class="step-item-link text-lg fw-700" href="#!">IoT 세팅하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">IoT 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 데이터 송신하기</a>
-								</div>
-							</div>
-							<div class="text-lg">아두이노 세팅하기</div>
-							https://www.arduino.cc/에 접속합니다.
+						<br>
+						<img width="40%" alt="" src="../assets/img/guide/14.png">
+						<div class="card-body"> IoT 등록을 완료하면 센서 등록이라는 버튼이 생성이 됩니다. <br>
+						<br>
+						<img class="list-inline-item" width="40%" alt="" src="../assets/img/guide/15.png">
+						<br><br>센서 등록을 누르시면 위와 같은 화면이 됩니다. <br> 
+						<br><img class="list-inline-item" width="40%" alt="" src="../assets/img/guide/16.png">
+						<br><br>현재 아오팜에서 지원하는 센서의 종류는 
+온도센서(아날로그), 습도센서, 광(조도)센서, 토양수분센서, 강우센서 5가지입니다.<br>
+화면에서 센서 등록하기 클릭 후 등록하고자 하는 센서 클릭 후 확인을 누르시면 됩니다.
+</div>
+					</div>
+					
 
 
 						</div>
@@ -98,7 +82,7 @@
 
 
 			</main>
-			
+
 		</div>
 	</div>
 	<script

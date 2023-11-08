@@ -57,7 +57,7 @@
 							<br>링크에 접속후 사용자 컴퓨터 사양에 맞는 파일을 다운로드 합니다.<br> 다운로드 버튼을
 							누르고 JUST DOWNLOAD 버튼을 누르면 됩니다.
 							<div class="alert alert-primary mt-4" role="alert">
-								Chrome이 아닌 Internet Exploer나 Microsoft Edge에서 다운로드를 권장합니다.<br>
+								Internet Exploer 또는 Microsoft Edge에서 다운로드를 권장합니다.<br>
 								<br> 아오팜에서 사용중인 아두이노 보드는 “아두이노 D1 R32”입니다.<br>
 								<div class="fw-600 list-inline-item">아두이노 D1 R32</div>
 								기준의 코드 가이드 라인이 제공 됩니다.
