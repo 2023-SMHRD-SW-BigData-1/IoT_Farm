@@ -40,70 +40,162 @@
 										<div class="page-header-icon ">
 											<i data-feather="book"></i>
 										</div>
-										서비스 소개
+										감우센서(MH-RD)
 									</h1>
-									<div class="page-header-subtitle">아오팜에 처음오셨나요?</div>
+									<div class="page-header-subtitle"><br><br></div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</header>
 				<!-- Main page content-->
+
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
-						<div class="card-header">환영합니다!</div>
-						<div class="card-body">
-							아오팜은 IoT 클라우드 솔루션과 모니터링 웹서비스를 지원하고 있습니다.<br> 클라우드 서비스와 같이
-							자신에게 맞는 모니터링 대시보드를 구성해봅시다!
-
-						</div>
-					</div>
-					<div class="card mt-4">
 						<div class="card-header">IoT 클라우드 서비스 이용하기</div>
 						<div class="card-body">
-							아오팜은 자신 센서데이터를 저장할 수 있는 IoT 클라우드 서비스를 제공하고 있습니다. <br> 다음의
-							단계를 따라가면서 클라우드 서비스를 이용해봅시다.<br> <br> <br> <br>
-							<br> <br> <br>
-							<div class="step mb-5">
-								<div class="step-item active">
-									<a class="step-item-link text-lg fw-700" href="#!">IoT 세팅하기</a>
+							<br> <img class="list-inline-item" width="40%" alt=""
+								src="../assets/img/guide/26.png"> <br>
+							<div class="alert alert-primary mt-4" role="alert">
+								“VCC, GND, D0, A0”핀이 달려있습니다.<br> VCC 핀은 5V(VCC) 연결, GND 핀은 GND 핀에 연결, 
+D0과 A0은 디지털 값과 아날로그 값의 출력입니다.<br> 아오팜에서는  A0핀을 출력하고자 하는 아날로그 핀에 연결하시면 됩니다.<br>
+							</div>
+
+						</div>
+						<div class="card-body">
+							<!-- Component Preview-->
+							<div class="sbp-preview">
+								<div class="sbp-preview-content">
+									<div class="dropdown">
+										<span>아두이노 예시코드</span>
+
+									</div>
 								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">IoT 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 데이터 송신하기</a>
+
+								<!-- Tab panes-->
+								<div class="tab-content">
+									<div class="tab-pane active" id="dropdownDefaultHtml"
+										role="tabpanel" aria-labelledby="dropdownDefaultHtmlTab">
+										<pre class="language-markup">
+											<code>
+												<script type="text/plain">
+#include <Arduino.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
+
+ String value = String(data); // 센서 데이터 값
+ String api_key = "사용자 api_key 입력"; // 사용자 api_key 값
+ String sensor_type = "4"; // 센서 데이터 값
+ const char* serverAddress = "112.147.180.234";
+ const int serverPort = 8222;
+
+// 아오팜 코드 기준 4번핀으로 데이터를 받아옵니다.
+// 혹시 핀 번호를 바꾸신다면 괄호 안에 숫자를 바꿔주세요
+int Raindrops_pin = 4;
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(Raindrops_pin, INPUT); // 강우 센서 핀을 입력 모드로 설정
+ 
+}
+
+void loop() {
+
+  WiFi.disconnect(true);
+
+// 다음 센서 값을 읽기 전에 원하는 딜레이를 설정
+  delay(1000);
+
+  int analogValue = analogRead(Raindrops_pin); // 아날로그 핀의 값을 읽음
+  Serial.println(analogValue);
+
+  delay(1000);
+
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi...");
+  }
+  Serial.println("Connected to WiFi");
+  Serial.println(analogValue);
+
+ String value = String(data); // 센서 데이터 값
+  String api_key = "382901"; // 센서 데이터 
+  String sensor_type = "4"; // 센서 데이터 값
+
+// HTTPClient 객체 생성
+  HTTPClient http;
+
+  // HTTP GET 요청 보내기
+  String url = "/sensor.php?value=" + value + "&api_key=" + api_key + "&sensor_type=" + sensor_type;
+  Serial.println(url);
+
+  http.begin(serverAddress, serverPort, url);
+  int httpCode = http.GET();
+
+  if (httpCode > 0) {
+    // HTTP 요청이 성공했을 때
+    String payload = http.getString();
+    Serial.println("HTTP Response Code: " + String(httpCode));
+    Serial.println("Response: " + payload);
+  } else {
+    // HTTP 요청이 실패했을 때
+    Serial.println("HTTP Request failed");
+  }
+
+  // 연결 종료
+  http.end();
+
+  delay(3000);  // 1초(1000 밀리초) 동안 지연
+
+}
+</script>
+											</code>
+										</pre>
+									</div>
+									<br>
+• 아두이노에서 New Sketch 클릭 <br>
+• 위의 코드를 복사 후 붙여넣기<br>
+• 사용자 와이파이 ssid, password 입력<br>
+• IoT 등록 때 받은 사용자 api_key를 코드 중간에 입력<br>
+• 업로드 버튼 누르기<br>
+• 오류 없이 작동한다면 대시보드에서 확인 하기<br>
 								</div>
 							</div>
-							<div class="text-lg">아두이노 세팅하기</div>
-							https://www.arduino.cc/에 접속합니다.
-
 
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
 				</div>
-
-
-
-			</main>
-			
 		</div>
 	</div>
+	</div>
+	</div>
+	</main>
+
+	</div>
+
+
+	</div>
+
+
+
+
+
+
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="../js/scripts.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"
+		crossorigin="anonymous"></script>
 </body>
 </html>

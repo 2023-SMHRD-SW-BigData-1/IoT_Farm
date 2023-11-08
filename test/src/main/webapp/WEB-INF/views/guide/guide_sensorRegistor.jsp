@@ -25,7 +25,7 @@
 
 	<div id="layoutSidenav">
 		<jsp:include page="guide_nav.jsp"></jsp:include>
-		
+
 
 		<!-- 본문 -->
 		<div id="layoutSidenav_content" style="margin-top: -3.5rem">
@@ -39,7 +39,8 @@
 									<h1 class="page-header-title fw-800">
 										<div class="page-header-icon ">
 											<i data-feather="book"></i>
-										</div>센서 등록하기
+										</div>
+										센서 등록하기
 									</h1>
 									<div class="page-header-subtitle">클라우드 서비스 준비3</div>
 								</div>
@@ -51,43 +52,62 @@
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
 						<div class="card-header">IoT 클라우드 서비스 이용하기</div>
-						<br>
-						<img width="40%" alt="" src="../assets/img/guide/14.png">
-						<div class="card-body"> IoT 등록을 완료하면 센서 등록이라는 버튼이 생성이 됩니다. <br>
-						<br>
-						<img class="list-inline-item" width="40%" alt="" src="../assets/img/guide/15.png">
-						<br><br>센서 등록을 누르시면 위와 같은 화면이 됩니다. <br> 
-						<br><img class="list-inline-item" width="40%" alt="" src="../assets/img/guide/16.png">
-						<br><br>현재 아오팜에서 지원하는 센서의 종류는 
-온도센서(아날로그), 습도센서, 광(조도)센서, 토양수분센서, 강우센서 5가지입니다.<br>
-화면에서 센서 등록하기 클릭 후 등록하고자 하는 센서 클릭 후 확인을 누르시면 됩니다.
-</div>
-					</div>
-					
+						<br> <img width="40%" alt="" src="../assets/img/guide/14.png">
+						<div class="card-body">
+							IoT 등록을 완료하면 센서 등록이라는 버튼이 생성이 됩니다. <br> <br> <img
+								class="list-inline-item" width="40%" alt=""
+								src="../assets/img/guide/15.png"> <br>
+							<br>센서 등록을 누르시면 위와 같은 화면이 됩니다. <br> <br>
+							<img class="list-inline-item" width="40%" alt=""
+								src="../assets/img/guide/16.png"> <br>
+							<br>
+							<div class="alert alert-primary mt-4" role="alert">
+								아오팜에서 지원하는 센서의 종류는 <br>
+								<div class="fw-600 list-inline-item">온도센서(아날로그), 습도센서,
+									광(조도)센서, 토양수분센서, 강우센서</div>입니다. <br>센서 등록하기 클릭 후 등록하고자 하는 센서 클릭 후 확인을 누르시면 됩니다.<br>
+
+							</div>
 
 
 						</div>
-					</div>
 
 
 
-
-
-
-
-
-
-				</div>
 
 
 
 			</main>
-
 		</div>
 	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="../js/scripts.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"
+		crossorigin="anonymous"></script>
 </body>
 </html>
