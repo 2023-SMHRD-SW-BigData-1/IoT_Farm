@@ -25,7 +25,7 @@
 
 	<div id="layoutSidenav">
 		<jsp:include page="guide_nav.jsp"></jsp:include>
-		
+
 
 		<!-- 본문 -->
 		<div id="layoutSidenav_content" style="margin-top: -3.5rem">
@@ -40,70 +40,185 @@
 										<div class="page-header-icon ">
 											<i data-feather="book"></i>
 										</div>
-										서비스 소개
+										온도센서 (아날로그)
 									</h1>
-									<div class="page-header-subtitle">아오팜에 처음오셨나요?</div>
+									<br>
+									<div class="page-header-subtitle">온도센서는 섭씨(°C)로 값이 나오게 미리
+										계산값도 코드에 포함되어 있습니다.</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</header>
 				<!-- Main page content-->
+
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
-						<div class="card-header">환영합니다!</div>
-						<div class="card-body">
-							아오팜은 IoT 클라우드 솔루션과 모니터링 웹서비스를 지원하고 있습니다.<br> 클라우드 서비스와 같이
-							자신에게 맞는 모니터링 대시보드를 구성해봅시다!
-
-						</div>
-					</div>
-					<div class="card mt-4">
 						<div class="card-header">IoT 클라우드 서비스 이용하기</div>
 						<div class="card-body">
-							아오팜은 자신 센서데이터를 저장할 수 있는 IoT 클라우드 서비스를 제공하고 있습니다. <br> 다음의
-							단계를 따라가면서 클라우드 서비스를 이용해봅시다.<br> <br> <br> <br>
-							<br> <br> <br>
-							<div class="step mb-5">
-								<div class="step-item active">
-									<a class="step-item-link text-lg fw-700" href="#!">IoT 세팅하기</a>
+							<br> <img class="list-inline-item" width="40%" alt=""
+								src="../assets/img/guide/21.png"> <br>
+							<div class="alert alert-primary mt-4" role="alert">
+								사용할 아날로그 온도 센서에는 총 3개의 핀이 달려있습니다.<br> “S, +, -”핀이 달려있는데,
+								아두이노 보드의 “데이터 5V(VCC), GND”핀에 연결해주시면 됩니다.<br> 아날로그 온도 센서의
+								부품마다 온도 값 -> 즉 신호 값을 읽어들이는 위치의 차이가 있거나 핀의 설정에 오류가 있는 부품이 있기 때문에
+								잘 확인하시고 사용하셔야 합니다. <br>
+							</div>
+
+						</div>
+						<div class="card-body">
+							<!-- Component Preview-->
+							<div class="sbp-preview">
+								<div class="sbp-preview-content">
+									<div class="dropdown">
+										<span>예시코드</span>
+
+									</div>
 								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">IoT 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 데이터 송신하기</a>
+
+								<!-- Tab panes-->
+								<div class="tab-content">
+									<div class="tab-pane active" id="dropdownDefaultHtml"
+										role="tabpanel" aria-labelledby="dropdownDefaultHtmlTab">
+										<pre class="language-markup">
+											<code>
+												<script type="text/plain">
+#include <Arduino.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include <DS18B20.h>
+#include <OneWire.h>
+
+const char* ssid = "사용자 와이파이 ID"; // 연결할 와이파이 ID를 적어주세요
+const char* password = "사용자 와이파이 비밀번호"; // 연결할 와이파이 비밀번호를 적어주세요
+const char* serverAddress = "112.147.180.234";
+const int serverPort = 8222; 
+
+// 아오팜 코드 기준 5번핀으로 데이터를 받아옵니다.
+// 혹시 핀 번호를 바꾸신다면 괄호 안에 숫자를 바꿔주세요
+
+OneWire ds(5); 
+
+void setup() {
+  Serial.begin(115200);
+
+  // Wi-Fi 연결 설정
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi...");
+  }
+  Serial.println("Connected to WiFi");
+
+}
+
+void loop() {
+
+  byte i;
+  byte present = 0;
+  byte data[12]; 
+  byte addr[8]; 
+  float Temp; 
+
+  if (!ds.search(addr)) {
+    ds.reset_search();
+    return;
+  }
+  ds.reset();
+  ds.select(addr);
+  ds.write(0x44,1); //start conversion, with parasite power on at the end
+  delay(1000);
+
+  present = ds.reset();
+  ds.select(addr);
+  ds.write(0xBE); // Read Scratchpad
+
+  for (i = 0; i < 9; i++) { 
+    data[i] = ds.read();
+  }
+
+  Temp=(data[1]<<8)+data[0];
+  Temp=Temp/16;
+
+
+ String value = String(Temp); // 센서 데이터 값
+ String api_key = "사용자 api_key 입력"; // 사용자 api_key 값
+ String sensor_type = "1";  // 고정값
+ 
+
+// HTTPClient 객체 생성
+HTTPClient http;
+
+// HTTP GET 요청 보내기
+String url = "/sensor.php?value="+value+"&api_key="+api_key+"&sensor_type="+sensor_type;
+Serial.println(url);
+
+http.begin(serverAddress, serverPort, url);
+  int httpCode = http.GET();
+
+  if (httpCode > 0) {
+    // HTTP 요청이 성공했을 때
+    String payload = http.getString();
+    Serial.println("HTTP Response Code: " + String(httpCode));
+    Serial.println("Response: " + payload);
+  } else {
+    // HTTP 요청이 실패했을 때
+    Serial.println("HTTP Request failed");
+  }
+
+  // 연결 종료
+  http.end();
+
+  delay(30000);  
+}
+</script>
+
+											</code>
+										</pre>
+									</div>
+									<br>
+• 아두이노에서 New Sketch 클릭 <br>
+• 위의 코드를 복사 후 붙여넣기<br>
+• 사용자 와이파이 ssid, password 입력<br>
+• IoT 등록 때 받은 사용자 api_key를 코드 중간에 입력<br>
+• 업로드 버튼 누르기<br>
+• 오류 없이 작동한다면 대시보드에서 확인 하기<br>
 								</div>
 							</div>
-							<div class="text-lg">아두이노 세팅하기</div>
-							https://www.arduino.cc/에 접속합니다.
-
 
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
 				</div>
-
-
-
-			</main>
-			
 		</div>
 	</div>
+	</div>
+	</div>
+	</main>
+
+	</div>
+
+
+	</div>
+
+
+
+
+
+
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="../js/scripts.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"
+		crossorigin="anonymous"></script>
 </body>
 </html>

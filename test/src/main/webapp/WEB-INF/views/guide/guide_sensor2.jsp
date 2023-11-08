@@ -40,70 +40,96 @@
 										<div class="page-header-icon ">
 											<i data-feather="book"></i>
 										</div>
-										서비스 소개
+										온,습도센서 -> 습도값만 사용
 									</h1>
-									<div class="page-header-subtitle">아오팜에 처음오셨나요?</div>
+									<br>
+									<div class="page-header-subtitle">습도센서는 섭씨(°C)로 값이 나오게 미리
+										계산값도 코드에 포함되어 있습니다.</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</header>
 				<!-- Main page content-->
+
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
-						<div class="card-header">환영합니다!</div>
-						<div class="card-body">
-							아오팜은 IoT 클라우드 솔루션과 모니터링 웹서비스를 지원하고 있습니다.<br> 클라우드 서비스와 같이
-							자신에게 맞는 모니터링 대시보드를 구성해봅시다!
-
-						</div>
-					</div>
-					<div class="card mt-4">
 						<div class="card-header">IoT 클라우드 서비스 이용하기</div>
 						<div class="card-body">
-							아오팜은 자신 센서데이터를 저장할 수 있는 IoT 클라우드 서비스를 제공하고 있습니다. <br> 다음의
-							단계를 따라가면서 클라우드 서비스를 이용해봅시다.<br> <br> <br> <br>
-							<br> <br> <br>
-							<div class="step mb-5">
-								<div class="step-item active">
-									<a class="step-item-link text-lg fw-700" href="#!">IoT 세팅하기</a>
+							<br> <img class="list-inline-item" width="40%" alt=""
+								src="../assets/img/guide/22.png"> <br>
+							<div class="alert alert-primary mt-4" role="alert">
+								사용할 아날로그 온도 센서에는 총 3개의 핀이 달려있습니다.<br> “S, +, -”핀이 달려있는데,
+								아두이노 보드의 “데이터 5V(VCC), GND”핀에 연결해주시면 됩니다.<br> 아날로그 온도 센서의
+								부품마다 온도 값 -> 즉 신호 값을 읽어들이는 위치의 차이가 있거나 핀의 설정에 오류가 있는 부품이 있기 때문에
+								잘 확인하시고 사용하셔야 합니다. <br>
+							</div>
+
+						</div>
+						<div class="card-body">
+							<!-- Component Preview-->
+							<div class="sbp-preview">
+								<div class="sbp-preview-content">
+									<div class="dropdown">
+										<span>예시코드</span>
+
+									</div>
 								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">IoT 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 데이터 송신하기</a>
+
+								<!-- Tab panes-->
+								<div class="tab-content">
+									<div class="tab-pane active" id="dropdownDefaultHtml"
+										role="tabpanel" aria-labelledby="dropdownDefaultHtmlTab">
+										<pre class="language-markup">
+											<code>
+												<script type="text/plain">센서도착하면작성
+</script>
+											</code>
+										</pre>
+									</div>
+									<br>
+• 아두이노에서 New Sketch 클릭 <br>
+• 위의 코드를 복사 후 붙여넣기<br>
+• 사용자 와이파이 ssid, password 입력<br>
+• IoT 등록 때 받은 사용자 api_key를 코드 중간에 입력<br>
+• 업로드 버튼 누르기<br>
+• 오류 없이 작동한다면 대시보드에서 확인 하기<br>
 								</div>
 							</div>
-							<div class="text-lg">아두이노 세팅하기</div>
-							https://www.arduino.cc/에 접속합니다.
-
 
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
 				</div>
-
-
-
-			</main>
-			
 		</div>
 	</div>
+	</div>
+	</div>
+	</main>
+
+	</div>
+
+
+	</div>
+
+
+
+
+
+
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="../js/scripts.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"
+		crossorigin="anonymous"></script>
 </body>
 </html>

@@ -42,6 +42,7 @@
 										</div>
 										서비스 소개
 									</h1>
+									<br>
 									<div class="page-header-subtitle">아오팜에 처음오셨나요?</div>
 								</div>
 							</div>
