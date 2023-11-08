@@ -37,7 +37,7 @@
 	<div id="layoutSidenav">
 
 		<!-- 내비게이션 -->
-	<div id="layoutSidenav_nav">
+		<div id="layoutSidenav_nav">
 			<nav class="sidenav shadow-right sidenav-light ">
 				<a href="/bigdata/" class="mx-4 mt-n4 mb-sm-5"> <img
 					class="img-fluid" src="assets/img/ioflogo.png" alt="" />
@@ -104,47 +104,6 @@
 							</c:forEach>
 
 
-							<c:forEach items="${iotList}" var="item">
-								<!-- sensor Modal -->
-								<div class="modal" id="exampleModalCenter${item.iot_num }"
-									tabindex="-1" role="dialog"
-									aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalCenterTitle">센서
-													등록</h5>
-												<button class="btn-close" type="button"
-													data-bs-dismiss="modal" aria-label="Close"></button>
-											</div>
-											<form id="sensorForm"
-												action="mydata/sensoradd/${item.iot_num}" method="get">
-												<div class="modal-body">
-													<div class="mb-3 modal-flex">
-														<div class="wd-40">센서 이름:</div>
-														<input class="form-control" id="inputsensorName"
-															type="text" name="sensorName" />
-													</div>
-													<div class="mb-3 modal-flex">
-														<div class="modal-iot">센서 종류:</div>
-														<select class="dashboard-count" id="iot_sensor"
-															name="sensorType">
-															<option value="1">온도</option>
-															<option value="2">습도</option>
-															<option value="3">조도</option>
-															<option value="4">토양수분</option>
-															<option value="5">강우</option>
-														</select>
-													</div>
-												</div>
-												<div class="modal-footer">
-													<button class="btn btn-primary" type="submit">확인</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
 							<!-- dashboard-->
 							<div class="sidenav-menu-heading nav-menu">
 								<div>dash boards</div>
@@ -198,44 +157,10 @@
 
 				<!-- Dashboard content-->
 				<div class="container-xl px-4">
-					<div class="card mt-n10">
-
-						<div class="card-body">
-							<div class="mb-4">
-								<!-- Area chart example-->
-								<div class="card mb-4">
-									<div class="card-header">Revenue Summary</div>
-									<div class="card-body">
-										<div class="chart-area">
-											<canvas id="myAreaChart" width="100%" height="30"></canvas>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="mb-4">
-										<!-- Bar chart example-->
-										<div class="card h-100">
-											<div class="card-header">Sales Reporting</div>
-											<div
-												class="card-body d-flex flex-column justify-content-center">
-												<div class="chart-bar">
-													<canvas id="myBarChart" width="100%" height="30"></canvas>
-												</div>
-											</div>
-											<div class="card-footer position-relative">
-												<a class="stretched-link" href="#!">
-													<div
-														class="text-xs d-flex align-items-center justify-content-between">
-														View More Reports <i class="fas fa-long-arrow-alt-right"></i>
-													</div>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div id="chartdata1"></div>
+				<div id="chartdata2"></div>
+				<div id="chartdata3"></div>
+				<div id="chartdata4"></div>
 				</div>
 			</main>
 		</div>
@@ -261,24 +186,111 @@ function dataselect(dashboardNum) {
 		let minList = [];
 		let dataList = [];
 		
+		
     $.ajax({
         type: "GET",
         url: "mydata/" + dashboardNum,
         dataType: "json",
         success: function(response) {
-        	var reselect = response;
-<<<<<<< HEAD
-       	console.log(reselect);
-=======
-        	console.log(reselect);
-        	console.log(reselect[0]);
-        	console.log(reselect[1]);
->>>>>>> branch 'main' of https://github.com/2023-SMHRD-SW-BigData-1/iot_farm.git
+        	var sensorDataLList = response;
+        	var sensorType;
+        	
+        	
+        	
         	for(i = 0; i < reselect.length; i++){
-        	timeList.push(reselect[i].re_date);
-        	dataList.push(reselect[i].sensor_value);
-        	minList.push(reselect[i].re_time);
+        		-센서 타입
+    			sensorType=typeList[i];
+    		
+    			-html생성(위쪽 아이디div)
+    			<!--	
+    			<div class="card mt-n10">
+
+    			<div class="card-body">
+    				<div class="mb-4">
+    					<div class="card mb-4">
+    						<div class="card-header">Revenue Summary</div>
+    						<div class="card-body">
+    							<div class="chart-area">
+    								<canvas id="{sensor_num값을 이용한 id}" width="100%" height="30"></canvas>
+    							</div>
+    						</div>
+    					</div>
+    					<div class="row">
+    						<div class="mb-4">
+    						
+    						
+    						
+    						
+    						
+    						
+    							<div class="card h-100">
+    								<div class="card-header">Sales Reporting</div>
+    								<div
+    									class="card-body d-flex flex-column justify-content-center">
+    									<div class="chart-bar">
+    										<canvas id="myBarChart" width="100%" height="30"></canvas>
+    									</div>
+    								</div>
+    								<div class="card-footer position-relative">
+    									<a class="stretched-link" href="#!">
+    										<div
+    											class="text-xs d-flex align-items-center justify-content-between">
+    											View More Reports <i class="fas fa-long-arrow-alt-right"></i>
+    										</div>
+    									</a>
+    								</div>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    -->
+            	
+  
+    			
+    			
+    		}
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	for(sensorDataList : sensorDataLList){
+        		
+        		
+        		
+        		for(i = 0; i < reselect.length; i++){
+                	timeList.push(sensorDataList[i].re_date);
+                	dataList.push(sensorDataList[i].sensor_value);
+                	minList.push(sensorDataList[i].re_time);
+                	}
+        		
+        		
+        		if(센서타입){
+        			
+        			
+        			
+        			
+        			
+        			
+        			
+        			
+        		}else if(센서타입2){
+        			
+        			
+        			
+        			
+        			
+        			
+        		}
         	}
+        	
+        	
         	const maxValue = Math.max(...dataList);
         	var ctx = document.getElementById("myAreaChart");
         	var myLineChart = new Chart(ctx, {
@@ -374,6 +386,7 @@ function dataselect(dashboardNum) {
         	        }
         	    }
         	}); 
+        	
         	// Bar Chart Example
         	var ctx = document.getElementById("myBarChart");
         	var myBarChart = new Chart(ctx, {

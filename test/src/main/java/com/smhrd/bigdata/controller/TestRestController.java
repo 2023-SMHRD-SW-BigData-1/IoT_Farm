@@ -115,16 +115,15 @@ public class TestRestController {
 
 	@GetMapping("mydata/{dashboardNum}")
 	@ResponseBody
-	public List<Sensor_Re> sensor_re(@PathVariable int dashboardNum, Model model) {
+	public List<List<Sensor_Re>> sensor_re(@PathVariable int dashboardNum, Model model) {
 		
 		List<Sensor_Re> sensorNumList = service.select_sensorNum(dashboardNum);
 		
-		
-		List<Sensor_Re> reselect = new ArrayList<>();
-		
+		List<List<Sensor_Re>> reselect = new ArrayList<>();
 		for(Sensor_Re element : sensorNumList) {
-			reselect.addAll(service.sensor_re(element.getSensor_num()));
+			reselect.add(service.sensor_re(element.getSensor_num()));
 		}
+		
 		System.out.println(reselect);
 		model.addAttribute("reselect",reselect);
 		
