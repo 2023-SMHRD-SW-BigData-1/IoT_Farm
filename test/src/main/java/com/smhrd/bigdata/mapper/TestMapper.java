@@ -131,5 +131,8 @@ public interface TestMapper {
 
 	@Select("select iot_num from useriot_info where api_key=#{api}")
 	public String apiSearch(String api);
+	
+	@Select("select sensor_num from dashboard_chart where dashboard_num=#{dashboardNum};")
+	public List<Sensor_Re> select_sensorNum(int dashboardNum);
 
 }

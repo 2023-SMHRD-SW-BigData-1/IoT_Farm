@@ -158,5 +158,9 @@ public class TestService {
 	public int iotadd(int user_num, String iotName, String api) {
 		return mapper.iotadd(user_num,iotName, api);
 	}
+	
+	public List<Sensor_Re> select_sensorNum(int dashboardNum) {
+		return mapper.select_sensorNum(dashboardNum);
+	}
 
 }

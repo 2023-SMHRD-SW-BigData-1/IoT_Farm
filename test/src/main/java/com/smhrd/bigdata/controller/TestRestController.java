@@ -1,6 +1,7 @@
 package com.smhrd.bigdata.controller;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smhrd.bigdata.model.IoT_Sensor;
+import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.Sensor_Re;
 import com.smhrd.bigdata.model.TestMember;
 import com.smhrd.bigdata.service.EmailService;
@@ -111,11 +113,24 @@ public class TestRestController {
 	}
 	
 
-	@GetMapping("mydata/{idx}")
+	@GetMapping("mydata/{dashboardNum}")
 	@ResponseBody
-	public List<Sensor_Re> sensor_re(@PathVariable int idx) {
-	    List<Sensor_Re> reselect = service.sensor_re(idx);
+	public List<Sensor_Re> sensor_re(@PathVariable int dashboardNum, Model model) {
+		
+		List<Sensor_Re> sensorNumList = service.select_sensorNum(dashboardNum);
+		
+		
+		List<Sensor_Re> reselect = new ArrayList<>();
+		
+		for(Sensor_Re element : sensorNumList) {
+			reselect.addAll(service.sensor_re(element.getSensor_num()));
+		}
+		System.out.println(reselect);
+		model.addAttribute("reselect",reselect);
+		
+		
 	    return reselect;
+	}
 	    
 //	@GetMapping("mydata/{idx}")
 //	@ResponseBody
@@ -124,6 +139,5 @@ public class TestRestController {
 //		System.out.println(reselect);
 //		model.addAttribute("reselect", reselect);
 //		return "success";
-	}
 
 }
