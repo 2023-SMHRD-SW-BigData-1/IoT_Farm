@@ -28,6 +28,7 @@
 		
 
 		<!-- 본문 -->
+		<!-- 본문 -->
 		<div id="layoutSidenav_content" style="margin-top: -3.5rem">
 			<main>
 				<header
@@ -40,9 +41,9 @@
 										<div class="page-header-icon ">
 											<i data-feather="book"></i>
 										</div>
-										서비스 소개
+										대시보드 등록하기
 									</h1>
-									<div class="page-header-subtitle">아오팜에 처음오셨나요?</div>
+									<div class="page-header-subtitle">대시보스 서비스</div>
 								</div>
 							</div>
 						</div>
@@ -51,35 +52,20 @@
 				<!-- Main page content-->
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
-						<div class="card-header">환영합니다!</div>
-						<div class="card-body">
-							아오팜은 IoT 클라우드 솔루션과 모니터링 웹서비스를 지원하고 있습니다.<br> 클라우드 서비스와 같이
-							자신에게 맞는 모니터링 대시보드를 구성해봅시다!
-
-						</div>
-					</div>
-					<div class="card mt-4">
 						<div class="card-header">IoT 클라우드 서비스 이용하기</div>
-						<div class="card-body">
-							아오팜은 자신 센서데이터를 저장할 수 있는 IoT 클라우드 서비스를 제공하고 있습니다. <br> 다음의
-							단계를 따라가면서 클라우드 서비스를 이용해봅시다.<br> <br> <br> <br>
-							<br> <br> <br>
-							<div class="step mb-5">
-								<div class="step-item active">
-									<a class="step-item-link text-lg fw-700" href="#!">IoT 세팅하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">IoT 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 데이터 송신하기</a>
-								</div>
-							</div>
-							<div class="text-lg">아두이노 세팅하기</div>
-							https://www.arduino.cc/에 접속합니다.
+						<br>
+						<img class="list-inline-item" width="80%" alt="" src="../assets/img/guide/11.png">
+						<div class="card-body">로그인 후 우측상단에 있는 마이데이터를 클릭합니다. <br>
+						<br>
+						<img class="list-inline-item" width="40%" alt="" src="../assets/img/guide/31.png">
+						<br><br>화면 좌측의 DASHBOARD + 버튼을 클릭합니다. <br> 
+						<br><img class="list-inline-item" width="40%" alt="" src="../assets/img/guide/32.png">
+						<br><br>사용자가 원하는 DASHBOARD 명을 입력하시고 다음버튼을 클릭합니다.
+						<br><br>						
+						<img class="list-inline-item" width="40%" alt="" src="../assets/img/guide/33.png">
+						<br><br>사용자가 원하는 차트 명을 입력하시고 사용 IoT + 센서와 차트 타입을 클릭하여 원하는 차트와 센서를 선택합니다. <br> </div>
+					</div>
+					
 
 
 						</div>
@@ -98,7 +84,6 @@
 
 
 			</main>
-			
 		</div>
 	</div>
 	<script
