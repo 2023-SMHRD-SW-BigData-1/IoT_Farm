@@ -46,7 +46,7 @@
 					aria-labelledby="navbarDropdownUserImage">
 					<h6 class="dropdown-header d-flex align-items-center">
 						<img class="dropdown-user-img changeImages"
-							src="assets/img/illustrations/profiles/${user.p_img }.png" />
+							src="assets/img/illustrations/profiles/${user.p_img}.png" />
 						<div class="dropdown-user-details">
 							<div class="dropdown-user-details-name">${user.name}</div>
 							<div class="dropdown-user-details-email">${user.email }</div>

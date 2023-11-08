@@ -40,13 +40,13 @@
 				href="javascript:void(0);" role="button" data-bs-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"><img
 					class="img-fluid changeImages"
-					src="assets/img/illustrations/profiles/${user.p_img }.png" /> </a>
+					src="../assets/img/illustrations/profiles/${user.p_img }.png" /> </a>
 				<div
 					class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
 					aria-labelledby="navbarDropdownUserImage">
 					<h6 class="dropdown-header d-flex align-items-center">
 						<img class="dropdown-user-img changeImages"
-							src="assets/img/illustrations/profiles/${user.p_img }.png" />
+							src="../assets/img/illustrations/profiles/${user.p_img}.png" />
 						<div class="dropdown-user-details">
 							<div class="dropdown-user-details-name">${user.name}</div>
 							<div class="dropdown-user-details-email">${user.email }</div>

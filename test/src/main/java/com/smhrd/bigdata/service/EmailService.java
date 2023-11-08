@@ -65,7 +65,8 @@ public class EmailService {
        String setFrom = "aofarmad@gmail.com"; // 발신자 이메일 주소
        String toMail = "aofarmad@gmail.com"; // 관리자 이메일 주소
        String title = "새로운 문의사항이 등록되었습니다"; // 이메일 제목
-       String content = "문의 회원 : "+ email + "<br>" + "문의 제목 : " + qnaTitle + "<br>" + "문의 내용: " + qnaContent ; // 이메일 내용
+       String content = "문의 회원 : "+ email + "<br>" + "문의 제목 : " + qnaTitle
+    		   +"<br>" + "문의 내용: " + qnaContent ; // 이메일 내용
 
        mailSend(setFrom, toMail, title, content);
    }
