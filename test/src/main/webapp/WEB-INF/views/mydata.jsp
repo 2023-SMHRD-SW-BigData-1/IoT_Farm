@@ -37,7 +37,7 @@
 	<div id="layoutSidenav">
 
 		<!-- 내비게이션 -->
-		<div id="layoutSidenav_nav">
+	<div id="layoutSidenav_nav">
 			<nav class="sidenav shadow-right sidenav-light ">
 				<a href="/bigdata/" class="mx-4 mt-n4 mb-sm-5"> <img
 					class="img-fluid" src="assets/img/ioflogo.png" alt="" />
@@ -293,7 +293,7 @@ function dataselect(idx) {
         dataType: "json",
         success: function(response) {
         	var reselect = response;
-        	console.log(reselect);
+       	console.log(reselect);
         	for(i = 0; i < reselect.length; i++){
         	timeList.push(reselect[i].re_date);
         	dataList.push(reselect[i].sensor_value);
