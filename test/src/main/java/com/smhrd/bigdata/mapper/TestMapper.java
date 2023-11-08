@@ -135,4 +135,7 @@ public interface TestMapper {
 	@Select("select sensor_num from dashboard_chart where dashboard_num=#{dashboardNum};")
 	public List<Sensor_Re> select_sensorNum(int dashboardNum);
 
+	@Select("select chart_type from dashboard_chart where dashboard_num=#{dashboard_num} order by chart_num asc")
+	public List<String> select_chartType(int dashboardNum);
+
 }
