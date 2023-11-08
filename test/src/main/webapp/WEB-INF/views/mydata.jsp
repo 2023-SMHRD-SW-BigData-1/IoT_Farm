@@ -157,34 +157,44 @@
 
 				<!-- Dashboard content-->
 				<div class="container-xl px-4">
-				<div id="chartdata1"></div>
-				<div id="chartdata2"></div>
-				<div id="chartdata3"></div>
-				<div id="chartdata4"></div>
+					<div class="card mt-n10">
+						<div id="chartdata1"></div>
+						<div id="chartdata1"></div>
+						<div id="chartdata1"></div>
+						<div id="chartdata1"></div>
+					</div>
 				</div>
 			</main>
 		</div>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js">
 </script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-			crossorigin="anonymous"></script>
-		<script src="js/scripts.js"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
-			crossorigin="anonymous"></script>
-		<script src="assets/demo/chart-area-demo.js"></script>
-		<script src="assets/demo/chart-bar-demo.js"></script>
-		<script src="assets/demo/chart-pie-demo.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"
-			crossorigin="anonymous"></script>
-		<script src="js/litepicker.js"></script>
-		<script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+		crossorigin="anonymous"></script>
+	<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script src="assets/demo/chart-pie-demo.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"
+		crossorigin="anonymous"></script>
+	<script src="js/litepicker.js"></script>
+
+	<script>
 	// Area Chart Example
 function dataselect(dashboardNum) {
 		let timeList = [];
 		let minList = [];
 		let dataList = [];
+		let chartType = [];
+		let sensorDataList = [];
+		
+		
+		
+		
 		
 		
     $.ajax({
@@ -192,286 +202,273 @@ function dataselect(dashboardNum) {
         url: "mydata/" + dashboardNum,
         dataType: "json",
         success: function(response) {
-        	var sensorDataLList = response;
-        	var sensorType;
-        	
-        	
-        	
-        	for(i = 0; i < reselect.length; i++){
-        		-센서 타입
-    			sensorType=typeList[i];
-    		
-    			-html생성(위쪽 아이디div)
-    			<!--	
-    			<div class="card mt-n10">
+        	var sensorDataLList = response.reselect;
+        	var chartTypeList = response.chartTypeList;
 
-    			<div class="card-body">
-    				<div class="mb-4">
-    					<div class="card mb-4">
-    						<div class="card-header">Revenue Summary</div>
-    						<div class="card-body">
-    							<div class="chart-area">
-    								<canvas id="{sensor_num값을 이용한 id}" width="100%" height="30"></canvas>
-    							</div>
-    						</div>
-    					</div>
-    					<div class="row">
-    						<div class="mb-4">
-    						
-    						
-    						
-    						
-    						
-    						
-    							<div class="card h-100">
-    								<div class="card-header">Sales Reporting</div>
-    								<div
-    									class="card-body d-flex flex-column justify-content-center">
-    									<div class="chart-bar">
-    										<canvas id="myBarChart" width="100%" height="30"></canvas>
-    									</div>
-    								</div>
-    								<div class="card-footer position-relative">
-    									<a class="stretched-link" href="#!">
-    										<div
-    											class="text-xs d-flex align-items-center justify-content-between">
-    											View More Reports <i class="fas fa-long-arrow-alt-right"></i>
-    										</div>
-    									</a>
-    								</div>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    -->
-            	
-  
-    			
-    			
-    		}
+        	console.log("sensorDateLList : ",sensorDataLList);
+        	console.log("shartTypeList : ",chartTypeList);
         	
         	
-        	
-        	
-        	
-        	
-        	
-        	
-        	
-        	for(sensorDataList : sensorDataLList){
         		
-        		
-        		
-        		for(i = 0; i < reselect.length; i++){
+        		for(i = 0; i < sensorDataList.length; i++){
                 	timeList.push(sensorDataList[i].re_date);
                 	dataList.push(sensorDataList[i].sensor_value);
                 	minList.push(sensorDataList[i].re_time);
                 	}
+        	
+			console.log(timeList);
+			console.log("dataList : ",dataList);
+			console.log(minList);
+			
+        	
+        	
+
+        	for (var i = 0; i < chartTypeList.length; i++) {
+        	    var chartTypehtml = chartTypeList[i]; // 현재 차트 타입을 가져옴
         		
-        		
-        		if(센서타입){
+        	    for(var j = 0; j < sensorDateLList[i].length; j++){
+        	    timeList.push(sensorDataLList[])
+        	    }
+        	    
+        	    var chartdatacontent = document.getElementById("chartdata1");
+
+        	    
+        	    var chartHTML = ''; // HTML 코드를 저장할 변수
+
+        	    if (chartTypehtml === 'line') {
+        	        chartHTML = `
+        	        <div class ="card-body">
+        	            <div class="mb-4">
+        	                <div class="card mb-4">
+        	                    <div class="card-header">Revenue Summary</div>
+        	                    <div class="card-body">
+        	                        <div class="chart-area">
+        	                            <canvas id="myLineChart" width="100%" height="30"></canvas>
+        	                        </div>
+        	                    </div>
+        	                </div>
+        	            </div>
+        	            </div>
+        	            
+        	        `;
+                	const maxValue = Math.max(...dataList);
+					
+                	var ctx = document.getElementById("myLineChart");
+                	var myLineChart = new Chart(ctx, {
+                	    type: "line",
+                	    data: {
+                	        labels: 
+                	        	timeList,
+                	        datasets: 
+                	        	keys.map((key)=>(
+                	        		{
+                        	            label: "값",
+                        	            lineTension: 0.3,
+                        	            backgroundColor: "rgba(0, 97, 242, 0.05)",
+                        	            borderColor: "rgba(0, 97, 242, 1)",
+                        	            pointRadius: 3,
+                        	            pointBackgroundColor: "rgba(0, 97, 242, 1)",
+                        	            pointBorderColor: "rgba(0, 97, 242, 1)",
+                        	            pointHoverRadius: 3,
+                        	            pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
+                        	            pointHoverBorderColor: "rgba(0, 97, 242, 1)",
+                        	            pointHitRadius: 10,
+                        	            pointBorderWidth: 2,
+                        	            data: dataList
+                        	        }
+                	        	))
+                	        	
+                	        
+                	    },
+                	    options: {
+                	        maintainAspectRatio: false,
+                	        layout: {
+                	            padding: {
+                	                left: 10,
+                	                right: 25,
+                	                top: 25,
+                	                bottom: 0
+                	            }
+                	        },
+        	        	        scales: {
+        	        	            xAxes: [{
+        	        	                time: {
+        	        	                    unit: "date"
+        	        	                },
+        	        	                gridLines: {
+        	        	                    display: false,
+        	        	                    drawBorder: false
+        	        	                },
+        	        	                ticks: {
+        	        	                    maxTicksLimit: timeList.length
+        	        	                }
+        	        	            }],
+                	            yAxes: [{
+                	                ticks: {
+                	                	min: 0,
+                	                    max: maxValue,
+                	                    maxTicksLimit: 10,
+                	                    padding: 10,
+                	                    // Include a dollar sign in the ticks
+                	                    callback: function(value, index, values) {
+                	                        return number_format(value);
+                	                    }
+                	                },
+                	                gridLines: {
+                	                    color: "rgb(234, 236, 244)",
+                	                    zeroLineColor: "rgb(234, 236, 244)",
+                	                    drawBorder: false,
+                	                    borderDash: [2],
+                	                    zeroLineBorderDash: [2]
+                	                }
+                	            }]
+                	        },
+                	        legend: {
+                	            display: false
+                	        },
+                	        tooltips: {
+                	            backgroundColor: "rgb(255,255,255)",
+                	            bodyFontColor: "#858796",
+                	            titleMarginBottom: 10,
+                	            titleFontColor: "#6e707e",
+                	            titleFontSize: 14,
+                	            borderColor: "#dddfeb",
+                	            borderWidth: 1,
+                	            xPadding: 15,
+                	            yPadding: 15,
+                	            displayColors: false,
+                	            intersect: false,
+                	            mode: "index",
+                	            caretPadding: 10,
+                	            callbacks: {
+                	                label: function(tooltipItem, chart) {
+                	                	 var datasetLabel =
+                	                         chart.datasets[tooltipItem.datasetIndex].label || "";
+                	                     var labelText = datasetLabel + " : " + number_format(tooltipItem.yLabel);
+                	                     labelText += ", 시간 : " + minList[tooltipItem.index]; // minList 값 추가
+                	                     return labelText;
+                	                }
+                	            }
+                	        }
+                	    }
+                	}); 
+        	        
+        	        
+        	        
+        	        
+        	    } else if (chartTypehtml === 'bar') {
+        	        chartHTML = `
+        	        	 <div class ="card-body">
+        	            <div class="row">
+        	                <div class="mb-4">
+        	                    <div class="card h-100">
+        	                        <div class="card-header">Sales Reporting</div>
+        	                        <div class="card-body d-flex flex-column justify-content-center">
+        	                            <div class="chart-bar">
+        	                                <canvas id="myBarChart" width="100%" height="30"></canvas>
+        	                            </div>
+        	                        </div>
+        	                    </div>
+        	                </div>
+        	            </div>
+        	            </div>
+        	        `;
+        			const maxValue = Math.max(...dataList);
+        			
+                	// Bar Chart Example
+                	var ctx = document.getElementById("myBarChart");
+                	var myBarChart = new Chart(ctx, {
+                	    type: "bar",
+                	    data: {
+                	        labels: timeList,
+                	        datasets: [{
+                	            label: "값",
+                	            backgroundColor: "rgba(0, 97, 242, 1)",
+                	            hoverBackgroundColor: "rgba(0, 97, 242, 0.9)",
+                	            borderColor: "#4e73df",
+                	            data: dataList,
+                	            maxBarThickness: 25
+                	        }]
+                	    },
+                	    options: {
+                	        maintainAspectRatio: false,
+                	        layout: {
+                	            padding: {
+                	                left: 10,
+                	                right: 25,
+                	                top: 25,
+                	                bottom: 0
+                	            }
+                	        },
+                	        scales: {
+                	            xAxes: [{
+                	                time: {
+                	                    unit: "month"
+                	                },
+                	                gridLines: {
+                	                    display: false,
+                	                    drawBorder: false
+                	                },
+                	                ticks: {
+                	                    maxTicksLimit: 6
+                	                }
+                	            }],
+                	            yAxes: [{
+                	                ticks: {
+                	                    min: 0,
+                	                    max: maxValue,
+                	                    maxTicksLimit: 10,
+                	                    padding: 10,
+                	                    // Include a dollar sign in the ticks
+                	                    callback: function(value, index, values) {
+                	                        return number_format(value);
+                	                    }
+                	                },
+                	                gridLines: {
+                	                    color: "rgb(234, 236, 244)",
+                	                    zeroLineColor: "rgb(234, 236, 244)",
+                	                    drawBorder: false,
+                	                    borderDash: [2],
+                	                    zeroLineBorderDash: [2]
+                	                }
+                	            }]
+                	        },
+                	        legend: {
+                	            display: false
+                	        },
+                	        tooltips: {
+                	            titleMarginBottom: 10,
+                	            titleFontColor: "#6e707e",
+                	            titleFontSize: 14,
+                	            backgroundColor: "rgb(255,255,255)",
+                	            bodyFontColor: "#858796",
+                	            borderColor: "#dddfeb",
+                	            borderWidth: 1,
+                	            xPadding: 15,
+                	            yPadding: 15,
+                	            displayColors: false,
+                	            caretPadding: 10,
+                	            callbacks: {
+                	                label: function(tooltipItem, chart) {
+                	                	var datasetLabel =
+               	                         chart.datasets[tooltipItem.datasetIndex].label || "";
+               	                     var labelText = datasetLabel + " : " + number_format(tooltipItem.yLabel);
+               	                     labelText += ", 시간 : " + minList[tooltipItem.index]; // minList 값 추가
+               	                     return labelText;
+                	                }
+                	            }
+                	        }
+                	    }
+                	});  
         			
         			
-        			
-        			
-        			
-        			
-        			
-        			
-        		}else if(센서타입2){
-        			
-        			
-        			
-        			
-        			
-        			
-        		}
+        	    }
+
+        	    chartdatacontent.innerHTML = chartHTML;
+        	    chartdata.appendChild(chartdatacontent);
         	}
-        	
-        	
-        	const maxValue = Math.max(...dataList);
-        	var ctx = document.getElementById("myAreaChart");
-        	var myLineChart = new Chart(ctx, {
-        	    type: "line",
-        	    data: {
-        	        labels: 
-        	        	timeList,
-        	        datasets: [{
-        	            label: "값",
-        	            lineTension: 0.3,
-        	            backgroundColor: "rgba(0, 97, 242, 0.05)",
-        	            borderColor: "rgba(0, 97, 242, 1)",
-        	            pointRadius: 3,
-        	            pointBackgroundColor: "rgba(0, 97, 242, 1)",
-        	            pointBorderColor: "rgba(0, 97, 242, 1)",
-        	            pointHoverRadius: 3,
-        	            pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
-        	            pointHoverBorderColor: "rgba(0, 97, 242, 1)",
-        	            pointHitRadius: 10,
-        	            pointBorderWidth: 2,
-        	            data: dataList
-        	        }]
-        	    },
-        	    options: {
-        	        maintainAspectRatio: false,
-        	        layout: {
-        	            padding: {
-        	                left: 10,
-        	                right: 25,
-        	                top: 25,
-        	                bottom: 0
-        	            }
-        	        },
-	        	        scales: {
-	        	            xAxes: [{
-	        	                time: {
-	        	                    unit: "date"
-	        	                },
-	        	                gridLines: {
-	        	                    display: false,
-	        	                    drawBorder: false
-	        	                },
-	        	                ticks: {
-	        	                    maxTicksLimit: timeList.length
-	        	                }
-	        	            }],
-        	            yAxes: [{
-        	                ticks: {
-        	                	min: 0,
-        	                    max: maxValue,
-        	                    maxTicksLimit: 10,
-        	                    padding: 10,
-        	                    // Include a dollar sign in the ticks
-        	                    callback: function(value, index, values) {
-        	                        return number_format(value);
-        	                    }
-        	                },
-        	                gridLines: {
-        	                    color: "rgb(234, 236, 244)",
-        	                    zeroLineColor: "rgb(234, 236, 244)",
-        	                    drawBorder: false,
-        	                    borderDash: [2],
-        	                    zeroLineBorderDash: [2]
-        	                }
-        	            }]
-        	        },
-        	        legend: {
-        	            display: false
-        	        },
-        	        tooltips: {
-        	            backgroundColor: "rgb(255,255,255)",
-        	            bodyFontColor: "#858796",
-        	            titleMarginBottom: 10,
-        	            titleFontColor: "#6e707e",
-        	            titleFontSize: 14,
-        	            borderColor: "#dddfeb",
-        	            borderWidth: 1,
-        	            xPadding: 15,
-        	            yPadding: 15,
-        	            displayColors: false,
-        	            intersect: false,
-        	            mode: "index",
-        	            caretPadding: 10,
-        	            callbacks: {
-        	                label: function(tooltipItem, chart) {
-        	                	 var datasetLabel =
-        	                         chart.datasets[tooltipItem.datasetIndex].label || "";
-        	                     var labelText = datasetLabel + " : " + number_format(tooltipItem.yLabel);
-        	                     labelText += ", 시간 : " + minList[tooltipItem.index]; // minList 값 추가
-        	                     return labelText;
-        	                }
-        	            }
-        	        }
-        	    }
-        	}); 
-        	
-        	// Bar Chart Example
-        	var ctx = document.getElementById("myBarChart");
-        	var myBarChart = new Chart(ctx, {
-        	    type: "bar",
-        	    data: {
-        	        labels: timeList,
-        	        datasets: [{
-        	            label: "값",
-        	            backgroundColor: "rgba(0, 97, 242, 1)",
-        	            hoverBackgroundColor: "rgba(0, 97, 242, 0.9)",
-        	            borderColor: "#4e73df",
-        	            data: dataList,
-        	            maxBarThickness: 25
-        	        }]
-        	    },
-        	    options: {
-        	        maintainAspectRatio: false,
-        	        layout: {
-        	            padding: {
-        	                left: 10,
-        	                right: 25,
-        	                top: 25,
-        	                bottom: 0
-        	            }
-        	        },
-        	        scales: {
-        	            xAxes: [{
-        	                time: {
-        	                    unit: "month"
-        	                },
-        	                gridLines: {
-        	                    display: false,
-        	                    drawBorder: false
-        	                },
-        	                ticks: {
-        	                    maxTicksLimit: 6
-        	                }
-        	            }],
-        	            yAxes: [{
-        	                ticks: {
-        	                    min: 0,
-        	                    max: maxValue,
-        	                    maxTicksLimit: 10,
-        	                    padding: 10,
-        	                    // Include a dollar sign in the ticks
-        	                    callback: function(value, index, values) {
-        	                        return number_format(value);
-        	                    }
-        	                },
-        	                gridLines: {
-        	                    color: "rgb(234, 236, 244)",
-        	                    zeroLineColor: "rgb(234, 236, 244)",
-        	                    drawBorder: false,
-        	                    borderDash: [2],
-        	                    zeroLineBorderDash: [2]
-        	                }
-        	            }]
-        	        },
-        	        legend: {
-        	            display: false
-        	        },
-        	        tooltips: {
-        	            titleMarginBottom: 10,
-        	            titleFontColor: "#6e707e",
-        	            titleFontSize: 14,
-        	            backgroundColor: "rgb(255,255,255)",
-        	            bodyFontColor: "#858796",
-        	            borderColor: "#dddfeb",
-        	            borderWidth: 1,
-        	            xPadding: 15,
-        	            yPadding: 15,
-        	            displayColors: false,
-        	            caretPadding: 10,
-        	            callbacks: {
-        	                label: function(tooltipItem, chart) {
-        	                	var datasetLabel =
-       	                         chart.datasets[tooltipItem.datasetIndex].label || "";
-       	                     var labelText = datasetLabel + " : " + number_format(tooltipItem.yLabel);
-       	                     labelText += ", 시간 : " + minList[tooltipItem.index]; // minList 값 추가
-       	                     return labelText;
-        	                }
-        	            }
-        	        }
-        	    }
-        	});        
+        
+      
         },
         error: function(xhr, status, error) {
             console.log("error"); // 오타 수정

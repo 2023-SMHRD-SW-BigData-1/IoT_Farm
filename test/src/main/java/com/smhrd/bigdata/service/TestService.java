@@ -163,4 +163,9 @@ public class TestService {
 		return mapper.select_sensorNum(dashboardNum);
 	}
 
+	public List<String> select_chartType(int dashboardNum) {
+		// TODO Auto-generated method stub
+		return mapper.select_chartType(dashboardNum);
+	}
+
 }

@@ -155,67 +155,46 @@
 			</div>
 		</div>
 	</div>
-	<c:forEach items="${iotList}" var="item">
-								<!-- sensor Modal -->
-								<div class="modal" id="exampleModalCenter${item.iot_num }"
-									tabindex="-1" role="dialog"
-									aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalCenterTitle">센서
-													등록</h5>
-												<button class="btn-close" type="button"
-													data-bs-dismiss="modal" aria-label="Close"></button>
-											</div>
-											<form id="sensorForm"
-												action="mydata/sensoradd/${item.iot_num}" method="get">
-												<div class="modal-body">
-													<div class="mb-3 modal-flex">
-														<div class="wd-40">센서 이름:</div>
-														<input class="form-control" id="inputsensorName"
-															type="text" name="sensorName" />
-													</div>
-													<div class="mb-3 modal-flex">
-														<div class="modal-iot">센서 종류:</div>
-														<select class="dashboard-count" id="iot_sensor"
-															name="sensorType">
-															<option value="1">온도</option>
-															<option value="2">습도</option>
-															<option value="3">조도</option>
-															<option value="4">토양수분</option>
-															<option value="5">강우</option>
-														</select>
-													</div>
-												</div>
-												<div class="modal-footer">
-													<button class="btn btn-primary" type="submit">확인</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-
-	<script>
 </div>
-<script>
-function nextIotModal(){
-	let iotName = $('#iotName').val();
-	$.ajax({
-		url : "mydata/iotadd",
-		type : "post",
-		data : {
-			'iotName' : iotName
-		},
-		success:function(data){
-			var apikey = document.getElementById("apikey");
-			apikey.innerHTML = data;
-		}
-	});
-};
-</script>
-
+<c:forEach items="${iotList}" var="item">
+	<!-- sensor Modal -->
+	<div class="modal" id="exampleModalCenter${item.iot_num }"
+		tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalCenterTitle">센서 등록</h5>
+					<button class="btn-close" type="button" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<form id="sensorForm" action="mydata/sensoradd/${item.iot_num}"
+					method="get">
+					<div class="modal-body">
+						<div class="mb-3 modal-flex">
+							<div class="wd-40">센서 이름:</div>
+							<input class="form-control" id="inputsensorName" type="text"
+								name="sensorName" />
+						</div>
+						<div class="mb-3 modal-flex">
+							<div class="modal-iot">센서 종류:</div>
+							<select class="dashboard-count" id="iot_sensor" name="sensorType">
+								<option value="1">온도</option>
+								<option value="2">습도</option>
+								<option value="3">조도</option>
+								<option value="4">토양수분</option>
+								<option value="5">강우</option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" type="submit">확인</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</c:forEach>
 <!-- sensor Modal -->
 <c:forEach items="${iotList}" var="item">
 	<div class="modal" id="exampleModalCenter${item.iot_num }"
@@ -255,3 +234,19 @@ function nextIotModal(){
 		</div>
 	</div>
 </c:forEach>
+<script>
+function nextIotModal(){
+	let iotName = $('#iotName').val();
+	$.ajax({
+		url : "mydata/iotadd",
+		type : "post",
+		data : {
+			'iotName' : iotName
+		},
+		success:function(data){
+			var apikey = document.getElementById("apikey");
+			apikey.innerHTML = data;
+		}
+	});
+};
+</script>
