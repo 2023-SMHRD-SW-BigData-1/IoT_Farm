@@ -158,10 +158,7 @@
 				<!-- Dashboard content-->
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
-						<div id="chartdata1"></div>
-						<div id="chartdata1"></div>
-						<div id="chartdata1"></div>
-						<div id="chartdata1"></div>
+						<div id="chartdata"></div>
 					</div>
 				</div>
 			</main>
@@ -182,21 +179,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"
 		crossorigin="anonymous"></script>
 	<script src="js/litepicker.js"></script>
-
 	<script>
 	// Area Chart Example
 function dataselect(dashboardNum) {
-		let timeList = [];
-		let minList = [];
-		let dataList = [];
-		let chartType = [];
-		let sensorDataList = [];
-		
-		
-		
-		
-		
-		
     $.ajax({
         type: "GET",
         url: "mydata/" + dashboardNum,
@@ -205,38 +190,37 @@ function dataselect(dashboardNum) {
         	var sensorDataLList = response.reselect;
         	var chartTypeList = response.chartTypeList;
 
-        	console.log("sensorDateLList : ",sensorDataLList);
+        	console.log("sensorDataLList : ",sensorDataLList);
         	console.log("shartTypeList : ",chartTypeList);
         	
-        	
-        		
-        		for(i = 0; i < sensorDataList.length; i++){
-                	timeList.push(sensorDataList[i].re_date);
-                	dataList.push(sensorDataList[i].sensor_value);
-                	minList.push(sensorDataList[i].re_time);
-                	}
-        	
-			console.log(timeList);
-			console.log("dataList : ",dataList);
-			console.log(minList);
-			
-        	
+        	  	
         	
 
-        	for (var i = 0; i < chartTypeList.length; i++) {
+        	for (var i = 0; i < sensorDataLList.length; i++) {
+        		let timeList = [];
+        		let minList = [];
+        		let dataList = [];
+        		
         	    var chartTypehtml = chartTypeList[i]; // 현재 차트 타입을 가져옴
         		
-        	    for(var j = 0; j < sensorDateLList[i].length; j++){
-        	    timeList.push(sensorDataLList[])
+        	    for(var j = 0; j < sensorDataLList[i].length; j++){
+        	    timeList.push(sensorDataLList[i][j].re_date)
+        	    dataList.push(sensorDataLList[i][j].sensor_value)
+        	    minList.push(sensorDataLList[i][j].re_time)
         	    }
         	    
-        	    var chartdatacontent = document.getElementById("chartdata1");
+        	    console.log("timeList :",timeList)
+        	    console.log("dataList :",dataList)
+        	    console.log("minList :",minList)
+        	    
+        	    var chartdatacontent = document.getElementById("chartdata");
 
         	    
-        	    var chartHTML = ''; // HTML 코드를 저장할 변수
+
 
         	    if (chartTypehtml === 'line') {
-        	        chartHTML = `
+        	    	var content = document.createElement("div");
+        	    	content.innerHTML = `
         	        <div class ="card-body">
         	            <div class="mb-4">
         	                <div class="card mb-4">
@@ -251,6 +235,9 @@ function dataselect(dashboardNum) {
         	            </div>
         	            
         	        `;
+        	        chartdatacontent.appendChild(content);
+        	        
+        	        
                 	const maxValue = Math.max(...dataList);
 					
                 	var ctx = document.getElementById("myLineChart");
@@ -259,9 +246,7 @@ function dataselect(dashboardNum) {
                 	    data: {
                 	        labels: 
                 	        	timeList,
-                	        datasets: 
-                	        	keys.map((key)=>(
-                	        		{
+                	        datasets: [{
                         	            label: "값",
                         	            lineTension: 0.3,
                         	            backgroundColor: "rgba(0, 97, 242, 0.05)",
@@ -275,10 +260,7 @@ function dataselect(dashboardNum) {
                         	            pointHitRadius: 10,
                         	            pointBorderWidth: 2,
                         	            data: dataList
-                        	        }
-                	        	))
-                	        	
-                	        
+                        	        }] 
                 	    },
                 	    options: {
                 	        maintainAspectRatio: false,
@@ -357,7 +339,8 @@ function dataselect(dashboardNum) {
         	        
         	        
         	    } else if (chartTypehtml === 'bar') {
-        	        chartHTML = `
+        	    	var content = document.createElement("div");
+    	    		content.innerHTML = `
         	        	 <div class ="card-body">
         	            <div class="row">
         	                <div class="mb-4">
@@ -373,6 +356,8 @@ function dataselect(dashboardNum) {
         	            </div>
         	            </div>
         	        `;
+        	        chartdatacontent.appendChild(content);
+        	        
         			const maxValue = Math.max(...dataList);
         			
                 	// Bar Chart Example
@@ -464,8 +449,7 @@ function dataselect(dashboardNum) {
         			
         	    }
 
-        	    chartdatacontent.innerHTML = chartHTML;
-        	    chartdata.appendChild(chartdatacontent);
+        	    chartdatacontent.appendChild(content);
         	}
         
       

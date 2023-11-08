@@ -1,60 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<script>
-	function nextModal() {
-		let dbName = $('#inputDbName').val();
 
-		$.ajax({
-			url : "mydata/dashboardadd1",
-			type : "post",
-			data : {
-				'dbName' : dbName
-			}
-
-		});
-	    var sensorSelect = document.getElementById("sensorSelect");
-	    var modal2Body = document.getElementById("modal2-body");
-
-	    // 선택한 값 가져오기
-	    var selectedValue = sensorSelect.value;
-
-	    // modal2-body 내용 업데이트
-	    modal2Body.innerHTML = "";
-
-	    for (var i = 0; i < selectedValue; i++) {
-	        var modal2Content = document.createElement("div");
-	        modal2Content.classList.add("modal-body");
-	        modal2Content.innerHTML = `
-	        	<div class="mb-3 modal-flex">
-				<div class="modal-iot">차트 이름:</div>
-				<input class="form-control" id="inputchartName"
-					name="chartName" type="text" />
-			</div>
-	            <div class="mb-3 modal-flex">
-	                <div class="modal-iot">사용 IoT + 센서:</div>
-	                <select class="dashboard-count" id="iotSelect" name="sensorNum">
-	                    <option value="none"></option>
-	        <c:forEach items="${snList}" var="item">
-	                    <option value="${item.sensor_num}">${item.sensor_name}</option>
-	        </c:forEach>
-	                </select>
-	            </div>
-	            <div class="mb-3 modal-flex">
-	                <div class="modal-iot">차트 타입:</div>
-	                <select class="dashboard-count" name="chartType">
-	                    <option value="none"></option>
-	                    <option value="bar">bar</option>
-	                    <option value="circle">circle</option>
-	                </select>
-	            </div>
-	            <div class="line2"></div>
-	        `;
-
-	        modal2Body.appendChild(modal2Content);
-	    }
-	}
-	</script>
 <!-- dashboard Modal 1 -->
 <div class="modal" id="dashboardModal1" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
