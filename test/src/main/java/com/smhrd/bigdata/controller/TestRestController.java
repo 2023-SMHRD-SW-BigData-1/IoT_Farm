@@ -2,7 +2,9 @@ package com.smhrd.bigdata.controller;
 
 import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -112,31 +114,58 @@ public class TestRestController {
 		}
 	}
 	
-
+	
+	
 	@GetMapping("mydata/{dashboardNum}")
 	@ResponseBody
-	public List<List<Sensor_Re>> sensor_re(@PathVariable int dashboardNum, Model model) {
-		
-		List<Sensor_Re> sensorNumList = service.select_sensorNum(dashboardNum);
-		
-		List<List<Sensor_Re>> reselect = new ArrayList<>();
-		for(Sensor_Re element : sensorNumList) {
-			reselect.add(service.sensor_re(element.getSensor_num()));
-		}
-		
-		System.out.println(reselect);
-		model.addAttribute("reselect",reselect);
-		
-		
-	    return reselect;
+	public Map<String, Object> sensorData(@PathVariable int dashboardNum, Model model) {
+	    Map<String, Object> response = new HashMap<>();
+
+	    List<Sensor_Re> sensorNumList = service.select_sensorNum(dashboardNum);
+	    List<String> chartTypeList = service.select_chartType(dashboardNum);
+	    List<List<Sensor_Re>> reselect = new ArrayList<>();
+
+	    for (Sensor_Re element : sensorNumList) {
+	        reselect.add(service.sensor_re(element.getSensor_num()));
+	    }
+
+	    response.put("reselect", reselect);
+	    response.put("chartTypeList", chartTypeList);
+
+	    System.out.println(reselect);
+	    System.out.println(chartTypeList);
+
+	    // model.addAttribute는 JSON 응답에 직접 영향을 주지 않습니다.
+	    // 필요하다면 model.addAttribute를 사용할 수 있지만 일반적으로는 JSON 객체에 데이터를 추가하는 것이 더 효과적입니다.
+
+	    return response;
 	}
-	    
-//	@GetMapping("mydata/{idx}")
+
+	
+
+//	@GetMapping("mydata/{dashboardNum}")
 //	@ResponseBody
-//	public String sensor_re(@PathVariable int idx, Model model) {
-//		List<Sensor_Re> reselect = service.sensor_re(idx);
+//	public List<List<Sensor_Re>> sensor_re(@PathVariable int dashboardNum, Model model) {
+//		
+//		List<Sensor_Re> sensorNumList = service.select_sensorNum(dashboardNum);
+//		
+//		List<String> chartTypeList = service.select_chartType(dashboardNum);
+//		
+//		List<List<Sensor_Re>> reselect = new ArrayList<>();
+//
+//		for(Sensor_Re element : sensorNumList) {
+//			reselect.add(service.sensor_re(element.getSensor_num()));
+//		}
+//		
 //		System.out.println(reselect);
-//		model.addAttribute("reselect", reselect);
-//		return "success";
+//		System.out.println(chartTypeList);
+//		model.addAttribute("reselect",reselect);
+//		
+//		model.addAttribute("chartTypeList",chartTypeList);
+//		
+//		
+//	    return reselect;
+//	}
+	    
 
 }
