@@ -57,7 +57,7 @@
 							IoT 등록을 완료하면 센서 등록이라는 버튼이 생성이 됩니다. <br> <br> <img
 								class="list-inline-item" width="40%" alt=""
 								src="../assets/img/guide/15.png"> <br>
-							<br>센서 등록을 누르시면 위와 같은 화면이 됩니다. <br> <br>
+							<br>센서 등록 버튼을 클릭하시면 위와 같은 화면이 됩니다. <br> <br>
 							<img class="list-inline-item" width="40%" alt=""
 								src="../assets/img/guide/16.png"> <br>
 							<br>

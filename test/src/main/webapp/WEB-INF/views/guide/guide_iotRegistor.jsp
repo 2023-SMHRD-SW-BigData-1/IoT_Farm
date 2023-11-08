@@ -57,9 +57,9 @@
 						<div class="card-body">로그인 후 우측상단에 있는 마이데이터를 클릭합니다. <br>
 						<br>
 						<img class="list-inline-item" width="40%" alt="" src="../assets/img/guide/12.png">
-						<br><br>화면 좌측의 IOT REGISTER + 버튼을 누릅니다. <br> 
+						<br><br>화면 좌측의 IOT REGISTER + 클릭합니다. <br> 
 						<br><img class="list-inline-item" width="40%" alt="" src="../assets/img/guide/13.png">
-						<br><br>IoT 이름을 입력하시고 확인을 누르면 됩니다.</div>
+						<br><br>IoT 이름을 입력하시고 확인을 클릭하면 됩니다.</div>
 					</div>
 					
 
