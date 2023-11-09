@@ -70,7 +70,8 @@
 							</div>
 
 							<c:forEach items="${iotList}" var="item">
-								<a class="nav-link collapsed mt-10px" href="javascript:void(0);"
+							<div class="lotRegister">
+								<a class="nav-link collapsed" href="javascript:void(0);"
 									data-bs-toggle="collapse"
 									data-bs-target="#collapseUtilities${item.iot_num}"
 									aria-expanded="false" aria-controls="collapseUtilities">
@@ -81,6 +82,7 @@
 										<i class="fas fa-angle-down"></i>
 									</div>
 								</a>
+								</div>
 								<div class="collapse" id="collapseUtilities${item.iot_num }"
 									data-bs-parent="#accordionSidenav">
 									<nav class="sidenav-menu-nested nav">
@@ -142,13 +144,12 @@
 						<div class="page-header-content pt-4">
 							<div class="row align-items-center justify-content-between">
 								<div class="col-auto mt-4">
-									<h1 class="page-header-title">
+									<h1 class="page-header-title" id="titleDashboardName">
 										<div class="page-header-icon">
 											<i data-feather="layout"></i>
 										</div>
-										토마토 온도 대시보드
-									</h1>
-									<div class="page-header-subtitle">토마토 온도 센서</div>
+										${dashboardInfo.dashboard_name}
+									</h1>		
 								</div>
 							</div>
 						</div>
@@ -189,11 +190,15 @@ function dataselect(dashboardNum) {
         success: function(response) {
         	var sensorDataLList = response.reselect;
         	var chartTypeList = response.chartTypeList;
-
+        	var dashboardInfo = response.dashboardInfo;
+			
+        	document.getElementById("titleDashboardName").textContent = dashboardInfo[0].dashboard_name;
         	console.log("sensorDataLList : ",sensorDataLList);
-        	console.log("shartTypeList : ",chartTypeList);
+        	console.log("chartTypeList : ",chartTypeList);
+        	console.log("chartTypeList : ",chartTypeList[0].chart_name);
         	
-        	  	
+        	var chartdatacontent = document.getElementById("chartdata");
+    	    chartdatacontent.innerHTML = "";
         	
 
         	for (var i = 0; i < sensorDataLList.length; i++) {
@@ -201,7 +206,9 @@ function dataselect(dashboardNum) {
         		let minList = [];
         		let dataList = [];
         		
-        	    var chartTypehtml = chartTypeList[i]; // 현재 차트 타입을 가져옴
+        		
+        	    var chartTypehtml = chartTypeList[i].chart_type; // 현재 차트 타입을 가져옴
+        		var chartNameList = chartTypeList[i].chart_name;
         		
         	    for(var j = 0; j < sensorDataLList[i].length; j++){
         	    timeList.push(sensorDataLList[i][j].re_date)
@@ -212,8 +219,8 @@ function dataselect(dashboardNum) {
         	    console.log("timeList :",timeList)
         	    console.log("dataList :",dataList)
         	    console.log("minList :",minList)
-        	    
-        	    var chartdatacontent = document.getElementById("chartdata");
+        	    console.log("chartName :",chartNameList)
+        	    console.log("chartType: ",chartTypehtml)
 
         	    
 
@@ -224,7 +231,7 @@ function dataselect(dashboardNum) {
         	        <div class ="card-body">
         	            <div class="mb-4">
         	                <div class="card mb-4">
-        	                    <div class="card-header">Revenue Summary</div>
+        	                    <div class="card-header">`+chartNameList+`</div>
         	                    <div class="card-body">
         	                        <div class="chart-area">
         	                            <canvas id="myLineChart" width="100%" height="30"></canvas>
@@ -235,6 +242,8 @@ function dataselect(dashboardNum) {
         	            </div>
         	            
         	        `;
+        	        
+        	        
         	        chartdatacontent.appendChild(content);
         	        
         	        
@@ -245,7 +254,7 @@ function dataselect(dashboardNum) {
                 	    type: "line",
                 	    data: {
                 	        labels: 
-                	        	timeList,
+                	        	minList,
                 	        datasets: [{
                         	            label: "값",
                         	            lineTension: 0.3,
@@ -282,14 +291,15 @@ function dataselect(dashboardNum) {
         	        	                    drawBorder: false
         	        	                },
         	        	                ticks: {
-        	        	                    maxTicksLimit: timeList.length
+        	        	                    maxTicksLimit: 8
         	        	                }
         	        	            }],
                 	            yAxes: [{
                 	                ticks: {
                 	                	min: 0,
                 	                    max: maxValue,
-                	                    maxTicksLimit: 10,
+                	                    maxTicksLimit: 5,
+                	                    stepSize: maxValue/40,
                 	                    padding: 10,
                 	                    // Include a dollar sign in the ticks
                 	                    callback: function(value, index, values) {
@@ -327,7 +337,7 @@ function dataselect(dashboardNum) {
                 	                	 var datasetLabel =
                 	                         chart.datasets[tooltipItem.datasetIndex].label || "";
                 	                     var labelText = datasetLabel + " : " + number_format(tooltipItem.yLabel);
-                	                     labelText += ", 시간 : " + minList[tooltipItem.index]; // minList 값 추가
+                	                     labelText += ", 날짜 : " + timeList[tooltipItem.index]; // minList 값 추가
                 	                     return labelText;
                 	                }
                 	            }
@@ -345,7 +355,7 @@ function dataselect(dashboardNum) {
         	            <div class="row">
         	                <div class="mb-4">
         	                    <div class="card h-100">
-        	                        <div class="card-header">Sales Reporting</div>
+        	                        <div class="card-header">`+chartNameList+`</div>
         	                        <div class="card-body d-flex flex-column justify-content-center">
         	                            <div class="chart-bar">
         	                                <canvas id="myBarChart" width="100%" height="30"></canvas>
@@ -365,7 +375,7 @@ function dataselect(dashboardNum) {
                 	var myBarChart = new Chart(ctx, {
                 	    type: "bar",
                 	    data: {
-                	        labels: timeList,
+                	        labels: minList,
                 	        datasets: [{
                 	            label: "값",
                 	            backgroundColor: "rgba(0, 97, 242, 1)",
@@ -395,7 +405,7 @@ function dataselect(dashboardNum) {
                 	                    drawBorder: false
                 	                },
                 	                ticks: {
-                	                    maxTicksLimit: 6
+                	                    maxTicksLimit: 8
                 	                }
                 	            }],
                 	            yAxes: [{
@@ -403,6 +413,7 @@ function dataselect(dashboardNum) {
                 	                    min: 0,
                 	                    max: maxValue,
                 	                    maxTicksLimit: 10,
+                	                    stepSize: maxValue/40,
                 	                    padding: 10,
                 	                    // Include a dollar sign in the ticks
                 	                    callback: function(value, index, values) {
@@ -438,7 +449,7 @@ function dataselect(dashboardNum) {
                 	                	var datasetLabel =
                	                         chart.datasets[tooltipItem.datasetIndex].label || "";
                	                     var labelText = datasetLabel + " : " + number_format(tooltipItem.yLabel);
-               	                     labelText += ", 시간 : " + minList[tooltipItem.index]; // minList 값 추가
+               	                     labelText += ", 날짜 : " + timeList[tooltipItem.index]; // minList 값 추가
                	                     return labelText;
                 	                }
                 	            }

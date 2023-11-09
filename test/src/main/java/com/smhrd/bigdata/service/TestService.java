@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.smhrd.bigdata.mapper.TestMapper;
 import com.smhrd.bigdata.model.Bill;
+import com.smhrd.bigdata.model.Dashboard_Chart;
 import com.smhrd.bigdata.model.Dashboard_Info;
 import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.Sensor_Re;
@@ -163,9 +164,14 @@ public class TestService {
 		return mapper.select_sensorNum(dashboardNum);
 	}
 
-	public List<String> select_chartType(int dashboardNum) {
+	public List<Dashboard_Chart> select_chartType(int dashboardNum) {
 		// TODO Auto-generated method stub
 		return mapper.select_chartType(dashboardNum);
+	}
+
+	public List<Dashboard_Info> select_dashboardInfo(int dashboardNum) {
+		// TODO Auto-generated method stub
+		return mapper.select_dashboardInfo(dashboardNum);
 	}
 
 }

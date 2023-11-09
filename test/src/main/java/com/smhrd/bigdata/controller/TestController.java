@@ -321,7 +321,8 @@ public class TestController {
 	@GetMapping("/mydata")
 	public String mydata(HttpSession session, Model model, @ModelAttribute TestMember m) {
 		TestMember user = (TestMember) session.getAttribute("user");
-
+		
+		
 		//대쉬보드 리스트
 		List<Dashboard_Info> dashboardList = service.dashboard(user.getUser_num());
 		//센서 리스트
@@ -391,7 +392,7 @@ public class TestController {
 			System.out.println(chartNameList[i]);
 			System.out.println(chartTypeList[i]);
 			System.out.println(sensorNumList[i]);
-			service.chartadd(dashboardNum, chartNameList[i], chartTypeList[i], sensorNumList[i]);
+			service.chartadd(dashboardNum, chartTypeList[i], chartNameList[i], sensorNumList[i]);
 		}
 
 		return "redirect:/mydata";

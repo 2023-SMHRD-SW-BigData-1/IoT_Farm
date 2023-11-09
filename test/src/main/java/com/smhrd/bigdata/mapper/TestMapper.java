@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.smhrd.bigdata.model.Bill;
+import com.smhrd.bigdata.model.Dashboard_Chart;
 import com.smhrd.bigdata.model.Dashboard_Info;
 import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.Sensor_Re;
@@ -135,7 +136,10 @@ public interface TestMapper {
 	@Select("select sensor_num from dashboard_chart where dashboard_num=#{dashboardNum};")
 	public List<Sensor_Re> select_sensorNum(int dashboardNum);
 
-	@Select("select chart_type from dashboard_chart where dashboard_num=#{dashboard_num} order by chart_num asc")
-	public List<String> select_chartType(int dashboardNum);
+	@Select("select * from dashboard_chart where dashboard_num=#{dashboard_num} order by chart_num asc")
+	public List<Dashboard_Chart> select_chartType(int dashboardNum);
+	
+	@Select("select * from dashboard_info where dashboard_num=#{dashboard_num}")
+	public List<Dashboard_Info> select_dashboardInfo(int dashboardNum);
 
 }

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.smhrd.bigdata.model.Dashboard_Chart;
+import com.smhrd.bigdata.model.Dashboard_Info;
 import com.smhrd.bigdata.model.IoT_Sensor;
 import com.smhrd.bigdata.model.Iotsensor_Info;
 import com.smhrd.bigdata.model.Sensor_Re;
@@ -122,16 +124,20 @@ public class TestRestController {
 	    Map<String, Object> response = new HashMap<>();
 
 	    List<Sensor_Re> sensorNumList = service.select_sensorNum(dashboardNum);
-	    List<String> chartTypeList = service.select_chartType(dashboardNum);
+	    List<Dashboard_Chart> chartTypeList = service.select_chartType(dashboardNum);
 	    List<List<Sensor_Re>> reselect = new ArrayList<>();
-
+	    List<Dashboard_Info> dashboardInfo = service.select_dashboardInfo(dashboardNum);
+	    
+	    
 	    for (Sensor_Re element : sensorNumList) {
 	        reselect.add(service.sensor_re(element.getSensor_num()));
 	    }
-
+	    
+	    response.put("dashboardInfo",dashboardInfo);
 	    response.put("reselect", reselect);
 	    response.put("chartTypeList", chartTypeList);
-
+	    
+	    
 	    System.out.println(reselect);
 	    System.out.println(chartTypeList);
 
