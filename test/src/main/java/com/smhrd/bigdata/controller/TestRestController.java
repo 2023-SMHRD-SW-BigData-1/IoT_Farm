@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -146,32 +147,13 @@ public class TestRestController {
 
 	    return response;
 	}
-
 	
+	@GetMapping("mydata/delete/{dashboardNum}")
+	public void delete_dashboard(@PathVariable("dashboardNum") int dashboardNum) {
+		service.delete_dashboard(dashboardNum);
+		System.out.println("진입 성공");
+	}
 
-//	@GetMapping("mydata/{dashboardNum}")
-//	@ResponseBody
-//	public List<List<Sensor_Re>> sensor_re(@PathVariable int dashboardNum, Model model) {
-//		
-//		List<Sensor_Re> sensorNumList = service.select_sensorNum(dashboardNum);
-//		
-//		List<String> chartTypeList = service.select_chartType(dashboardNum);
-//		
-//		List<List<Sensor_Re>> reselect = new ArrayList<>();
-//
-//		for(Sensor_Re element : sensorNumList) {
-//			reselect.add(service.sensor_re(element.getSensor_num()));
-//		}
-//		
-//		System.out.println(reselect);
-//		System.out.println(chartTypeList);
-//		model.addAttribute("reselect",reselect);
-//		
-//		model.addAttribute("chartTypeList",chartTypeList);
-//		
-//		
-//	    return reselect;
-//	}
 	    
 
 }

@@ -174,4 +174,10 @@ public class TestService {
 		return mapper.select_dashboardInfo(dashboardNum);
 	}
 
+	public void delete_dashboard(int dashboardNum) {
+		// TODO Auto-generated method stub
+		mapper.delete_dashboard(dashboardNum);
+		
+	}
+
 }

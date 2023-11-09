@@ -142,4 +142,7 @@ public interface TestMapper {
 	@Select("select * from dashboard_info where dashboard_num=#{dashboard_num}")
 	public List<Dashboard_Info> select_dashboardInfo(int dashboardNum);
 
+	@Delete("delete from dashboard_info where dashboard_num=#{dashboardNum}" )
+	public void delete_dashboard(int dashboardNum);
+
 }

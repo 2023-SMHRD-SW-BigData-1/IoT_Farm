@@ -70,7 +70,6 @@
 							</div>
 
 							<c:forEach items="${iotList}" var="item">
-							<div class="lotRegister">
 								<a class="nav-link collapsed" href="javascript:void(0);"
 									data-bs-toggle="collapse"
 									data-bs-target="#collapseUtilities${item.iot_num}"
@@ -82,26 +81,34 @@
 										<i class="fas fa-angle-down"></i>
 									</div>
 								</a>
-								</div>
-								<div class="collapse" id="collapseUtilities${item.iot_num }"
-									data-bs-parent="#accordionSidenav">
-									<nav class="sidenav-menu-nested nav">
-										<c:forEach items="${sensorList}" var="item2">
-											<c:forEach items="${item2}" var="item3">
-												<c:if test="${item.getIot_num().equals(item3.getIot_num())}">
-													<a class="nav-link" href="#" data-bs-toggle="modal">${item3.sensor_name}</a>
-												</c:if>
+								<div>
+									<div class="collapse" id="collapseUtilities${item.iot_num }"
+										data-bs-parent="#accordionSidenav">
+										<nav class="sidenav-menu-nested nav">
+											<c:forEach items="${sensorList}" var="item2">
+												<c:forEach items="${item2}" var="item3">
+													<div class="lotRegister">
+														<c:if
+															test="${item.getIot_num().equals(item3.getIot_num())}">
+															<a class="nav-link lot-register-width" href="#"
+																data-bs-toggle="modal">${item3.sensor_name}</a>
+														</c:if>
+														<div>
+															<a href="#" style="color: #a7aeb8"><i data-feather="trash-2"></i></a>
+														</div>
+													</div>
+												</c:forEach>
 											</c:forEach>
-										</c:forEach>
-										<%
-										if (max.getMaxSensor() > max.getMySensor()) {
-										%>
-										<button class="nav-link sensor-btn" data-bs-toggle="modal" href="#"
-											data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</button>
-										<%
-										}
-										%>
-									</nav>
+											<%
+											if (max.getMaxSensor() > max.getMySensor()) {
+											%>
+											<button class="nav-link sensor-btn" data-bs-toggle="modal"
+												href="#" data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</button>
+											<%
+											}
+											%>
+										</nav>
+									</div>
 								</div>
 							</c:forEach>
 
@@ -123,12 +130,18 @@
 							<!-- Sidenav Accordion (Dashboard)-->
 
 							<c:forEach items="${dashboardList }" var="dashboard">
-								<a class="nav-link collapsed mt-10px" href="#"
-									onclick="dataselect(${dashboard.dashboard_num})">
-									<div class="nav-link-icon">
-										<i data-feather="layout"></i>
-									</div>${dashboard.dashboard_name}
-								</a>
+								<div class="lotRegister">
+									<a class="nav-link collapsed mt-10px lot-register-width"
+										href="#" onclick="dataselect(${dashboard.dashboard_num})">
+										<div class="nav-link-icon">
+											<i data-feather="layout"></i>
+										</div>${dashboard.dashboard_name}
+									</a>
+									<div>
+										<a href="#" style="color: #a7aeb8"
+											onclick="dashboard_delete(${dashboard.dashboard_num})"><i class="mt-2" data-feather="trash-2"></i></a>
+									</div>
+								</div>
 							</c:forEach>
 						</div>
 					</div>
@@ -144,12 +157,7 @@
 						<div class="page-header-content pt-4">
 							<div class="row align-items-center justify-content-between">
 								<div class="col-auto mt-4">
-									<h1 class="page-header-title" id="titleDashboardName">
-										<div class="page-header-icon">
-											<i data-feather="layout"></i>
-										</div>
-										${dashboardInfo.dashboard_name}
-									</h1>		
+									<h1 class="page-header-title" id="titleDashboardName"></h1>
 								</div>
 							</div>
 						</div>
@@ -471,8 +479,21 @@ function dataselect(dashboardNum) {
     });
     
 	};
-	
-	
+	</script>
+	<script>
+		function dashboard_delete(dashboard_num){
+			$.ajax({
+				url : "mydata/delete/"+dashboard_num,
+				type : "get",
+				success : function(){
+					console.log("성공")
+					location.reload();
+				},
+				error : function(){
+					console.log("실패");
+				}
+			})
+		}
 	</script>
 </body>
 </html>

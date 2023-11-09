@@ -21117,7 +21117,10 @@ pre[class*=language-] {
 }
 .chart-width{width: 20%;}
 .sensor-btn{background: none; border: none; font-weight: bolder;}
-
+.lotRegister{display: flex; align-items: center;}
+.iotDeleteBtn{width: 35px; height: 20px; font-size: smaller; display: flex; margin-top: 5px;
+ margin-right: 7px; border: none; background-color: transparent; font-weight: bolder; color: red;}
+.lot-register-width{width: 90%;}
 
 /*===========================================================*/
 
