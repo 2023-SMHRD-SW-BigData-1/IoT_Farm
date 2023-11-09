@@ -163,7 +163,16 @@
 					<div class="container-xl px-4">
 						<div class="page-header-content pt-4">
 							<div class="row align-items-center justify-content-between">
-								<div class="col-auto mt-4" id="mydata_title"></div>
+								<div class="col-auto mt-4" id="mydata_title">
+								<h1 class="page-header-title fw-800">
+										<div class="page-header-icon ">
+											<i data-feather="book"></i>
+										</div>
+										마이데이터
+									</h1>
+									<br>
+									<div class="page-header-subtitle">데이터를 입력하고 모니터링하세요!</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -171,7 +180,7 @@
 
 				<!-- Dashboard content-->
 				<div class="container-xl px-4">
-					<div class="card mt-n10">
+					<div class="mt-n10">
 						<div id="mydata_content"></div>
 					</div>
 				</div>
@@ -232,7 +241,7 @@ function dataselect(dashboardNum) {
         	<h1 class="page-header-title" id="titleDashboardName">
         		<div class="page-header-icon ">
 				<i data-feather="book"></i>
-			</div>aaaaaaaaaaaa</h1>
+			</div>`+dashboardInfo[0].dashboard_name+`</h1>
         	`;
         	chartdatatitle.appendChild(title);
         	
@@ -263,31 +272,35 @@ function dataselect(dashboardNum) {
         	    console.log("chartName :",chartNameList)
         	    console.log("chartType: ",chartTypehtml)
 
-        	    if(dataList == null || dataList.length === 0){
+				
+        	    if (timeList.length == 0){
         	    	var content = document.createElement("div");
         	    	content.innerHTML = `
-        	        <div class ="card-body">
-        	            <div class="mb-4">
+        	            <div class="mt-4 mb-4">
         	                <div class="card mb-4">
         	                    <div class="card-header">`+chartNameList+`</div>
         	                    <div class="card-body">
-        	                        <div class="chart-area">
-        	                            <canvas width="100%" height="30"><h1>입력하신 데이터가 없습니다.</h1></canvas>
-        	                        </div>
+        	                        <div class="chart-area emptychartcontent">
+        	                            <div width="100%" height="30">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp입력하신 데이터가 없습니다.<br> 가이드라인을 참고하여 데이터를 입력해주세요.</div>
+        	                            </div>
+        	                            <div class="emptychartcontent linkguideline">
+        	                            <a href="guide/guide_first" class="">데이터를 입력하는법을 모르신다면 ?</a>
+        	                            <div>
         	                    </div>
         	                </div>
         	            </div>
-        	            </div>
         	            
         	        `;
-        	    	continue;
+        	        chartdatacontent.appendChild(content);
+        	        continue;
         	    }
-
-
+        	
+        	    
+        	    
         	    if (chartTypehtml === 'line') {
         	    	var content = document.createElement("div");
         	    	content.innerHTML = `
-        	            <div class="mb-4">
+        	            <div class="mt-4 mb-4">
         	                <div class="card mb-4">
         	                    <div class="card-header">`+chartNameList+`</div>
         	                    <div class="card-body">
@@ -408,15 +421,15 @@ function dataselect(dashboardNum) {
         	    } else if (chartTypehtml === 'bar') {
         	    	var content = document.createElement("div");
     	    		content.innerHTML = `
-        	                <div class="card h-100">
+        	                <div class="card h-100 mt-4">
         	                        <div class="card-header">`+chartNameList+`</div>
         	                        <div class="card-body d-flex flex-column justify-content-center">
         	                            <div class="chart-bar">
         	                                <canvas id="myBarChart" width="100%" height="30"></canvas>
-										
+										</div>
         	                            </div>
         	                        </div>
-        	            	</div>
+        	            
         	        `;
         	        chartdatacontent.appendChild(content);
         	        

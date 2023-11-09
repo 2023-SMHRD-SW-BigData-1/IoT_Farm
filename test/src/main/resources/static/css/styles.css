@@ -21122,6 +21122,8 @@ pre[class*=language-] {
  margin-right: 7px; border: none; background-color: transparent; font-weight: bolder; color: red;}
 .lot-register-width{width: 90%;}
 .margin-right12{margin-right: 12px;}
+.emptychartcontent{display: flex; justify-content: center; align-items: center;}
+.linkguideline{margin-bottom: 10%;}
 
 /*===========================================================*/
 
