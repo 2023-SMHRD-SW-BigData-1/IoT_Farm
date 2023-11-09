@@ -145,4 +145,10 @@ public interface TestMapper {
 	@Delete("delete from dashboard_info where dashboard_num=#{dashboardNum}" )
 	public void delete_dashboard(int dashboardNum);
 
+	@Delete("delete from iotsensor_info where sensor_num=#{sensorNum}")
+	public void delete_sensor(int sensorNum);
+
+	@Delete("delete from useriot_info where iot_num=#{iotNum}")
+	public void delete_iot(int iotNum);
+
 }

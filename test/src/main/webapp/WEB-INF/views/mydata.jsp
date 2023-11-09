@@ -93,7 +93,7 @@
 																data-bs-toggle="modal">${item3.sensor_name}</a>
 														</c:if>
 														<div>
-															<a href="#" style="color: #a7aeb8"><i data-feather="trash-2"></i></a>
+															<a href="#" style="color: #a7aeb8" onclick="sensor_delete(${item3.sensor_num})"><i data-feather="trash-2" class="margin-right12"></i></a>
 														</div>
 													</div>
 												</c:forEach>
@@ -101,8 +101,11 @@
 											<%
 											if (max.getMaxSensor() > max.getMySensor()) {
 											%>
+											<div class="lotRegister">
 											<button class="nav-link sensor-btn" data-bs-toggle="modal"
 												href="#" data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</button>
+												<button class="nav-link sensor-btn" href="#" onclick="delete_iot(${item.iot_num})">기기삭제</button>
+											</div>
 											<%
 											}
 											%>
@@ -137,8 +140,9 @@
 										</div>${dashboard.dashboard_name}
 									</a>
 									<div>
+							
 										<a href="#" style="color: #a7aeb8"
-											onclick="dashboard_delete(${dashboard.dashboard_num})"><i class="mt-2" data-feather="trash-2"></i></a>
+											onclick="dashboard_delete(${dashboard.dashboard_num})"><i class="mt-2 margin-right12" data-feather="trash-2"></i></a>
 									</div>
 								</div>
 							</c:forEach>
@@ -228,7 +232,10 @@ function dataselect(dashboardNum) {
         	    console.log("chartName :",chartNameList)
         	    console.log("chartType: ",chartTypehtml)
 
-        	    
+        	    if(dataList==null){
+        	    	
+        	    	continue;
+        	    }
 
 
         	    if (chartTypehtml === 'line') {
@@ -481,7 +488,7 @@ function dataselect(dashboardNum) {
 	<script>
 		function dashboard_delete(dashboard_num){
 			$.ajax({
-				url : "mydata/delete/"+dashboard_num,
+				url : "mydata/dashboard_delete/"+dashboard_num,
 				type : "get",
 				success : function(){
 					console.log("성공")
@@ -492,6 +499,38 @@ function dataselect(dashboardNum) {
 				}
 			})
 		}
+	</script>
+	<script>
+	function sensor_delete(sensor_num){
+		$.ajax({
+			url : "mydata/sensor_delete/"+sensor_num,
+			type : "get",
+			success : function(){
+				console.log("성공")
+				location.reload();
+			},
+			error : function(){
+				console.log("실패");
+			}
+		})
+	}
+	
+	</script>
+	<script>
+	function delete_iot(iot_num){
+		$.ajax({
+			url : "mydata/iot_delete/"+iot_num,
+			type : "get",
+			success : function(){
+				console.log("성공")
+				location.reload();
+			},
+			error : function(){
+				console.log("실패");
+			}
+		})
+	}
+
 	</script>
 </body>
 </html>
