@@ -91,10 +91,10 @@
 															test="${item.getIot_num().equals(item3.getIot_num())}">
 															<a class="nav-link lot-register-width" href="#"
 																data-bs-toggle="modal">${item3.sensor_name}</a>
-														</c:if>
 														<div>
 															<a href="#" style="color: #a7aeb8" onclick="sensor_delete(${item3.sensor_num})"><i data-feather="trash-2" class="margin-right12"></i></a>
 														</div>
+														</c:if>
 													</div>
 												</c:forEach>
 											</c:forEach>

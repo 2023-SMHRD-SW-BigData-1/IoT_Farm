@@ -21127,7 +21127,7 @@ pre[class*=language-] {
 
 /*레이아웃*/
 #header {height : 98px;background:#ffffff;border-bottom: 1px solid #d9d9d9}
-#main {height : 1047.2px;background:#ffffff;overflow: hidden}
+#main {height : 1047.2px;overflow: hidden}
 #footer {height : 213.6px;background:#111111;}
 
 #sub_main {height : 1237px;background:#ffffff;} 
@@ -21234,7 +21234,7 @@ pre[class*=language-] {
 
 .line {height: 800px; border: 3px solid #e0dfe5;}
 
-.line2 {display: flex; justify-content: center; width: 100%; border: 2px solid #e0dfe5;}
+.line2 {display: flex; justify-content: center; width: 100%; border: 0.5px solid #e0dfe5;}
 
 .question_item {margin: 0 200px 0 200px; cursor:pointer}
 

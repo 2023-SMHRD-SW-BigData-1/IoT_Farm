@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script>
    function nextModal() {
       let dbName = $('#inputDbName').val();
@@ -22,7 +23,14 @@
        // modal2-body 내용 업데이트
        modal2Body.innerHTML = "";
 
+       
+       
        for (var i = 0; i < selectedValue; i++) {
+       if (selectedValue >= 2) {
+    	    var lineDiv = document.createElement("div");
+    	    lineDiv.classList.add("line2");
+    	    modal2Body.appendChild(lineDiv);
+    	}
            var modal2Content = document.createElement("div");
            modal2Content.classList.add("modal-body");
            modal2Content.innerHTML = `
@@ -48,7 +56,6 @@
                        <option value="line">line</option>
                    </select>
                </div>
-               <div class="line2"></div>
            `;
 
            modal2Body.appendChild(modal2Content);
