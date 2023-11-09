@@ -51,7 +51,7 @@ var swiper = new Swiper(".main_swiper", {
     }
   }
 });
-
+	
 var swiper = new Swiper(".sub_swiper_1", {
 		effect: "fade",
         direction: "vertical",

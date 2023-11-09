@@ -20,16 +20,16 @@
 	<div id="main">
 		<div class="container_main">
 			<div class="main_left">
-				<h1 class="main_text1">
+				<h1 class="main_text1 fw-600">
 					사물인터넷(IoT)을 위한<br>최적의 클라우드 환경 제공
 				</h1>
 				<div class="swiper swiper_left">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide contents_main">
-							<h2 class="main_text2">센서 분류 AI 사용</h2>
+							<h2 class="main_text2">간편한 IoT 솔루션</h2>
 							<span class="main_left_IoT_img"><img src="./img/IoT.png"></span>
 							<h3 class="main_text3">
-								센서 분류 AI의 사용을 통해 사용자에게<br>더 쉬운 클라우드 서버 솔루션을 제공
+								데이터 베이스가 없어도<br>센서데이터를 이용가능
 							</h3>
 
 						</div>

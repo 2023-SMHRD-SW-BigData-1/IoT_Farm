@@ -113,9 +113,7 @@ public class TestRestController {
 	    
 	    System.out.println(reselect);
 	    System.out.println(chartTypeList);
-
-	    // model.addAttribute는 JSON 응답에 직접 영향을 주지 않습니다.
-	    // 필요하다면 model.addAttribute를 사용할 수 있지만 일반적으로는 JSON 객체에 데이터를 추가하는 것이 더 효과적입니다.
+	    System.out.println(dashboardInfo);
 
 	    return response;
 	}

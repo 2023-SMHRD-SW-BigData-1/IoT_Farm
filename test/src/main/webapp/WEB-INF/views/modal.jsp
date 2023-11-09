@@ -103,7 +103,7 @@
       <div class="modal-content">
          <div class="modal-header">
             <h5 class="modal-title" id="exampleModalCenterTitle">차트 생성</h5>
-            <span class="modal-span">차트 타입은 가이드라인에서 자세히 확인할 수 있습니다.</span>
+           
             <button class="btn-close" type="button" data-bs-dismiss="modal"
                aria-label="Close"></button>
          </div>

@@ -235,7 +235,7 @@
 						<div class="page-header-content pt-4">
 							<div class="row align-items-center justify-content-between">
 								<div class="col-auto mt-4" id="mydata_title">
-								<h1 class="page-header-title fw-800">
+									<h1 class="page-header-title fw-800">
 										마이데이터
 									</h1>
 									<br>
@@ -246,9 +246,50 @@
 					</div>
 				</header>
 
+
+
+
 				<!-- Dashboard content-->
-				<div class="container-xl px-4 mt-n10">
-					<div id="mydata_content"></div>
+
+				<div class="container-xl px-4">
+					<div class="mt-n10">
+						<div id="mydata_content">
+							<div class="container-xl px-4">
+								<div class="card mt-n10">
+									<div class="card-header">환영합니다!</div>
+									<div class="card-body">
+										아오팜은 IoT 클라우드 솔루션과 모니터링 웹서비스를 지원하고 있습니다.<br> 클라우드 서비스와 같이
+										자신에게 맞는 모니터링 대시보드를 구성해봅시다!
+
+									</div>
+								</div>
+
+
+								<div class="card mt-4">
+									<div class="card-header">IoT 클라우드 서비스 이용하기</div>
+									<div class="card-body">
+										아오팜은 자신 센서데이터를 저장할 수 있는 IoT 클라우드 서비스를 제공하고 있습니다. <br> 다음의
+										단계를 따라가면서 클라우드 서비스를 이용해봅시다.<br>
+										<br> <br> <br> <a class="nav-link"
+											href="/bigdata/guide/guide_iotSetting">IoT 세팅부터 시작하기<i
+											data-feather="arrow-right" style="margin-top:0.15rem"></i></a>
+
+
+									</div>
+								</div>
+								<div class="card mt-4 mb-15">
+									<div class="card-header">대시보드 차트 선택하기</div>
+									<div class="card-body">
+									<div class="card-header mt-4">Line Chart</div>
+                                <div class="chart-area"><canvas id="examplelinechart" width="100%" height="30"></canvas></div>
+                                <div class="card-header mt-10">Bar Chart</div>
+                                <div class="chart-area"><canvas id="exampleBarchart" width="100%" height="30"></canvas></div>
+                           
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</main>
 		</div>
