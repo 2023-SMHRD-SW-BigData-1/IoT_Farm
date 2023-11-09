@@ -167,8 +167,13 @@ public class TestRestController {
 	}
 	
 	@GetMapping("mydata/sensor/{sensorNum}")
-	public List<Sensor_Re> sensorContent(@PathVariable("sensorNum") int sensorNum){
-		return service.sensorContent(sensorNum);
+	public Map<String, Object> sensorContent(@PathVariable("sensorNum") int sensorNum){
+		Map<String, Object> response = new HashMap<>();
+		Iotsensor_Info select = service.selectSensor(sensorNum);
+		response.put("first", select.getSensor_name());
+		response.put("second", select.getSensor_type());
+		response.put("table",service.sensorContent(sensorNum));
+		return response;
 	}
 	
 }

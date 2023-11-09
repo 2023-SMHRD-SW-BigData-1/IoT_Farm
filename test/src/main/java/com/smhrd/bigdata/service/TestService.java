@@ -195,4 +195,9 @@ public class TestService {
 		return mapper.sensorContent(sensorNum);
 	}
 
+	public Iotsensor_Info selectSensor(int sensorNum) {
+		// TODO Auto-generated method stub
+		return mapper.selectSensor(sensorNum);
+	}
+
 }

@@ -18,6 +18,9 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Boxed Layout - SB Admin Pro</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
+	rel="stylesheet" />
 <link href="css/styles.css" rel="stylesheet" />
 <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
 <script data-search-pseudo-elements defer
@@ -26,6 +29,79 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
 	crossorigin="anonymous"></script>
+<script>function sensorContent(sensorNum){
+	$.ajax({
+		type:"get",
+		url:"mydata/sensor/"+sensorNum,
+		success:function(response){
+			var first = response.first; 
+        	var second = response.second;
+        	var table = response.table;
+        	
+			if (second == 1){second = "온도 센서";}
+			else if (second == 2){second = "온습도 센서";}
+			else if (second == 3){ second = "조도 센서";}
+			else if (second == 4){ second = "토양 수분 센서";}
+			else if (second == 5){ second = "강우 센서";}
+       	   
+       	
+        	
+			var titleLayout=document.getElementById("mydata_title");
+			titleLayout.innerHTML = "";
+        	var title = document.createElement("div");
+        	title.innerHTML = `
+        		<h1 class="page-header-title fw-800">
+				<div class="page-header-icon ">
+					<i data-feather="book"></i>
+					
+				</div>
+				`+first+`
+			</h1>
+			<div class="page-header-subtitle">`+second+`</div>
+        	`;
+        	titleLayout.appendChild(title);
+			
+        	var contentLayout = document.getElementById("mydata_content");
+			contentLayout.innerHTML="";
+			var contentDiv = document.createElement("div");
+			var content=`<div class="card mb-4">
+				<div class="card-header">Sensor History</div>
+				<div class="card-body p-0">
+					<!-- Billing history table-->
+					<div class="table-responsive table-billing-history">
+						<table class="table mb-0">
+							<thead>
+						<thead>
+							<tr>
+							<th></th>
+							 <th>Sensor Value</th>
+                             <th>&nbsp&nbsp&nbsp&nbsp&nbspDate</th>
+                             <th>&nbsp&nbspTime</th>
+                             <th></th>
+							</tr>
+						</thead>
+						<tbody>`;
+			
+						for (var i = 0; i < table.length; i++) {
+		                	   content+=`<tr>
+		                	   <td></td>
+		                           <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp`+table[i].sensor_value+`</td>
+		                           <td>`+table[i].re_date+`</td>
+		                           <td>`+table[i].re_time+`</td>
+		                           <td></td>
+		                       </tr>`;
+						}
+				content+=`</tbody>
+					</table>
+				</div>
+			</div>`;
+                    contentDiv.innerHTML =content;
+                    contentLayout.appendChild(contentDiv);
+        	
+						}
+						
+	})
+};</script>
 </head>
 <body class="nav-fixed">
 	<jsp:include page="modal.jsp"></jsp:include>
@@ -90,8 +166,7 @@
 													<c:if
 														test="${item.getIot_num().equals(item3.getIot_num())}">
 														<a class="nav-link lot-register-width" href="#"
-															onclick="sensorContent(${item3.sensor_num})"
-															data-bs-toggle="modal">${item3.sensor_name}</a>
+															onclick="sensorContent(${item3.sensor_num})">${item3.sensor_name}</a>
 														<div>
 															<a href="#" style="color: #a7aeb8"
 																onclick="sensor_delete(${item3.sensor_num})"><i
@@ -170,42 +245,14 @@
 				</header>
 
 				<!-- Dashboard content-->
-				<div class="container-xl px-4">
-					<div class="card mt-n10">
-						<div id="mydata_content"></div>
-					</div>
+				<div class="container-xl px-4 mt-n10">
+					<div id="mydata_content"></div>
 				</div>
 			</main>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js">
-</script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-	<script src="js/scripts.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
-		crossorigin="anonymous"></script>
-	<script src="assets/demo/chart-area-demo.js"></script>
-	<script src="assets/demo/chart-bar-demo.js"></script>
-	<script src="assets/demo/chart-pie-demo.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"
-		crossorigin="anonymous"></script>
-	<script src="js/litepicker.js"></script>
-	<script>
-	// Sensor Content
-	function sensorContent(sensorNum){
-		$.ajax({
-			type:"get",
-			url:"mydata/sensor/"+sensorNum,
-			success:function(response){
-				var content = document.getElementById("mydata_content");
-				content.innerHTML = "";
-			}
-		})
-	}
-	
+
+	<script>	
 	// Area Chart Example
 function dataselect(dashboardNum) {
     $.ajax({
@@ -556,5 +603,23 @@ function dataselect(dashboardNum) {
 	}
 
 	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+</script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+		crossorigin="anonymous"></script>
+	<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script src="assets/demo/chart-pie-demo.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"
+		crossorigin="anonymous"></script>
+	<script src="js/litepicker.js"></script>
+	<script src="js/datatables/datatables-simple-demo.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
+		crossorigin="anonymous"></script>
 </body>
 </html>

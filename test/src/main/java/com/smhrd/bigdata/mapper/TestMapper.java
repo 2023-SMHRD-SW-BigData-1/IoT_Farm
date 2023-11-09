@@ -153,5 +153,10 @@ public interface TestMapper {
 
 	@Select("select * from sensor_re where sensor_num=#{sensorNum}")
 	public List<Sensor_Re> sensorContent(int sensorNum);
+	
+	@Select("select * from iotsensor_info where sensor_num=#{sensorNum}")
+	public Iotsensor_Info selectSensor(int sensorNum);
 
+	
+	
 }
