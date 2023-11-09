@@ -151,4 +151,7 @@ public interface TestMapper {
 	@Delete("delete from useriot_info where iot_num=#{iotNum}")
 	public void delete_iot(int iotNum);
 
+	@Select("select * from sensor_re where sensor_num=#{sensorNum}")
+	public List<Sensor_Re> sensorContent(int sensorNum);
+
 }

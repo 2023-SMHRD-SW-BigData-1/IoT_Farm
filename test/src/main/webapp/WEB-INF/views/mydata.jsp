@@ -44,109 +44,114 @@
 				</a>
 				<div class="sidenav-menu">
 					<div class="nav accordion" id="accordionSidenav">
-					
-							<!-- iot-->
-							<div class="sidenav-menu-heading nav-menu">
-								<div>iot register</div>
-								<%
-								if (max.getMaxIot() > max.getMyIot()) {
-								%>
-								<button
-									class="nav-plus badge bg-primary-soft text-primary ms-auto"
-									href="#" data-bs-toggle="modal" data-bs-target="#iotModal1">+</button>
-								<%
-								} else {
-								%>
-								<a style="text-decoration: none"
-									class="nav-plus badge bg-primary-soft text-primary" href="#!"
-									tabindex="0" data-bs-container="body" data-bs-toggle="popover"
-									data-bs-placement="right"
-									data-bs-content="더 많은 IoT를 사용 가능을 위해 버전 업그레이드가 필요합니다!"
-									title="IoT의 최대개수에 도달했습니다.">+</a>
-								<%
-								}
-								%>
-							</div>
 
-							<c:forEach items="${iotList}" var="item">
-								<a class="nav-link collapsed" href="javascript:void(0);"
-									data-bs-toggle="collapse"
-									data-bs-target="#collapseUtilities${item.iot_num}"
-									aria-expanded="false" aria-controls="collapseUtilities">
-									<div class="nav-link-icon">
-										<i data-feather="settings"></i>
-									</div> ${item.iot_name}
-									<div class="sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div>
-									<div class="collapse" id="collapseUtilities${item.iot_num }"
-										data-bs-parent="#accordionSidenav">
-										<nav class="sidenav-menu-nested nav">
-											<c:forEach items="${sensorList}" var="item2">
-												<c:forEach items="${item2}" var="item3">
-													<div class="lotRegister">
-														<c:if
-															test="${item.getIot_num().equals(item3.getIot_num())}">
-															<a class="nav-link lot-register-width" href="#"
-																data-bs-toggle="modal">${item3.sensor_name}</a>
+						<!-- iot-->
+						<div class="sidenav-menu-heading nav-menu">
+							<div>iot register</div>
+							<%
+							if (max.getMaxIot() > max.getMyIot()) {
+							%>
+							<button
+								class="nav-plus badge bg-primary-soft text-primary ms-auto"
+								href="#" data-bs-toggle="modal" data-bs-target="#iotModal1">+</button>
+							<%
+							} else {
+							%>
+							<a style="text-decoration: none"
+								class="nav-plus badge bg-primary-soft text-primary" href="#!"
+								tabindex="0" data-bs-container="body" data-bs-toggle="popover"
+								data-bs-placement="right"
+								data-bs-content="더 많은 IoT를 사용 가능을 위해 버전 업그레이드가 필요합니다!"
+								title="IoT의 최대개수에 도달했습니다.">+</a>
+							<%
+							}
+							%>
+						</div>
+
+						<c:forEach items="${iotList}" var="item">
+							<a class="nav-link collapsed" href="javascript:void(0);"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapseUtilities${item.iot_num}"
+								aria-expanded="false" aria-controls="collapseUtilities">
+								<div class="nav-link-icon">
+									<i data-feather="settings"></i>
+								</div> ${item.iot_name}
+								<div class="sidenav-collapse-arrow">
+									<i class="fas fa-angle-down"></i>
+								</div>
+							</a>
+							<div>
+								<div class="collapse" id="collapseUtilities${item.iot_num }"
+									data-bs-parent="#accordionSidenav">
+									<nav class="sidenav-menu-nested nav">
+										<c:forEach items="${sensorList}" var="item2">
+											<c:forEach items="${item2}" var="item3">
+												<div class="lotRegister">
+													<c:if
+														test="${item.getIot_num().equals(item3.getIot_num())}">
+														<a class="nav-link lot-register-width" href="#"
+															onclick="sensorContent(${item3.sensor_num})"
+															data-bs-toggle="modal">${item3.sensor_name}</a>
 														<div>
-															<a href="#" style="color: #a7aeb8" onclick="sensor_delete(${item3.sensor_num})"><i data-feather="trash-2" class="margin-right12"></i></a>
+															<a href="#" style="color: #a7aeb8"
+																onclick="sensor_delete(${item3.sensor_num})"><i
+																data-feather="trash-2" class="margin-right12"></i></a>
 														</div>
-														</c:if>
-													</div>
-												</c:forEach>
+													</c:if>
+												</div>
 											</c:forEach>
-											<%
-											if (max.getMaxSensor() > max.getMySensor()) {
-											%>
-											<div class="lotRegister">
+										</c:forEach>
+										<%
+										if (max.getMaxSensor() > max.getMySensor()) {
+										%>
+										<div class="lotRegister">
 											<button class="nav-link sensor-btn" data-bs-toggle="modal"
 												href="#" data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</button>
-												<button class="nav-link sensor-btn" href="#" onclick="delete_iot(${item.iot_num})">기기삭제</button>
-											</div>
-											<%
-											}
-											%>
-										</nav>
-									</div>
+											<button class="nav-link sensor-btn" href="#"
+												onclick="delete_iot(${item.iot_num})">기기삭제</button>
+										</div>
+										<%
+										}
+										%>
+									</nav>
 								</div>
-							</c:forEach>
-
-
-							<!-- dashboard-->
-							<div class="sidenav-menu-heading nav-menu">
-								<div>dash boards</div>
-								<button
-									class="nav-plus badge bg-primary-soft text-primary ms-auto"
-									href="#" data-bs-toggle="modal"
-									data-bs-target="#dashboardModal1">+</button>
 							</div>
-							<div class="collapse" id="collapsePages"
-								data-bs-parent="#accordionSidenav">
-								<nav class="sidenav-menu-nested nav accordion"
-									id="accordionSidenavPagesMenu"></nav>
-							</div>
+						</c:forEach>
 
-							<!-- Sidenav Accordion (Dashboard)-->
 
-							<c:forEach items="${dashboardList }" var="dashboard">
-								<div class="lotRegister">
-									<a class="nav-link collapsed mt-10px lot-register-width"
-										href="#" onclick="dataselect(${dashboard.dashboard_num})">
-										<div class="nav-link-icon">
-											<i data-feather="layout"></i>
-										</div>${dashboard.dashboard_name}
-									</a>
-									<div>
-							
-										<a href="#" style="color: #a7aeb8"
-											onclick="dashboard_delete(${dashboard.dashboard_num})"><i class="mt-2 margin-right12" data-feather="trash-2"></i></a>
-									</div>
-								</div>
-							</c:forEach>
+						<!-- dashboard-->
+						<div class="sidenav-menu-heading nav-menu">
+							<div>dash boards</div>
+							<button
+								class="nav-plus badge bg-primary-soft text-primary ms-auto"
+								href="#" data-bs-toggle="modal"
+								data-bs-target="#dashboardModal1">+</button>
 						</div>
+						<div class="collapse" id="collapsePages"
+							data-bs-parent="#accordionSidenav">
+							<nav class="sidenav-menu-nested nav accordion"
+								id="accordionSidenavPagesMenu"></nav>
+						</div>
+
+						<!-- Sidenav Accordion (Dashboard)-->
+
+						<c:forEach items="${dashboardList }" var="dashboard">
+							<div class="lotRegister">
+								<a class="nav-link collapsed mt-10px lot-register-width"
+									href="#" onclick="dataselect(${dashboard.dashboard_num})">
+									<div class="nav-link-icon">
+										<i data-feather="layout"></i>
+									</div>${dashboard.dashboard_name}
+								</a>
+								<div>
+
+									<a href="#" style="color: #a7aeb8"
+										onclick="dashboard_delete(${dashboard.dashboard_num})"><i
+										class="mt-2 margin-right12" data-feather="trash-2"></i></a>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
 			</nav>
 		</div>
 
@@ -158,9 +163,7 @@
 					<div class="container-xl px-4">
 						<div class="page-header-content pt-4">
 							<div class="row align-items-center justify-content-between">
-								<div class="col-auto mt-4">
-									<h1 class="page-header-title" id="titleDashboardName"></h1>
-								</div>
+								<div class="col-auto mt-4" id="mydata_title"></div>
 							</div>
 						</div>
 					</div>
@@ -169,14 +172,7 @@
 				<!-- Dashboard content-->
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
-						<div id="mydata_content">
-						
-						
-						
-						
-						
-						
-						</div>
+						<div id="mydata_content"></div>
 					</div>
 				</div>
 			</main>
@@ -198,6 +194,18 @@
 		crossorigin="anonymous"></script>
 	<script src="js/litepicker.js"></script>
 	<script>
+	// Sensor Content
+	function sensorContent(sensorNum){
+		$.ajax({
+			type:"get",
+			url:"mydata/sensor/"+sensorNum,
+			success:function(response){
+				var content = document.getElementById("mydata_content");
+				content.innerHTML = "";
+			}
+		})
+	}
+	
 	// Area Chart Example
 function dataselect(dashboardNum) {
     $.ajax({
@@ -209,15 +217,31 @@ function dataselect(dashboardNum) {
         	var chartTypeList = response.chartTypeList;
         	var dashboardInfo = response.dashboardInfo;
 			
-        	document.getElementById("titleDashboardName").textContent = dashboardInfo[0].dashboard_name;
         	console.log("sensorDataLList : ",sensorDataLList);
         	console.log("chartTypeList : ",chartTypeList);
         	console.log("chartTypeList : ",chartTypeList[0].chart_name);
         	
+        	
+        	
+        	
+        	
+        	var chartdatatitle=document.getElementById("mydata_title");
+        	chartdatatitle.innerHTML = "";
+        	var title = document.createElement("div");
+        	title.innerHTML = `
+        	<h1 class="page-header-title" id="titleDashboardName">
+        		<div class="page-header-icon ">
+				<i data-feather="book"></i>
+			</div>aaaaaaaaaaaa</h1>
+        	`;
+        	chartdatatitle.appendChild(title);
+        	
+        	
+        	
+        	
+        	
         	var chartdatacontent = document.getElementById("mydata_content");
     	    chartdatacontent.innerHTML = "";
-        	
-
         	for (var i = 0; i < sensorDataLList.length; i++) {
         		let timeList = [];
         		let minList = [];
@@ -378,8 +402,7 @@ function dataselect(dashboardNum) {
         	                        <div class="card-body d-flex flex-column justify-content-center">
         	                            <div class="chart-bar">
         	                                <canvas id="myBarChart" width="100%" height="30"></canvas>
-        	                         lass="mb-4">
-        	                    <div    </div>
+        	                          </div>
         	                        </div>
         	                    </div>
         	                </div>

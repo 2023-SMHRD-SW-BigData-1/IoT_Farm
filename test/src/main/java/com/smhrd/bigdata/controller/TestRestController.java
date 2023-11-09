@@ -166,4 +166,9 @@ public class TestRestController {
 		service.delete_iot(iotNum);
 	}
 	
+	@GetMapping("mydata/sensor/{sensorNum}")
+	public List<Sensor_Re> sensorContent(@PathVariable("sensorNum") int sensorNum){
+		return service.sensorContent(sensorNum);
+	}
+	
 }
