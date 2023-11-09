@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
 		<!-- 내비게이션 -->
 		<div id="layoutSidenav_nav">
 			<nav class="sidenav shadow-right sidenav-light">
@@ -63,9 +62,9 @@
 							</nav>
 						</div>
 						<!-- Sidenav Accordion (Applications)-->
-						<a style="font-size: 0.8rem" class="nav-link"
+						<a style="font-size: 0.8rem" class="nav-link text-primary fw-700"
 							href="/bigdata/guide/guide_dashboard">
-							<div class="nav-link-icon">
+							<div class="nav-link-icon text-primary fw-700">
 								<i data-feather="layout"></i>
 							</div> 대시보드 구성하기
 						</a>

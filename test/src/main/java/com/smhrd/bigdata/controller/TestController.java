@@ -39,6 +39,11 @@ public class TestController {
 	@Autowired
 	EmailService emailservice;
 	
+	@GetMapping("/t")
+	public String t() {
+		return "temp/progress";
+	}
+	
 	@GetMapping("/join")
 	public String joinForm() {
 		return "join";
