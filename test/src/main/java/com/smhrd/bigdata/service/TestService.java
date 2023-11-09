@@ -180,4 +180,14 @@ public class TestService {
 		
 	}
 
+	public void delete_sensor(int sensorNum) {
+		// TODO Auto-generated method stub
+		mapper.delete_sensor(sensorNum);
+	}
+
+	public void delete_iot(int iotNum) {
+		// TODO Auto-generated method stub
+		mapper.delete_iot(iotNum);
+	}
+
 }

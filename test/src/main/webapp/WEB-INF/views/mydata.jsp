@@ -94,7 +94,7 @@
 																data-bs-toggle="modal">${item3.sensor_name}</a>
 														</c:if>
 														<div>
-															<a href="#" style="color: #a7aeb8"><i data-feather="trash-2"></i></a>
+															<a href="#" style="color: #a7aeb8" onclick="sensor_delete(${item3.sensor_num})"><i data-feather="trash-2"></i></a>
 														</div>
 													</div>
 												</c:forEach>
@@ -102,8 +102,11 @@
 											<%
 											if (max.getMaxSensor() > max.getMySensor()) {
 											%>
+											<div class="lotRegister">
 											<button class="nav-link sensor-btn" data-bs-toggle="modal"
 												href="#" data-bs-target="#exampleModalCenter${item.iot_num}">센서등록</button>
+												<button class="nav-link sensor-btn" href="#" onclick="delete_iot(${item.iot_num})">기기삭제</button>
+											</div>
 											<%
 											}
 											%>
@@ -138,6 +141,7 @@
 										</div>${dashboard.dashboard_name}
 									</a>
 									<div>
+							
 										<a href="#" style="color: #a7aeb8"
 											onclick="dashboard_delete(${dashboard.dashboard_num})"><i class="mt-2" data-feather="trash-2"></i></a>
 									</div>
@@ -494,6 +498,38 @@ function dataselect(dashboardNum) {
 				}
 			})
 		}
+	</script>
+	<script>
+	function sensor_delete(sensor_num){
+		$.ajax({
+			url : "mydata/delete/"+sensor_num,
+			type : "delete",
+			success : function(){
+				console.log("성공")
+				location.reload();
+			},
+			error : function(){
+				console.log("실패");
+			}
+		})
+	}
+	
+	</script>
+	<script>
+	function delete_iot(iot_num){
+		$.ajax({
+			url : "mydata/delete/"+iot_num,
+			type : "delete",
+			success : function(){
+				console.log("성공")
+				location.reload();
+			},
+			error : function(){
+				console.log("실패");
+			}
+		})
+	}
+
 	</script>
 </body>
 </html>
