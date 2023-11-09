@@ -272,7 +272,6 @@ function dataselect(dashboardNum) {
         	    if (chartTypehtml === 'line') {
         	    	var content = document.createElement("div");
         	    	content.innerHTML = `
-        	        <div class ="card-body">
         	            <div class="mb-4">
         	                <div class="card mb-4">
         	                    <div class="card-header">`+chartNameList+`</div>
@@ -282,7 +281,6 @@ function dataselect(dashboardNum) {
         	                        </div>
         	                    </div>
         	                </div>
-        	            </div>
         	            </div>
         	            
         	        `;
@@ -395,19 +393,14 @@ function dataselect(dashboardNum) {
         	    } else if (chartTypehtml === 'bar') {
         	    	var content = document.createElement("div");
     	    		content.innerHTML = `
-        	        	 <div class ="card-body">
-        	            <div class="row">
-        	                <div cclass="card h-100">
+        	                <div class="card h-100">
         	                        <div class="card-header">`+chartNameList+`</div>
         	                        <div class="card-body d-flex flex-column justify-content-center">
         	                            <div class="chart-bar">
         	                                <canvas id="myBarChart" width="100%" height="30"></canvas>
-        	                          </div>
+        	                            </div>
         	                        </div>
-        	                    </div>
-        	                </div>
-        	            </div>
-        	            </div>
+        	            	</div>
         	        `;
         	        chartdatacontent.appendChild(content);
         	        
