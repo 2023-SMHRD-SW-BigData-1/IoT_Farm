@@ -190,4 +190,9 @@ public class TestService {
 		mapper.delete_iot(iotNum);
 	}
 
+	public List<Sensor_Re> sensorContent(int sensorNum) {
+		// TODO Auto-generated method stub
+		return mapper.sensorContent(sensorNum);
+	}
+
 }
