@@ -148,19 +148,19 @@ public class TestRestController {
 	    return response;
 	}
 	
-	@GetMapping("mydata/delete/{dashboardNum}")
+	@GetMapping("mydata/dashboard_delete/{dashboardNum}")
 	public void delete_dashboard(@PathVariable("dashboardNum") int dashboardNum) {
 		service.delete_dashboard(dashboardNum);
 	}
 
-	@DeleteMapping("mydata/delete/{sensorNum}")
+	@GetMapping("mydata/sensor_delete/{sensorNum}")
 	public void delete_sensor(@PathVariable("sensorNum") int sensorNum) {
 		service.delete_sensor(sensorNum);
 	}
 	
-	@DeleteMapping("mydata/delete/{iotNum}")
+	@GetMapping("mydata/iot_delete/{iotNum}")
 	public void delete_iot(@PathVariable("iotNum") int iotNum) {
 		service.delete_iot(iotNum);
 	}
-
+	
 }

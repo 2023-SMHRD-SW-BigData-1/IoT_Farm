@@ -94,7 +94,7 @@
 																data-bs-toggle="modal">${item3.sensor_name}</a>
 														</c:if>
 														<div>
-															<a href="#" style="color: #a7aeb8" onclick="sensor_delete(${item3.sensor_num})"><i data-feather="trash-2"></i></a>
+															<a href="#" style="color: #a7aeb8" onclick="sensor_delete(${item3.sensor_num})"><i data-feather="trash-2" class="margin-right12"></i></a>
 														</div>
 													</div>
 												</c:forEach>
@@ -143,7 +143,7 @@
 									<div>
 							
 										<a href="#" style="color: #a7aeb8"
-											onclick="dashboard_delete(${dashboard.dashboard_num})"><i class="mt-2" data-feather="trash-2"></i></a>
+											onclick="dashboard_delete(${dashboard.dashboard_num})"><i class="mt-2 margin-right12" data-feather="trash-2"></i></a>
 									</div>
 								</div>
 							</c:forEach>
@@ -234,7 +234,10 @@ function dataselect(dashboardNum) {
         	    console.log("chartName :",chartNameList)
         	    console.log("chartType: ",chartTypehtml)
 
-        	    
+        	    if(dataList==null){
+        	    	
+        	    	continue;
+        	    }
 
 
         	    if (chartTypehtml === 'line') {
@@ -487,7 +490,7 @@ function dataselect(dashboardNum) {
 	<script>
 		function dashboard_delete(dashboard_num){
 			$.ajax({
-				url : "mydata/delete/"+dashboard_num,
+				url : "mydata/dashboard_delete/"+dashboard_num,
 				type : "get",
 				success : function(){
 					console.log("성공")
@@ -502,8 +505,8 @@ function dataselect(dashboardNum) {
 	<script>
 	function sensor_delete(sensor_num){
 		$.ajax({
-			url : "mydata/delete/"+sensor_num,
-			type : "delete",
+			url : "mydata/sensor_delete/"+sensor_num,
+			type : "get",
 			success : function(){
 				console.log("성공")
 				location.reload();
@@ -518,8 +521,8 @@ function dataselect(dashboardNum) {
 	<script>
 	function delete_iot(iot_num){
 		$.ajax({
-			url : "mydata/delete/"+iot_num,
-			type : "delete",
+			url : "mydata/iot_delete/"+iot_num,
+			type : "get",
 			success : function(){
 				console.log("성공")
 				location.reload();
