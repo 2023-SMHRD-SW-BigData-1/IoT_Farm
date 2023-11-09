@@ -44,8 +44,7 @@
 				</a>
 				<div class="sidenav-menu">
 					<div class="nav accordion" id="accordionSidenav">
-						<!-- iot-->
-						<div class="sidenav-menu-heading nav-menu">
+					
 							<!-- iot-->
 							<div class="sidenav-menu-heading nav-menu">
 								<div>iot register</div>
@@ -144,7 +143,6 @@
 								</div>
 							</c:forEach>
 						</div>
-					</div>
 			</nav>
 		</div>
 
