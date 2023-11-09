@@ -89,34 +89,6 @@ public class TestRestController {
 	}
 	
 	
-	@PostMapping("mydata/iotadd")
-	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
-		TestMember user = (TestMember) session.getAttribute("user");
-		IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
-		String api;
-		while(true) {
-			api=emailservice.makeRandomNumber();
-			if(service.apiSearch(api)!=null) {
-				continue;
-			}
-			System.out.println("api:"+api);
-			break;
-		}
-		int cnt = service.iotadd(user.getUser_num(),iotName,api);
-
-		if (cnt > 0) {
-			int x = max.getMyIot() + 1;
-			System.out.println(max.getMyIot());
-			System.out.println(max.getMaxIot());
-			max.setMyIot(x);
-			session.setAttribute("max", max);
-			
-			return api;
-		} else {
-			return "fail";
-		}
-	}
-	
 	
 	
 	@GetMapping("mydata/{dashboardNum}")
@@ -148,18 +120,49 @@ public class TestRestController {
 	    return response;
 	}
 	
+	@PostMapping("mydata/iotadd")
+	public String iotadd(HttpSession session, @RequestParam("iotName") String iotName) {
+		TestMember user = (TestMember) session.getAttribute("user");
+		IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
+		String api;
+		while(true) {
+			api=emailservice.makeRandomNumber();
+			if(service.apiSearch(api)!=null) {
+				continue;
+			}
+			break;
+		}
+		int cnt = service.iotadd(user.getUser_num(),iotName,api);
+
+		if (cnt > 0) {
+			max.setMyIot(max.getMyIot() + 1);
+			session.setAttribute("max", max);
+			return api;
+		} else {
+			return "fail";
+		}
+	}
+	
 	@GetMapping("mydata/dashboard_delete/{dashboardNum}")
 	public void delete_dashboard(@PathVariable("dashboardNum") int dashboardNum) {
 		service.delete_dashboard(dashboardNum);
 	}
 
 	@GetMapping("mydata/sensor_delete/{sensorNum}")
-	public void delete_sensor(@PathVariable("sensorNum") int sensorNum) {
+	public void delete_sensor(@PathVariable("sensorNum") int sensorNum, HttpSession session) {
+		IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
+		max.setMySensor(max.getMySensor() - 1);
+		session.setAttribute("max", max);
+		
 		service.delete_sensor(sensorNum);
 	}
 	
 	@GetMapping("mydata/iot_delete/{iotNum}")
-	public void delete_iot(@PathVariable("iotNum") int iotNum) {
+	public void delete_iot(@PathVariable("iotNum") int iotNum, HttpSession session) {
+		IoT_Sensor max = (IoT_Sensor) session.getAttribute("max");
+		max.setMyIot(max.getMyIot() - 1);
+		session.setAttribute("max", max);
+		
 		service.delete_iot(iotNum);
 	}
 	

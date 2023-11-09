@@ -169,7 +169,14 @@
 				<!-- Dashboard content-->
 				<div class="container-xl px-4">
 					<div class="card mt-n10">
-						<div id="chartdata"></div>
+						<div id="mydata_content">
+						
+						
+						
+						
+						
+						
+						</div>
 					</div>
 				</div>
 			</main>
@@ -198,7 +205,7 @@ function dataselect(dashboardNum) {
         url: "mydata/" + dashboardNum,
         dataType: "json",
         success: function(response) {
-        	var sensorDataLList = response.reselect;
+        	var sensorDataLList = response.reselect; 
         	var chartTypeList = response.chartTypeList;
         	var dashboardInfo = response.dashboardInfo;
 			
@@ -207,7 +214,7 @@ function dataselect(dashboardNum) {
         	console.log("chartTypeList : ",chartTypeList);
         	console.log("chartTypeList : ",chartTypeList[0].chart_name);
         	
-        	var chartdatacontent = document.getElementById("chartdata");
+        	var chartdatacontent = document.getElementById("mydata_content");
     	    chartdatacontent.innerHTML = "";
         	
 
@@ -366,13 +373,13 @@ function dataselect(dashboardNum) {
     	    		content.innerHTML = `
         	        	 <div class ="card-body">
         	            <div class="row">
-        	                <div class="mb-4">
-        	                    <div class="card h-100">
+        	                <div cclass="card h-100">
         	                        <div class="card-header">`+chartNameList+`</div>
         	                        <div class="card-body d-flex flex-column justify-content-center">
         	                            <div class="chart-bar">
         	                                <canvas id="myBarChart" width="100%" height="30"></canvas>
-        	                            </div>
+        	                         lass="mb-4">
+        	                    <div    </div>
         	                        </div>
         	                    </div>
         	                </div>
