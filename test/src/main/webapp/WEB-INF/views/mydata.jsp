@@ -239,8 +239,23 @@ function dataselect(dashboardNum) {
         	    console.log("chartName :",chartNameList)
         	    console.log("chartType: ",chartTypehtml)
 
-        	    if(dataList==null){
-        	    	
+        	    if(dataList == null || dataList.length === 0){
+        	    	var content = document.createElement("div");
+        	    	content.innerHTML = `
+        	        <div class ="card-body">
+        	            <div class="mb-4">
+        	                <div class="card mb-4">
+        	                    <div class="card-header">`+chartNameList+`</div>
+        	                    <div class="card-body">
+        	                        <div class="chart-area">
+        	                            <canvas width="100%" height="30"><h1>입력하신 데이터가 없습니다.</h1></canvas>
+        	                        </div>
+        	                    </div>
+        	                </div>
+        	            </div>
+        	            </div>
+        	            
+        	        `;
         	    	continue;
         	    }
 
