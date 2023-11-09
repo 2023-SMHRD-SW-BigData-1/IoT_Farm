@@ -398,6 +398,7 @@ function dataselect(dashboardNum) {
         	                        <div class="card-body d-flex flex-column justify-content-center">
         	                            <div class="chart-bar">
         	                                <canvas id="myBarChart" width="100%" height="30"></canvas>
+										
         	                            </div>
         	                        </div>
         	            	</div>
