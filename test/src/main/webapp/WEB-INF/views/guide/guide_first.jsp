@@ -25,7 +25,7 @@
 
 	<div id="layoutSidenav">
 		<jsp:include page="guide_nav.jsp"></jsp:include>
-		
+
 
 		<!-- 본문 -->
 		<div id="layoutSidenav_content" style="margin-top: -3.5rem">
@@ -59,30 +59,38 @@
 
 						</div>
 					</div>
-					<div class="card mt-4">
-						<div class="card-header">IoT 클라우드 서비스 이용하기</div>
-						<div class="card-body">
-							아오팜은 자신 센서데이터를 저장할 수 있는 IoT 클라우드 서비스를 제공하고 있습니다. <br> 다음의
-							단계를 따라가면서 클라우드 서비스를 이용해봅시다.<br> <br> <br> <br>
-							<br> <br> <br>
-							<div class="step mb-5">
-								<div class="step-item active">
-									<a class="step-item-link text-lg fw-700" href="#!">IoT 세팅하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">IoT 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 등록하기</a>
-								</div>
-								<div class="step-item">
-									<a class="step-item-link" href="#!">센서 데이터 송신하기</a>
-								</div>
+					<div class="card mt-4 mb-15">
+						<div class="card-header">아오팜이란 ?</div>
+						<div class="card-body guide-content">
+							<div class="d-flex justify-content-center">
+								<img src="../img/아오팜소개1.png">
 							</div>
-							<div class="text-lg">아두이노 세팅하기</div>
-							https://www.arduino.cc/에 접속합니다.
-
-
+							<br>
+							<div>
+								아오팜의 주요서비스는 <span style="color: #0061f2">데이터 모니터링서비스,
+									IoT구현서비스, 클라우드 솔루션 제공 서비스</span> 입니다.<br> <span
+									style="color: #0061f2">데이터 모니터링 서비스</span>를 이용하여 실시간 데이터
+								모니터링을통해 고객이 빠르게 변화하는 상황에 대응할 수 있고<br> <span
+									style="color: #0061f2">IoT구현 서비스</span>를 이용하여 사용자들에게 센서 코드를 서버로
+								보내는 가이드라인을 제공하며 더 나아가 데이터를 서버로 보내는 과정을 단계별로 안내합니다.<br>
+								마지막으로 <span style="color: #0061f2">클라우드 솔루션</span>을 제공하여 사용자는
+								데이터베이스가 없어도 센서데이터를 사용할 수 있습니다.
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<div class="d-flex justify-content-center">
+								<img src="../img/아오팜소개2.png">
+							</div>
+							<div>
+								아오팜은 일반 사용자들에게 스마트팜의 사용자들에게 접근하기 쉬운 가이드라인 및 모니터링을할 수 있는 웹 서비스를
+								제공하고<br> 기존 IoT 이용자들에게는 IoT솔루션과 데이터베이스의 반복적인 코드 작업을 간소화
+								해줍니다. <br>
+								<br>
+								<br>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -90,7 +98,7 @@
 
 
 			</main>
-			
+
 		</div>
 	</div>
 	<script
