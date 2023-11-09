@@ -35,12 +35,12 @@
            modal2Content.classList.add("modal-body");
            modal2Content.innerHTML = `
               <div class="mb-3 modal-flex">
-            <div class="modal-iot">차트 이름:</div>
+            <div class="modal-iot">차트 이름&nbsp&nbsp&nbsp:&nbsp</div>
             <input class="form-control" id="inputchartName"
                name="chartName" type="text" />
          </div>
                <div class="mb-3 modal-flex">
-                   <div class="modal-iot">사용 IoT + 센서:</div>
+                   <div class="modal-iot">센서 선택&nbsp&nbsp&nbsp:&nbsp</div>
                    <select class="dashboard-count" id="iotSelect" name="sensorNum">
                        <option value="none"></option>
            <c:forEach items="${snList}" var="item">
@@ -49,7 +49,7 @@
                    </select>
                </div>
                <div class="mb-3 modal-flex">
-                   <div class="modal-iot">차트 타입:</div>
+                   <div class="modal-iot">차트 타입&nbsp&nbsp&nbsp:&nbsp</div>
                    <select class="dashboard-count" name="chartType">
                        <option value="none"></option>
                        <option value="bar">bar</option>
@@ -74,12 +74,12 @@
          </div>
          <div class="modal-body">
             <div class="mb-3 modal-flex">
-               <div class="wd-40">대시보드 이름:</div>
+               <div class="wd-40">대시보드 이름&nbsp&nbsp&nbsp:&nbsp</div>
                <input class="form-control" id="inputDbName" name="dashboardName"
                   type="text" />
             </div>
             <div class="mb-3 modal-flex">
-               <div class="modal-iot">사용 차트 수:</div>
+               <div class="modal-iot">사용 차트 수&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp</div>
                <select class="dashboard-count chart-width" id="sensorSelect">
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -131,7 +131,7 @@
          </div>
          <div class="modal-body">
             <div class="mb-3 modal-flex">
-               <div class="modal-iot">IoT 이름:</div>
+               <div class="modal-iot">IoT 이름&nbsp&nbsp&nbsp:&nbsp</div>
                <input class="form-control" id="iotName" type="text" name="iotName" />
             </div>
          </div>
@@ -181,12 +181,12 @@
                method="get">
                <div class="modal-body">
                   <div class="mb-3 modal-flex">
-                     <div class="wd-40">센서 이름:</div>
+                     <div class="wd-30">센서 이름&nbsp&nbsp&nbsp:&nbsp</div>
                      <input class="form-control" id="inputsensorName" type="text"
                         name="sensorName" />
                   </div>
                   <div class="mb-3 modal-flex">
-                     <div class="modal-iot">센서 종류:</div>
+                     <div class="wd-30">센서 종류&nbsp&nbsp&nbsp:&nbsp</div>
                      <select class="dashboard-count" id="iot_sensor" name="sensorType">
                         <option value="1">온도</option>
                         <option value="2">습도</option>
